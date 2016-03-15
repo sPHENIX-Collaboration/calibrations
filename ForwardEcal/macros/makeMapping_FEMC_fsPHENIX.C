@@ -97,6 +97,7 @@ makeMapping_FEMC_fsPHENIX()
       /* Tower mapping */
       fout << "#Tower type,idx_j,idx_k,idx_l,x[cm],y[cm],z[cm],dx[cm],dy[cm],dz[cm],rot_x,rot_y,rot_z" << endl;
       fout << "#PbGl crystals" << endl;
+      fout << "#First layers (single towers)" << endl;
 
       // lay down the first layers along the centerline (individual modules)
 
@@ -165,11 +166,14 @@ makeMapping_FEMC_fsPHENIX()
 
       // First, the top/bottom groups above and below the modules we just laid down.  This will
       // "even out" the horizontal layer with the MPC
+      fout << "#First group of supermodules" << endl;
       
       double n_SM_j = ( (unsigned)( (femc_xmax/(towers_per_supermodule_x*tower_dx)) ));
       double xpos_SM_j0_k0 = 22.0 + 0.5*(towers_per_supermodule_x*tower_dx);
       double ypos_SM_j0_k0 = 1.5*tower_dy + 0.5*(towers_per_supermodule_y*tower_dy);
       unsigned idx_l = 0;
+
+      unsigned idx_offset = 1000; 
 
       for (int idx_j = 0; idx_j < n_SM_j; idx_j++)
 	{
@@ -229,7 +233,7 @@ makeMapping_FEMC_fsPHENIX()
 		      int f_idx_j = n_towers_j + ( (unsigned)( (fabs(xposm)/tower_dx) )); 
 		      int f_idx_k = n_towers_k + 1 + m_idx_k; 
 
-		      fout << "Tower " << 0 << " " << f_idx_j << " " << f_idx_k << " " << idx_l << " " << xposm << " " << yposm << " " << zpos << " " << tower_dx << " " << tower_dy << " " << tower_dz << " 0 0 0" << endl;
+		      fout << "Tower " << 0 << " " << f_idx_j + idx_offset << " " << f_idx_k << " " << idx_l << " " << xposm << " " << yposm << " " << zpos << " " << tower_dx << " " << tower_dy << " " << tower_dz << " 0 0 0" << endl;
 	  
 		      twr_count++; 
 		      twr_count0++; 
@@ -242,7 +246,7 @@ makeMapping_FEMC_fsPHENIX()
 		      int f_idx_j = n_towers_j + ( (unsigned)( (fabs(xposm)/tower_dx) )); 
 		      int f_idx_k = n_towers_k - 1 - m_idx_k; 
 		      
-		      fout << "Tower " << 0 << " " << f_idx_j << " " << f_idx_k << " " << idx_l << " " << xposm << " " << yposm << " " << zpos << " " << tower_dx << " " << tower_dy << " " << tower_dz << " 0 0 0" << endl;
+		      fout << "Tower " << 0 << " " << f_idx_j + idx_offset << " " << f_idx_k << " " << idx_l << " " << xposm << " " << yposm << " " << zpos << " " << tower_dx << " " << tower_dy << " " << tower_dz << " 0 0 0" << endl;
 	  
 		      twr_count++; 
 		      twr_count0++; 
@@ -255,7 +259,7 @@ makeMapping_FEMC_fsPHENIX()
 		      int f_idx_j = n_towers_j - 1 -  ( (unsigned)( (fabs(xposm)/tower_dx) )); 
 		      int f_idx_k = n_towers_k + 1 + m_idx_k; 
 
-		      fout << "Tower " << 0 << " " << f_idx_j << " " << f_idx_k << " " << idx_l << " " << xposm << " " << yposm << " " << zpos << " " << tower_dx << " " << tower_dy << " " << tower_dz << " 0 0 0" << endl;
+		      fout << "Tower " << 0 << " " << f_idx_j + idx_offset << " " << f_idx_k << " " << idx_l << " " << xposm << " " << yposm << " " << zpos << " " << tower_dx << " " << tower_dy << " " << tower_dz << " 0 0 0" << endl;
 	  
 		      twr_count++; 
 		      twr_count0++; 
@@ -263,12 +267,12 @@ makeMapping_FEMC_fsPHENIX()
 		      // -x below beamline
 
 		      int f_idx_j = n_towers_j - 1 -  ( (unsigned)( (fabs(xposm)/tower_dx) )); 
-		      int f_idx_k = n_towers_k - 1 - idx_k; 
+		      int f_idx_k = n_towers_k - 1 - m_idx_k; 
 
 		      xposm = -(xpos - 0.5*towers_per_supermodule_x*tower_dx + (m_idx_j+0.5)*tower_dx);
 		      yposm = -(ypos - 0.5*towers_per_supermodule_y*tower_dy + (m_idx_k+0.5)*tower_dy);
 		      
-		      fout << "Tower " << 0 << " " << f_idx_j << " " << f_idx_k << " " << idx_l << " " << xposm << " " << yposm << " " << zpos << " " << tower_dx << " " << tower_dy << " " << tower_dz << " 0 0 0" << endl;
+		      fout << "Tower " << 0 << " " << f_idx_j + idx_offset << " " << f_idx_k << " " << idx_l << " " << xposm << " " << yposm << " " << zpos << " " << tower_dx << " " << tower_dy << " " << tower_dz << " 0 0 0" << endl;
 	  
 		      twr_count++; 
 		      twr_count0++; 
@@ -282,12 +286,15 @@ makeMapping_FEMC_fsPHENIX()
 
       // Next, the top/bottom groups above and below the MPC array.  This will finish out the 
       // PbGl supermodules 
-      
+      fout << "#Second group of supermodules" << endl;
+     
       double n_SM_j = ( (unsigned)( (femc_xmax/(towers_per_supermodule_x*tower_dx)) ));
       double n_SM_k = ( (unsigned)( (femc_ymax/(towers_per_supermodule_y*tower_dy)) ));
       double xpos_SM_j0_k0 = 0.5*(towers_per_supermodule_x*tower_dx);
       double ypos_SM_j0_k0 = 22.0 + 0.5*(towers_per_supermodule_y*tower_dy);
       unsigned idx_l = 0;
+
+      idx_offset = 2000; 
 
       for (int idx_j = 0; idx_j < n_SM_j; idx_j++)
 	{
@@ -331,7 +338,7 @@ makeMapping_FEMC_fsPHENIX()
 		      int f_idx_j = n_towers_j + ( (unsigned)( (fabs(xposm)/tower_dx) )); 
 		      int f_idx_k = n_towers_k + 6 + m_idx_k + idx_k*towers_per_supermodule_y; 
 
-		      fout << "Tower " << 0 << " " << f_idx_j << " " << f_idx_k << " " << idx_l << " " << xposm << " " << yposm << " " << zpos << " " << tower_dx << " " << tower_dy << " " << tower_dz << " 0 0 0" << endl;
+		      fout << "Tower " << 0 << " " << f_idx_j + idx_offset << " " << f_idx_k << " " << idx_l << " " << xposm << " " << yposm << " " << zpos << " " << tower_dx << " " << tower_dy << " " << tower_dz << " 0 0 0" << endl;
 	  
 		      twr_count++; 
 		      twr_count0++; 
@@ -344,7 +351,7 @@ makeMapping_FEMC_fsPHENIX()
 		      int f_idx_j = n_towers_j + ( (unsigned)( (fabs(xposm)/tower_dx) )); 
 		      int f_idx_k = n_towers_k - 6 - m_idx_k - idx_k*towers_per_supermodule_y; 
 		      
-		      fout << "Tower " << 0 << " " << f_idx_j << " " << f_idx_k << " " << idx_l << " " << xposm << " " << yposm << " " << zpos << " " << tower_dx << " " << tower_dy << " " << tower_dz << " 0 0 0" << endl;
+		      fout << "Tower " << 0 << " " << f_idx_j + idx_offset << " " << f_idx_k << " " << idx_l << " " << xposm << " " << yposm << " " << zpos << " " << tower_dx << " " << tower_dy << " " << tower_dz << " 0 0 0" << endl;
 	  
 		      twr_count++; 
 		      twr_count0++; 
@@ -357,7 +364,7 @@ makeMapping_FEMC_fsPHENIX()
 		      int f_idx_j = n_towers_j - 1 -  ( (unsigned)( (fabs(xposm)/tower_dx) )); 
 		      int f_idx_k = n_towers_k + 6 + m_idx_k + idx_k*towers_per_supermodule_y; 
 
-		      fout << "Tower " << 0 << " " << f_idx_j << " " << f_idx_k << " " << idx_l << " " << xposm << " " << yposm << " " << zpos << " " << tower_dx << " " << tower_dy << " " << tower_dz << " 0 0 0" << endl;
+		      fout << "Tower " << 0 << " " << f_idx_j + idx_offset << " " << f_idx_k << " " << idx_l << " " << xposm << " " << yposm << " " << zpos << " " << tower_dx << " " << tower_dy << " " << tower_dz << " 0 0 0" << endl;
 	  
 		      twr_count++; 
 		      twr_count0++; 
@@ -370,7 +377,7 @@ makeMapping_FEMC_fsPHENIX()
 		      xposm = -(xpos - 0.5*towers_per_supermodule_x*tower_dx + (m_idx_j+0.5)*tower_dx);
 		      yposm = -(ypos - 0.5*towers_per_supermodule_y*tower_dy + (m_idx_k+0.5)*tower_dy);
 		      
-		      fout << "Tower " << 0 << " " << f_idx_j << " " << f_idx_k << " " << idx_l << " " << xposm << " " << yposm << " " << zpos << " " << tower_dx << " " << tower_dy << " " << tower_dz << " 0 0 0" << endl;
+		      fout << "Tower " << 0 << " " << f_idx_j + idx_offset << " " << f_idx_k << " " << idx_l << " " << xposm << " " << yposm << " " << zpos << " " << tower_dx << " " << tower_dy << " " << tower_dz << " 0 0 0" << endl;
 	  
 		      twr_count++; 
 		      twr_count0++; 
@@ -407,7 +414,7 @@ makeMapping_FEMC_fsPHENIX()
       tower_dz = 18.0; // cm (FULL SIZE)
 
       // index offset - keep indices unique
-      int idx_offset = 1000; 
+      unsigned idx_offset = 3000; 
 
       // The (former) MPC crystals are placed in a square array
       // 20x20 crytals wide with 4x4 hole in the center
