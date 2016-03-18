@@ -400,9 +400,9 @@ makeMapping_FEMC_fsPHENIX()
     {
 
       /* Detector envelope size (rectangluar shape) */
-      femc_xmin = 4.4; // cm
+      femc_xmin = 11.0; // cm
       femc_xmax = 22.0; // cm
-      femc_ymin = 4.4; // cm
+      femc_ymin = 11.0; // cm
       femc_ymax = 22.0; // cm
 
       femc_dz = 40.0; // cm (FULL SIZE)
