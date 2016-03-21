@@ -50,16 +50,16 @@ makeMapping_FEMC_fsPHENIX()
       femc_rot_z0 =  0.0;
 
       /* Detector envelope size (cone shape) */
-      femc_rmin1 = 4.0; // cm
+      femc_rmin1 = 10.9; // cm
       femc_rmax1 = 183; // cm
-      femc_rmin2 = 4.0; // cm
+      femc_rmin2 = 10.9; // cm
       femc_rmax2 = 183; // cm
 
-      /* Detector size (square array) */
+      /* Detector size */
       femc_xmin = 22.0; // cm
-      femc_xmax = 182.655; // cm
+      femc_xmax = 182; // cm
       femc_ymin = 22.0; // cm
-      femc_ymax = 182.655; // cm
+      femc_ymax = 182; // cm
       femc_dz = 40.0; // cm (FULL SIZE)
  
       /* Tower parameters */
@@ -103,7 +103,7 @@ makeMapping_FEMC_fsPHENIX()
 
       unsigned n_towers_j = 2 * ( (unsigned)( (femc_xmax/tower_dx) ));
       unsigned n_towers_k = 2 * ( (unsigned)( (femc_ymax/tower_dy) )) + 1;
-      double xpos_j0_k0 = (-1 * ( (double)( n_towers_j / 2 ) * tower_dx)) + 0.5*tower_dx;
+      double xpos_j0_k0 = (-1 * ( (double)( n_towers_j / 2 ) * tower_dx)) - 2.0 + 0.5*tower_dx;
       double ypos_j0_k0 = 0.0; 
       unsigned idx_l = 0;
 
@@ -130,8 +130,10 @@ makeMapping_FEMC_fsPHENIX()
 	      if( ((x_corner_1<femc_xmin) && (y_corner_1<femc_ymin)) ||
 		  ((x_corner_2<femc_xmin) && (y_corner_2<femc_ymin)) || 
 		  ((x_corner_3<femc_xmin) && (y_corner_3<femc_ymin)) || 
-		  ((x_corner_4<femc_xmin) && (y_corner_4<femc_ymin)) )
+		  ((x_corner_4<femc_xmin) && (y_corner_4<femc_ymin)) ){
+
 		continue; 
+	      }
 
 	      if( ((x_corner_1>femc_xmax) && (y_corner_1>femc_ymax)) ||
 		  ((x_corner_2>femc_xmax) && (y_corner_2>femc_ymax)) || 
@@ -399,11 +401,12 @@ makeMapping_FEMC_fsPHENIX()
 
     {
 
-      /* Detector envelope size (rectangluar shape) */
-      femc_xmin = 11.0; // cm
-      femc_xmax = 22.0; // cm
-      femc_ymin = 11.0; // cm
-      femc_ymax = 22.0; // cm
+      // Detector envelope size (rectangluar shape)
+      // 20x20 modules exterior, 10x10 gap in interior 
+      femc_xmin = 10.9; // cm
+      femc_xmax = 22.1; // cm
+      femc_ymin = 10.9; // cm
+      femc_ymax = 22.1; // cm
 
       femc_dz = 40.0; // cm (FULL SIZE)
 
@@ -442,7 +445,7 @@ makeMapping_FEMC_fsPHENIX()
 	      /* Calculate center position for tower */
 	      double xpos = xpos_j0_k0 + idx_j * tower_dx;
 	      double ypos = ypos_j0_k0 + idx_k * tower_dy;
-	      double zpos = 0.0; // back face to match up with PbGl
+	      double zpos = 0.0; 
 
 	      // check if all four corners are within envelope volume
 	      double x_corner_1 =  fabs(xpos + tower_dx/2);
