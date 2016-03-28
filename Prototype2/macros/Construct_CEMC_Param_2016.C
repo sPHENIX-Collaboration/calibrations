@@ -45,7 +45,7 @@ Construct_CEMC_Param_2016()
   // 2016 THP new screen:
   const double hole_diameter = 0.0290 * inch_to_cm;
   const double hole_edge_to_edge = 0.0110 * inch_to_cm;
-  const int NFiberX = 29;
+  const int NFiberX = 30;
   const int NFiberY = 52 * 2;
   const double hole_edge_to_screen_edge = 0;
   const double fiber_diameter = 0.047;
