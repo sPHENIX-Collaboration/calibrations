@@ -194,6 +194,9 @@ Construct_CEMC_Param_2016()
 
   gSystem->mkdir("./test_geom/");
   param->WriteToFile("root", "./test_geom/");
+
+  // this to solve an annoying problem for ROOT/XML regarding precision needed for Geant4
+  TBufferXML::SetFloatFormat("%.18e"); // match precision for double
   param->WriteToFile("xml", "./test_geom/");
 
 }
