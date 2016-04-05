@@ -42,6 +42,20 @@ Construct_CEMC_Param_2016()
   const int nx = 8;
 //  const int nx = 1;
 
+
+  // Sean Stoll:
+  // the avg thickness is about ~  24.02mm at the thin end and 26.92mm at the thick end
+  /*
+         height(mm)  width(mm) length(mm)  density (g/cc)
+    UIUC  25.6  53.4  139.2 9.43
+    THP   25.4  53.6  138.0 9.65
+    ALL   25.5  53.5  138.6 9.53
+
+    side gap    0.1 mm  gap between adjacent modules in row
+    stack gap   0.33  mm  gap between stacked rows of modules
+    pcb thickness:    1.75mm
+   * */
+
   // 2016 THP new screen:
   const double hole_diameter = 0.0290 * inch_to_cm;
   const double hole_edge_to_edge = 0.0110 * inch_to_cm;
@@ -50,26 +64,28 @@ Construct_CEMC_Param_2016()
   const double hole_edge_to_screen_edge = 0;
   const double fiber_diameter = 0.047;
 
+  // average module size
+  const double nawrrow_width_x = 24.02 / 10;
+  const double wide_width_x = 26.92 / 10;
+  const double module_length = 138.6/10;
+  assert(module_length > 0);
+  assert(wide_width_x > nawrrow_width_x);
+
   // derived numbers
   const double distance_center_to_center = hole_edge_to_edge + hole_diameter;
-  const double screen_size_x = (NFiberX - 1) * sqrt(3) / 2
-      * distance_center_to_center + hole_diameter
-      + 2 * hole_edge_to_screen_edge;
+//  const double screen_size_x = (NFiberX - 1) * sqrt(3) / 2
+//      * distance_center_to_center + hole_diameter
+//      + 2 * hole_edge_to_screen_edge;
+  const double ModuleSkinThickness =
+      (wide_width_x //
+      - (NFiberX - 1) * sqrt(3) / 2* distance_center_to_center
+      - fiber_diameter)/2;
   const double screen_size_y = (NFiberY - 1) * 0.5 * distance_center_to_center
-      + hole_diameter + 2 * hole_edge_to_screen_edge;
-  const double ModuleSkinThickness = hole_edge_to_screen_edge
-      + hole_diameter / 2 - fiber_diameter / 2;
+      + fiber_diameter + 2 * ModuleSkinThickness;
 
-  const double z_screen_6_7 = 0.5 * (6.6 + 6.75) * inch_to_cm;
-  const double angle_screen_6_7 = 64.78 / 180. * TMath::Pi();
-  const double nawrrow_width_x = screen_size_x * sin(angle_screen_6_7);
-
-  const double z_screen_1_2 = 0.5 * (1.35 + 1.6) * inch_to_cm;
-  const double angle_screen_1_2 = 90.56 / 180. * TMath::Pi();
-  const double wide_width_x = screen_size_x * sin(angle_screen_1_2);
-
-  const double module_length = z_screen_6_7 - z_screen_1_2;
-  assert(module_length > 0);
+  cout << "Construct_CEMC_Param_2016() - "
+  << "Adjust screen_size_y by "
+      << screen_size_y / (53.5/10)<< endl;
 
   //tapering, dxwidth/dlength
   const double tapering_ratio = (wide_width_x - nawrrow_width_x)
@@ -81,24 +97,25 @@ Construct_CEMC_Param_2016()
   const double fiber_core_diameter = fiber_diameter
       - fiber_clading_thickness * 2;
 
-  const double assembly_spacing = 0.002500;
+  const double assembly_spacing_x = 0.33/10/2.;
+  const double assembly_spacing_y = 0.1/10/2.;
 
-  const double radius = (nawrrow_width_x) / tapering_ratio;
-  const double thickness = module_length * 1.05; // keep a large torlerence space
+  const double radius = (nawrrow_width_x + 2*assembly_spacing_x) / tapering_ratio;
+  const double thickness = module_length * 1.03; // keep a small torlerence space
   const double zmin = -(0.5 * ny * screen_size_y
-      + 2 * assembly_spacing * (ny + 1));
+      + 2 * assembly_spacing_y * (ny + 1));
   const double zmax = -zmin;
   const int azimuthal_n_sec = floor(2 * TMath::Pi() / atan(tapering_ratio));
   const int max_phi_bin_in_sec = 1;
 
   const double nawrrow_width_x_construction = radius * 2
-      * tan(TMath::Pi() / azimuthal_n_sec) - 2 * assembly_spacing;
+      * tan(TMath::Pi() / azimuthal_n_sec) - 2 * assembly_spacing_x;
   const double wide_width_x_construction = (radius + module_length) * 2
-      * tan(TMath::Pi() / azimuthal_n_sec) - 2 * assembly_spacing;
+      * tan(TMath::Pi() / azimuthal_n_sec) - 2 * assembly_spacing_x;
 
   param->set_double_param("fiber_clading_thickness", fiber_clading_thickness);
   param->set_double_param("fiber_core_diameter", fiber_core_diameter);
-  param->set_double_param("assembly_spacing", assembly_spacing);
+  param->set_double_param("assembly_spacing", 0); // used for segment wall assembly, not used here in prototyes
   param->set_double_param("radius", radius);
   param->set_double_param("thickness", thickness);
   param->set_double_param("zmin", zmin);
@@ -106,8 +123,7 @@ Construct_CEMC_Param_2016()
   param->set_int_param("azimuthal_n_sec", azimuthal_n_sec);
   param->set_int_param("max_phi_bin_in_sec", max_phi_bin_in_sec);
 
-  cout << "Construct_CEMC_Param_2014() - "
-
+  cout << "Construct_CEMC_Param_2016() - "
   << "Adjust wide end width by ratio of "
       << wide_width_x_construction / wide_width_x
       << " and narrow end by ratio of "
@@ -166,9 +182,9 @@ Construct_CEMC_Param_2016()
 
       param->set_double_param(prefix.str() + "centralX", 0.);
       param->set_double_param(prefix.str() + "centralY",
-          module_length * 0.5 + radius + assembly_spacing);
+          module_length * 0.5 + radius + 0.0001 );
       param->set_double_param(prefix.str() + "centralZ",
-          screen_size_y * (y - 1.5));
+          (screen_size_y + 2*assembly_spacing_y )* (y - 1.5));
 
       param->set_double_param(prefix.str() + "pRotationAngleX",
           -TMath::Pi() / 2.);
