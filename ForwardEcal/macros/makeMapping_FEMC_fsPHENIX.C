@@ -66,7 +66,7 @@ makeMapping_FEMC_fsPHENIX()
       // From PHENIX PbSc JGL 3/26/2016
       tower_dx = 5.5; // cm
       tower_dy = 5.5; // cm
-      tower_dz = 36.3; // cm (FULL SIZE)
+      tower_dz = 33.0; // cm (FULL SIZE)
 
       float towers_per_supermodule_x = 2; 
       float towers_per_supermodule_y = 2; 
