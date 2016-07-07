@@ -20,10 +20,11 @@ LightCollection()
 {
 //  gStyle->SetOptStat(0);
 
-  TFile * fdata = TFile::Open("../LightCollection/Prototype2Module.xml",
+  TFile * fdata = new TXMLFile("../LightCollection/Prototype2Module.xml",
       "recreate");
 
-  TH2 * h2 = LoadMikePhippsLightGuideEff();
+//  TH2 * h2 = LoadMikePhippsLightGuideEff();
+  TH2 * h2 = LoadMikePhippsLightGuideEffUpdated();
 
   h2->SetDirectory(NULL);
   fdata->cd();
@@ -35,6 +36,7 @@ LightCollection()
   fdata->cd();
   h1->Write();
 
+  fdata->Print();
 }
 
 TH2 *
@@ -112,6 +114,80 @@ LoadMikePhippsLightGuideEff()
   data_grid_light_guide_efficiency->Draw("colz");
 
   c2->cd(3);
+  stat_data_grid_light_guide_efficiency_normalized->Draw();
+
+  return data_grid_light_guide_efficiency;
+}
+
+TH2 *
+LoadMikePhippsLightGuideEffUpdated()
+{
+  TFile * fsrc = new TFile("unifHistoDet1.root");
+  assert(fsrc->IsOpen());
+
+  TH2F * contamHisto = fsrc->Get("unifHisto;4096");
+  assert(contamHisto);
+  const int n = contamHisto->GetXaxis()->GetNbins();
+
+  TH2F * data_grid_light_guide_efficiency =
+      new TH2F("data_grid_light_guide_efficiency",
+          "Extracted light collection efficiency from Mike Phipps;x positio fraction;y position fraction", //
+          n, 0., 1., n, 0., 1.);
+  TH1F * stat_data_grid_light_guide_efficiency = new TH1F(
+      "stat_data_grid_light_guide_efficiency",
+      "Efficiency statistics;Reletive Efficiency;Count of bins", 100, 0, 1);
+  TH1F * stat_data_grid_light_guide_efficiency_normalized = new TH1F(
+      "stat_data_grid_light_guide_efficiency_normalized",
+      "Efficiency statistics;Reletive Efficiency;Count of bins", 100, 0, 2);
+
+  for (int x = 1; x <= n; x++)
+    {
+      for (int y = 1; y <= n; y++)
+        {
+          data_grid_light_guide_efficiency->SetBinContent(x, y,
+              contamHisto->GetBinContent(x, y));
+        }
+    }
+
+  data_grid_light_guide_efficiency->Smooth(1, "k5b");
+  data_grid_light_guide_efficiency->Rebin2D(2, 2);
+  data_grid_light_guide_efficiency->Smooth(1, "k5a");
+
+  for (int x = 1; x <= data_grid_light_guide_efficiency->GetNbinsX(); x++)
+    {
+      for (int y = 1; y <= data_grid_light_guide_efficiency->GetNbinsY(); y++)
+        {
+          double eff = data_grid_light_guide_efficiency->GetBinContent(x, y);
+
+          stat_data_grid_light_guide_efficiency->Fill(eff);
+          data_grid_light_guide_efficiency->SetBinContent(x, y, eff);
+        }
+    }
+
+  data_grid_light_guide_efficiency->Scale(
+      1. / stat_data_grid_light_guide_efficiency->GetMean());
+
+  for (int x = 1; x <= data_grid_light_guide_efficiency->GetNbinsX(); x++)
+    {
+      for (int y = 1; y <= data_grid_light_guide_efficiency->GetNbinsY(); y++)
+        {
+          double eff = data_grid_light_guide_efficiency->GetBinContent(x, y);
+          stat_data_grid_light_guide_efficiency_normalized->Fill(eff);
+        }
+    }
+
+  TCanvas * c2 = new TCanvas("LoadMikePhippsLightGuideEffUpdated",
+      "LoadMikePhippsLightGuideEffUpdated", 1800, 600);
+  c2->Divide(3, 1);
+
+  c2->cd(1);
+  contamHisto->Draw("colz");
+
+  c2->cd(2);
+  data_grid_light_guide_efficiency->Draw("colz");
+
+  c2->cd(3);
+//  stat_data_grid_light_guide_efficiency->Draw();
   stat_data_grid_light_guide_efficiency_normalized->Draw();
 
   return data_grid_light_guide_efficiency;
