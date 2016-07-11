@@ -1,0 +1,1619 @@
+<?xml version="1.0"?>
+<root setup="2xoo" ref="null" created="2016-07-07 16:24:35" modified="2016-07-07 16:24:35" uuid="d22583be-4480-11e6-9717-c3b4c782beef" title="title" version="3" file_version="53434">
+  <XmlKey name="data_grid_light_guide_efficiency" cycle="1" created="2016-07-07 16:24:36">
+    <Object class="TH2F">
+      <TH2F version="3">
+        <TH2 version="4">
+          <TH1 version="7">
+            <TNamed version="1">
+              <TObject fUniqueID="0" fBits="3000008"/>
+              <fName str="data_grid_light_guide_efficiency"/>
+              <fTitle str="Extracted light collection efficiency from Mike Phipps"/>
+            </TNamed>
+            <TAttLine version="2">
+              <fLineColor v="602"/>
+              <fLineStyle v="1"/>
+              <fLineWidth v="1"/>
+            </TAttLine>
+            <TAttFill version="2">
+              <fFillColor v="0"/>
+              <fFillStyle v="1001"/>
+            </TAttFill>
+            <TAttMarker version="2">
+              <fMarkerColor v="1"/>
+              <fMarkerStyle v="1"/>
+              <fMarkerSize v="1.000000e+00"/>
+            </TAttMarker>
+            <fNcells v="1156"/>
+            <fXaxis>
+              <TAxis version="9">
+                <TNamed version="1">
+                  <TObject fUniqueID="0" fBits="3000000"/>
+                  <fName str="xaxis"/>
+                  <fTitle str="x positio fraction"/>
+                </TNamed>
+                <TAttAxis version="4">
+                  <fNdivisions v="510"/>
+                  <fAxisColor v="1"/>
+                  <fLabelColor v="1"/>
+                  <fLabelFont v="42"/>
+                  <fLabelOffset v="5.000000e-03"/>
+                  <fLabelSize v="3.500000e-02"/>
+                  <fTickLength v="3.000000e-02"/>
+                  <fTitleOffset v="1.000000e+00"/>
+                  <fTitleSize v="3.500000e-02"/>
+                  <fTitleColor v="1"/>
+                  <fTitleFont v="42"/>
+                </TAttAxis>
+                <fNbins v="32"/>
+                <fXmin v="0.000000e+00"/>
+                <fXmax v="1.000000e+00"/>
+                <fXbins>
+                  <Int_t v="0"/>
+                </fXbins>
+                <fFirst v="1"/>
+                <fLast v="64"/>
+                <fBits2 v="0"/>
+                <fTimeDisplay v="false"/>
+                <fTimeFormat str=""/>
+                <fLabels>
+                  <Object ptr="null"/>
+                </fLabels>
+              </TAxis>
+            </fXaxis>
+            <fYaxis>
+              <TAxis version="9">
+                <TNamed version="1">
+                  <TObject fUniqueID="0" fBits="3000000"/>
+                  <fName str="yaxis"/>
+                  <fTitle str="y position fraction"/>
+                </TNamed>
+                <TAttAxis version="4">
+                  <fNdivisions v="510"/>
+                  <fAxisColor v="1"/>
+                  <fLabelColor v="1"/>
+                  <fLabelFont v="42"/>
+                  <fLabelOffset v="5.000000e-03"/>
+                  <fLabelSize v="3.500000e-02"/>
+                  <fTickLength v="3.000000e-02"/>
+                  <fTitleOffset v="1.000000e+00"/>
+                  <fTitleSize v="3.500000e-02"/>
+                  <fTitleColor v="1"/>
+                  <fTitleFont v="42"/>
+                </TAttAxis>
+                <fNbins v="32"/>
+                <fXmin v="0.000000e+00"/>
+                <fXmax v="1.000000e+00"/>
+                <fXbins>
+                  <Int_t v="0"/>
+                </fXbins>
+                <fFirst v="1"/>
+                <fLast v="64"/>
+                <fBits2 v="0"/>
+                <fTimeDisplay v="false"/>
+                <fTimeFormat str=""/>
+                <fLabels>
+                  <Object ptr="null"/>
+                </fLabels>
+              </TAxis>
+            </fYaxis>
+            <fZaxis>
+              <TAxis version="9">
+                <TNamed version="1">
+                  <TObject fUniqueID="0" fBits="3000000"/>
+                  <fName str="zaxis"/>
+                  <fTitle str=""/>
+                </TNamed>
+                <TAttAxis version="4">
+                  <fNdivisions v="510"/>
+                  <fAxisColor v="1"/>
+                  <fLabelColor v="1"/>
+                  <fLabelFont v="42"/>
+                  <fLabelOffset v="5.000000e-03"/>
+                  <fLabelSize v="3.500000e-02"/>
+                  <fTickLength v="3.000000e-02"/>
+                  <fTitleOffset v="1.000000e+00"/>
+                  <fTitleSize v="3.500000e-02"/>
+                  <fTitleColor v="1"/>
+                  <fTitleFont v="42"/>
+                </TAttAxis>
+                <fNbins v="1"/>
+                <fXmin v="0.000000e+00"/>
+                <fXmax v="1.000000e+00"/>
+                <fXbins>
+                  <Int_t v="0"/>
+                </fXbins>
+                <fFirst v="0"/>
+                <fLast v="0"/>
+                <fBits2 v="0"/>
+                <fTimeDisplay v="false"/>
+                <fTimeFormat str=""/>
+                <fLabels>
+                  <Object ptr="null"/>
+                </fLabels>
+              </TAxis>
+            </fZaxis>
+            <fBarOffset v="0"/>
+            <fBarWidth v="1000"/>
+            <fEntries v="5.120000e+03"/>
+            <fTsumw v="1.024000e+03"/>
+            <fTsumw2 v="1.897259e+03"/>
+            <fTsumwx v="5.124162e+02"/>
+            <fTsumwx2 v="3.422787e+02"/>
+            <fMaximum v="-1.111000e+03"/>
+            <fMinimum v="-1.111000e+03"/>
+            <fNormFactor v="0.000000e+00"/>
+            <fContour>
+              <Int_t v="0"/>
+            </fContour>
+            <fSumw2>
+              <Int_t v="0"/>
+            </fSumw2>
+            <fOption str=""/>
+            <fFunctions>
+              <Version v="5"/>
+              <Version v="1"/>
+              <UInt_t v="0"/>
+              <UInt_t v="50331648"/>
+              <string v=""/>
+              <Int_t v="0"/>
+            </fFunctions>
+            <fBufferSize v="0"/>
+            <fBuffer>
+              <Char_t v="0"/>
+            </fBuffer>
+            <fBinStatErrOpt v="0"/>
+          </TH1>
+          <fScalefactor v="1.000000e+00"/>
+          <fTsumwy v="5.116327e+02"/>
+          <fTsumwy2 v="3.418120e+02"/>
+          <fTsumwxy v="2.561534e+02"/>
+        </TH2>
+        <TArrayF>
+          <Int_t v="1156"/>
+          <Array>
+            <Float_t v="0.000000e+00" cnt="35"/>
+            <Float_t v="1.032474e+00"/>
+            <Float_t v="1.044580e+00"/>
+            <Float_t v="1.059396e+00"/>
+            <Float_t v="1.070354e+00"/>
+            <Float_t v="1.070560e+00"/>
+            <Float_t v="1.059921e+00"/>
+            <Float_t v="1.042806e+00"/>
+            <Float_t v="1.027302e+00"/>
+            <Float_t v="1.011578e+00"/>
+            <Float_t v="9.882749e-01"/>
+            <Float_t v="9.695067e-01"/>
+            <Float_t v="9.585907e-01"/>
+            <Float_t v="9.586676e-01"/>
+            <Float_t v="9.547244e-01"/>
+            <Float_t v="9.460485e-01"/>
+            <Float_t v="9.437956e-01"/>
+            <Float_t v="9.494659e-01"/>
+            <Float_t v="9.576405e-01"/>
+            <Float_t v="9.605889e-01"/>
+            <Float_t v="9.515808e-01"/>
+            <Float_t v="9.515458e-01"/>
+            <Float_t v="9.647442e-01"/>
+            <Float_t v="9.874307e-01"/>
+            <Float_t v="1.012719e+00"/>
+            <Float_t v="1.027001e+00"/>
+            <Float_t v="1.036096e+00"/>
+            <Float_t v="1.049600e+00"/>
+            <Float_t v="1.067533e+00"/>
+            <Float_t v="1.083381e+00"/>
+            <Float_t v="1.086344e+00"/>
+            <Float_t v="1.069535e+00"/>
+            <Float_t v="1.041815e+00"/>
+            <Float_t v="0.000000e+00" cnt="2"/>
+            <Float_t v="1.043573e+00"/>
+            <Float_t v="1.052266e+00"/>
+            <Float_t v="1.064933e+00"/>
+            <Float_t v="1.074997e+00"/>
+            <Float_t v="1.073487e+00"/>
+            <Float_t v="1.058658e+00"/>
+            <Float_t v="1.043517e+00"/>
+            <Float_t v="1.030725e+00"/>
+            <Float_t v="1.013016e+00"/>
+            <Float_t v="9.952278e-01"/>
+            <Float_t v="9.776870e-01"/>
+            <Float_t v="9.671639e-01"/>
+            <Float_t v="9.652300e-01"/>
+            <Float_t v="9.635901e-01"/>
+            <Float_t v="9.539444e-01"/>
+            <Float_t v="9.490424e-01"/>
+            <Float_t v="9.542884e-01"/>
+            <Float_t v="9.607605e-01"/>
+            <Float_t v="9.611679e-01"/>
+            <Float_t v="9.577570e-01"/>
+            <Float_t v="9.585459e-01"/>
+            <Float_t v="9.704153e-01"/>
+            <Float_t v="9.951168e-01"/>
+            <Float_t v="1.019551e+00"/>
+            <Float_t v="1.033222e+00"/>
+            <Float_t v="1.040595e+00"/>
+            <Float_t v="1.050913e+00"/>
+            <Float_t v="1.065576e+00"/>
+            <Float_t v="1.080413e+00"/>
+            <Float_t v="1.080746e+00"/>
+            <Float_t v="1.061944e+00"/>
+            <Float_t v="1.039869e+00"/>
+            <Float_t v="0.000000e+00" cnt="2"/>
+            <Float_t v="1.049398e+00"/>
+            <Float_t v="1.054928e+00"/>
+            <Float_t v="1.063794e+00"/>
+            <Float_t v="1.071898e+00"/>
+            <Float_t v="1.070622e+00"/>
+            <Float_t v="1.060036e+00"/>
+            <Float_t v="1.049879e+00"/>
+            <Float_t v="1.039830e+00"/>
+            <Float_t v="1.023988e+00"/>
+            <Float_t v="1.005567e+00"/>
+            <Float_t v="9.884746e-01"/>
+            <Float_t v="9.743543e-01"/>
+            <Float_t v="9.713330e-01"/>
+            <Float_t v="9.691366e-01"/>
+            <Float_t v="9.598805e-01"/>
+            <Float_t v="9.567258e-01"/>
+            <Float_t v="9.627104e-01"/>
+            <Float_t v="9.696453e-01"/>
+            <Float_t v="9.715366e-01"/>
+            <Float_t v="9.698363e-01"/>
+            <Float_t v="9.714751e-01"/>
+            <Float_t v="9.806736e-01"/>
+            <Float_t v="1.000556e+00"/>
+            <Float_t v="1.023500e+00"/>
+            <Float_t v="1.034618e+00"/>
+            <Float_t v="1.040767e+00"/>
+            <Float_t v="1.051897e+00"/>
+            <Float_t v="1.063377e+00"/>
+            <Float_t v="1.072685e+00"/>
+            <Float_t v="1.069219e+00"/>
+            <Float_t v="1.048462e+00"/>
+            <Float_t v="1.027204e+00"/>
+            <Float_t v="0.000000e+00" cnt="2"/>
+            <Float_t v="1.043672e+00"/>
+            <Float_t v="1.044863e+00"/>
+            <Float_t v="1.051665e+00"/>
+            <Float_t v="1.060149e+00"/>
+            <Float_t v="1.061296e+00"/>
+            <Float_t v="1.054856e+00"/>
+            <Float_t v="1.051749e+00"/>
+            <Float_t v="1.048680e+00"/>
+            <Float_t v="1.033946e+00"/>
+            <Float_t v="1.016939e+00"/>
+            <Float_t v="9.991133e-01"/>
+            <Float_t v="9.806857e-01"/>
+            <Float_t v="9.747459e-01"/>
+            <Float_t v="9.737609e-01"/>
+            <Float_t v="9.674923e-01"/>
+            <Float_t v="9.668901e-01"/>
+            <Float_t v="9.766389e-01"/>
+            <Float_t v="9.822992e-01"/>
+            <Float_t v="9.832965e-01"/>
+            <Float_t v="9.808926e-01"/>
+            <Float_t v="9.802842e-01"/>
+            <Float_t v="9.870747e-01"/>
+            <Float_t v="1.003745e+00"/>
+            <Float_t v="1.022038e+00"/>
+            <Float_t v="1.031123e+00"/>
+            <Float_t v="1.038590e+00"/>
+            <Float_t v="1.049557e+00"/>
+            <Float_t v="1.058501e+00"/>
+            <Float_t v="1.060243e+00"/>
+            <Float_t v="1.049999e+00"/>
+            <Float_t v="1.029225e+00"/>
+            <Float_t v="1.010875e+00"/>
+            <Float_t v="0.000000e+00" cnt="2"/>
+            <Float_t v="1.024834e+00"/>
+            <Float_t v="1.028482e+00"/>
+            <Float_t v="1.041082e+00"/>
+            <Float_t v="1.054441e+00"/>
+            <Float_t v="1.054330e+00"/>
+            <Float_t v="1.045331e+00"/>
+            <Float_t v="1.042751e+00"/>
+            <Float_t v="1.041840e+00"/>
+            <Float_t v="1.035443e+00"/>
+            <Float_t v="1.023789e+00"/>
+            <Float_t v="1.007298e+00"/>
+            <Float_t v="9.902245e-01"/>
+            <Float_t v="9.839481e-01"/>
+            <Float_t v="9.846259e-01"/>
+            <Float_t v="9.813867e-01"/>
+            <Float_t v="9.838030e-01"/>
+            <Float_t v="9.923676e-01"/>
+            <Float_t v="9.957999e-01"/>
+            <Float_t v="9.921961e-01"/>
+            <Float_t v="9.854118e-01"/>
+            <Float_t v="9.839744e-01"/>
+            <Float_t v="9.920371e-01"/>
+            <Float_t v="1.010076e+00"/>
+            <Float_t v="1.027053e+00"/>
+            <Float_t v="1.033605e+00"/>
+            <Float_t v="1.039206e+00"/>
+            <Float_t v="1.046361e+00"/>
+            <Float_t v="1.047497e+00"/>
+            <Float_t v="1.043262e+00"/>
+            <Float_t v="1.030439e+00"/>
+            <Float_t v="1.014848e+00"/>
+            <Float_t v="1.002230e+00"/>
+            <Float_t v="0.000000e+00" cnt="2"/>
+            <Float_t v="1.004611e+00"/>
+            <Float_t v="1.012225e+00"/>
+            <Float_t v="1.033780e+00"/>
+            <Float_t v="1.053568e+00"/>
+            <Float_t v="1.052688e+00"/>
+            <Float_t v="1.037735e+00"/>
+            <Float_t v="1.027458e+00"/>
+            <Float_t v="1.027895e+00"/>
+            <Float_t v="1.027056e+00"/>
+            <Float_t v="1.023366e+00"/>
+            <Float_t v="1.014085e+00"/>
+            <Float_t v="9.999068e-01"/>
+            <Float_t v="9.948441e-01"/>
+            <Float_t v="9.956300e-01"/>
+            <Float_t v="9.937139e-01"/>
+            <Float_t v="9.974288e-01"/>
+            <Float_t v="1.003370e+00"/>
+            <Float_t v="1.002712e+00"/>
+            <Float_t v="9.956608e-01"/>
+            <Float_t v="9.876398e-01"/>
+            <Float_t v="9.859214e-01"/>
+            <Float_t v="9.959913e-01"/>
+            <Float_t v="1.015722e+00"/>
+            <Float_t v="1.033130e+00"/>
+            <Float_t v="1.039448e+00"/>
+            <Float_t v="1.040503e+00"/>
+            <Float_t v="1.041026e+00"/>
+            <Float_t v="1.036932e+00"/>
+            <Float_t v="1.028355e+00"/>
+            <Float_t v="1.018820e+00"/>
+            <Float_t v="1.011301e+00"/>
+            <Float_t v="1.006587e+00"/>
+            <Float_t v="0.000000e+00" cnt="2"/>
+            <Float_t v="9.882846e-01"/>
+            <Float_t v="9.977852e-01"/>
+            <Float_t v="1.023474e+00"/>
+            <Float_t v="1.047984e+00"/>
+            <Float_t v="1.047127e+00"/>
+            <Float_t v="1.030780e+00"/>
+            <Float_t v="1.016899e+00"/>
+            <Float_t v="1.012833e+00"/>
+            <Float_t v="1.013837e+00"/>
+            <Float_t v="1.016806e+00"/>
+            <Float_t v="1.014853e+00"/>
+            <Float_t v="1.005967e+00"/>
+            <Float_t v="1.000160e+00"/>
+            <Float_t v="9.993818e-01"/>
+            <Float_t v="1.000077e+00"/>
+            <Float_t v="1.003234e+00"/>
+            <Float_t v="1.006223e+00"/>
+            <Float_t v="1.000256e+00"/>
+            <Float_t v="9.931627e-01"/>
+            <Float_t v="9.890078e-01"/>
+            <Float_t v="9.889553e-01"/>
+            <Float_t v="9.967309e-01"/>
+            <Float_t v="1.012594e+00"/>
+            <Float_t v="1.029292e+00"/>
+            <Float_t v="1.034397e+00"/>
+            <Float_t v="1.034230e+00"/>
+            <Float_t v="1.035090e+00"/>
+            <Float_t v="1.033320e+00"/>
+            <Float_t v="1.025418e+00"/>
+            <Float_t v="1.016886e+00"/>
+            <Float_t v="1.013246e+00"/>
+            <Float_t v="1.009431e+00"/>
+            <Float_t v="0.000000e+00" cnt="2"/>
+            <Float_t v="9.863617e-01"/>
+            <Float_t v="9.953266e-01"/>
+            <Float_t v="1.019169e+00"/>
+            <Float_t v="1.040611e+00"/>
+            <Float_t v="1.042086e+00"/>
+            <Float_t v="1.028242e+00"/>
+            <Float_t v="1.013471e+00"/>
+            <Float_t v="1.005328e+00"/>
+            <Float_t v="1.003234e+00"/>
+            <Float_t v="1.008071e+00"/>
+            <Float_t v="1.013516e+00"/>
+            <Float_t v="1.006574e+00"/>
+            <Float_t v="9.978024e-01"/>
+            <Float_t v="9.954771e-01"/>
+            <Float_t v="9.986933e-01"/>
+            <Float_t v="1.003935e+00"/>
+            <Float_t v="1.002332e+00"/>
+            <Float_t v="9.932770e-01"/>
+            <Float_t v="9.881169e-01"/>
+            <Float_t v="9.908776e-01"/>
+            <Float_t v="9.937988e-01"/>
+            <Float_t v="9.966320e-01"/>
+            <Float_t v="1.007019e+00"/>
+            <Float_t v="1.017792e+00"/>
+            <Float_t v="1.020962e+00"/>
+            <Float_t v="1.020820e+00"/>
+            <Float_t v="1.027192e+00"/>
+            <Float_t v="1.033263e+00"/>
+            <Float_t v="1.029633e+00"/>
+            <Float_t v="1.019334e+00"/>
+            <Float_t v="1.013380e+00"/>
+            <Float_t v="1.010201e+00"/>
+            <Float_t v="0.000000e+00" cnt="2"/>
+            <Float_t v="9.967523e-01"/>
+            <Float_t v="1.003001e+00"/>
+            <Float_t v="1.018952e+00"/>
+            <Float_t v="1.034835e+00"/>
+            <Float_t v="1.036503e+00"/>
+            <Float_t v="1.028131e+00"/>
+            <Float_t v="1.017590e+00"/>
+            <Float_t v="1.009155e+00"/>
+            <Float_t v="1.004147e+00"/>
+            <Float_t v="1.007772e+00"/>
+            <Float_t v="1.014575e+00"/>
+            <Float_t v="1.006575e+00"/>
+            <Float_t v="9.891854e-01"/>
+            <Float_t v="9.839697e-01"/>
+            <Float_t v="9.903202e-01"/>
+            <Float_t v="9.979907e-01"/>
+            <Float_t v="9.966151e-01"/>
+            <Float_t v="9.873156e-01"/>
+            <Float_t v="9.840022e-01"/>
+            <Float_t v="9.883069e-01"/>
+            <Float_t v="9.934838e-01"/>
+            <Float_t v="9.958090e-01"/>
+            <Float_t v="1.002407e+00"/>
+            <Float_t v="1.012651e+00"/>
+            <Float_t v="1.015345e+00"/>
+            <Float_t v="1.013786e+00"/>
+            <Float_t v="1.020374e+00"/>
+            <Float_t v="1.028424e+00"/>
+            <Float_t v="1.024141e+00"/>
+            <Float_t v="1.014092e+00"/>
+            <Float_t v="1.008999e+00"/>
+            <Float_t v="1.005808e+00"/>
+            <Float_t v="0.000000e+00" cnt="2"/>
+            <Float_t v="1.002281e+00"/>
+            <Float_t v="1.001520e+00"/>
+            <Float_t v="1.008607e+00"/>
+            <Float_t v="1.017908e+00"/>
+            <Float_t v="1.020606e+00"/>
+            <Float_t v="1.018405e+00"/>
+            <Float_t v="1.013949e+00"/>
+            <Float_t v="1.012436e+00"/>
+            <Float_t v="1.010040e+00"/>
+            <Float_t v="1.013699e+00"/>
+            <Float_t v="1.019704e+00"/>
+            <Float_t v="1.007502e+00"/>
+            <Float_t v="9.842615e-01"/>
+            <Float_t v="9.722199e-01"/>
+            <Float_t v="9.792095e-01"/>
+            <Float_t v="9.896995e-01"/>
+            <Float_t v="9.922594e-01"/>
+            <Float_t v="9.841736e-01"/>
+            <Float_t v="9.770310e-01"/>
+            <Float_t v="9.786059e-01"/>
+            <Float_t v="9.827438e-01"/>
+            <Float_t v="9.905981e-01"/>
+            <Float_t v="1.001908e+00"/>
+            <Float_t v="1.013997e+00"/>
+            <Float_t v="1.020865e+00"/>
+            <Float_t v="1.020135e+00"/>
+            <Float_t v="1.017283e+00"/>
+            <Float_t v="1.015841e+00"/>
+            <Float_t v="1.010511e+00"/>
+            <Float_t v="1.002482e+00"/>
+            <Float_t v="1.000194e+00"/>
+            <Float_t v="1.000371e+00"/>
+            <Float_t v="0.000000e+00" cnt="2"/>
+            <Float_t v="9.865234e-01"/>
+            <Float_t v="9.844410e-01"/>
+            <Float_t v="9.897898e-01"/>
+            <Float_t v="9.971616e-01"/>
+            <Float_t v="1.002689e+00"/>
+            <Float_t v="1.003602e+00"/>
+            <Float_t v="1.003333e+00"/>
+            <Float_t v="1.007448e+00"/>
+            <Float_t v="1.011479e+00"/>
+            <Float_t v="1.014660e+00"/>
+            <Float_t v="1.019230e+00"/>
+            <Float_t v="1.008961e+00"/>
+            <Float_t v="9.851972e-01"/>
+            <Float_t v="9.701726e-01"/>
+            <Float_t v="9.750192e-01"/>
+            <Float_t v="9.891638e-01"/>
+            <Float_t v="9.959773e-01"/>
+            <Float_t v="9.878946e-01"/>
+            <Float_t v="9.740357e-01"/>
+            <Float_t v="9.680496e-01"/>
+            <Float_t v="9.746549e-01"/>
+            <Float_t v="9.903280e-01"/>
+            <Float_t v="1.006582e+00"/>
+            <Float_t v="1.019917e+00"/>
+            <Float_t v="1.027757e+00"/>
+            <Float_t v="1.023797e+00"/>
+            <Float_t v="1.014272e+00"/>
+            <Float_t v="1.002864e+00"/>
+            <Float_t v="9.954076e-01"/>
+            <Float_t v="9.932674e-01"/>
+            <Float_t v="9.933138e-01"/>
+            <Float_t v="9.930648e-01"/>
+            <Float_t v="0.000000e+00" cnt="2"/>
+            <Float_t v="9.619470e-01"/>
+            <Float_t v="9.654717e-01"/>
+            <Float_t v="9.749125e-01"/>
+            <Float_t v="9.865404e-01"/>
+            <Float_t v="9.943099e-01"/>
+            <Float_t v="9.974318e-01"/>
+            <Float_t v="9.970628e-01"/>
+            <Float_t v="1.001789e+00"/>
+            <Float_t v="1.005783e+00"/>
+            <Float_t v="1.004829e+00"/>
+            <Float_t v="1.004675e+00"/>
+            <Float_t v="9.997834e-01"/>
+            <Float_t v="9.841675e-01"/>
+            <Float_t v="9.733655e-01"/>
+            <Float_t v="9.785781e-01"/>
+            <Float_t v="9.940042e-01"/>
+            <Float_t v="1.004145e+00"/>
+            <Float_t v="9.940026e-01"/>
+            <Float_t v="9.742874e-01"/>
+            <Float_t v="9.626086e-01"/>
+            <Float_t v="9.727325e-01"/>
+            <Float_t v="9.947082e-01"/>
+            <Float_t v="1.012418e+00"/>
+            <Float_t v="1.021089e+00"/>
+            <Float_t v="1.021910e+00"/>
+            <Float_t v="1.016204e+00"/>
+            <Float_t v="1.004386e+00"/>
+            <Float_t v="9.920712e-01"/>
+            <Float_t v="9.844901e-01"/>
+            <Float_t v="9.835539e-01"/>
+            <Float_t v="9.825569e-01"/>
+            <Float_t v="9.805154e-01"/>
+            <Float_t v="0.000000e+00" cnt="2"/>
+            <Float_t v="9.453983e-01"/>
+            <Float_t v="9.534891e-01"/>
+            <Float_t v="9.682738e-01"/>
+            <Float_t v="9.810470e-01"/>
+            <Float_t v="9.904268e-01"/>
+            <Float_t v="9.953629e-01"/>
+            <Float_t v="9.960514e-01"/>
+            <Float_t v="9.985451e-01"/>
+            <Float_t v="9.995178e-01"/>
+            <Float_t v="9.936922e-01"/>
+            <Float_t v="9.887052e-01"/>
+            <Float_t v="9.869297e-01"/>
+            <Float_t v="9.817603e-01"/>
+            <Float_t v="9.757387e-01"/>
+            <Float_t v="9.805683e-01"/>
+            <Float_t v="9.935858e-01"/>
+            <Float_t v="1.000866e+00"/>
+            <Float_t v="9.890511e-01"/>
+            <Float_t v="9.660116e-01"/>
+            <Float_t v="9.553766e-01"/>
+            <Float_t v="9.678582e-01"/>
+            <Float_t v="9.928493e-01"/>
+            <Float_t v="1.009725e+00"/>
+            <Float_t v="1.012225e+00"/>
+            <Float_t v="1.006995e+00"/>
+            <Float_t v="9.997648e-01"/>
+            <Float_t v="9.929559e-01"/>
+            <Float_t v="9.840918e-01"/>
+            <Float_t v="9.750270e-01"/>
+            <Float_t v="9.680194e-01"/>
+            <Float_t v="9.644492e-01"/>
+            <Float_t v="9.601559e-01"/>
+            <Float_t v="0.000000e+00" cnt="2"/>
+            <Float_t v="9.340799e-01"/>
+            <Float_t v="9.456625e-01"/>
+            <Float_t v="9.608574e-01"/>
+            <Float_t v="9.719746e-01"/>
+            <Float_t v="9.818128e-01"/>
+            <Float_t v="9.906367e-01"/>
+            <Float_t v="9.940829e-01"/>
+            <Float_t v="9.959079e-01"/>
+            <Float_t v="9.980757e-01"/>
+            <Float_t v="9.929696e-01"/>
+            <Float_t v="9.858643e-01"/>
+            <Float_t v="9.851494e-01"/>
+            <Float_t v="9.809559e-01"/>
+            <Float_t v="9.737176e-01"/>
+            <Float_t v="9.744665e-01"/>
+            <Float_t v="9.806764e-01"/>
+            <Float_t v="9.838200e-01"/>
+            <Float_t v="9.732653e-01"/>
+            <Float_t v="9.518177e-01"/>
+            <Float_t v="9.447308e-01"/>
+            <Float_t v="9.625623e-01"/>
+            <Float_t v="9.870902e-01"/>
+            <Float_t v="1.000876e+00"/>
+            <Float_t v="1.002309e+00"/>
+            <Float_t v="9.953027e-01"/>
+            <Float_t v="9.886280e-01"/>
+            <Float_t v="9.878498e-01"/>
+            <Float_t v="9.826326e-01"/>
+            <Float_t v="9.685175e-01"/>
+            <Float_t v="9.543373e-01"/>
+            <Float_t v="9.473848e-01"/>
+            <Float_t v="9.456671e-01"/>
+            <Float_t v="0.000000e+00" cnt="2"/>
+            <Float_t v="9.241849e-01"/>
+            <Float_t v="9.360271e-01"/>
+            <Float_t v="9.513602e-01"/>
+            <Float_t v="9.628078e-01"/>
+            <Float_t v="9.714449e-01"/>
+            <Float_t v="9.828689e-01"/>
+            <Float_t v="9.890279e-01"/>
+            <Float_t v="9.919058e-01"/>
+            <Float_t v="9.963031e-01"/>
+            <Float_t v="9.964020e-01"/>
+            <Float_t v="9.910921e-01"/>
+            <Float_t v="9.889105e-01"/>
+            <Float_t v="9.818514e-01"/>
+            <Float_t v="9.683863e-01"/>
+            <Float_t v="9.610136e-01"/>
+            <Float_t v="9.618829e-01"/>
+            <Float_t v="9.647841e-01"/>
+            <Float_t v="9.561748e-01"/>
+            <Float_t v="9.414575e-01"/>
+            <Float_t v="9.417725e-01"/>
+            <Float_t v="9.642360e-01"/>
+            <Float_t v="9.869882e-01"/>
+            <Float_t v="9.968683e-01"/>
+            <Float_t v="9.967278e-01"/>
+            <Float_t v="9.896470e-01"/>
+            <Float_t v="9.861483e-01"/>
+            <Float_t v="9.890186e-01"/>
+            <Float_t v="9.861607e-01"/>
+            <Float_t v="9.695874e-01"/>
+            <Float_t v="9.507242e-01"/>
+            <Float_t v="9.429893e-01"/>
+            <Float_t v="9.441734e-01"/>
+            <Float_t v="0.000000e+00" cnt="2"/>
+            <Float_t v="9.152003e-01"/>
+            <Float_t v="9.294137e-01"/>
+            <Float_t v="9.455949e-01"/>
+            <Float_t v="9.570363e-01"/>
+            <Float_t v="9.656210e-01"/>
+            <Float_t v="9.724052e-01"/>
+            <Float_t v="9.783126e-01"/>
+            <Float_t v="9.801747e-01"/>
+            <Float_t v="9.871380e-01"/>
+            <Float_t v="9.920402e-01"/>
+            <Float_t v="9.912913e-01"/>
+            <Float_t v="9.913686e-01"/>
+            <Float_t v="9.830619e-01"/>
+            <Float_t v="9.658155e-01"/>
+            <Float_t v="9.531409e-01"/>
+            <Float_t v="9.518701e-01"/>
+            <Float_t v="9.541104e-01"/>
+            <Float_t v="9.493256e-01"/>
+            <Float_t v="9.409541e-01"/>
+            <Float_t v="9.486139e-01"/>
+            <Float_t v="9.737794e-01"/>
+            <Float_t v="9.901612e-01"/>
+            <Float_t v="9.932970e-01"/>
+            <Float_t v="9.894787e-01"/>
+            <Float_t v="9.835868e-01"/>
+            <Float_t v="9.830094e-01"/>
+            <Float_t v="9.901612e-01"/>
+            <Float_t v="9.904978e-01"/>
+            <Float_t v="9.756894e-01"/>
+            <Float_t v="9.561099e-01"/>
+            <Float_t v="9.486802e-01"/>
+            <Float_t v="9.501506e-01"/>
+            <Float_t v="0.000000e+00" cnt="2"/>
+            <Float_t v="9.191757e-01"/>
+            <Float_t v="9.296108e-01"/>
+            <Float_t v="9.442587e-01"/>
+            <Float_t v="9.573451e-01"/>
+            <Float_t v="9.620064e-01"/>
+            <Float_t v="9.658309e-01"/>
+            <Float_t v="9.666740e-01"/>
+            <Float_t v="9.684480e-01"/>
+            <Float_t v="9.759039e-01"/>
+            <Float_t v="9.849378e-01"/>
+            <Float_t v="9.870006e-01"/>
+            <Float_t v="9.880875e-01"/>
+            <Float_t v="9.810501e-01"/>
+            <Float_t v="9.625885e-01"/>
+            <Float_t v="9.509345e-01"/>
+            <Float_t v="9.493550e-01"/>
+            <Float_t v="9.513575e-01"/>
+            <Float_t v="9.481507e-01"/>
+            <Float_t v="9.447261e-01"/>
+            <Float_t v="9.595021e-01"/>
+            <Float_t v="9.813387e-01"/>
+            <Float_t v="9.911600e-01"/>
+            <Float_t v="9.886218e-01"/>
+            <Float_t v="9.824875e-01"/>
+            <Float_t v="9.769076e-01"/>
+            <Float_t v="9.777892e-01"/>
+            <Float_t v="9.848374e-01"/>
+            <Float_t v="9.853146e-01"/>
+            <Float_t v="9.715005e-01"/>
+            <Float_t v="9.540597e-01"/>
+            <Float_t v="9.449548e-01"/>
+            <Float_t v="9.434395e-01"/>
+            <Float_t v="0.000000e+00" cnt="2"/>
+            <Float_t v="9.302877e-01"/>
+            <Float_t v="9.348147e-01"/>
+            <Float_t v="9.456323e-01"/>
+            <Float_t v="9.580816e-01"/>
+            <Float_t v="9.652998e-01"/>
+            <Float_t v="9.680667e-01"/>
+            <Float_t v="9.690100e-01"/>
+            <Float_t v="9.711083e-01"/>
+            <Float_t v="9.801375e-01"/>
+            <Float_t v="9.909269e-01"/>
+            <Float_t v="9.922811e-01"/>
+            <Float_t v="9.877942e-01"/>
+            <Float_t v="9.784932e-01"/>
+            <Float_t v="9.619076e-01"/>
+            <Float_t v="9.503277e-01"/>
+            <Float_t v="9.510025e-01"/>
+            <Float_t v="9.533401e-01"/>
+            <Float_t v="9.519211e-01"/>
+            <Float_t v="9.557425e-01"/>
+            <Float_t v="9.710866e-01"/>
+            <Float_t v="9.906259e-01"/>
+            <Float_t v="9.970474e-01"/>
+            <Float_t v="9.928600e-01"/>
+            <Float_t v="9.879795e-01"/>
+            <Float_t v="9.809636e-01"/>
+            <Float_t v="9.779760e-01"/>
+            <Float_t v="9.800588e-01"/>
+            <Float_t v="9.758484e-01"/>
+            <Float_t v="9.629251e-01"/>
+            <Float_t v="9.464015e-01"/>
+            <Float_t v="9.359310e-01"/>
+            <Float_t v="9.344959e-01"/>
+            <Float_t v="0.000000e+00" cnt="2"/>
+            <Float_t v="9.366884e-01"/>
+            <Float_t v="9.420872e-01"/>
+            <Float_t v="9.517567e-01"/>
+            <Float_t v="9.645046e-01"/>
+            <Float_t v="9.762467e-01"/>
+            <Float_t v="9.831144e-01"/>
+            <Float_t v="9.849718e-01"/>
+            <Float_t v="9.855786e-01"/>
+            <Float_t v="9.958817e-01"/>
+            <Float_t v="1.005615e+00"/>
+            <Float_t v="1.001408e+00"/>
+            <Float_t v="9.891683e-01"/>
+            <Float_t v="9.763764e-01"/>
+            <Float_t v="9.621500e-01"/>
+            <Float_t v="9.537924e-01"/>
+            <Float_t v="9.558274e-01"/>
+            <Float_t v="9.604918e-01"/>
+            <Float_t v="9.632432e-01"/>
+            <Float_t v="9.699303e-01"/>
+            <Float_t v="9.839358e-01"/>
+            <Float_t v="9.999964e-01"/>
+            <Float_t v="1.008175e+00"/>
+            <Float_t v="1.008078e+00"/>
+            <Float_t v="1.003296e+00"/>
+            <Float_t v="9.952748e-01"/>
+            <Float_t v="9.874669e-01"/>
+            <Float_t v="9.831978e-01"/>
+            <Float_t v="9.759441e-01"/>
+            <Float_t v="9.639936e-01"/>
+            <Float_t v="9.501402e-01"/>
+            <Float_t v="9.426013e-01"/>
+            <Float_t v="9.382260e-01"/>
+            <Float_t v="0.000000e+00" cnt="2"/>
+            <Float_t v="9.429828e-01"/>
+            <Float_t v="9.497816e-01"/>
+            <Float_t v="9.615181e-01"/>
+            <Float_t v="9.750980e-01"/>
+            <Float_t v="9.892502e-01"/>
+            <Float_t v="1.000758e+00"/>
+            <Float_t v="1.001349e+00"/>
+            <Float_t v="1.001156e+00"/>
+            <Float_t v="1.007341e+00"/>
+            <Float_t v="1.014681e+00"/>
+            <Float_t v="1.004997e+00"/>
+            <Float_t v="9.854566e-01"/>
+            <Float_t v="9.732081e-01"/>
+            <Float_t v="9.655144e-01"/>
+            <Float_t v="9.661613e-01"/>
+            <Float_t v="9.714263e-01"/>
+            <Float_t v="9.753975e-01"/>
+            <Float_t v="9.787928e-01"/>
+            <Float_t v="9.814253e-01"/>
+            <Float_t v="9.871905e-01"/>
+            <Float_t v="9.999980e-01"/>
+            <Float_t v="1.015089e+00"/>
+            <Float_t v="1.019861e+00"/>
+            <Float_t v="1.016114e+00"/>
+            <Float_t v="1.007540e+00"/>
+            <Float_t v="1.000243e+00"/>
+            <Float_t v="9.951483e-01"/>
+            <Float_t v="9.875178e-01"/>
+            <Float_t v="9.763687e-01"/>
+            <Float_t v="9.664057e-01"/>
+            <Float_t v="9.598177e-01"/>
+            <Float_t v="9.593696e-01"/>
+            <Float_t v="0.000000e+00" cnt="2"/>
+            <Float_t v="9.513444e-01"/>
+            <Float_t v="9.587268e-01"/>
+            <Float_t v="9.675302e-01"/>
+            <Float_t v="9.799878e-01"/>
+            <Float_t v="9.970922e-01"/>
+            <Float_t v="1.011436e+00"/>
+            <Float_t v="1.013793e+00"/>
+            <Float_t v="1.011281e+00"/>
+            <Float_t v="1.013526e+00"/>
+            <Float_t v="1.017471e+00"/>
+            <Float_t v="1.006889e+00"/>
+            <Float_t v="9.859862e-01"/>
+            <Float_t v="9.722663e-01"/>
+            <Float_t v="9.709539e-01"/>
+            <Float_t v="9.783943e-01"/>
+            <Float_t v="9.864432e-01"/>
+            <Float_t v="9.881941e-01"/>
+            <Float_t v="9.891143e-01"/>
+            <Float_t v="9.873078e-01"/>
+            <Float_t v="9.829677e-01"/>
+            <Float_t v="9.938590e-01"/>
+            <Float_t v="1.014467e+00"/>
+            <Float_t v="1.022866e+00"/>
+            <Float_t v="1.018952e+00"/>
+            <Float_t v="1.011365e+00"/>
+            <Float_t v="1.008382e+00"/>
+            <Float_t v="1.009353e+00"/>
+            <Float_t v="1.002915e+00"/>
+            <Float_t v="9.903835e-01"/>
+            <Float_t v="9.803907e-01"/>
+            <Float_t v="9.751961e-01"/>
+            <Float_t v="9.722180e-01"/>
+            <Float_t v="0.000000e+00" cnt="2"/>
+            <Float_t v="9.685261e-01"/>
+            <Float_t v="9.692630e-01"/>
+            <Float_t v="9.710549e-01"/>
+            <Float_t v="9.781829e-01"/>
+            <Float_t v="9.958276e-01"/>
+            <Float_t v="1.013542e+00"/>
+            <Float_t v="1.019145e+00"/>
+            <Float_t v="1.014683e+00"/>
+            <Float_t v="1.013164e+00"/>
+            <Float_t v="1.014473e+00"/>
+            <Float_t v="1.010195e+00"/>
+            <Float_t v="9.964700e-01"/>
+            <Float_t v="9.814253e-01"/>
+            <Float_t v="9.749637e-01"/>
+            <Float_t v="9.814993e-01"/>
+            <Float_t v="9.869589e-01"/>
+            <Float_t v="9.886897e-01"/>
+            <Float_t v="9.932260e-01"/>
+            <Float_t v="9.927443e-01"/>
+            <Float_t v="9.860032e-01"/>
+            <Float_t v="9.930546e-01"/>
+            <Float_t v="1.014445e+00"/>
+            <Float_t v="1.022906e+00"/>
+            <Float_t v="1.017110e+00"/>
+            <Float_t v="1.012151e+00"/>
+            <Float_t v="1.015273e+00"/>
+            <Float_t v="1.022105e+00"/>
+            <Float_t v="1.016985e+00"/>
+            <Float_t v="1.000486e+00"/>
+            <Float_t v="9.878281e-01"/>
+            <Float_t v="9.837333e-01"/>
+            <Float_t v="9.804460e-01"/>
+            <Float_t v="0.000000e+00" cnt="2"/>
+            <Float_t v="9.942313e-01"/>
+            <Float_t v="9.883158e-01"/>
+            <Float_t v="9.829010e-01"/>
+            <Float_t v="9.797021e-01"/>
+            <Float_t v="9.908435e-01"/>
+            <Float_t v="1.008176e+00"/>
+            <Float_t v="1.014924e+00"/>
+            <Float_t v="1.013040e+00"/>
+            <Float_t v="1.006155e+00"/>
+            <Float_t v="1.006331e+00"/>
+            <Float_t v="1.012342e+00"/>
+            <Float_t v="1.010377e+00"/>
+            <Float_t v="9.983382e-01"/>
+            <Float_t v="9.849424e-01"/>
+            <Float_t v="9.829847e-01"/>
+            <Float_t v="9.867768e-01"/>
+            <Float_t v="9.909826e-01"/>
+            <Float_t v="1.000452e+00"/>
+            <Float_t v="1.002209e+00"/>
+            <Float_t v="9.938512e-01"/>
+            <Float_t v="9.986500e-01"/>
+            <Float_t v="1.014654e+00"/>
+            <Float_t v="1.019336e+00"/>
+            <Float_t v="1.016049e+00"/>
+            <Float_t v="1.015405e+00"/>
+            <Float_t v="1.023133e+00"/>
+            <Float_t v="1.031883e+00"/>
+            <Float_t v="1.026553e+00"/>
+            <Float_t v="1.007925e+00"/>
+            <Float_t v="9.949388e-01"/>
+            <Float_t v="9.913646e-01"/>
+            <Float_t v="9.876479e-01"/>
+            <Float_t v="0.000000e+00" cnt="2"/>
+            <Float_t v="1.010543e+00"/>
+            <Float_t v="1.010057e+00"/>
+            <Float_t v="1.001726e+00"/>
+            <Float_t v="9.929851e-01"/>
+            <Float_t v="9.937031e-01"/>
+            <Float_t v="1.004306e+00"/>
+            <Float_t v="1.012751e+00"/>
+            <Float_t v="1.012249e+00"/>
+            <Float_t v="1.005711e+00"/>
+            <Float_t v="1.003389e+00"/>
+            <Float_t v="1.010999e+00"/>
+            <Float_t v="1.019486e+00"/>
+            <Float_t v="1.011281e+00"/>
+            <Float_t v="9.952779e-01"/>
+            <Float_t v="9.909548e-01"/>
+            <Float_t v="9.964807e-01"/>
+            <Float_t v="1.003026e+00"/>
+            <Float_t v="1.009379e+00"/>
+            <Float_t v="1.005817e+00"/>
+            <Float_t v="9.942018e-01"/>
+            <Float_t v="9.950696e-01"/>
+            <Float_t v="1.006081e+00"/>
+            <Float_t v="1.009274e+00"/>
+            <Float_t v="1.009240e+00"/>
+            <Float_t v="1.015779e+00"/>
+            <Float_t v="1.025631e+00"/>
+            <Float_t v="1.033632e+00"/>
+            <Float_t v="1.031250e+00"/>
+            <Float_t v="1.015924e+00"/>
+            <Float_t v="1.003892e+00"/>
+            <Float_t v="9.986072e-01"/>
+            <Float_t v="9.938475e-01"/>
+            <Float_t v="0.000000e+00" cnt="2"/>
+            <Float_t v="1.016124e+00"/>
+            <Float_t v="1.018827e+00"/>
+            <Float_t v="1.020222e+00"/>
+            <Float_t v="1.012470e+00"/>
+            <Float_t v="1.009791e+00"/>
+            <Float_t v="1.014342e+00"/>
+            <Float_t v="1.019712e+00"/>
+            <Float_t v="1.022130e+00"/>
+            <Float_t v="1.016448e+00"/>
+            <Float_t v="1.009381e+00"/>
+            <Float_t v="1.013639e+00"/>
+            <Float_t v="1.019062e+00"/>
+            <Float_t v="1.014400e+00"/>
+            <Float_t v="1.001627e+00"/>
+            <Float_t v="1.000060e+00"/>
+            <Float_t v="1.007060e+00"/>
+            <Float_t v="1.011610e+00"/>
+            <Float_t v="1.010269e+00"/>
+            <Float_t v="9.999099e-01"/>
+            <Float_t v="9.867968e-01"/>
+            <Float_t v="9.872493e-01"/>
+            <Float_t v="9.966012e-01"/>
+            <Float_t v="1.001582e+00"/>
+            <Float_t v="1.005034e+00"/>
+            <Float_t v="1.013724e+00"/>
+            <Float_t v="1.025284e+00"/>
+            <Float_t v="1.034908e+00"/>
+            <Float_t v="1.036561e+00"/>
+            <Float_t v="1.027958e+00"/>
+            <Float_t v="1.014403e+00"/>
+            <Float_t v="1.002478e+00"/>
+            <Float_t v="9.938607e-01"/>
+            <Float_t v="0.000000e+00" cnt="2"/>
+            <Float_t v="1.008463e+00"/>
+            <Float_t v="1.018710e+00"/>
+            <Float_t v="1.027018e+00"/>
+            <Float_t v="1.027836e+00"/>
+            <Float_t v="1.026876e+00"/>
+            <Float_t v="1.030126e+00"/>
+            <Float_t v="1.034356e+00"/>
+            <Float_t v="1.035232e+00"/>
+            <Float_t v="1.028457e+00"/>
+            <Float_t v="1.017581e+00"/>
+            <Float_t v="1.011680e+00"/>
+            <Float_t v="1.011569e+00"/>
+            <Float_t v="1.006518e+00"/>
+            <Float_t v="9.997817e-01"/>
+            <Float_t v="1.001128e+00"/>
+            <Float_t v="1.008615e+00"/>
+            <Float_t v="1.008076e+00"/>
+            <Float_t v="1.001747e+00"/>
+            <Float_t v="9.920433e-01"/>
+            <Float_t v="9.818498e-01"/>
+            <Float_t v="9.835004e-01"/>
+            <Float_t v="9.949568e-01"/>
+            <Float_t v="1.002010e+00"/>
+            <Float_t v="1.006399e+00"/>
+            <Float_t v="1.014754e+00"/>
+            <Float_t v="1.026731e+00"/>
+            <Float_t v="1.038332e+00"/>
+            <Float_t v="1.046954e+00"/>
+            <Float_t v="1.041822e+00"/>
+            <Float_t v="1.024649e+00"/>
+            <Float_t v="1.007264e+00"/>
+            <Float_t v="9.946996e-01"/>
+            <Float_t v="0.000000e+00" cnt="2"/>
+            <Float_t v="1.005990e+00"/>
+            <Float_t v="1.016606e+00"/>
+            <Float_t v="1.028482e+00"/>
+            <Float_t v="1.033469e+00"/>
+            <Float_t v="1.035249e+00"/>
+            <Float_t v="1.041561e+00"/>
+            <Float_t v="1.046097e+00"/>
+            <Float_t v="1.044247e+00"/>
+            <Float_t v="1.034154e+00"/>
+            <Float_t v="1.019034e+00"/>
+            <Float_t v="1.006645e+00"/>
+            <Float_t v="1.000423e+00"/>
+            <Float_t v="9.964082e-01"/>
+            <Float_t v="9.938065e-01"/>
+            <Float_t v="9.979460e-01"/>
+            <Float_t v="1.002992e+00"/>
+            <Float_t v="9.994776e-01"/>
+            <Float_t v="9.914581e-01"/>
+            <Float_t v="9.838061e-01"/>
+            <Float_t v="9.779899e-01"/>
+            <Float_t v="9.815318e-01"/>
+            <Float_t v="9.929435e-01"/>
+            <Float_t v="1.003314e+00"/>
+            <Float_t v="1.007778e+00"/>
+            <Float_t v="1.016614e+00"/>
+            <Float_t v="1.031333e+00"/>
+            <Float_t v="1.045904e+00"/>
+            <Float_t v="1.056071e+00"/>
+            <Float_t v="1.053502e+00"/>
+            <Float_t v="1.036576e+00"/>
+            <Float_t v="1.015392e+00"/>
+            <Float_t v="1.002271e+00"/>
+            <Float_t v="0.000000e+00" cnt="2"/>
+            <Float_t v="1.011834e+00"/>
+            <Float_t v="1.019013e+00"/>
+            <Float_t v="1.029061e+00"/>
+            <Float_t v="1.033910e+00"/>
+            <Float_t v="1.036853e+00"/>
+            <Float_t v="1.045167e+00"/>
+            <Float_t v="1.053284e+00"/>
+            <Float_t v="1.049103e+00"/>
+            <Float_t v="1.035673e+00"/>
+            <Float_t v="1.017371e+00"/>
+            <Float_t v="1.002728e+00"/>
+            <Float_t v="9.942558e-01"/>
+            <Float_t v="9.925590e-01"/>
+            <Float_t v="9.939563e-01"/>
+            <Float_t v="9.976171e-01"/>
+            <Float_t v="9.991704e-01"/>
+            <Float_t v="9.939888e-01"/>
+            <Float_t v="9.841705e-01"/>
+            <Float_t v="9.782631e-01"/>
+            <Float_t v="9.770033e-01"/>
+            <Float_t v="9.842663e-01"/>
+            <Float_t v="9.966136e-01"/>
+            <Float_t v="1.005195e+00"/>
+            <Float_t v="1.012597e+00"/>
+            <Float_t v="1.024449e+00"/>
+            <Float_t v="1.041192e+00"/>
+            <Float_t v="1.055546e+00"/>
+            <Float_t v="1.063890e+00"/>
+            <Float_t v="1.062652e+00"/>
+            <Float_t v="1.046989e+00"/>
+            <Float_t v="1.026684e+00"/>
+            <Float_t v="1.012913e+00"/>
+            <Float_t v="0.000000e+00" cnt="2"/>
+            <Float_t v="1.022928e+00"/>
+            <Float_t v="1.023737e+00"/>
+            <Float_t v="1.029598e+00"/>
+            <Float_t v="1.033464e+00"/>
+            <Float_t v="1.035741e+00"/>
+            <Float_t v="1.043962e+00"/>
+            <Float_t v="1.051096e+00"/>
+            <Float_t v="1.045067e+00"/>
+            <Float_t v="1.029244e+00"/>
+            <Float_t v="1.008210e+00"/>
+            <Float_t v="9.897072e-01"/>
+            <Float_t v="9.817618e-01"/>
+            <Float_t v="9.815703e-01"/>
+            <Float_t v="9.852822e-01"/>
+            <Float_t v="9.860618e-01"/>
+            <Float_t v="9.860773e-01"/>
+            <Float_t v="9.817665e-01"/>
+            <Float_t v="9.756430e-01"/>
+            <Float_t v="9.726754e-01"/>
+            <Float_t v="9.759271e-01"/>
+            <Float_t v="9.868200e-01"/>
+            <Float_t v="9.983166e-01"/>
+            <Float_t v="1.005356e+00"/>
+            <Float_t v="1.012636e+00"/>
+            <Float_t v="1.028306e+00"/>
+            <Float_t v="1.046539e+00"/>
+            <Float_t v="1.057669e+00"/>
+            <Float_t v="1.065293e+00"/>
+            <Float_t v="1.066217e+00"/>
+            <Float_t v="1.055376e+00"/>
+            <Float_t v="1.037053e+00"/>
+            <Float_t v="1.022692e+00"/>
+            <Float_t v="0.000000e+00" cnt="2"/>
+            <Float_t v="1.029835e+00"/>
+            <Float_t v="1.027987e+00"/>
+            <Float_t v="1.030503e+00"/>
+            <Float_t v="1.035498e+00"/>
+            <Float_t v="1.037788e+00"/>
+            <Float_t v="1.043957e+00"/>
+            <Float_t v="1.045074e+00"/>
+            <Float_t v="1.035033e+00"/>
+            <Float_t v="1.016525e+00"/>
+            <Float_t v="9.925874e-01"/>
+            <Float_t v="9.698385e-01"/>
+            <Float_t v="9.584291e-01"/>
+            <Float_t v="9.593546e-01"/>
+            <Float_t v="9.618382e-01"/>
+            <Float_t v="9.601642e-01"/>
+            <Float_t v="9.601426e-01"/>
+            <Float_t v="9.638267e-01"/>
+            <Float_t v="9.641234e-01"/>
+            <Float_t v="9.648974e-01"/>
+            <Float_t v="9.682367e-01"/>
+            <Float_t v="9.786456e-01"/>
+            <Float_t v="9.898109e-01"/>
+            <Float_t v="9.953907e-01"/>
+            <Float_t v="1.005096e+00"/>
+            <Float_t v="1.023687e+00"/>
+            <Float_t v="1.040942e+00"/>
+            <Float_t v="1.051687e+00"/>
+            <Float_t v="1.061511e+00"/>
+            <Float_t v="1.068114e+00"/>
+            <Float_t v="1.062410e+00"/>
+            <Float_t v="1.047807e+00"/>
+            <Float_t v="1.036108e+00"/>
+            <Float_t v="0.000000e+00" cnt="2"/>
+            <Float_t v="1.034410e+00"/>
+            <Float_t v="1.031316e+00"/>
+            <Float_t v="1.032931e+00"/>
+            <Float_t v="1.038297e+00"/>
+            <Float_t v="1.044862e+00"/>
+            <Float_t v="1.048246e+00"/>
+            <Float_t v="1.044158e+00"/>
+            <Float_t v="1.028295e+00"/>
+            <Float_t v="1.008903e+00"/>
+            <Float_t v="9.825854e-01"/>
+            <Float_t v="9.565473e-01"/>
+            <Float_t v="9.451542e-01"/>
+            <Float_t v="9.457748e-01"/>
+            <Float_t v="9.475419e-01"/>
+            <Float_t v="9.439436e-01"/>
+            <Float_t v="9.442440e-01"/>
+            <Float_t v="9.504350e-01"/>
+            <Float_t v="9.567188e-01"/>
+            <Float_t v="9.569079e-01"/>
+            <Float_t v="9.572829e-01"/>
+            <Float_t v="9.652964e-01"/>
+            <Float_t v="9.774917e-01"/>
+            <Float_t v="9.862452e-01"/>
+            <Float_t v="9.991823e-01"/>
+            <Float_t v="1.019828e+00"/>
+            <Float_t v="1.037283e+00"/>
+            <Float_t v="1.048549e+00"/>
+            <Float_t v="1.060007e+00"/>
+            <Float_t v="1.071343e+00"/>
+            <Float_t v="1.068410e+00"/>
+            <Float_t v="1.058263e+00"/>
+            <Float_t v="1.049942e+00"/>
+            <Float_t v="0.000000e+00" cnt="2"/>
+            <Float_t v="1.035749e+00"/>
+            <Float_t v="1.035030e+00"/>
+            <Float_t v="1.036394e+00"/>
+            <Float_t v="1.040687e+00"/>
+            <Float_t v="1.048874e+00"/>
+            <Float_t v="1.054507e+00"/>
+            <Float_t v="1.044960e+00"/>
+            <Float_t v="1.024940e+00"/>
+            <Float_t v="1.006463e+00"/>
+            <Float_t v="9.801744e-01"/>
+            <Float_t v="9.547384e-01"/>
+            <Float_t v="9.442223e-01"/>
+            <Float_t v="9.494059e-01"/>
+            <Float_t v="9.514126e-01"/>
+            <Float_t v="9.450883e-01"/>
+            <Float_t v="9.429060e-01"/>
+            <Float_t v="9.480070e-01"/>
+            <Float_t v="9.523135e-01"/>
+            <Float_t v="9.545631e-01"/>
+            <Float_t v="9.492070e-01"/>
+            <Float_t v="9.546946e-01"/>
+            <Float_t v="9.701985e-01"/>
+            <Float_t v="9.812056e-01"/>
+            <Float_t v="9.961082e-01"/>
+            <Float_t v="1.020347e+00"/>
+            <Float_t v="1.038964e+00"/>
+            <Float_t v="1.046612e+00"/>
+            <Float_t v="1.063388e+00"/>
+            <Float_t v="1.072941e+00"/>
+            <Float_t v="1.069987e+00"/>
+            <Float_t v="1.062019e+00"/>
+            <Float_t v="1.060706e+00"/>
+            <Float_t v="0.000000e+00" cnt="35"/>
+          </Array>
+        </TArrayF>
+      </TH2F>
+    </Object>
+  </XmlKey>
+  <XmlKey name="data_grid_fiber_trans" cycle="1" created="2016-07-07 16:24:36">
+    <Object class="TH1F">
+      <TH1F version="1">
+        <TH1 version="7">
+          <TNamed version="1">
+            <TObject fUniqueID="0" fBits="3000008"/>
+            <fName str="data_grid_fiber_trans"/>
+            <fTitle str="SCSF-78 Fiber Transmission VS hit position in fiber"/>
+          </TNamed>
+          <TAttLine version="2">
+            <fLineColor v="602"/>
+            <fLineStyle v="1"/>
+            <fLineWidth v="1"/>
+          </TAttLine>
+          <TAttFill version="2">
+            <fFillColor v="0"/>
+            <fFillStyle v="1001"/>
+          </TAttFill>
+          <TAttMarker version="2">
+            <fMarkerColor v="1"/>
+            <fMarkerStyle v="1"/>
+            <fMarkerSize v="1.000000e+00"/>
+          </TAttMarker>
+          <fNcells v="102"/>
+          <fXaxis>
+            <TAxis version="9">
+              <TNamed version="1">
+                <TObject fUniqueID="0" fBits="3000000"/>
+                <fName str="xaxis"/>
+                <fTitle str="position in fiber (cm)"/>
+              </TNamed>
+              <TAttAxis version="4">
+                <fNdivisions v="510"/>
+                <fAxisColor v="1"/>
+                <fLabelColor v="1"/>
+                <fLabelFont v="42"/>
+                <fLabelOffset v="5.000000e-03"/>
+                <fLabelSize v="3.500000e-02"/>
+                <fTickLength v="3.000000e-02"/>
+                <fTitleOffset v="1.000000e+00"/>
+                <fTitleSize v="3.500000e-02"/>
+                <fTitleColor v="1"/>
+                <fTitleFont v="42"/>
+              </TAttAxis>
+              <fNbins v="100"/>
+              <fXmin v="-6.750000e+00"/>
+              <fXmax v="6.750000e+00"/>
+              <fXbins>
+                <Int_t v="0"/>
+              </fXbins>
+              <fFirst v="0"/>
+              <fLast v="0"/>
+              <fBits2 v="0"/>
+              <fTimeDisplay v="false"/>
+              <fTimeFormat str=""/>
+              <fLabels>
+                <Object ptr="null"/>
+              </fLabels>
+            </TAxis>
+          </fXaxis>
+          <fYaxis>
+            <TAxis version="9">
+              <TNamed version="1">
+                <TObject fUniqueID="0" fBits="3000000"/>
+                <fName str="yaxis"/>
+                <fTitle str="Effective transmission"/>
+              </TNamed>
+              <TAttAxis version="4">
+                <fNdivisions v="510"/>
+                <fAxisColor v="1"/>
+                <fLabelColor v="1"/>
+                <fLabelFont v="42"/>
+                <fLabelOffset v="5.000000e-03"/>
+                <fLabelSize v="3.500000e-02"/>
+                <fTickLength v="3.000000e-02"/>
+                <fTitleOffset v="1.000000e+00"/>
+                <fTitleSize v="3.500000e-02"/>
+                <fTitleColor v="1"/>
+                <fTitleFont v="42"/>
+              </TAttAxis>
+              <fNbins v="1"/>
+              <fXmin v="0.000000e+00"/>
+              <fXmax v="1.000000e+00"/>
+              <fXbins>
+                <Int_t v="0"/>
+              </fXbins>
+              <fFirst v="0"/>
+              <fLast v="0"/>
+              <fBits2 v="0"/>
+              <fTimeDisplay v="false"/>
+              <fTimeFormat str=""/>
+              <fLabels>
+                <Object ptr="null"/>
+              </fLabels>
+            </TAxis>
+          </fYaxis>
+          <fZaxis>
+            <TAxis version="9">
+              <TNamed version="1">
+                <TObject fUniqueID="0" fBits="3000000"/>
+                <fName str="zaxis"/>
+                <fTitle str=""/>
+              </TNamed>
+              <TAttAxis version="4">
+                <fNdivisions v="510"/>
+                <fAxisColor v="1"/>
+                <fLabelColor v="1"/>
+                <fLabelFont v="42"/>
+                <fLabelOffset v="5.000000e-03"/>
+                <fLabelSize v="3.500000e-02"/>
+                <fTickLength v="3.000000e-02"/>
+                <fTitleOffset v="1.000000e+00"/>
+                <fTitleSize v="3.500000e-02"/>
+                <fTitleColor v="1"/>
+                <fTitleFont v="42"/>
+              </TAttAxis>
+              <fNbins v="1"/>
+              <fXmin v="0.000000e+00"/>
+              <fXmax v="1.000000e+00"/>
+              <fXbins>
+                <Int_t v="0"/>
+              </fXbins>
+              <fFirst v="0"/>
+              <fLast v="0"/>
+              <fBits2 v="0"/>
+              <fTimeDisplay v="false"/>
+              <fTimeFormat str=""/>
+              <fLabels>
+                <Object ptr="null"/>
+              </fLabels>
+            </TAxis>
+          </fZaxis>
+          <fBarOffset v="0"/>
+          <fBarWidth v="1000"/>
+          <fEntries v="1.000000e+02"/>
+          <fTsumw v="1.000000e+02"/>
+          <fTsumw2 v="1.038825e+02"/>
+          <fTsumwx v="-8.422606e+00"/>
+          <fTsumwx2 v="1.519434e+03"/>
+          <fMaximum v="-1.111000e+03"/>
+          <fMinimum v="-1.111000e+03"/>
+          <fNormFactor v="0.000000e+00"/>
+          <fContour>
+            <Int_t v="0"/>
+          </fContour>
+          <fSumw2>
+            <Int_t v="0"/>
+          </fSumw2>
+          <fOption str=""/>
+          <fFunctions>
+            <Version v="5"/>
+            <Version v="1"/>
+            <UInt_t v="0"/>
+            <UInt_t v="50331648"/>
+            <string v=""/>
+            <Int_t v="0"/>
+          </fFunctions>
+          <fBufferSize v="0"/>
+          <fBuffer>
+            <Char_t v="0"/>
+          </fBuffer>
+          <fBinStatErrOpt v="0"/>
+        </TH1>
+        <TArrayF>
+          <Int_t v="102"/>
+          <Array>
+            <Float_t v="0.000000e+00"/>
+            <Float_t v="1.038409e+00"/>
+            <Float_t v="1.037578e+00"/>
+            <Float_t v="1.036749e+00"/>
+            <Float_t v="1.035921e+00"/>
+            <Float_t v="1.035096e+00"/>
+            <Float_t v="1.034272e+00"/>
+            <Float_t v="1.033449e+00"/>
+            <Float_t v="1.032629e+00"/>
+            <Float_t v="1.031810e+00"/>
+            <Float_t v="1.030992e+00"/>
+            <Float_t v="1.030177e+00"/>
+            <Float_t v="1.029363e+00"/>
+            <Float_t v="1.028551e+00"/>
+            <Float_t v="1.027740e+00"/>
+            <Float_t v="1.026932e+00"/>
+            <Float_t v="1.026125e+00"/>
+            <Float_t v="1.025319e+00"/>
+            <Float_t v="1.024516e+00"/>
+            <Float_t v="1.023714e+00"/>
+            <Float_t v="1.022913e+00"/>
+            <Float_t v="1.022115e+00"/>
+            <Float_t v="1.021318e+00"/>
+            <Float_t v="1.020523e+00"/>
+            <Float_t v="1.019729e+00"/>
+            <Float_t v="1.018937e+00"/>
+            <Float_t v="1.018147e+00"/>
+            <Float_t v="1.017359e+00"/>
+            <Float_t v="1.016572e+00"/>
+            <Float_t v="1.015787e+00"/>
+            <Float_t v="1.015004e+00"/>
+            <Float_t v="1.014222e+00"/>
+            <Float_t v="1.013442e+00"/>
+            <Float_t v="1.012663e+00"/>
+            <Float_t v="1.011887e+00"/>
+            <Float_t v="1.011112e+00"/>
+            <Float_t v="1.010338e+00"/>
+            <Float_t v="1.009567e+00"/>
+            <Float_t v="1.008797e+00"/>
+            <Float_t v="1.008028e+00"/>
+            <Float_t v="1.007262e+00"/>
+            <Float_t v="1.006497e+00"/>
+            <Float_t v="1.005733e+00"/>
+            <Float_t v="1.004972e+00"/>
+            <Float_t v="1.004211e+00"/>
+            <Float_t v="1.003453e+00"/>
+            <Float_t v="1.002696e+00"/>
+            <Float_t v="1.001941e+00"/>
+            <Float_t v="1.001188e+00"/>
+            <Float_t v="1.000436e+00"/>
+            <Float_t v="9.996861e-01"/>
+            <Float_t v="9.989377e-01"/>
+            <Float_t v="9.981908e-01"/>
+            <Float_t v="9.974457e-01"/>
+            <Float_t v="9.967022e-01"/>
+            <Float_t v="9.959604e-01"/>
+            <Float_t v="9.952202e-01"/>
+            <Float_t v="9.944816e-01"/>
+            <Float_t v="9.937447e-01"/>
+            <Float_t v="9.930094e-01"/>
+            <Float_t v="9.922758e-01"/>
+            <Float_t v="9.915438e-01"/>
+            <Float_t v="9.908134e-01"/>
+            <Float_t v="9.900847e-01"/>
+            <Float_t v="9.893577e-01"/>
+            <Float_t v="9.886323e-01"/>
+            <Float_t v="9.879085e-01"/>
+            <Float_t v="9.871863e-01"/>
+            <Float_t v="9.864658e-01"/>
+            <Float_t v="9.857468e-01"/>
+            <Float_t v="9.850296e-01"/>
+            <Float_t v="9.843139e-01"/>
+            <Float_t v="9.835999e-01"/>
+            <Float_t v="9.828876e-01"/>
+            <Float_t v="9.821767e-01"/>
+            <Float_t v="9.814676e-01"/>
+            <Float_t v="9.807601e-01"/>
+            <Float_t v="9.800542e-01"/>
+            <Float_t v="9.793499e-01"/>
+            <Float_t v="9.786472e-01"/>
+            <Float_t v="9.779462e-01"/>
+            <Float_t v="9.772468e-01"/>
+            <Float_t v="9.765489e-01"/>
+            <Float_t v="9.758528e-01"/>
+            <Float_t v="9.751582e-01"/>
+            <Float_t v="9.744651e-01"/>
+            <Float_t v="9.737738e-01"/>
+            <Float_t v="9.730840e-01"/>
+            <Float_t v="9.723959e-01"/>
+            <Float_t v="9.717094e-01"/>
+            <Float_t v="9.710245e-01"/>
+            <Float_t v="9.703411e-01"/>
+            <Float_t v="9.696594e-01"/>
+            <Float_t v="9.689793e-01"/>
+            <Float_t v="9.683008e-01"/>
+            <Float_t v="9.676239e-01"/>
+            <Float_t v="9.669485e-01"/>
+            <Float_t v="9.662748e-01"/>
+            <Float_t v="9.656027e-01"/>
+            <Float_t v="9.649322e-01"/>
+            <Float_t v="9.642633e-01"/>
+            <Float_t v="0.000000e+00"/>
+          </Array>
+        </TArrayF>
+      </TH1F>
+    </Object>
+  </XmlKey>
+  <StreamerInfos>
+    <TStreamerInfo name="TNamed" title="" v="9" classversion="1" canoptimize="true" checksum="-541636036">
+      <TStreamerBase name="TObject" title="Basic ROOT object" v="3" type="66" typename="BASE" size="16" baseversion="1" basechecksum="-1877229523"/>
+      <TStreamerString name="fName" title="object identifier" v="2" type="65" typename="TString" size="24"/>
+      <TStreamerString name="fTitle" title="object title" v="2" type="65" typename="TString" size="24"/>
+    </TStreamerInfo>
+    <TStreamerInfo name="TObject" title="" v="9" classversion="1" canoptimize="true" checksum="-1877229523">
+      <TStreamerBasicType name="fUniqueID" title="object unique identifier" v="2" type="13" typename="UInt_t" size="4"/>
+      <TStreamerBasicType name="fBits" title="bit field status word" v="2" type="15" typename="UInt_t" size="4"/>
+    </TStreamerInfo>
+    <TStreamerInfo name="TH2F" title="" v="9" classversion="3" canoptimize="true" checksum="-1296918502">
+      <TStreamerBase name="TH2" title="2-Dim histogram base class" v="3" type="0" typename="BASE" size="984" baseversion="4" basechecksum="-1959965212"/>
+      <TStreamerBase name="TArrayF" title="Array of floats" v="3" type="0" typename="BASE" size="24" baseversion="1" basechecksum="1510733553"/>
+    </TStreamerInfo>
+    <TStreamerInfo name="TH2" title="" v="9" classversion="4" canoptimize="true" checksum="-1959965212">
+      <TStreamerBase name="TH1" title="1-Dim histogram base class" v="3" type="0" typename="BASE" size="952" baseversion="7" basechecksum="1063172259"/>
+      <TStreamerBasicType name="fScalefactor" title="Scale factor" v="2" type="8" typename="Double_t" size="8"/>
+      <TStreamerBasicType name="fTsumwy" title="Total Sum of weight*Y" v="2" type="8" typename="Double_t" size="8"/>
+      <TStreamerBasicType name="fTsumwy2" title="Total Sum of weight*Y*Y" v="2" type="8" typename="Double_t" size="8"/>
+      <TStreamerBasicType name="fTsumwxy" title="Total Sum of weight*X*Y" v="2" type="8" typename="Double_t" size="8"/>
+    </TStreamerInfo>
+    <TStreamerInfo name="TH1" title="" v="9" classversion="7" canoptimize="true" checksum="1063172259">
+      <TStreamerBase name="TNamed" title="The basis for a named object (name, title)" v="3" type="67" typename="BASE" size="64" baseversion="1" basechecksum="-541636036"/>
+      <TStreamerBase name="TAttLine" title="Line attributes" v="3" type="0" typename="BASE" size="16" baseversion="2" basechecksum="-1811462839"/>
+      <TStreamerBase name="TAttFill" title="Fill area attributes" v="3" type="0" typename="BASE" size="16" baseversion="2" basechecksum="-2545006"/>
+      <TStreamerBase name="TAttMarker" title="Marker attributes" v="3" type="0" typename="BASE" size="16" baseversion="2" basechecksum="689802220"/>
+      <TStreamerBasicType name="fNcells" title="number of bins(1D), cells (2D) +U/Overflows" v="2" type="3" typename="Int_t" size="4"/>
+      <TStreamerObject name="fXaxis" title="X axis descriptor" v="2" type="61" typename="TAxis" size="208"/>
+      <TStreamerObject name="fYaxis" title="Y axis descriptor" v="2" type="61" typename="TAxis" size="208"/>
+      <TStreamerObject name="fZaxis" title="Z axis descriptor" v="2" type="61" typename="TAxis" size="208"/>
+      <TStreamerBasicType name="fBarOffset" title="(1000*offset) for bar charts or legos" v="2" type="2" typename="Short_t" size="2"/>
+      <TStreamerBasicType name="fBarWidth" title="(1000*width) for bar charts or legos" v="2" type="2" typename="Short_t" size="2"/>
+      <TStreamerBasicType name="fEntries" title="Number of entries" v="2" type="8" typename="Double_t" size="8"/>
+      <TStreamerBasicType name="fTsumw" title="Total Sum of weights" v="2" type="8" typename="Double_t" size="8"/>
+      <TStreamerBasicType name="fTsumw2" title="Total Sum of squares of weights" v="2" type="8" typename="Double_t" size="8"/>
+      <TStreamerBasicType name="fTsumwx" title="Total Sum of weight*X" v="2" type="8" typename="Double_t" size="8"/>
+      <TStreamerBasicType name="fTsumwx2" title="Total Sum of weight*X*X" v="2" type="8" typename="Double_t" size="8"/>
+      <TStreamerBasicType name="fMaximum" title="Maximum value for plotting" v="2" type="8" typename="Double_t" size="8"/>
+      <TStreamerBasicType name="fMinimum" title="Minimum value for plotting" v="2" type="8" typename="Double_t" size="8"/>
+      <TStreamerBasicType name="fNormFactor" title="Normalization factor" v="2" type="8" typename="Double_t" size="8"/>
+      <TStreamerObjectAny name="fContour" title="Array to display contour levels" v="2" type="62" typename="TArrayD" size="24"/>
+      <TStreamerObjectAny name="fSumw2" title="Array of sum of squares of weights" v="2" type="62" typename="TArrayD" size="24"/>
+      <TStreamerString name="fOption" title="histogram options" v="2" type="65" typename="TString" size="24"/>
+      <TStreamerObjectPointer name="fFunctions" title="-&gt;Pointer to list of functions (fits and user)" v="2" type="63" typename="TList*" size="8"/>
+      <TStreamerBasicType name="fBufferSize" title="fBuffer size" v="2" type="6" typename="Int_t" size="4"/>
+      <TStreamerBasicPointer name="fBuffer" title="[fBufferSize] entry buffer" v="2" type="48" typename="Double_t*" size="8" countversion="7" countname="fBufferSize" countclass="TH1"/>
+      <TStreamerBasicType name="fBinStatErrOpt" title="option for bin statistical errors " v="2" type="3" typename="TH1::EBinErrorOpt" size="4"/>
+    </TStreamerInfo>
+    <TStreamerInfo name="TAttLine" title="" v="9" classversion="2" canoptimize="true" checksum="-1811462839">
+      <TStreamerBasicType name="fLineColor" title="line color" v="2" type="2" typename="short" size="2"/>
+      <TStreamerBasicType name="fLineStyle" title="line style" v="2" type="2" typename="short" size="2"/>
+      <TStreamerBasicType name="fLineWidth" title="line width" v="2" type="2" typename="short" size="2"/>
+    </TStreamerInfo>
+    <TStreamerInfo name="TAttFill" title="" v="9" classversion="2" canoptimize="true" checksum="-2545006">
+      <TStreamerBasicType name="fFillColor" title="fill area color" v="2" type="2" typename="short" size="2"/>
+      <TStreamerBasicType name="fFillStyle" title="fill area style" v="2" type="2" typename="short" size="2"/>
+    </TStreamerInfo>
+    <TStreamerInfo name="TAttMarker" title="" v="9" classversion="2" canoptimize="true" checksum="689802220">
+      <TStreamerBasicType name="fMarkerColor" title="Marker color index" v="2" type="2" typename="short" size="2"/>
+      <TStreamerBasicType name="fMarkerStyle" title="Marker style" v="2" type="2" typename="short" size="2"/>
+      <TStreamerBasicType name="fMarkerSize" title="Marker size" v="2" type="5" typename="float" size="4"/>
+    </TStreamerInfo>
+    <TStreamerInfo name="TAxis" title="" v="9" classversion="9" canoptimize="true" checksum="-642630858">
+      <TStreamerBase name="TNamed" title="The basis for a named object (name, title)" v="3" type="67" typename="BASE" size="64" baseversion="1" basechecksum="-541636036"/>
+      <TStreamerBase name="TAttAxis" title="Axis attributes" v="3" type="0" typename="BASE" size="48" baseversion="4" basechecksum="1550843710"/>
+      <TStreamerBasicType name="fNbins" title="Number of bins" v="2" type="3" typename="Int_t" size="4"/>
+      <TStreamerBasicType name="fXmin" title="low edge of first bin" v="2" type="8" typename="Double_t" size="8"/>
+      <TStreamerBasicType name="fXmax" title="upper edge of last bin" v="2" type="8" typename="Double_t" size="8"/>
+      <TStreamerObjectAny name="fXbins" title="Bin edges array in X" v="2" type="62" typename="TArrayD" size="24"/>
+      <TStreamerBasicType name="fFirst" title="first bin to display" v="2" type="3" typename="Int_t" size="4"/>
+      <TStreamerBasicType name="fLast" title="last bin to display" v="2" type="3" typename="Int_t" size="4"/>
+      <TStreamerBasicType name="fBits2" title="second bit status word" v="2" type="12" typename="UShort_t" size="2"/>
+      <TStreamerBasicType name="fTimeDisplay" title="on/off displaying time values instead of numerics" v="2" type="18" typename="Bool_t" size="1"/>
+      <TStreamerString name="fTimeFormat" title="Date&amp;time format, ex: 09/12/99 12:34:00" v="2" type="65" typename="TString" size="24"/>
+      <TStreamerObjectPointer name="fLabels" title="List of labels" v="2" type="64" typename="THashList*" size="8"/>
+    </TStreamerInfo>
+    <TStreamerInfo name="TAttAxis" title="" v="9" classversion="4" canoptimize="true" checksum="1550843710">
+      <TStreamerBasicType name="fNdivisions" title="Number of divisions(10000*n3 + 100*n2 + n1)" v="2" type="3" typename="Int_t" size="4"/>
+      <TStreamerBasicType name="fAxisColor" title="color of the line axis" v="2" type="2" typename="short" size="2"/>
+      <TStreamerBasicType name="fLabelColor" title="color of labels" v="2" type="2" typename="short" size="2"/>
+      <TStreamerBasicType name="fLabelFont" title="font for labels" v="2" type="2" typename="short" size="2"/>
+      <TStreamerBasicType name="fLabelOffset" title="offset of labels" v="2" type="5" typename="Float_t" size="4"/>
+      <TStreamerBasicType name="fLabelSize" title="size of labels" v="2" type="5" typename="Float_t" size="4"/>
+      <TStreamerBasicType name="fTickLength" title="length of tick marks" v="2" type="5" typename="Float_t" size="4"/>
+      <TStreamerBasicType name="fTitleOffset" title="offset of axis title" v="2" type="5" typename="Float_t" size="4"/>
+      <TStreamerBasicType name="fTitleSize" title="size of axis title" v="2" type="5" typename="Float_t" size="4"/>
+      <TStreamerBasicType name="fTitleColor" title="color of axis title" v="2" type="2" typename="short" size="2"/>
+      <TStreamerBasicType name="fTitleFont" title="font for axis title" v="2" type="2" typename="short" size="2"/>
+    </TStreamerInfo>
+    <TStreamerInfo name="THashList" title="" v="9" classversion="0" canoptimize="true" checksum="-864138815">
+      <TStreamerBase name="TList" title="Doubly linked list" v="3" type="0" typename="BASE" size="80" baseversion="5" basechecksum="1774568379"/>
+    </TStreamerInfo>
+    <TStreamerInfo name="TList" title="" v="9" classversion="5" canoptimize="true" checksum="1774568379">
+      <TStreamerBase name="TSeqCollection" title="Sequenceable collection ABC" v="3" type="0" typename="BASE" size="48" baseversion="0" basechecksum="-60015674"/>
+    </TStreamerInfo>
+    <TStreamerInfo name="TSeqCollection" title="" v="9" classversion="0" canoptimize="true" checksum="-60015674">
+      <TStreamerBase name="TCollection" title="Collection abstract base class" v="3" type="0" typename="BASE" size="48" baseversion="3" basechecksum="1474546588"/>
+    </TStreamerInfo>
+    <TStreamerInfo name="TCollection" title="" v="9" classversion="3" canoptimize="true" checksum="1474546588">
+      <TStreamerBase name="TObject" title="Basic ROOT object" v="3" type="66" typename="BASE" size="16" baseversion="1" basechecksum="-1877229523"/>
+      <TStreamerString name="fName" title="name of the collection" v="2" type="65" typename="TString" size="24"/>
+      <TStreamerBasicType name="fSize" title="number of elements in collection" v="2" type="3" typename="Int_t" size="4"/>
+    </TStreamerInfo>
+    <TStreamerInfo name="TString" title="" v="9" classversion="2" canoptimize="true" checksum="95257"/>
+    <TStreamerInfo name="TH1F" title="" v="9" classversion="1" canoptimize="true" checksum="-652558205">
+      <TStreamerBase name="TH1" title="1-Dim histogram base class" v="3" type="0" typename="BASE" size="952" baseversion="7" basechecksum="1063172259"/>
+      <TStreamerBase name="TArrayF" title="Array of floats" v="3" type="0" typename="BASE" size="24" baseversion="1" basechecksum="1510733553"/>
+    </TStreamerInfo>
+  </StreamerInfos>
+</root>
