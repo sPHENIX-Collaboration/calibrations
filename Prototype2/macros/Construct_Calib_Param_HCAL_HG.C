@@ -6,17 +6,15 @@ using namespace std;
 
 void
 Construct_Calib_Param_HCAL_HG(
-	const char* hcalin_hg_MIP_peak ="cosmic_hcalin_hg.txt",
-	const char* hcalout_hg_MIP_peak ="cosmic_hcalout_hg.txt")
+	const char* hcalin_hg_MIP_peak ="cosmic_hcalin_hg_v2.txt",
+	const char* hcalout_hg_MIP_peak ="cosmic_hcalout_hg_v2.txt")
 {
 
   cout << "Construct_Calib_Param() - Entry" << endl;
   gSystem->Load("libg4detectors.so");
   char *det_name[] = {"HCALIN_LG","HCALIN_HG","HCALOUT_LG","HCALOUT_HG"};
 
-  double expected_hcalin[] = {8.6, 8.1, 7.6, 7.2}; //MeV
-  double expected_hcalout[] = {6.7, 6.8, 7.0, 7.2}; //MeV
-  double sf[] = {0.06,0.033}; //Sampling fractions
+  double sf[] = {0.0819254,0.032649}; //Sampling fractions
   double ngains = 2;
   double gain_values[] = {32, 16};
   char *gain_tags[] = {"LG","HG"};
@@ -62,17 +60,14 @@ Construct_Calib_Param_HCAL_HG(
 
       string calib_const_name(Form("calib_const_column%d_row%d", col, row));
 
-      double expected_mip = 0; //expected MIP in GeV
-      if(idet==0) expected_mip = expected_hcalin[row];
-      else if(idet==1) expected_mip = expected_hcalout[row];
-      expected_mip *= 0.001/sf[idet]; //MeV to GeV and sf
-      param->set_double_param(calib_const_name, expected_mip / mip);
+      mip *= (0.001/sf[idet]); //MeV to GeV and sf
+      param->set_double_param(calib_const_name, mip);
       count++;
 
     }
 
   // storage
-  param->print();
+  param->Print();
 
 //  param->WriteToFile("root", "./test_geom/");
 
@@ -117,7 +112,7 @@ Construct_Calib_Param_Constatnt_Test()
       }
 
   // storage
-  param->print();
+  //param->print();
 
 //  param->WriteToFile("root", "./test_geom/");
 
