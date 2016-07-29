@@ -1,15 +1,23 @@
 makeMapping_EEMC()
 {
 
-  //  _place_in_x(0.0*mm),
-  //  _place_in_y(0.0*mm),
-  float eemz_z0 = -108.0; // cm,
+  /* Global detector position / transformation */
+  float eemc_x0 =  0.0; // cm,
+  float eemc_y0 =  0.0; // cm,
+  float eemc_z0 = -108.0; // cm,
 
+  float eemc_rot_x0 =  0.0;
+  float eemc_rot_y0 =  TMath::Pi();
+  float eemc_rot_z0 =  0.0;
+
+  /* Detector envelope size (conde shape) */
   float eemc_rmin1 = 2.2; // cm
   float eemc_rmax1 = 65.6; // cm
   float eemc_rmin2 = 2.6; // cm
   float eemc_rmax2 = 77.5; // cm
+  float eemc_dz    = 18.0; // cm
 
+  /* Tower parameters */
   float crystal_width = 2.0; // cm
   float crystal_length = 18.0; // cm
   float carbon_thickness = 0.009; // cm
@@ -20,14 +28,14 @@ makeMapping_EEMC()
   float tower_dz = crystal_length; // cm
 
   // all towers at fixed z position in CENTER of mother volume
-  float zpos = eemz_z0;
+  float zpos = 0;
 
   unsigned n_towers_j = 100;
   unsigned n_towers_k = n_towers_j;
 
   unsigned j_center = n_towers_j / 2 + 1;
   unsigned k_center = j_center;
- 
+
   float xpos_j0_k0 = -1 * ( (float)( n_towers_j - 1 ) / 2 ) * tower_dx - tower_dx;;
   float ypos_j0_k0 = xpos_j0_k0;
 
@@ -39,7 +47,27 @@ makeMapping_EEMC()
 
   // create map
   ofstream fout("towerMap_EEMC_latest.txt");
-  fout << "#idx_j,idx_k,idx_l,x[cm],y[cm],z[cm],dx[cm],dy[cm],dz[cm],alpha,beta,gamma,type" << endl;
+
+  /* Global detector transformation */
+  fout << "#Global detector geometry and transforamtion; lengths given in cm" << endl;
+  fout << "Gtype " << 1 << endl;
+  fout << "Gr1_inner " << eemc_rmin1 << endl;
+  fout << "Gr1_outer " << eemc_rmax1 << endl;
+  fout << "Gr2_inner " << eemc_rmin2 << endl;
+  fout << "Gr2_outer " << eemc_rmax2 << endl;
+  fout << "Gdz " << eemc_dz << endl;
+  fout << "Gx0 " << eemc_x0 << endl;
+  fout << "Gy0 " << eemc_y0 << endl;
+  fout << "Gz0 " << eemc_z0 << endl;
+  fout << "Grot_x " << eemc_rot_x0 << endl;
+  fout << "Grot_y " << eemc_rot_y0 << endl;
+  fout << "Grot_z " << eemc_rot_z0 << endl;
+  fout << "Gcrystal_dx " << crystal_width << endl;
+  fout << "Gcrystal_dy " << crystal_width << endl;
+  fout << "Gcrystal_dz " << crystal_length << endl;
+
+  /* Tower mapping */
+  fout << "#Tower type,idx_j,idx_k,idx_l,x[cm],y[cm],z[cm],dx[cm],dy[cm],dz[cm],rot_x,rot_y,rot_z" << endl;
 
   float r_min = eemc_rmin2;
   float r_max = eemc_rmax1;
@@ -69,7 +97,7 @@ makeMapping_EEMC()
 	  if ( tower_r_clear_min < r_min || tower_r_clear_max > r_max )
 	    continue;
 
-	  fout << idx_j << " " << idx_k << " " << idx_l << " " << xpos << " " << ypos << " " << zpos << " " << crystal_width << " " << crystal_width << " " << tower_dz << " 0 0 0 0" << endl;
+	  fout << "Tower " << 0 << " " << idx_j << " " << idx_k << " " << idx_l << " " << xpos << " " << ypos << " " << zpos << " " << crystal_width << " " << crystal_width << " " << tower_dz << " 0 0 0" << endl;
 
 	  // ideal data format:
 	  // tower_id , x , y , z , alpha , beta , gamma , towertype
