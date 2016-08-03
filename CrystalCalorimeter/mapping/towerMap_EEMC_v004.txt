@@ -2,8 +2,8 @@
 Gtype 1
 Gr1_inner 2.2
 Gr1_outer 65.6
-Gr2_inner 2.6
-Gr2_outer 77.5
+Gr2_inner 2.2
+Gr2_outer 65.6
 Gdz 18
 Gx0 0
 Gy0 0

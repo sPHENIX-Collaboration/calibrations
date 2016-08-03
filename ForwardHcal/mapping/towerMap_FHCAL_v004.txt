@@ -3,7 +3,7 @@ Gtype 1
 Gr1_inner 5
 Gr1_outer 262
 Gr2_inner 5
-Gr2_outer 336.9
+Gr2_outer 262
 Gdz 100
 Gx0 0
 Gy0 0
