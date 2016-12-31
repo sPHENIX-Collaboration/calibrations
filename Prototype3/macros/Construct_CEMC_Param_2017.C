@@ -27,7 +27,7 @@ Construct_CEMC_Param_2017()
   param->set_int_param("virualize_fiber", 1);
 
   //general placement
-  param->set_double_param("xpos", (116.77 + 137.0) * .5 - 26.5 - 10.2);
+  param->set_double_param("xpos", 98+7);
   param->set_double_param("ypos", 0);
   param->set_double_param("zpos", 0);
   param->set_double_param("z_rotation_degree", 0);
@@ -39,16 +39,16 @@ Construct_CEMC_Param_2017()
   param->set_double_param("enclosure_z", 19 * inch_to_cm);
   param->set_double_param("enclosure_thickness", 0.04 * inch_to_cm);
   param->set_string_param("enclosure_material", "G10");
-  param->set_double_param("enclosure_x_shift", -2 * inch_to_cm);
+  param->set_double_param("enclosure_x_shift", -3 * inch_to_cm);
 
   param->set_double_param("electronics_thickness", 0.1 * inch_to_cm);
   param->set_string_param("electronics_material", "G10");
 
   // construct 4x8 modules
-//  const int ny = 4;
-//  const int nx = 4;
-  const int ny = 1;
-  const int nx = 1;
+  const int ny = 4;
+  const int nx = 4;
+//  const int ny = 1;
+//  const int nx = 1;
 //  const int nx = 1;
 
   // Sean Stoll:
@@ -65,8 +65,8 @@ Construct_CEMC_Param_2017()
    * */
 
   // 2016 THP new screen:
-  const int NFiberX = 30;
-  const int NFiberY = 52 * 2;
+  const int NFiberY = 52;
+  const int NFiberX = 47 * 2;
 //  const double hole_edge_to_screen_edge = 0;
   const double fiber_diameter = 0.047;
 //
@@ -78,7 +78,7 @@ Construct_CEMC_Param_2017()
   const double assembly_spacing_x = 0.33 / 10 / 2.;
   const double assembly_spacing_y = 0.1 / 10 / 2.;
 
-  const double radius = 95;
+  const double radius = 97.5;
   const double thickness = 111.85 + 1 - radius;
   const double zmin = (963.71 - 50) / 10;
   const double zmax = (1330.86 + 30) / 10;
