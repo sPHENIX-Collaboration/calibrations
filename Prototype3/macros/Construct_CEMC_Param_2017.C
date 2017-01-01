@@ -248,7 +248,7 @@ Construct_CEMC_Param_2017()
     }
 
   // storage
-  param->Print();
+//  param->Print();
 
   gSystem->mkdir("./test_geom/");
 
@@ -256,6 +256,7 @@ Construct_CEMC_Param_2017()
 
   PdbParameterMap *myparm = new PdbParameterMap();
   param->CopyToPdbParameterMap(myparm);
+  myparm->print();
   paramcontainer->AddPdbParameterMap(0, myparm);
 
   paramcontainer->WriteToFile("CEMC", "root", "./test_geom/");
