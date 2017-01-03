@@ -1,0 +1,326 @@
+<?xml version="1.0"?>
+<root setup="2xoo" ref="null" created="2016-12-31 15:57:19" modified="2016-12-31 15:57:19" uuid="b7fe1f86-cf9b-11e6-9717-c7b4c782beef" version="3" file_version="53434">
+  <XmlKey name="PdbParameterMapContainer" cycle="1" created="2016-12-31 15:57:19">
+    <Object class="PdbParameterMapContainer">
+      <PdbParameterMapContainer version="1">
+        <PdbCalChan version="1">
+          <PHObject version="0">
+            <TObject fUniqueID="0" fBits="3000000"/>
+          </PHObject>
+        </PdbCalChan>
+        <parametermap>
+          <Version v="9"/>
+          <Int_t v="1"/>
+          <Int_t v="0"/>
+          <Object class="PdbParameterMap">
+            <PdbParameterMap version="1">
+              <PdbCalChan version="1">
+                <PHObject version="0">
+                  <TObject fUniqueID="0" fBits="3000000"/>
+                </PHObject>
+              </PdbCalChan>
+              <dparams>
+                <Version v="9"/>
+                <Int_t v="97"/>
+                <string v="assembly_spacing"/>
+                <Double_t v="0.000000000000000e+00"/>
+                <string v="azimuthal_tilt"/>
+                <Double_t v="0.000000000000000e+00"/>
+                <string v="electronics_thickness"/>
+                <Double_t v="2.540000000000000e-01"/>
+                <string v="enclosure_thickness"/>
+                <Double_t v="1.016000000000000e-01"/>
+                <string v="enclosure_x"/>
+                <Double_t v="4.064000000000000e+01"/>
+                <string v="enclosure_x_shift"/>
+                <Double_t v="-7.620000000000000e+00"/>
+                <string v="enclosure_y"/>
+                <Double_t v="3.302000000000000e+01"/>
+                <string v="enclosure_z"/>
+                <Double_t v="4.826000000000000e+01"/>
+                <string v="fiber_clading_thickness"/>
+                <Double_t v="1.500000000000000e-03"/>
+                <string v="fiber_core_diameter"/>
+                <Double_t v="4.400000000000000e-02"/>
+                <string v="polar_taper_ratio"/>
+                <Double_t v="1.000000000000000e+00"/>
+                <string v="radius"/>
+                <Double_t v="9.750000000000000e+01"/>
+                <string v="sector_map[0].rotation"/>
+                <Double_t v="-1.644427404613407e+00"/>
+                <string v="sector_map[1].rotation"/>
+                <Double_t v="-1.595340019401067e+00"/>
+                <string v="sector_map[2].rotation"/>
+                <Double_t v="-1.546252634188726e+00"/>
+                <string v="sector_map[3].rotation"/>
+                <Double_t v="-1.497165248976386e+00"/>
+                <string v="sector_tower_map[0].LightguideHeight"/>
+                <Double_t v="5.080000000000000e+00"/>
+                <string v="sector_tower_map[0].LightguideTaperRatio"/>
+                <Double_t v="5.245428296438884e-01"/>
+                <string v="sector_tower_map[0].ModuleSkinThickness"/>
+                <Double_t v="5.000000000000000e-02"/>
+                <string v="sector_tower_map[0].centralX"/>
+                <Double_t v="0.000000000000000e+00"/>
+                <string v="sector_tower_map[0].centralY"/>
+                <Double_t v="1.046105000000000e+02"/>
+                <string v="sector_tower_map[0].centralZ"/>
+                <Double_t v="1.033875000000000e+02"/>
+                <string v="sector_tower_map[0].pAlp1"/>
+                <Double_t v="0.000000000000000e+00"/>
+                <string v="sector_tower_map[0].pAlp2"/>
+                <Double_t v="0.000000000000000e+00"/>
+                <string v="sector_tower_map[0].pDx1"/>
+                <Double_t v="2.378218086725677e+00"/>
+                <string v="sector_tower_map[0].pDx2"/>
+                <Double_t v="2.458418435155536e+00"/>
+                <string v="sector_tower_map[0].pDx3"/>
+                <Double_t v="2.640274627738456e+00"/>
+                <string v="sector_tower_map[0].pDx4"/>
+                <Double_t v="2.729263382883311e+00"/>
+                <string v="sector_tower_map[0].pDy1"/>
+                <Double_t v="2.318947339607064e+00"/>
+                <string v="sector_tower_map[0].pDy2"/>
+                <Double_t v="2.573509695377792e+00"/>
+                <string v="sector_tower_map[0].pDz"/>
+                <Double_t v="7.630167838914158e+00"/>
+                <string v="sector_tower_map[0].pPhi"/>
+                <Double_t v="0.000000000000000e+00"/>
+                <string v="sector_tower_map[0].pRotationAngleX"/>
+                <Double_t v="-7.912829015461540e-01"/>
+                <string v="sector_tower_map[0].pTheta"/>
+                <Double_t v="0.000000000000000e+00"/>
+                <string v="sector_tower_map[1].LightguideHeight"/>
+                <Double_t v="5.080000000000000e+00"/>
+                <string v="sector_tower_map[1].LightguideTaperRatio"/>
+                <Double_t v="5.245428296438884e-01"/>
+                <string v="sector_tower_map[1].ModuleSkinThickness"/>
+                <Double_t v="5.000000000000000e-02"/>
+                <string v="sector_tower_map[1].centralX"/>
+                <Double_t v="0.000000000000000e+00"/>
+                <string v="sector_tower_map[1].centralY"/>
+                <Double_t v="1.046087500000000e+02"/>
+                <string v="sector_tower_map[1].centralZ"/>
+                <Double_t v="1.103915000000000e+02"/>
+                <string v="sector_tower_map[1].pAlp1"/>
+                <Double_t v="0.000000000000000e+00"/>
+                <string v="sector_tower_map[1].pAlp2"/>
+                <Double_t v="0.000000000000000e+00"/>
+                <string v="sector_tower_map[1].pDx1"/>
+                <Double_t v="2.378218086725677e+00"/>
+                <string v="sector_tower_map[1].pDx2"/>
+                <Double_t v="2.461045137721192e+00"/>
+                <string v="sector_tower_map[1].pDx3"/>
+                <Double_t v="2.637476084818038e+00"/>
+                <string v="sector_tower_map[1].pDx4"/>
+                <Double_t v="2.729263382883311e+00"/>
+                <string v="sector_tower_map[1].pDy1"/>
+                <Double_t v="2.319042006722310e+00"/>
+                <string v="sector_tower_map[1].pDy2"/>
+                <Double_t v="2.570508202209088e+00"/>
+                <string v="sector_tower_map[1].pDz"/>
+                <Double_t v="7.809818119681150e+00"/>
+                <string v="sector_tower_map[1].pPhi"/>
+                <Double_t v="0.000000000000000e+00"/>
+                <string v="sector_tower_map[1].pRotationAngleX"/>
+                <Double_t v="-7.584816757562671e-01"/>
+                <string v="sector_tower_map[1].pTheta"/>
+                <Double_t v="0.000000000000000e+00"/>
+                <string v="sector_tower_map[2].LightguideHeight"/>
+                <Double_t v="5.080000000000000e+00"/>
+                <string v="sector_tower_map[2].LightguideTaperRatio"/>
+                <Double_t v="5.245428296438884e-01"/>
+                <string v="sector_tower_map[2].ModuleSkinThickness"/>
+                <Double_t v="5.000000000000000e-02"/>
+                <string v="sector_tower_map[2].centralX"/>
+                <Double_t v="0.000000000000000e+00"/>
+                <string v="sector_tower_map[2].centralY"/>
+                <Double_t v="1.046070000000000e+02"/>
+                <string v="sector_tower_map[2].centralZ"/>
+                <Double_t v="1.176335000000000e+02"/>
+                <string v="sector_tower_map[2].pAlp1"/>
+                <Double_t v="0.000000000000000e+00"/>
+                <string v="sector_tower_map[2].pAlp2"/>
+                <Double_t v="0.000000000000000e+00"/>
+                <string v="sector_tower_map[2].pDx1"/>
+                <Double_t v="2.378218086725677e+00"/>
+                <string v="sector_tower_map[2].pDx2"/>
+                <Double_t v="2.463475451309975e+00"/>
+                <string v="sector_tower_map[2].pDx3"/>
+                <Double_t v="2.634873930874492e+00"/>
+                <string v="sector_tower_map[2].pDx4"/>
+                <Double_t v="2.729263382883311e+00"/>
+                <string v="sector_tower_map[2].pDy1"/>
+                <Double_t v="2.318986328524464e+00"/>
+                <string v="sector_tower_map[2].pDy2"/>
+                <Double_t v="2.567624436611617e+00"/>
+                <string v="sector_tower_map[2].pDz"/>
+                <Double_t v="8.006497939174157e+00"/>
+                <string v="sector_tower_map[2].pPhi"/>
+                <Double_t v="0.000000000000000e+00"/>
+                <string v="sector_tower_map[2].pRotationAngleX"/>
+                <Double_t v="-7.268549720172683e-01"/>
+                <string v="sector_tower_map[2].pTheta"/>
+                <Double_t v="0.000000000000000e+00"/>
+                <string v="sector_tower_map[3].LightguideHeight"/>
+                <Double_t v="5.080000000000000e+00"/>
+                <string v="sector_tower_map[3].LightguideTaperRatio"/>
+                <Double_t v="5.245428296438884e-01"/>
+                <string v="sector_tower_map[3].ModuleSkinThickness"/>
+                <Double_t v="5.000000000000000e-02"/>
+                <string v="sector_tower_map[3].centralX"/>
+                <Double_t v="0.000000000000000e+00"/>
+                <string v="sector_tower_map[3].centralY"/>
+                <Double_t v="1.046055000000000e+02"/>
+                <string v="sector_tower_map[3].centralZ"/>
+                <Double_t v="1.251302500000000e+02"/>
+                <string v="sector_tower_map[3].pAlp1"/>
+                <Double_t v="0.000000000000000e+00"/>
+                <string v="sector_tower_map[3].pAlp2"/>
+                <Double_t v="0.000000000000000e+00"/>
+                <string v="sector_tower_map[3].pDx1"/>
+                <Double_t v="2.378218086725677e+00"/>
+                <string v="sector_tower_map[3].pDx2"/>
+                <Double_t v="2.465758473166105e+00"/>
+                <string v="sector_tower_map[3].pDx3"/>
+                <Double_t v="2.632443617285709e+00"/>
+                <string v="sector_tower_map[3].pDx4"/>
+                <Double_t v="2.729263382883311e+00"/>
+                <string v="sector_tower_map[3].pDy1"/>
+                <Double_t v="2.318936153085868e+00"/>
+                <string v="sector_tower_map[3].pDy2"/>
+                <Double_t v="2.565600107054899e+00"/>
+                <string v="sector_tower_map[3].pDz"/>
+                <Double_t v="8.220362024418392e+00"/>
+                <string v="sector_tower_map[3].pPhi"/>
+                <Double_t v="0.000000000000000e+00"/>
+                <string v="sector_tower_map[3].pRotationAngleX"/>
+                <Double_t v="-6.963153040001249e-01"/>
+                <string v="sector_tower_map[3].pTheta"/>
+                <Double_t v="0.000000000000000e+00"/>
+                <string v="sidewall_outer_torr"/>
+                <Double_t v="0.000000000000000e+00"/>
+                <string v="sidewall_thickness"/>
+                <Double_t v="0.000000000000000e+00"/>
+                <string v="thickness"/>
+                <Double_t v="1.534999999999999e+01"/>
+                <string v="xpos"/>
+                <Double_t v="1.050000000000000e+02"/>
+                <string v="ypos"/>
+                <Double_t v="0.000000000000000e+00"/>
+                <string v="z_rotation_degree"/>
+                <Double_t v="0.000000000000000e+00"/>
+                <string v="zmax"/>
+                <Double_t v="1.360860000000000e+02"/>
+                <string v="zmin"/>
+                <Double_t v="9.137100000000001e+01"/>
+                <string v="zpos"/>
+                <Double_t v="0.000000000000000e+00"/>
+              </dparams>
+              <iparams>
+                <Version v="9"/>
+                <Int_t v="30"/>
+                <string v="azimuthal_n_sec"/>
+                <Int_t v="128"/>
+                <string v="azimuthal_seg_visible"/>
+                <Int_t v="1"/>
+                <string v="max_phi_bin_in_sec"/>
+                <Int_t v="1"/>
+                <string v="sector_map[0].id"/>
+                <Int_t v="0"/>
+                <string v="sector_map[1].id"/>
+                <Int_t v="1"/>
+                <string v="sector_map[2].id"/>
+                <Int_t v="2"/>
+                <string v="sector_map[3].id"/>
+                <Int_t v="3"/>
+                <string v="sector_map_size"/>
+                <Int_t v="4"/>
+                <string v="sector_tower_map[0].NFiberX"/>
+                <Int_t v="94"/>
+                <string v="sector_tower_map[0].NFiberY"/>
+                <Int_t v="52"/>
+                <string v="sector_tower_map[0].NSubtowerX"/>
+                <Int_t v="2"/>
+                <string v="sector_tower_map[0].NSubtowerY"/>
+                <Int_t v="2"/>
+                <string v="sector_tower_map[0].id"/>
+                <Int_t v="1"/>
+                <string v="sector_tower_map[1].NFiberX"/>
+                <Int_t v="94"/>
+                <string v="sector_tower_map[1].NFiberY"/>
+                <Int_t v="52"/>
+                <string v="sector_tower_map[1].NSubtowerX"/>
+                <Int_t v="2"/>
+                <string v="sector_tower_map[1].NSubtowerY"/>
+                <Int_t v="2"/>
+                <string v="sector_tower_map[1].id"/>
+                <Int_t v="11"/>
+                <string v="sector_tower_map[2].NFiberX"/>
+                <Int_t v="94"/>
+                <string v="sector_tower_map[2].NFiberY"/>
+                <Int_t v="52"/>
+                <string v="sector_tower_map[2].NSubtowerX"/>
+                <Int_t v="2"/>
+                <string v="sector_tower_map[2].NSubtowerY"/>
+                <Int_t v="2"/>
+                <string v="sector_tower_map[2].id"/>
+                <Int_t v="21"/>
+                <string v="sector_tower_map[3].NFiberX"/>
+                <Int_t v="94"/>
+                <string v="sector_tower_map[3].NFiberY"/>
+                <Int_t v="52"/>
+                <string v="sector_tower_map[3].NSubtowerX"/>
+                <Int_t v="2"/>
+                <string v="sector_tower_map[3].NSubtowerY"/>
+                <Int_t v="2"/>
+                <string v="sector_tower_map[3].id"/>
+                <Int_t v="31"/>
+                <string v="sector_tower_map_size"/>
+                <Int_t v="4"/>
+                <string v="virualize_fiber"/>
+                <Int_t v="1"/>
+              </iparams>
+              <cparams>
+                <Version v="9"/>
+                <Int_t v="7"/>
+                <string v="description"/>
+                <string v="sPHENIX 2017 SPACAL prototype in the default orientation"/>
+                <string v="electronics_material"/>
+                <string v="G10"/>
+                <string v="enclosure_material"/>
+                <string v="G10"/>
+                <string v="sector_tower_map[0].LightguideMaterial"/>
+                <string v="PMMA"/>
+                <string v="sector_tower_map[1].LightguideMaterial"/>
+                <string v="PMMA"/>
+                <string v="sector_tower_map[2].LightguideMaterial"/>
+                <string v="PMMA"/>
+                <string v="sector_tower_map[3].LightguideMaterial"/>
+                <string v="PMMA"/>
+              </cparams>
+            </PdbParameterMap>
+          </Object>
+        </parametermap>
+      </PdbParameterMapContainer>
+    </Object>
+  </XmlKey>
+  <StreamerInfos>
+    <TStreamerInfo name="PdbParameterMap" title="" v="9" classversion="1" canoptimize="true" checksum="916496646">
+      <TStreamerBase name="PdbCalChan" v="3" type="0" typename="BASE" size="24" baseversion="1" basechecksum="-1932344380"/>
+      <TStreamerSTL name="dparams" v="3" type="300" typename="map&lt;const string,double&gt;" size="48" STLtype="4" Ctype="61"/>
+      <TStreamerSTL name="iparams" v="3" type="300" typename="map&lt;const string,int&gt;" size="48" STLtype="4" Ctype="61"/>
+      <TStreamerSTL name="cparams" v="3" type="300" typename="map&lt;const string,string&gt;" size="48" STLtype="4" Ctype="61"/>
+    </TStreamerInfo>
+    <TStreamerInfo name="PdbCalChan" title="" v="9" classversion="1" canoptimize="true" checksum="-1932344380">
+      <TStreamerBase name="PHObject" title="no I/O" v="3" type="0" typename="BASE" size="24" baseversion="0" basechecksum="-179181571"/>
+    </TStreamerInfo>
+    <TStreamerInfo name="PHObject" title="" v="9" classversion="0" canoptimize="true" checksum="-179181571">
+      <TStreamerBase name="TObject" title="Basic ROOT object" v="3" type="66" typename="BASE" size="16" baseversion="1" basechecksum="-1877229523"/>
+    </TStreamerInfo>
+    <TStreamerInfo name="PdbParameterMapContainer" title="" v="9" classversion="1" canoptimize="true" checksum="-1660157473">
+      <TStreamerBase name="PdbCalChan" v="3" type="0" typename="BASE" size="24" baseversion="1" basechecksum="-1932344380"/>
+      <TStreamerSTL name="parametermap" v="3" type="300" typename="map&lt;int,PdbParameterMap*&gt;" size="48" STLtype="4" Ctype="61"/>
+    </TStreamerInfo>
+  </StreamerInfos>
+</root>
