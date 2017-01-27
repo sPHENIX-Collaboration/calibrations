@@ -1,0 +1,78 @@
+<?xml version="1.0"?>
+<root setup="2xoo" ref="null" created="2017-01-25 16:42:39" modified="2017-01-25 16:42:39" uuid="31a01ae2-e347-11e6-9717-bab4c782beef" version="3" file_version="53434">
+  <XmlKey name="PdbParameterMap" cycle="1" created="2017-01-25 16:42:39">
+    <Object class="PdbParameterMap">
+      <PdbParameterMap version="1">
+        <PdbCalChan version="1">
+          <PHObject version="0">
+            <TObject fUniqueID="0" fBits="3000000"/>
+          </PHObject>
+        </PdbCalChan>
+        <dparams>
+          <Version v="9"/>
+          <Int_t v="17"/>
+          <string v="calib_const_column0_row0"/>
+          <Double_t v="0.00072298692149836146"/>
+          <string v="calib_const_column0_row1"/>
+          <Double_t v="0.00070243499035192519"/>
+          <string v="calib_const_column0_row2"/>
+          <Double_t v="0.00074110079941192702"/>
+          <string v="calib_const_column0_row3"/>
+          <Double_t v="0.00076173542834390043"/>
+          <string v="calib_const_column1_row0"/>
+          <Double_t v="0.00063643296885050084"/>
+          <string v="calib_const_column1_row1"/>
+          <Double_t v="0.00066794388802107264"/>
+          <string v="calib_const_column1_row2"/>
+          <Double_t v="0.00065390364176544466"/>
+          <string v="calib_const_column1_row3"/>
+          <Double_t v="0.00073080033079114229"/>
+          <string v="calib_const_column2_row0"/>
+          <Double_t v="0.00069576097277098846"/>
+          <string v="calib_const_column2_row1"/>
+          <Double_t v="0.00066099727403595829"/>
+          <string v="calib_const_column2_row2"/>
+          <Double_t v="0.0011385371680602777"/>
+          <string v="calib_const_column2_row3"/>
+          <Double_t v="0.0007624123250329261"/>
+          <string v="calib_const_column3_row0"/>
+          <Double_t v="0.00068478973322306971"/>
+          <string v="calib_const_column3_row1"/>
+          <Double_t v="0.00068799963245428654"/>
+          <string v="calib_const_column3_row2"/>
+          <Double_t v="0.00070036141995160662"/>
+          <string v="calib_const_column3_row3"/>
+          <Double_t v="0.00072619375784863257"/>
+          <string v="calib_const_scale"/>
+          <Double_t v="-32"/>
+        </dparams>
+        <iparams>
+          <Version v="9"/>
+          <Int_t v="1"/>
+          <string v="use_chan_calibration"/>
+          <Int_t v="1"/>
+        </iparams>
+        <cparams>
+          <Version v="9"/>
+          <Int_t v="1"/>
+          <string v="description"/>
+          <string v="Calibration based on cosmic MIP scans"/>
+        </cparams>
+      </PdbParameterMap>
+    </Object>
+  </XmlKey>
+  <StreamerInfos>
+    <TStreamerInfo name="PdbParameterMap" title="" v="9" classversion="1" canoptimize="true" checksum="916496646">
+      <TStreamerBase name="PdbCalChan" v="3" type="0" typename="BASE" size="24" baseversion="1" basechecksum="-1932344380"/>
+      <TStreamerSTL name="dparams" v="3" type="300" typename="map&lt;const string,double&gt;" size="48" STLtype="4" Ctype="61"/>
+      <TStreamerSTL name="iparams" v="3" type="300" typename="map&lt;const string,int&gt;" size="48" STLtype="4" Ctype="61"/>
+      <TStreamerSTL name="cparams" v="3" type="300" typename="map&lt;const string,string&gt;" size="48" STLtype="4" Ctype="61"/>
+    </TStreamerInfo>
+    <TStreamerInfo name="PdbCalChan" title="" v="9" classversion="1" canoptimize="true" checksum="-1932344380">
+      <TStreamerBase name="PHObject" title="no I/O" v="3" type="0" typename="BASE" size="24" baseversion="0" basechecksum="-179181571"/>
+    </TStreamerInfo>
+    <TStreamerInfo name="PHObject" title="" v="9" classversion="0" canoptimize="true" checksum="-179181571">
+      <TStreamerBase name="TObject" title="Basic ROOT object" v="3" type="66" typename="BASE" size="16" baseversion="1" basechecksum="-1877229523"/>
+    </TStreamerInfo>
+  </StreamerInfos>
+</root>
