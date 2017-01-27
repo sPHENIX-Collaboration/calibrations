@@ -140,7 +140,7 @@
           <string v="calib_const_column7_row7"/>
           <Double_t v="6.005967e-04"/>
           <string v="calib_const_scale"/>
-          <Double_t v="-1.600000e+01"/>
+          <Double_t v="+1.600000e+01"/>
         </dparams>
         <iparams>
           <Version v="9"/>
