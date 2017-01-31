@@ -61,7 +61,7 @@ Construct_Calib_Param(const char * filename_MIP_peak =
       string calib_const_name(Form("calib_const_column%d_row%d", col, row));
 
       const double expected_mip = 0.3777 / 8; //expected MIP in GeV
-      expected_mip *= 0.9666/1.582;
+      expected_mip *= -0.9666/1.582*2*6/8;
       param->set_double_param(calib_const_name, expected_mip / mip);
       count++;
 
