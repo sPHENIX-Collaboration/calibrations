@@ -6,7 +6,7 @@ using namespace std;
 
 void
 Construct_Calib_Param(const char * filename_MIP_peak =
-    "output_set2_v3.txt"
+    "mipPeak_set1_sim_cor.txt"
 //    "output_set3.txt"
     )
 {
@@ -61,7 +61,7 @@ Construct_Calib_Param(const char * filename_MIP_peak =
       string calib_const_name(Form("calib_const_column%d_row%d", col, row));
 
       const double expected_mip = 0.3777 / 8; //expected MIP in GeV
-      expected_mip *= -0.9666/1.582*2*6/8;
+      expected_mip *= -0.9666/1.582*2*6/8*(8./8.11);
       param->set_double_param(calib_const_name, expected_mip / mip);
       count++;
 
