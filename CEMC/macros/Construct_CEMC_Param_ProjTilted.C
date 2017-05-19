@@ -26,7 +26,7 @@ void Construct_CEMC_Param_ProjTilted()
   const double twopi = 2 * TMath::Pi();
 
   // visual switches
-  param->set_int_param("azimuthal_seg_visible", 1);
+  param->set_int_param("azimuthal_seg_visible", 0);
   param->set_int_param("virualize_fiber", 0);
   param->set_int_param("config", PHG4CylinderGeom_Spacalv1::kFullProjective_2DTaper_Tilted_SameLengthFiberPerTower);
 
@@ -36,7 +36,8 @@ void Construct_CEMC_Param_ProjTilted()
   param->set_double_param("zpos", 0);
 
   // construct 32 sectors
-  const int n_sector = 32;
+//  const int n_sector = 32;
+  const int n_sector = 1;
 
   // 2017 design - The final choice was 58 rows x 46 cols = 2668 fibers.
   const int NFiberY = 58;
@@ -63,7 +64,7 @@ void Construct_CEMC_Param_ProjTilted()
   const double zmin = -zmax;
   const double azimuthal_tilt = -0.1;
   const int azimuthal_n_sec = 32;
-  const int max_phi_bin_in_sec = 8;
+  const int max_phi_bin_in_sec = 4; // four blocks per sector in athemuth
 
   param->set_double_param("azimuthal_tilt", azimuthal_tilt);
   param->set_double_param("polar_taper_ratio", 1);
