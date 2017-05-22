@@ -36,8 +36,8 @@ void Construct_CEMC_Param_ProjTilted()
   param->set_double_param("zpos", 0);
 
   // construct 32 sectors
-  //  const int n_sector = 32;
-  const int n_sector = 1;
+    const int n_sector = 32;
+//  const int n_sector = 1;
 
   // 2017 design - The final choice was 58 rows x 46 cols = 2668 fibers.
   const int NFiberY = 58;
