@@ -1,0 +1,55 @@
+#include <string>
+#include <fstream>
+#include <TFile.h>
+#include <string>
+
+using namespace std;
+
+void Construct_Recalibs_Files()
+{
+
+  gSystem->Load("libg4detectors.so");
+
+  PHG4Parameters *param = new PHG4Parameters("CEMC_RECALIB");
+
+  param->set_string_param("description",
+			  Form("Position based recalibrations for CEMC showers from Joe Osborn, inputfiles located at /calibrations/CEMC/PositionDependentCorrection/"));
+  
+  //the calibrations are made in 16 by 16 bins for a 2x2 cemc block
+  //each row of values is for a bin in eta, with 16 bins of phi
+  double calibrations[16][16];
+  ifstream stream;
+  stream.open("../PositionDependentRecalibs/LO_positiondependent_calibs_phot.txt");
+
+  cout<<"reading"<<endl;
+  if(stream.is_open()){
+    int row = 0;
+    while(row!=16){
+      int col=0;
+      while(col!=16){
+	double value;
+	stream>>value;
+	calibrations[row][col]=value;
+
+	col++;
+      }
+      row++;
+    }
+      
+  }
+  else
+    cout<<"no recalibs open, can't do anything"<<endl;
+
+  cout<<"setting params"<<endl;
+  for(int row=0; row<16; row++){
+    for(int col=0; col<16; col++){
+      
+      string recalib_const_name(Form("recalib_const_eta%i_phi%i",row,col));
+      param->set_double_param(recalib_const_name,calibrations[row][col]);
+
+    }
+  }
+  cout<<"write to xml file, located at the path below"<<endl;
+  param->WriteToFile("xml","../");
+
+}
