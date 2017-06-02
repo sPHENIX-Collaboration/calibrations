@@ -4,6 +4,7 @@
 #include <string>
 
 using namespace std;
+const int nbins = 16;
 
 void Construct_Recalibs_Files()
 {
@@ -17,16 +18,16 @@ void Construct_Recalibs_Files()
   
   //the calibrations are made in 16 by 16 bins for a 2x2 cemc block
   //each row of values is for a bin in eta, with 16 bins of phi
-  double calibrations[16][16];
+  double calibrations[nbins][nbins];
   ifstream stream;
   stream.open("../PositionDependentRecalibs/LO_positiondependent_calibs_phot.txt");
 
   cout<<"reading"<<endl;
   if(stream.is_open()){
     int row = 0;
-    while(row!=16){
+    while(row!=nbins){
       int col=0;
-      while(col!=16){
+      while(col!=nbins){
 	double value;
 	stream>>value;
 	calibrations[row][col]=value;
@@ -41,14 +42,17 @@ void Construct_Recalibs_Files()
     cout<<"no recalibs open, can't do anything"<<endl;
 
   cout<<"setting params"<<endl;
-  for(int row=0; row<16; row++){
-    for(int col=0; col<16; col++){
+  for(int row=0; row<nbins; row++){
+    for(int col=0; col<nbins; col++){
       
       string recalib_const_name(Form("recalib_const_eta%i_phi%i",row,col));
       param->set_double_param(recalib_const_name,calibrations[row][col]);
 
     }
   }
+
+  param->set_int_param("number_of_bins",nbins);
+
   cout<<"write to xml file, located at the path below"<<endl;
   param->WriteToFile("xml","../");
 
