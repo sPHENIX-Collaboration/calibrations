@@ -14,13 +14,13 @@ void Construct_Recalibs_Files()
   PHG4Parameters *param = new PHG4Parameters("CEMC_RECALIB");
 
   param->set_string_param("description",
-			  Form("Position based recalibrations for CEMC showers from Joe Osborn, inputfiles located at /calibrations/CEMC/PositionDependentCorrection/"));
+			  Form("Position based recalibrations for CEMC showers from Joe Osborn, inputfiles located at /calibrations/CEMC/PositionRecalibration/"));
   
   //the calibrations are made in 16 by 16 bins for a 2x2 cemc block
   //each row of values is for a bin in eta, with 16 bins of phi
   double calibrations[nbins][nbins];
   ifstream stream;
-  stream.open("../PositionDependentRecalibs/LO_positiondependent_calibs_phot.txt");
+  stream.open("../PositionRecalibration/LO_positiondependent_calibs_phot.txt");
 
   cout<<"reading"<<endl;
   if(stream.is_open()){
