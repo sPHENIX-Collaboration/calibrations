@@ -62,7 +62,7 @@ void Construct_CEMC_Param_ProjTilted()
   const double thickness = 26.130000;
   const double zmax = 149.470000;
   const double zmin = -zmax;
-  const double azimuthal_tilt = -0.1;
+  const double azimuthal_tilt = -0.09; // was -0.1; July-2017 design use 90mrad tilt in the azimuth. See Dan's talk https://indico.bnl.gov/conferenceDisplay.py?confId=3459
   const int azimuthal_n_sec = 32;
   const int max_phi_bin_in_sec = 4;  // four blocks per sector in athemuth
 
