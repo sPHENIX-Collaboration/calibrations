@@ -27,7 +27,7 @@ Construct_Calib_Param_HCAL_HG(
    {
     name = det_name[2*idet+igain];
     cout << name << endl;
-    PHG4Parameters * param = new PHG4Parameters(name.Data());
+    PHParameters * param = new PHParameters(name.Data());
     if(igain==0) param->set_double_param("calib_const_scale", -gain_values[idet]);
     else param->set_double_param("calib_const_scale", -1.);
     param->set_int_param("use_chan_calibration", 1);
@@ -88,7 +88,7 @@ Construct_Calib_Param_Constatnt_Test()
 
   gSystem->Load("libg4detectors.so");
 
-  PHG4Parameters * param = new PHG4Parameters("CEMC");
+  PHParameters * param = new PHParameters("CEMC");
 
   param->set_string_param("description",
       "Test file with same constant for all towers");

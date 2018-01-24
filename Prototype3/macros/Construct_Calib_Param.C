@@ -22,7 +22,7 @@ Construct_Calib_Param(const char * filename_MIP_peak =
 
   gSystem->Load("libg4detectors.so");
 
-  PHG4Parameters * param = new PHG4Parameters("CEMC");
+  PHParameters * param = new PHParameters("CEMC");
 
   param->set_string_param("description",
       Form(
