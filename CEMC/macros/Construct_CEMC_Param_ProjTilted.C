@@ -17,7 +17,7 @@ void Construct_CEMC_Param_ProjTilted()
 
   gSystem->Load("libg4detectors.so");
 
-  PHG4Parameters *param = new PHG4Parameters("CEMC_0");
+  PHParameters *param = new PHParameters("CEMC_0");
 
   param->set_string_param("description",
                           "sPHENIX 2017 SPACAL design, tilted full projective design");

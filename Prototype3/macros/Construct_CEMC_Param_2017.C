@@ -15,7 +15,7 @@ Construct_CEMC_Param_2017()
 
   gSystem->Load("libg4detectors.so");
 
-  PHG4Parameters * param = new PHG4Parameters("CEMC_0");
+  PHParameters * param = new PHParameters("CEMC_0");
 
   param->set_string_param("description",
       "sPHENIX 2017 SPACAL prototype in the default orientation");
