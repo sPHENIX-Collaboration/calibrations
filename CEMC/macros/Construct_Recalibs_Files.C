@@ -11,7 +11,7 @@ void Construct_Recalibs_Files()
 
   gSystem->Load("libg4detectors.so");
 
-  PHG4Parameters *param = new PHG4Parameters("CEMC_RECALIB");
+  PHParameters *param = new PHParameters("CEMC_RECALIB");
 
   param->set_string_param("description",
 			  Form("Position based recalibrations for CEMC showers from Joe Osborn, inputfiles located at /calibrations/CEMC/PositionRecalibration/"));

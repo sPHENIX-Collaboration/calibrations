@@ -30,7 +30,7 @@ Construct_Calib_Param_HCAL(
     name += "_";
     name += gain_name[igain];
     cout << name << endl;
-    PHG4Parameters * param = new PHG4Parameters(name.Data());
+    PHParameters * param = new PHParameters(name.Data());
     param->set_double_param("calib_const_scale", -1.);
     param->set_int_param("use_chan_calibration", 1);
     param->set_string_param("description", "Calibration based on MIP scans");
@@ -95,7 +95,7 @@ Construct_Calib_Param_Constatnt_Test()
 
   gSystem->Load("libg4detectors.so");
 
-  PHG4Parameters * param = new PHG4Parameters("CEMC");
+  PHParameters * param = new PHParameters("CEMC");
 
   param->set_string_param("description",
       "Test file with same constant for all towers");
