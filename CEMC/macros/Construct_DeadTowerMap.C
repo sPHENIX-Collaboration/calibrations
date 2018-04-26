@@ -37,7 +37,7 @@ void Construct_DeadTowerMap(
       //      dead_channels.insert(ID);
       dead_channels[ID] = 1;
 
-      param->set_int_param(Form("deadtower_eta%d_phi%d", eta, phi), 1);
+      param->set_int_param(Form("deadtower_eta_%d_phi_%d", eta, phi), 1);
       ++cnt;
     }
   }
@@ -50,12 +50,5 @@ void Construct_DeadTowerMap(
   string dir_name(Form("../DeadMap_%.0fPercent/", dead_tower_ratio * 100));
   gSystem->mkdir(dir_name.c_str());
 
-  PdbParameterMapContainer *paramcontainer = new PdbParameterMapContainer();
-
-  PdbParameterMap *myparm = new PdbParameterMap();
-  param->CopyToPdbParameterMap(myparm);
-  myparm->print();
-  paramcontainer->AddPdbParameterMap(0, myparm);
-
-  paramcontainer->WriteToFile("CEMC", "xml", dir_name);
+  param->WriteToFile("xml", dir_name);
 }
