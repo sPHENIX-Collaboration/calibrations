@@ -1,0 +1,186 @@
+<?xml version="1.0"?>
+<root setup="2xoo" ref="null" created="2018-04-28 13:40:21" modified="2018-04-28 13:40:21" uuid="3982938e-4b0b-11e8-9717-c2b6c782beef" version="3" file_version="53436">
+  <XmlKey name="PdbParameterMap" cycle="1" created="2018-04-28 13:40:21">
+    <Object class="PdbParameterMap">
+      <PdbParameterMap version="1">
+        <PdbCalChan version="1">
+          <PHObject version="0">
+            <TObject fUniqueID="0" fBits="3000000"/>
+          </PHObject>
+        </PdbCalChan>
+        <dparams>
+          <Version v="9"/>
+          <Int_t v="0"/>
+        </dparams>
+        <iparams>
+          <Version v="9"/>
+          <Int_t v="72"/>
+          <string v="deadtower_eta_0_phi_1"/>
+          <Int_t v="1"/>
+          <string v="deadtower_eta_0_phi_16"/>
+          <Int_t v="1"/>
+          <string v="deadtower_eta_0_phi_2"/>
+          <Int_t v="1"/>
+          <string v="deadtower_eta_10_phi_1"/>
+          <Int_t v="1"/>
+          <string v="deadtower_eta_10_phi_13"/>
+          <Int_t v="1"/>
+          <string v="deadtower_eta_11_phi_25"/>
+          <Int_t v="1"/>
+          <string v="deadtower_eta_11_phi_28"/>
+          <Int_t v="1"/>
+          <string v="deadtower_eta_11_phi_31"/>
+          <Int_t v="1"/>
+          <string v="deadtower_eta_11_phi_38"/>
+          <Int_t v="1"/>
+          <string v="deadtower_eta_12_phi_10"/>
+          <Int_t v="1"/>
+          <string v="deadtower_eta_12_phi_21"/>
+          <Int_t v="1"/>
+          <string v="deadtower_eta_12_phi_27"/>
+          <Int_t v="1"/>
+          <string v="deadtower_eta_12_phi_3"/>
+          <Int_t v="1"/>
+          <string v="deadtower_eta_13_phi_21"/>
+          <Int_t v="1"/>
+          <string v="deadtower_eta_13_phi_24"/>
+          <Int_t v="1"/>
+          <string v="deadtower_eta_13_phi_45"/>
+          <Int_t v="1"/>
+          <string v="deadtower_eta_13_phi_52"/>
+          <Int_t v="1"/>
+          <string v="deadtower_eta_13_phi_56"/>
+          <Int_t v="1"/>
+          <string v="deadtower_eta_13_phi_62"/>
+          <Int_t v="1"/>
+          <string v="deadtower_eta_14_phi_28"/>
+          <Int_t v="1"/>
+          <string v="deadtower_eta_14_phi_58"/>
+          <Int_t v="1"/>
+          <string v="deadtower_eta_15_phi_21"/>
+          <Int_t v="1"/>
+          <string v="deadtower_eta_15_phi_24"/>
+          <Int_t v="1"/>
+          <string v="deadtower_eta_15_phi_29"/>
+          <Int_t v="1"/>
+          <string v="deadtower_eta_15_phi_51"/>
+          <Int_t v="1"/>
+          <string v="deadtower_eta_16_phi_42"/>
+          <Int_t v="1"/>
+          <string v="deadtower_eta_17_phi_18"/>
+          <Int_t v="1"/>
+          <string v="deadtower_eta_17_phi_2"/>
+          <Int_t v="1"/>
+          <string v="deadtower_eta_17_phi_4"/>
+          <Int_t v="1"/>
+          <string v="deadtower_eta_17_phi_49"/>
+          <Int_t v="1"/>
+          <string v="deadtower_eta_17_phi_50"/>
+          <Int_t v="1"/>
+          <string v="deadtower_eta_17_phi_52"/>
+          <Int_t v="1"/>
+          <string v="deadtower_eta_17_phi_55"/>
+          <Int_t v="1"/>
+          <string v="deadtower_eta_17_phi_57"/>
+          <Int_t v="1"/>
+          <string v="deadtower_eta_19_phi_15"/>
+          <Int_t v="1"/>
+          <string v="deadtower_eta_19_phi_36"/>
+          <Int_t v="1"/>
+          <string v="deadtower_eta_19_phi_7"/>
+          <Int_t v="1"/>
+          <string v="deadtower_eta_1_phi_39"/>
+          <Int_t v="1"/>
+          <string v="deadtower_eta_1_phi_59"/>
+          <Int_t v="1"/>
+          <string v="deadtower_eta_1_phi_63"/>
+          <Int_t v="1"/>
+          <string v="deadtower_eta_20_phi_25"/>
+          <Int_t v="1"/>
+          <string v="deadtower_eta_20_phi_3"/>
+          <Int_t v="1"/>
+          <string v="deadtower_eta_20_phi_30"/>
+          <Int_t v="1"/>
+          <string v="deadtower_eta_20_phi_52"/>
+          <Int_t v="1"/>
+          <string v="deadtower_eta_21_phi_10"/>
+          <Int_t v="1"/>
+          <string v="deadtower_eta_21_phi_18"/>
+          <Int_t v="1"/>
+          <string v="deadtower_eta_21_phi_24"/>
+          <Int_t v="1"/>
+          <string v="deadtower_eta_21_phi_7"/>
+          <Int_t v="1"/>
+          <string v="deadtower_eta_2_phi_42"/>
+          <Int_t v="1"/>
+          <string v="deadtower_eta_2_phi_5"/>
+          <Int_t v="1"/>
+          <string v="deadtower_eta_2_phi_56"/>
+          <Int_t v="1"/>
+          <string v="deadtower_eta_3_phi_35"/>
+          <Int_t v="1"/>
+          <string v="deadtower_eta_4_phi_20"/>
+          <Int_t v="1"/>
+          <string v="deadtower_eta_4_phi_31"/>
+          <Int_t v="1"/>
+          <string v="deadtower_eta_4_phi_44"/>
+          <Int_t v="1"/>
+          <string v="deadtower_eta_4_phi_58"/>
+          <Int_t v="1"/>
+          <string v="deadtower_eta_5_phi_9"/>
+          <Int_t v="1"/>
+          <string v="deadtower_eta_6_phi_12"/>
+          <Int_t v="1"/>
+          <string v="deadtower_eta_6_phi_29"/>
+          <Int_t v="1"/>
+          <string v="deadtower_eta_6_phi_48"/>
+          <Int_t v="1"/>
+          <string v="deadtower_eta_7_phi_0"/>
+          <Int_t v="1"/>
+          <string v="deadtower_eta_7_phi_48"/>
+          <Int_t v="1"/>
+          <string v="deadtower_eta_8_phi_34"/>
+          <Int_t v="1"/>
+          <string v="deadtower_eta_8_phi_47"/>
+          <Int_t v="1"/>
+          <string v="deadtower_eta_8_phi_50"/>
+          <Int_t v="1"/>
+          <string v="deadtower_eta_8_phi_6"/>
+          <Int_t v="1"/>
+          <string v="deadtower_eta_8_phi_7"/>
+          <Int_t v="1"/>
+          <string v="deadtower_eta_9_phi_13"/>
+          <Int_t v="1"/>
+          <string v="deadtower_eta_9_phi_39"/>
+          <Int_t v="1"/>
+          <string v="deadtower_eta_9_phi_41"/>
+          <Int_t v="1"/>
+          <string v="deadtower_eta_9_phi_62"/>
+          <Int_t v="1"/>
+          <string v="deadtower_size"/>
+          <Int_t v="71"/>
+        </iparams>
+        <cparams>
+          <Version v="9"/>
+          <Int_t v="1"/>
+          <string v="description"/>
+          <string v="5-percent dead tower as assigned in objective key performance parameter"/>
+        </cparams>
+      </PdbParameterMap>
+    </Object>
+  </XmlKey>
+  <StreamerInfos>
+    <TStreamerInfo name="PdbParameterMap" title="" v="9" classversion="1" canoptimize="true" checksum="916496646">
+      <TStreamerBase name="PdbCalChan" v="3" type="0" typename="BASE" size="24" baseversion="1" basechecksum="-1932344380"/>
+      <TStreamerSTL name="dparams" v="3" type="300" typename="map&lt;const string,double&gt;" size="48" STLtype="4" Ctype="61"/>
+      <TStreamerSTL name="iparams" v="3" type="300" typename="map&lt;const string,int&gt;" size="48" STLtype="4" Ctype="61"/>
+      <TStreamerSTL name="cparams" v="3" type="300" typename="map&lt;const string,string&gt;" size="48" STLtype="4" Ctype="61"/>
+    </TStreamerInfo>
+    <TStreamerInfo name="PdbCalChan" title="" v="9" classversion="1" canoptimize="true" checksum="-1932344380">
+      <TStreamerBase name="PHObject" title="no I/O" v="3" type="0" typename="BASE" size="24" baseversion="0" basechecksum="-179181571"/>
+    </TStreamerInfo>
+    <TStreamerInfo name="PHObject" title="" v="9" classversion="0" canoptimize="true" checksum="-179181571">
+      <TStreamerBase name="TObject" title="Basic ROOT object" v="3" type="66" typename="BASE" size="16" baseversion="1" basechecksum="-1877229523"/>
+    </TStreamerInfo>
+  </StreamerInfos>
+</root>
