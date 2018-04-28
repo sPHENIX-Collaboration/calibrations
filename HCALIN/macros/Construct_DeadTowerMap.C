@@ -5,10 +5,10 @@
 using namespace std;
 
 void Construct_DeadTowerMap(
-    const double dead_tower_ratio = 0.1,
-    const string description = "10-percent dead tower as assigned in threshold key performance parameter"//
-    //        const double dead_tower_ratio = 0.05,
-    //  const string description = "5-percent dead tower as assigned in objective key performance parameter"//
+			    //const double dead_tower_ratio = 0.1,
+    //    const string description = "10-percent dead tower as assigned in threshold key performance parameter"//
+            const double dead_tower_ratio = 0.05,
+      const string description = "5-percent dead tower as assigned in objective key performance parameter"//
         )
 {
   const int nbin_eta = 11 * 2;
@@ -18,7 +18,7 @@ void Construct_DeadTowerMap(
 
   gSystem->Load("libphparameter.so");
 
-  TRandom3 rnd(1234);
+  TRandom3 rnd(12345);
 
   PHParameters *param = new PHParameters("HCALIN");
 
