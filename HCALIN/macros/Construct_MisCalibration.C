@@ -31,7 +31,7 @@ void Construct_MisCalibration(
 
   cout << "Construct_DeadTowerMap() - nbin_eta = " << nbin_eta << ", nbin_phi = " << nbin_phi << ", mis_calibration_width = " << mis_calibration_width << endl;
 
-  TRandom3 random(13454);
+  TRandom3 random(134546);
 
   //Save result
   gSystem->Load("libphparameter.so");
