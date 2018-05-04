@@ -5,13 +5,13 @@
 using namespace std;
 
 void Construct_DeadTowerMap(
-    const double dead_tower_ratio = 0.1,
-    const string description = "10-percent dead tower as assigned in threshold key performance parameter"//
-    //        const double dead_tower_ratio = 0.05,
-    //    const string description = "5-percent dead tower as assigned in objective key performance parameter"//
+//    const double dead_tower_ratio = 0.1,
+//    const string description = "10-percent dead tower as assigned in threshold key performance parameter"//
+            const double dead_tower_ratio = 0.05,
+        const string description = "5-percent dead tower as assigned in objective key performance parameter"//
         )
 {
-  const int nbin_eta = 11 * 2 ;
+  const int nbin_eta = 12 * 2 ;
   const int nbin_phi = 64;
 
   cout << "Construct_DeadTowerMap() - nbin_eta = " << nbin_eta << ", nbin_phi = " << nbin_phi << ", dead_tower_ratio = " << dead_tower_ratio << endl;

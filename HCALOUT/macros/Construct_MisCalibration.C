@@ -25,7 +25,7 @@ using namespace std;
 void Construct_MisCalibration(
     const double mis_calibration_width = 0.03)
 {
-  const int nbin_eta = 11 * 2;
+  const int nbin_eta = 12 * 2;
   const int nbin_phi = 64;
   const string detector("HCALOUT");
 
