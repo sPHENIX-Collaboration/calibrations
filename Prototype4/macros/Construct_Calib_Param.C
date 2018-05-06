@@ -11,9 +11,7 @@
 using namespace std;
 
 void Construct_Calib_Param(const char* filename_shower_calib =
-                               "4thPositionScan_ShowerCalibFit_CablibConst.dat"
-                           //    "output_set3.txt"
-                           )
+                               "2018b.ShowerCalibFit_CablibConst.dat")
 {
   cout << "Construct_Calib_Param() - Entry" << endl;
 
@@ -28,7 +26,8 @@ void Construct_Calib_Param(const char* filename_shower_calib =
 
   // additional scale for the calibration constant
   // negative pulse -> positive with -1
-  param->set_double_param("calib_const_scale", 8. / 3000);  // leading order calibration
+  //  param->set_double_param("calib_const_scale", 8. / 3000);  // leading order calibration
+  param->set_double_param("calib_const_scale", 0.55 * 8. / 3000.);  // leading order calibration - 2018b
 
   // use channel by channel stuff
   param->set_int_param("use_chan_calibration", 1);
