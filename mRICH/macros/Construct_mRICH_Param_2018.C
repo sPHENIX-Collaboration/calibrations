@@ -74,23 +74,33 @@ void Construct_mRICH_Param_2018()
     double pi = 3.1415926;
 
     double halfWidth = 74.025;
-    double halfLength = 111.622;
-    double z_max = 3000.0; // *mm
-    double z_length = 500.0; // *mm
+    // double halfLength = 111.622;
+    double halfLength = 98.942;
+    // double z_max = 3100.0; // *mm
+    // double z_length = 500.0; // *mm
+    double z_max = 2808.5; // *mm
+    // double z_length = 297.174; // *mm
+    double z_length = 395.516; // *mm
 
     double eta_min = 1.1;
-    double eta_max = 1.9;
+    // double eta_max = 1.9;
+    // double eta_min = 1.242;
+    double eta_max = 1.85;
     double theta_min = 2.0*atan(exp(-1.0*eta_max));
     double theta_max = 2.0*atan(exp(-1.0*eta_min));
 
     double y_min = z_max*tan(theta_min);
     double y_length = (z_max-z_length)*tan(theta_max) - y_min;
-    double x_length = (y_length+y_min)*tan((45/2)*pi/180);
+    // double x_length = (y_length+y_min)*tan((45/2)*pi/180);
+    double x_length = (y_length+y_min)*tan((43/2)*pi/180);
     double theta = atan(z_length/y_length);                 //in radian
     double y_max = sqrt(y_length*y_length+z_length*z_length)+y_min;
     double slope = y_max/x_length;
 
     param->set_double_param("mRICH_sector_hside_rotation_theta", theta);
+    double shift = z_max + y_min*sin(theta) - halfLength*cos(theta);
+    // param->set_double_param("mRICH_sector_hside_shift", shift/1000.0);
+    param->set_double_param("mRICH_sector_hside_shift", 3.014);
 
     int counter_mRICH_sector_hside = 0;
     for (double y = y_min + halfWidth; y <= y_max-halfWidth; y = y + 2*halfWidth) 
@@ -99,7 +109,7 @@ void Construct_mRICH_Param_2018()
       int NumModuleMax = floor(x_max/halfWidth);
       x_max = (double)(NumModuleMax-1)*halfWidth;      //max x-coordinate of the center of a module in a row
 
-      for (double x = -x_max; x <= x_max+1; x = x + 2*halfWidth) 
+      for (double x = -x_max; x <= x_max; x = x + 2*halfWidth) 
       { 
 	stringstream prefix;
 	prefix << "mRICH_sector_hside_" << counter_mRICH_sector_hside;
