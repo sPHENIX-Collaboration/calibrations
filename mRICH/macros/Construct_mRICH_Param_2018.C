@@ -100,7 +100,7 @@ void Construct_mRICH_Param_2018()
     param->set_double_param("mRICH_sector_hside_rotation_theta", theta);
     double shift = z_max + y_min*sin(theta) - halfLength*cos(theta);
     // param->set_double_param("mRICH_sector_hside_shift", shift/1000.0);
-    param->set_double_param("mRICH_sector_hside_shift", 3.014);
+    param->set_double_param("mRICH_sector_hside_shift", 3014);
 
     int counter_mRICH_sector_hside = 0;
     for (double y = y_min + halfWidth; y <= y_max-halfWidth; y = y + 2*halfWidth) 
@@ -124,8 +124,103 @@ void Construct_mRICH_Param_2018()
     }
     param->set_int_param("NumOfModule_sector_hside", counter_mRICH_sector_hside);
   }
-
   //------------------------ mRICH sector hadron side ------------------------
+
+  //------------------------ mRICH wall electron side ------------------------
+  {
+    double pi = 3.1415926;
+
+    double gap = 1.0;
+    double halfWidth = 74.025+gap;
+    // double halfLength = 111.622;
+    double halfLength = 98.942;
+
+    double eta_min = 1.40;
+    double eta_max = 3.90;
+    double z_max = 1470.0; // *mm
+
+    double theta_min = 2.0*atan(exp(-1.0*eta_max));
+    double theta_max = 2.0*atan(exp(-1.0*eta_min));
+    // double r_min = z_max*tan(theta_min);
+    double r_min = halfWidth;
+    double r_max = z_max*tan(theta_max);
+
+    double sign_x[2] = {1.0,-1.0};
+    double sign_y[2] = {1.0,-1.0};
+
+    double deltaR = 2*halfWidth;
+
+    int NumModuleMax = floor(2.0*(r_max-r_min)/deltaR);
+
+    // cout << "theta_min = " << theta_min << ", theta_max = " << theta_max << endl;
+    // cout << "r_min = " << r_min << ", r_max = " << r_max << ", NumModuleMax = " << NumModuleMax << endl;
+
+    param->set_double_param("mRICH_wall_eside_shift", -1.0*z_max);
+
+    int counter_mRICH_wall_eside = 0;
+    for(double pos_x = 0; pos_x < r_max ; pos_x = pos_x+deltaR)
+    {
+      double x = pos_x;
+
+      for(double pos_y = 0; pos_y < r_max ; pos_y = pos_y+deltaR)
+      {
+	double y = pos_y;
+
+	if((x+halfWidth)*(x+halfWidth)+(y+halfWidth)*(y+halfWidth) > r_max*r_max) continue;
+
+	if( x > halfWidth && y > halfWidth )
+	{
+	  for(int i_pos_x = 0; i_pos_x < 2; i_pos_x++)
+	  {
+	    for(int i_pos_y = 0; i_pos_y < 2; i_pos_y++)
+	    {
+	      stringstream prefix;
+	      prefix << "mRICH_wall_eside_" << counter_mRICH_wall_eside;
+	      param->set_double_param(prefix.str() + "_position_x", x*sign_x[i_pos_x]);
+	      param->set_double_param(prefix.str() + "_position_y", y*sign_y[i_pos_y]);
+	      param->set_double_param(prefix.str() + "_position_z", 0.0);
+
+	      param->set_int_param(prefix.str() + "_moduleID", counter_mRICH_wall_eside);
+
+	      counter_mRICH_wall_eside++;
+	    }
+	  }
+	}
+	if(x < halfWidth && y > halfWidth)
+	{
+	  for(int i_pos_y = 0; i_pos_y < 2; i_pos_y++)
+	  {
+	    stringstream prefix;
+	    prefix << "mRICH_wall_eside_" << counter_mRICH_wall_eside;
+	    param->set_double_param(prefix.str() + "_position_x", x);
+	    param->set_double_param(prefix.str() + "_position_y", y*sign_y[i_pos_y]);
+	    param->set_double_param(prefix.str() + "_position_z", 0.0);
+
+	    param->set_int_param(prefix.str() + "_moduleID", counter_mRICH_wall_eside);
+
+	    counter_mRICH_wall_eside++;
+	  }
+	}
+	if(y < halfWidth && x > halfWidth)
+	{
+	  for(int i_pos_x = 0; i_pos_x < 2; i_pos_x++)
+	  {
+	    stringstream prefix;
+	    prefix << "mRICH_wall_eside_" << counter_mRICH_wall_eside;
+	    param->set_double_param(prefix.str() + "_position_x", x*sign_x[i_pos_x]);
+	    param->set_double_param(prefix.str() + "_position_y", y);
+	    param->set_double_param(prefix.str() + "_position_z", 0.0);
+
+	    param->set_int_param(prefix.str() + "_moduleID", counter_mRICH_wall_eside);
+
+	    counter_mRICH_wall_eside++;
+	  }
+	}
+      }
+    }
+    param->set_int_param("NumOfModule_wall_eside", counter_mRICH_wall_eside);
+  }
+  //------------------------ mRICH wall electron side ------------------------
 
   // param->Print();
 
