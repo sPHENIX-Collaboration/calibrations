@@ -13,14 +13,18 @@ class four_corner
 
 void Construct_CEMC_Param_ProjTilted()
 {
-  cout << "Construct_CEMC_Param_ProjTilted() - Entry" << endl;
+  const TString outputFolder = "../Geometry_2018ProjTilted/";
+
+  cout << "Construct_CEMC_Param_ProjTilted() - Entry -> "<<outputFolder << endl;
+
+
 
   gSystem->Load("libg4detectors.so");
 
-  PHG4Parameters *param = new PHG4Parameters("CEMC_0");
+  PHParameters *param = new PHParameters("CEMC_0");
 
   param->set_string_param("description",
-                          "sPHENIX 2017 SPACAL design, tilted full projective design");
+                          "sPHENIX 2018 SPACAL design, 9-degree-tilted approximate projective design");
 
   const double inch_to_cm = 2.54;
   const double twopi = 2 * TMath::Pi();
@@ -62,7 +66,8 @@ void Construct_CEMC_Param_ProjTilted()
   const double thickness = 26.130000;
   const double zmax = 149.470000;
   const double zmin = -zmax;
-  const double azimuthal_tilt = -0.09; // was -0.1; July-2017 design use 90mrad tilt in the azimuth. See Dan's talk https://indico.bnl.gov/conferenceDisplay.py?confId=3459
+//  const double azimuthal_tilt = -0.09; // was -0.1; July-2017 design use 90mrad tilt in the azimuth. See Dan's talk https://indico.bnl.gov/conferenceDisplay.py?confId=3459
+  const double azimuthal_tilt = -9./180.*TMath::Pi(); //  June-2018 design use 9 degree tilt in the azimuth. See Dan's talk https://indico.bnl.gov/event/4725/
   const int azimuthal_n_sec = 32;
   const int max_phi_bin_in_sec = 4;  // four blocks per sector in athemuth
 
@@ -238,7 +243,7 @@ void Construct_CEMC_Param_ProjTilted()
   //  storage
   param->Print();
 
-  gSystem->mkdir("../Geometry_2017ProjTilted/");
+  gSystem->mkdir(outputFolder);
 
   PdbParameterMapContainer *paramcontainer = new PdbParameterMapContainer();
 
@@ -247,9 +252,9 @@ void Construct_CEMC_Param_ProjTilted()
   myparm->print();
   paramcontainer->AddPdbParameterMap(0, myparm);
 
-  paramcontainer->WriteToFile("CEMC", "root", "../Geometry_2017ProjTilted/");
+  paramcontainer->WriteToFile("CEMC", "root", outputFolder.Data());
 
-  paramcontainer->WriteToFile("CEMC", "xml", "../Geometry_2017ProjTilted/");
+  paramcontainer->WriteToFile("CEMC", "xml", outputFolder.Data());
 }
 
 four_corner *
