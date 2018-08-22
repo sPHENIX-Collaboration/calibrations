@@ -25,15 +25,14 @@ void Construct_DeadMap()
   const int rnd_seed = 1;
   const int ladder_type = 0;  // 0 z-sensitive, 1: phi-sensitive
 
-    const double dead_sensor_ratio = 0.02;
-    const double dead_fphx_ratio = 0.02;
-    const double dead_chan_ratio = 0.001;  //% 0.1% dead channel
-//  const double dead_sensor_ratio = 0.00;
-//  const double dead_fphx_ratio = 0.01;
-//  const double dead_chan_ratio = 0.000;  //% 0.1% dead channel
+  const double dead_sensor_ratio = 0.02;
+  const double dead_fphx_ratio = 0.02;
+  const double dead_chan_ratio = 0.001;  //% 0.1% dead channel
+                                         //  const double dead_sensor_ratio = 0.00;
+                                         //  const double dead_fphx_ratio = 0.01;
+                                         //  const double dead_chan_ratio = 0.000;  //% 0.1% dead channel
   const string description = Form("INTT dead map with %f%% dead sensor %f%% dead FPHX chip %f%% isolated dead channel",
                                   dead_sensor_ratio, dead_fphx_ratio, dead_chan_ratio);
-
 
   const int nladder_phi = 64;  // max number of ladders, it is OK to over generate ladders
   const int nladder_z = 4;
