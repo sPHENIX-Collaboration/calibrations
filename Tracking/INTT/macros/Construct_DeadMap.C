@@ -20,17 +20,17 @@ void Construct_DeadMap()
   //      set_default_int_param(i, "nstrips_z_sensor_0", nstrips_z_sensor_0[i]);
   //      set_default_int_param(i, "nstrips_z_sensor_1", nstrips_z_sensor_1[i]);
   //      set_default_int_param(i, "nstrips_phi_sensor", nstrips_phi_sensor[i]);
-  //  =============
+  //    =============
 
-  const int rnd_seed = 1;
-  const int ladder_type = 0;  // 0 z-sensitive, 1: phi-sensitive
+  const int rnd_seed = 3;
+  const int ladder_type = 1;  // 0 z-sensitive, 1: phi-sensitive
 
   const double dead_sensor_ratio = 0.02;
   const double dead_fphx_ratio = 0.02;
   const double dead_chan_ratio = 0.001;  //% 0.1% dead channel
-                                         //  const double dead_sensor_ratio = 0.00;
-                                         //  const double dead_fphx_ratio = 0.01;
-                                         //  const double dead_chan_ratio = 0.000;  //% 0.1% dead channel
+//                                           const double dead_sensor_ratio = 0.02;
+//                                           const double dead_fphx_ratio = 0.00;
+//                                           const double dead_chan_ratio = 0.000;  //% 0.1% dead channel
   const string description = Form("INTT dead map with %f%% dead sensor %f%% dead FPHX chip %f%% isolated dead channel",
                                   dead_sensor_ratio, dead_fphx_ratio, dead_chan_ratio);
 
@@ -50,6 +50,7 @@ void Construct_DeadMap()
   PHParameters *param = new PHParameters("SILICON_TRACKER");
 
   param->set_string_param("description", description);
+  param->set_int_param("random_seed", rnd_seed);
 
   int cnt = 0;
 
@@ -58,7 +59,8 @@ void Construct_DeadMap()
   //----------------------------------------------
 
   cnt = 0;
-  while (cnt < nladder_phi * nladder_z * dead_sensor_ratio)
+  int nDead = rnd.Poisson(nladder_phi * nladder_z * dead_sensor_ratio);
+  while (cnt < nDead)
   {
     const int ladder_phi = rnd.Integer(nladder_phi);
     const int ladder_z = rnd.Integer(nladder_z);
@@ -83,9 +85,10 @@ void Construct_DeadMap()
   //----------------------------------------------
 
   cnt = 0;
+  int nDead = rnd.Poisson(nladder_phi * nladder_z * nstrip_z * nstrip_phi * dead_fphx_ratio / nstrip_fphx);
   if (ladder_type)  // phi-sensitive strips
   {
-    while (cnt < nladder_phi * nladder_z * nstrip_z * nstrip_phi * dead_fphx_ratio / nstrip_fphx)
+    while (cnt < nDead)
     {
       const int ladder_phi = rnd.Integer(nladder_phi);
       const int ladder_z = rnd.Integer(nladder_z);
@@ -112,7 +115,7 @@ void Construct_DeadMap()
   }
   else  // z-sensitive strips
   {
-    while (cnt < nladder_phi * nladder_z * nstrip_z * nstrip_phi * dead_fphx_ratio / nstrip_fphx)
+    while (cnt < nDead)
     {
       const int ladder_phi = rnd.Integer(nladder_phi);
       const int ladder_z = rnd.Integer(nladder_z);
@@ -146,7 +149,8 @@ void Construct_DeadMap()
   //----------------------------------------------
 
   cnt = 0;
-  while (cnt < nladder_phi * nladder_z * nstrip_z * nstrip_phi * dead_chan_ratio)
+  int nDead = rnd.Poisson(nladder_phi * nladder_z * nstrip_z * nstrip_phi * dead_chan_ratio);
+  while (cnt < nDead)
   {
     const int ladder_phi = rnd.Integer(nladder_phi);
     const int ladder_z = rnd.Integer(nladder_z);
