@@ -6,6 +6,17 @@ using namespace std;
 
 void Construct_DeadMap()
 {
+  for (int ladder_type = 0; ladder_type < 2; ++ladder_type)
+    for (int rnd_seed = 0; rnd_seed < 4; ++rnd_seed)
+    {
+      Construct_DeadMap_Work(rnd_seed, ladder_type);
+    }
+}
+
+void Construct_DeadMap_Work(const int rnd_seed = 3,
+                            const int ladder_type = 1  // 0 z-sensitive, 1: phi-sensitive
+)
+{
   // Output format : Form("INTT_%02d_%d_%03d_%03d", ladder_phi, ladder_z, strip_z, strip_phi)
   //  defined in PHG4SiliconTrackerSubsystem::SetDefaultParameters(). The relevant values are:
   //
@@ -22,15 +33,18 @@ void Construct_DeadMap()
   //      set_default_int_param(i, "nstrips_phi_sensor", nstrips_phi_sensor[i]);
   //    =============
 
-  const int rnd_seed = 3;
-  const int ladder_type = 1;  // 0 z-sensitive, 1: phi-sensitive
-
-  const double dead_sensor_ratio = 0.02;
+//  const double dead_sensor_ratio = 0.50;
+//  const double dead_fphx_ratio = 0.04;
+//  const double dead_chan_ratio = 0.001;  //% 0.1% dead channel
+  const double dead_sensor_ratio = 0.06;
   const double dead_fphx_ratio = 0.02;
   const double dead_chan_ratio = 0.001;  //% 0.1% dead channel
-//                                           const double dead_sensor_ratio = 0.02;
-//                                           const double dead_fphx_ratio = 0.00;
-//                                           const double dead_chan_ratio = 0.000;  //% 0.1% dead channel
+//  const double dead_sensor_ratio = 0.02;
+//  const double dead_fphx_ratio = 0.02;
+//  const double dead_chan_ratio = 0.001;  //% 0.1% dead channel
+                                         //                                           const double dead_sensor_ratio = 0.02;
+                                         //                                           const double dead_fphx_ratio = 0.00;
+                                         //                                           const double dead_chan_ratio = 0.000;  //% 0.1% dead channel
   const string description = Form("INTT dead map with %f%% dead sensor %f%% dead FPHX chip %f%% isolated dead channel",
                                   dead_sensor_ratio, dead_fphx_ratio, dead_chan_ratio);
 
