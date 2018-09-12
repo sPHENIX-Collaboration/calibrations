@@ -1,5 +1,6 @@
 // $$Id: $$
 #include <TVector2.h>
+#include <TVector3.h>
 #include <iostream>
 
 using namespace std;
@@ -11,13 +12,13 @@ class four_corner
   TVector2 p1, p2, p3, p4;
 };
 
+double coplanary_adjustment_sum = 0;
+
 void Construct_CEMC_Param_ProjTilted()
 {
   const TString outputFolder = "../Geometry_2018ProjTilted/";
 
-  cout << "Construct_CEMC_Param_ProjTilted() - Entry -> "<<outputFolder << endl;
-
-
+  cout << "Construct_CEMC_Param_ProjTilted() - Entry -> " << outputFolder << endl;
 
   gSystem->Load("libg4detectors.so");
 
@@ -40,8 +41,8 @@ void Construct_CEMC_Param_ProjTilted()
   param->set_double_param("zpos", 0);
 
   // construct 32 sectors
-    const int n_sector = 32;
-//  const int n_sector = 1;
+  const int n_sector = 32;
+  //  const int n_sector = 1;
 
   // 2017 design - The final choice was 58 rows x 46 cols = 2668 fibers.
   const int NFiberY = 58;
@@ -66,8 +67,8 @@ void Construct_CEMC_Param_ProjTilted()
   const double thickness = 26.130000;
   const double zmax = 149.470000;
   const double zmin = -zmax;
-//  const double azimuthal_tilt = -0.09; // was -0.1; July-2017 design use 90mrad tilt in the azimuth. See Dan's talk https://indico.bnl.gov/conferenceDisplay.py?confId=3459
-  const double azimuthal_tilt = -9./180.*TMath::Pi(); //  June-2018 design use 9 degree tilt in the azimuth. See Dan's talk https://indico.bnl.gov/event/4725/
+  //  const double azimuthal_tilt = -0.09; // was -0.1; July-2017 design use 90mrad tilt in the azimuth. See Dan's talk https://indico.bnl.gov/conferenceDisplay.py?confId=3459
+  const double azimuthal_tilt = -9. / 180. * TMath::Pi();  //  June-2018 design use 9 degree tilt in the azimuth. See Dan's talk https://indico.bnl.gov/event/4725/
   const int azimuthal_n_sec = 32;
   const int max_phi_bin_in_sec = 4;  // four blocks per sector in athemuth
 
@@ -136,7 +137,7 @@ void Construct_CEMC_Param_ProjTilted()
 
         b = get_block(block_id, side);
 
-        cout << "Construct_CEMC_Param_2017() - block_id " << prefix.str() << endl;
+        cout << "Construct_CEMC_Param_ProjTilted() - block_id " << prefix.str() << endl;
         TVector2 c12 = 0.5 * (b->p1 + b->p2);
         TVector2 c34 = 0.5 * (b->p3 + b->p4);
         TVector2 center = 0.5 * (c12 + c34);
@@ -161,7 +162,7 @@ void Construct_CEMC_Param_ProjTilted()
         c12_rotated = c12_rotated.Rotate(pRotationAngleX);
         c34_rotated = c34_rotated.Rotate(pRotationAngleX);
 
-        cout << "Construct_CEMC_Param_2017() - block_id " << block_id
+        cout << "Construct_CEMC_Param_ProjTilted() - block_id " << block_id
              << " four corner after rotation to along z axis by "
              << pRotationAngleX << endl;
         //        cout << "\tp1 = " << b_rotated->p1.X() << ",\t" << b_rotated->p1.Y()
@@ -234,7 +235,66 @@ void Construct_CEMC_Param_ProjTilted()
         param->set_double_param(prefix.str() + "LightguideTaperRatio",
                                 0.545 / 1.039);
         param->set_string_param(prefix.str() + "LightguideMaterial", "PMMA");
-      }
+
+        // coplanary fix
+        if (1)
+        {
+          TVector3 p1(param->get_double_param(prefix.str() + "pDx1"), -param->get_double_param(prefix.str() + "pDy1"), -param->get_double_param(prefix.str() + "pDz"));
+          TVector3 p2(param->get_double_param(prefix.str() + "pDx2"), +param->get_double_param(prefix.str() + "pDy1"), -param->get_double_param(prefix.str() + "pDz"));
+          TVector3 p3(param->get_double_param(prefix.str() + "pDx3"), -param->get_double_param(prefix.str() + "pDy2"), +param->get_double_param(prefix.str() + "pDz"));
+          TVector3 p4(param->get_double_param(prefix.str() + "pDx4"), +param->get_double_param(prefix.str() + "pDy2"), +param->get_double_param(prefix.str() + "pDz"));
+
+          TVector3 Cross1((p2 - p1).Cross(p3 - p1));
+          TVector3 Cross2((p3 - p1).Cross(p4 - p1));
+
+          TVector3 AveragePlaneNorm = Cross1 - Cross2;
+          AveragePlaneNorm = AveragePlaneNorm / AveragePlaneNorm.Mag();
+
+          TVector3 AveragePlaneCenter((p1 + p2 + p3 + p4));
+          AveragePlaneCenter *= 1. / 4.;
+
+          param->set_double_param(prefix.str() + "pDx1", CoplanaryFix(p1, AveragePlaneNorm, AveragePlaneCenter));
+          param->set_double_param(prefix.str() + "pDx2", CoplanaryFix(p2, AveragePlaneNorm, AveragePlaneCenter));
+          param->set_double_param(prefix.str() + "pDx3", CoplanaryFix(p3, AveragePlaneNorm, AveragePlaneCenter));
+          param->set_double_param(prefix.str() + "pDx4", CoplanaryFix(p4, AveragePlaneNorm, AveragePlaneCenter));
+
+        }  // coplanary fix
+
+        //coplanary checks
+        if (1)
+        {
+          //          00046 //      pDz     Half-length along the z-axis
+          //          00047 //      pTheta  Polar angle of the line joining the centres of the faces
+          //          00048 //              at -/+pDz
+          //          00049 //      pPhi    Azimuthal angle of the line joing the centre of the face at
+          //          00050 //              -pDz to the centre of the face at +pDz
+          //          00051 //      pDy1    Half-length along y of the face at -pDz
+          //          00052 //      pDx1    Half-length along x of the side at y=-pDy1 of the face at -pDz
+          //          00053 //      pDx2    Half-length along x of the side at y=+pDy1 of the face at -pDz
+          //          00054 //      pAlp1   Angle with respect to the y axis from the centre of the side
+          //          00055 //              at y=-pDy1 to the centre at y=+pDy1 of the face at -pDz
+          //          00056 //
+          //          00057 //      pDy2    Half-length along y of the face at +pDz
+          //          00058 //      pDx3    Half-length along x of the side at y=-pDy2 of the face at +pDz
+          //          00059 //      pDx4    Half-length along x of the side at y=+pDy2 of the face at +pDz
+          //          00060 //      pAlp2   Angle with respect to the y axis from the centre of the side
+          //          00061 //              at y=-pDy2 to the centre at y=+pDy2 of the face at +pDz
+
+          TVector3 p1(param->get_double_param(prefix.str() + "pDx1"), -param->get_double_param(prefix.str() + "pDy1"), -param->get_double_param(prefix.str() + "pDz"));
+          TVector3 p2(param->get_double_param(prefix.str() + "pDx2"), +param->get_double_param(prefix.str() + "pDy1"), -param->get_double_param(prefix.str() + "pDz"));
+          TVector3 p3(param->get_double_param(prefix.str() + "pDx3"), -param->get_double_param(prefix.str() + "pDy2"), +param->get_double_param(prefix.str() + "pDz"));
+          TVector3 p4(param->get_double_param(prefix.str() + "pDx4"), +param->get_double_param(prefix.str() + "pDy2"), +param->get_double_param(prefix.str() + "pDz"));
+
+          TVector3 Cross1((p2 - p1).Cross(p3 - p1));
+          TVector3 Cross2((p3 - p1).Cross(p4 - p1));
+
+          const double coplanary = Cross1.Cross(Cross2).Mag() / Cross1.Dot(Cross2);
+
+          cout << "coplanary for " << prefix.str() << " = " << coplanary << endl;
+
+        }  //coplanary checks
+
+      }  //       for (int block_sec = 0; block_sec < max_phi_bin_in_sec; block_sec++)
     }
   }
 
@@ -255,6 +315,24 @@ void Construct_CEMC_Param_ProjTilted()
   paramcontainer->WriteToFile("CEMC", "root", outputFolder.Data());
 
   paramcontainer->WriteToFile("CEMC", "xml", outputFolder.Data());
+}
+
+double CoplanaryFix(TVector3 p, TVector3 AveragePlaneNorm, TVector3 AveragePlaneCenter)
+{
+  TVector3 p_orig(p);
+  p_orig.SetX(0);
+
+  TVector3 p_vec(1, 0, 0);
+
+  const double x_new = (AveragePlaneCenter - p_orig).Dot(AveragePlaneNorm) / p_vec.Dot(AveragePlaneNorm);
+  assert(x_new > 0);
+
+  const double adjustment = x_new - p.X();
+  coplanary_adjustment_sum += fabs(adjustment);
+
+  cout << "CoplanaryFix - adjustment = " << adjustment << ", total adjustment so far = " << coplanary_adjustment_sum << endl;
+
+  return x_new;
 }
 
 four_corner *
