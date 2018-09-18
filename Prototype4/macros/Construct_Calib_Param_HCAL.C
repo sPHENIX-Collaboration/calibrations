@@ -15,7 +15,7 @@ Construct_Calib_Param_HCAL(
   char *det_name[] = {"HCALIN_LG","HCALIN_HG","HCALOUT_LG","HCALOUT_HG"};
 
   // double sf[] = {0.0819254,0.032649}; //Sampling fractions
-  double sf[] = {0.0631283,0.0338021}; //Sampling fractions from Songkyo Lee
+  // double sf[] = {0.0631283,0.0338021}; //Sampling fractions from Songkyo Lee
   double ngains = 2;
   double gain_values[] = {32, 16};
   char *gain_tags[] = {"LG","HG"};
@@ -61,7 +61,7 @@ Construct_Calib_Param_HCAL(
 
       string calib_const_name(Form("calib_const_column%d_row%d", col, row));
 
-      mip *= (0.001/sf[idet]); //MeV to GeV and sf
+      // mip *= (0.001/sf[idet]); //MeV to GeV and sf
       param->set_double_param(calib_const_name, mip);
       count++;
 
