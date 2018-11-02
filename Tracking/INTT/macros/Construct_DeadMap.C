@@ -7,7 +7,7 @@ using namespace std;
 void Construct_DeadMap()
 {
   for (int ladder_type = 0; ladder_type < 2; ++ladder_type)
-    for (int rnd_seed = 0; rnd_seed < 4; ++rnd_seed)
+    for (int rnd_seed = 4; rnd_seed < 8; ++rnd_seed)
     {
       Construct_DeadMap_Work(rnd_seed, ladder_type);
     }
@@ -36,12 +36,12 @@ void Construct_DeadMap_Work(const int rnd_seed = 3,
 //  const double dead_sensor_ratio = 0.50;
 //  const double dead_fphx_ratio = 0.04;
 //  const double dead_chan_ratio = 0.001;  //% 0.1% dead channel
-  const double dead_sensor_ratio = 0.06;
-  const double dead_fphx_ratio = 0.02;
-  const double dead_chan_ratio = 0.001;  //% 0.1% dead channel
-//  const double dead_sensor_ratio = 0.02;
+//  const double dead_sensor_ratio = 0.06;
 //  const double dead_fphx_ratio = 0.02;
 //  const double dead_chan_ratio = 0.001;  //% 0.1% dead channel
+  const double dead_sensor_ratio = 0.02;
+  const double dead_fphx_ratio = 0.02;
+  const double dead_chan_ratio = 0.001;  //% 0.1% dead channel
                                          //                                           const double dead_sensor_ratio = 0.02;
                                          //                                           const double dead_fphx_ratio = 0.00;
                                          //                                           const double dead_chan_ratio = 0.000;  //% 0.1% dead channel
