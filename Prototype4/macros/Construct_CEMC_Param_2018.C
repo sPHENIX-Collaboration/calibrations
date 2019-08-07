@@ -206,7 +206,7 @@ void Construct_CEMC_Param_2018()
   PHParameters *param = new PHParameters("CEMC_0");
 
   param->set_string_param("description",
-                          "sPHENIX 2017 SPACAL prototype in the default orientation");
+                          "sPHENIX 2018 SPACAL prototype in the 5-degree tilted orientation");
 
   const double inch_to_cm = 2.54;
 
@@ -231,6 +231,7 @@ void Construct_CEMC_Param_2018()
 
   param->set_double_param("electronics_thickness", 0.1 * inch_to_cm);
   param->set_string_param("electronics_material", "G10");
+
 
   // construct 4x8 modules
   const int ny = 4;
@@ -264,10 +265,10 @@ void Construct_CEMC_Param_2018()
 
   const double radius = 90;
   const double thickness = 26.130000;
-  const double zmax = 149.470000;
-  const double zmin = -zmax;
+  const double zmin = (963.71 - 50) / 10;
+  const double zmax = (1330.86 + 30) / 10;
   //  const double azimuthal_tilt = -0.09; // was -0.1; July-2017 design use 90mrad tilt in the azimuth. See Dan's talk https://indico.bnl.gov/conferenceDisplay.py?confId=3459
-  const double azimuthal_tilt = -5. / 180. * TMath::Pi();  //  2018 test beam of -5 degrees
+  const double azimuthal_tilt = 5. / 180. * TMath::Pi();  //  2018 test beam of -5 degrees
   const int azimuthal_n_sec = 32;
   const int max_phi_bin_in_sec = nx;  // four blocks per sector in athemuth
 
@@ -333,7 +334,7 @@ void Construct_CEMC_Param_2018()
         //
 
         //use conform tower ID convension as defined in PHG4CylinderGeom_Spacalv3::get_tower_z_phi_ID()
-        const int block_map_id = (100 + side * (block_id - start_block )) * 10 + block_sec;
+        const int block_map_id = (side * (block_id - start_block )) * 10 + block_sec;
         param->set_int_param(prefix.str() + "id", block_map_id);
 
         b = get_block(block_id, side);
