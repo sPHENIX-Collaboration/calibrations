@@ -463,7 +463,7 @@
       <section zOrder="1" zPosition="0.125" xOffset="0" yOffset="0" scalingFactor="1"/>
     </xtru>
     <box name="TGeoBBox0x21" x="1.0901824495064851" y="0.04" z="0.04" lunit="cm"/>
-    <box name="connBoxA" x="1" y="0.470" z="2.4" lunit="cm"/>
+    <box name="connBoxA" x="1" y="0.47" z="2.40" lunit="cm"/>
     <tube name="tube2HoleA" rmin="0" rmax="0.06" z="1.4" startphi="0" deltaphi="360" aunit="deg" lunit="cm"/>
     <subtraction name="TGeoCompositeShape0x6">
       <first ref="connBoxA"/>
@@ -585,7 +585,7 @@
       <rotation name="TGeoCompositeShape0x9sideHole2ATSrot" x="90" y="-0" z="90" unit="deg"/>
     </subtraction>
     <tube name="TGeoTube0x2" rmin="0.0595" rmax="0.0825" z="1.25" startphi="0" deltaphi="360" aunit="deg" lunit="cm"/>
-    <box name="connBoxC" x="1" y="0.47" z="1.4" lunit="cm"/>
+    <box name="connBoxC" x="1" y="0.47" z="1.40" lunit="cm"/>
     <tube name="tube2HoleC" rmin="0" rmax="0.06" z="1.4" startphi="0" deltaphi="360" aunit="deg" lunit="cm"/>
     <subtraction name="TGeoCompositeShape0x25">
       <first ref="connBoxC"/>
@@ -869,7 +869,7 @@
     </volume>
     <volume name="IBConnectorASide">
       <materialref ref="ITS_AIR"/>
-      <solidref ref="TGeoCompositeShape0x2"/>
+      <solidref ref="connBoxA"/>
       <physvol name="IBConnectorBlockTailASide_1" copynumber="1">
         <volumeref ref="IBConnectorBlockTailASide"/>
         <positionref ref="IBConnectorBlockTailASide_1inIBConnectorASidepos"/>
@@ -901,7 +901,7 @@
     </volume>
     <volume name="IBConnectorCSide">
       <materialref ref="ITS_AIR"/>
-      <solidref ref="TGeoCompositeShape0x21"/>
+      <solidref ref="connBoxC"/>
       <physvol name="IBConnectorBlockTailCSide_1" copynumber="1">
         <volumeref ref="IBConnectorBlockTailCSide"/>
         <positionref ref="IBConnectorBlockTailCSide_1inIBConnectorCSidepos"/>
