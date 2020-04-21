@@ -40139,10 +40139,10 @@
     </tessellated>
   </solids>
   <define>
-    <position name="center" x="65.000000" y="-43.370585" z="-0.000000" unit="mm"/>
+    <position name="center" x="0.000000" y="0" z="-0.000000" unit="mm"/>
   </define>
   <solids>
-    <box name="worldbox" x="9154.164178" y="383.347808" z="282.088978" lunit="mm"/>
+    <box name="worldbox" x="10000" y="500" z="500" lunit="mm"/>
   </solids>
   <structure>
     <volume name="V-Detector chamber - inner hadron forward:1">
@@ -40181,7 +40181,7 @@
       <materialref ref="ALUMINUM"/>
       <solidref ref="T-Detector chamber - hadron rear"/>
     </volume>
-    <volume name="World">
+    <volume name="WorldPipe">
       <materialref ref="VACUUM"/>
       <solidref ref="worldbox"/>
       <physvol name="P-Detector chamber - inner hadron forward:1">
@@ -40223,6 +40223,6 @@
     </volume>
   </structure>
   <setup name="Default" version="1.0">
-    <world ref="World"/>
+    <world ref="WorldPipe"/>
   </setup>
 </gdml>
