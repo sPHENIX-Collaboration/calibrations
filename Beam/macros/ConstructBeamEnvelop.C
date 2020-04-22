@@ -1,7 +1,7 @@
 // $Id: $
 
 /*!
- * \file ConstructBeamEnclosure.C
+ * \file ConstructBeamEnvelope.C
  * \brief 
  * \author Jin Huang <jhuang@bnl.gov>
  * \version $Revision:   $
@@ -17,12 +17,15 @@
 #include <TGeoPcon.h>
 #include <TROOT.h>
 
-void ConstructBeamEnclosure()
+//! This function construct a enclosure volume that can contain the beam pipe structures
+//! It define the vacuum region and preferably to be as close to the outer surface of the engineering model as possible
+//! In this simple implementation, this is just a simple TGeoPcon that is 5mm larger than the highest radius point of the pipe
+void ConstructBeamEnvelope()
 {
   TEveManager::Create();
 
   // gStyle->SetCanvasPreferGL(true);
-  TGeoManager *geom = new TGeoManager("BeamEnclosure", "BeamEnclosure");
+  TGeoManager *geom = new TGeoManager("BeamEnvelope", "BeamEnvelope");
   //--- define some materials
   TGeoMaterial *matVacuum = new TGeoMaterial("VACUUM", 0, 0, 0);
   //   //--- define some media
@@ -46,7 +49,7 @@ void ConstructBeamEnclosure()
     //  124   7.582+1.3   Inner Flange
     //  448.425 12.896+9.4    hadron pipe
     //  450   3.0       electron pipe
-    TGeoVolume *vol = gGeoManager->MakePcon("HadronForwardEnclosure", Vacuum, 0, 360, 6);
+    TGeoVolume *vol = gGeoManager->MakePcon("HadronForwardEnvelope", Vacuum, 0, 360, 6);
     TGeoPcon *pcon = (TGeoPcon *) (vol->GetShape());
     pcon->DefineSection(0, 66.81, 0, 3.1 + eclosure_expansion);
     pcon->DefineSection(1, 67.051, 0, 3.227 + eclosure_expansion);
@@ -61,14 +64,14 @@ void ConstructBeamEnclosure()
     //    Electron forward
     //    z (cm)    R (cm)
     //    -79.810   3.1   pipe lip
-    //    -80     3.227
+    //    -80.7     sqrt(3.227^2 * 3.4^2)
     //    -450    10.25+3.372
     //    -463    10.050+3.372
-    TGeoVolume *vol = gGeoManager->MakePcon("ElectronForwardEnclosure", Vacuum, 0, 360, 4);
+    TGeoVolume *vol = gGeoManager->MakePcon("ElectronForwardEnvelope", Vacuum, 0, 360, 4);
     TGeoPcon *pcon = (TGeoPcon *) (vol->GetShape());
     pcon->DefineSection(0, -463, 0, 10.050 + 3.372 + eclosure_expansion);
     pcon->DefineSection(1, -450, 0, 10.25 + 3.372 + eclosure_expansion);
-    pcon->DefineSection(2, -80, 0, 3.227 + eclosure_expansion);
+    pcon->DefineSection(2, -80.7, 0, sqrt(pow(3.227, 2) + pow(3.4, 2)) + eclosure_expansion);
     pcon->DefineSection(3, -79.810, 0, 3.1 + eclosure_expansion);
     top->AddNode(vol, 2);
   }
@@ -79,7 +82,7 @@ void ConstructBeamEnclosure()
 
   assert(gGeoManager);
 
-  gGeoManager->Export("ConstructBeamEnclosure.gdml");
+  gGeoManager->Export("ConstructBeamEnvelope.gdml");
 
   if (!gROOT->GetListOfGeometries()->FindObject(gGeoManager))
     gROOT->GetListOfGeometries()->Add(gGeoManager);

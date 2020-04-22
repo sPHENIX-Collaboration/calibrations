@@ -40143,6 +40143,20 @@
   </define>
   <solids>
     <box name="worldbox" z="10000" x="10000" y="10000" lunit="mm"/>
+    <polycone name="HadronForwardEnvelope0x1" startphi="0" deltaphi="360" aunit="deg" lunit="cm">
+      <zplane z="66.810000000000002" rmin="0" rmax="3.6000000000000001"/>
+      <zplane z="67.051000000000002" rmin="0" rmax="3.7269999999999999"/>
+      <zplane z="120" rmin="0" rmax="9.3819999999999997"/>
+      <zplane z="124" rmin="0" rmax="9.3819999999999997"/>
+      <zplane z="448.42500000000001" rmin="0" rmax="22.795999999999999"/>
+      <zplane z="450" rmin="0" rmax="3.5"/>
+    </polycone>
+    <polycone name="ElectronForwardEnvelope0x1" startphi="0" deltaphi="360" aunit="deg" lunit="cm">
+      <zplane z="-463" rmin="0" rmax="13.922000000000001"/>
+      <zplane z="-450" rmin="0" rmax="14.122"/>
+      <zplane z="-80.700000000000003" rmin="0" rmax="5.1875930924089388"/>
+      <zplane z="-79.810000000000002" rmin="0" rmax="3.6000000000000001"/>
+    </polycone>
   </solids>
   <structure>
     <volume name="V-Detector chamber - inner hadron forward:1">
@@ -40181,21 +40195,15 @@
       <materialref ref="ALUMINUM"/>
       <solidref ref="T-Detector chamber - hadron rear"/>
     </volume>
-    <volume name="WorldPipe">
+	
+    <volume name="HadronForwardEnvelope">
       <materialref ref="VACUUM"/>
-      <solidref ref="worldbox"/>
+      <solidref ref="HadronForwardEnvelope0x1"/>
       <physvol name="P-Detector chamber - inner hadron forward:1">
         <volumeref ref="V-Detector chamber - inner hadron forward:1"/>
         <positionref ref="center"/>
       </physvol>
-      <physvol name="P-PI-FLG-0061">
-        <volumeref ref="V-PI-FLG-0061"/>
-        <positionref ref="center"/>
-      </physvol>
-      <physvol name="P-Detector chamber - hadron forward">
-        <volumeref ref="V-Detector chamber - hadron forward"/>
-        <positionref ref="center"/>
-      </physvol>
+
       <physvol name="P-PI-FLG-0062-1">
         <volumeref ref="V-PI-FLG-0062-1"/>
         <positionref ref="center"/>
@@ -40221,6 +40229,33 @@
         <positionref ref="center"/>
       </physvol>
     </volume>
+	
+    <volume name="ElectronForwardEnvelope">
+      <materialref ref="VACUUM"/>
+      <solidref ref="ElectronForwardEnvelope0x1"/>
+      <physvol name="P-PI-FLG-0061">
+        <volumeref ref="V-PI-FLG-0061"/>
+        <positionref ref="center"/>
+      </physvol>
+      <physvol name="P-Detector chamber - hadron forward">
+        <volumeref ref="V-Detector chamber - hadron forward"/>
+        <positionref ref="center"/>
+      </physvol>
+	</volume>
+	
+    <volume name="WorldPipe">
+      <materialref ref="VACUUM"/>
+      <solidref ref="worldbox"/>
+      <physvol name="HadronForwardEnvelope_1" copynumber="1">
+        <volumeref ref="HadronForwardEnvelope"/>
+        <positionref ref="center"/>
+      </physvol>
+      <physvol name="ElectronForwardEnvelope_2" copynumber="2">
+        <volumeref ref="ElectronForwardEnvelope"/>
+        <positionref ref="center"/>
+      </physvol>
+    </volume>
+	
   </structure>
   <setup name="Default" version="1.0">
     <world ref="WorldPipe"/>
