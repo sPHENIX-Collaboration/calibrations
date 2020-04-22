@@ -15,10 +15,6 @@ Gtower_dx 10
 Gtower_dy 10
 Gtower_dz 100
 #Tower type,idx_j,idx_k,idx_l,x[cm],y[cm],z[cm],dx[cm],dy[cm],dz[cm],rot_x,rot_y,rot_z
-Tower 0	25	25	0	-20	-20	0	10	10	100	0	0	0
-Tower 0	25	29	0	-20	20	0	10	10	100	0	0	0
-Tower 0	29	25	0	20	-20	0	10	10	100	0	0	0
-Tower 0	29	29	0	20	20	0	10	10	100	0	0	0
 Tower 0	24	27	0	-30	0	0	10	10	100	0	0	0
 Tower 0	27	24	0	0	-30	0	10	10	100	0	0	0
 Tower 0	27	30	0	0	30	0	10	10	100	0	0	0
