@@ -1,5 +1,6 @@
 #include <iostream>
 #include <fstream>
+#include <TMath.h>
 
 using namespace std;
 
@@ -16,9 +17,9 @@ void makeMapping_EEMC()
   float eemc_rot_z0 =  0.0;
 
   /* Detector envelope size (conde shape) */
-  float eemc_rmin1 = 7.4; // cm
+  float eemc_rmin1 = 7.4; // cm - accomodate Mar 2020 EIC beam pipe
   float eemc_rmax1 = 65.6; // cm
-  float eemc_rmin2 = 7.4; // cm
+  float eemc_rmin2 = 7.4; // cm- accomodate Mar 2020 EIC beam pipe
   float eemc_rmax2 = 65.6; // cm
   float eemc_dz    = 18.0; // cm
 
