@@ -40140,6 +40140,8 @@
   </solids>
   <define>
     <position name="center" z="0.000000" x="0" y="-0.000000" unit="mm"/>
+    <position name="center-100umx" z="0.000000" x="-.1" y="-0.000000" unit="mm"/>
+    <position name="center-10umx" z="0.000000" x="-.01" y="-0.000000" unit="mm"/>
   </define>
   <solids>
     <box name="worldbox" z="10000" x="10000" y="10000" lunit="mm"/>
@@ -40199,10 +40201,11 @@
     <volume name="HadronForwardEnvelope">
       <materialref ref="VACUUM"/>
       <solidref ref="HadronForwardEnvelope0x1"/>
-      <physvol name="P-Detector chamber - inner hadron forward:1">
+	  
+<!--       <physvol name="P-Detector chamber - inner hadron forward:1">
         <volumeref ref="V-Detector chamber - inner hadron forward:1"/>
         <positionref ref="center"/>
-      </physvol>
+      </physvol> -->
 
       <physvol name="P-PI-FLG-0062-1">
         <volumeref ref="V-PI-FLG-0062-1"/>
@@ -40214,19 +40217,21 @@
       </physvol>
       <physvol name="P-SOLID_2">
         <volumeref ref="V-SOLID_2"/>
-        <positionref ref="center"/>
+        <positionref ref="center-100umx"/>
       </physvol>
       <physvol name="P-Electron beam screen - inner chamber:1">
         <volumeref ref="V-Electron beam screen - inner chamber:1"/>
         <positionref ref="center"/>
       </physvol>
-      <physvol name="P-SOLID_1">
+
+<!--       <physvol name="P-SOLID_1">
         <volumeref ref="V-SOLID_1"/>
         <positionref ref="center"/>
-      </physvol>
+      </physvol> -->
+	  
       <physvol name="P-Detector chamber - hadron rear">
         <volumeref ref="V-Detector chamber - hadron rear"/>
-        <positionref ref="center"/>
+        <positionref ref="center-10umx"/>
       </physvol>
     </volume>
 	
