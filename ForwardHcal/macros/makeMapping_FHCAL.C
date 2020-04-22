@@ -1,9 +1,17 @@
-makeMapping_FHCAL()
+
+
+#include <iostream>
+#include <fstream>
+#include <TMath.h>
+
+using namespace std;
+
+void makeMapping_FHCAL()
 {
   float hhcal_rmin1 = 5.0; // cm
   float hhcal_rmax1 = 262.0; // cm
   float hhcal_rmin2 = 5.0; // cm
-  float hhcal_rmax2 = 336.9.0; // cm
+  float hhcal_rmax2 = 336.90; // cm
 
   float tower_dx = 10.0; // cm
   float tower_dy = 10.0; // cm
