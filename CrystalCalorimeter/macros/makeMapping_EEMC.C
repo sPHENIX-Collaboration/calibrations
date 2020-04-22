@@ -1,20 +1,25 @@
-makeMapping_EEMC()
+#include <iostream>
+#include <fstream>
+
+using namespace std;
+
+void makeMapping_EEMC()
 {
 
   /* Global detector position / transformation */
   float eemc_x0 =  0.0; // cm,
   float eemc_y0 =  0.0; // cm,
-  float eemc_z0 = -108.0; // cm,
+  float eemc_z0 = -170.0; // cm,
 
   float eemc_rot_x0 =  0.0;
   float eemc_rot_y0 =  TMath::Pi();
   float eemc_rot_z0 =  0.0;
 
   /* Detector envelope size (conde shape) */
-  float eemc_rmin1 = 2.2; // cm
+  float eemc_rmin1 = 7.4; // cm
   float eemc_rmax1 = 65.6; // cm
-  float eemc_rmin2 = 2.6; // cm
-  float eemc_rmax2 = 77.5; // cm
+  float eemc_rmin2 = 7.4; // cm
+  float eemc_rmax2 = 65.6; // cm
   float eemc_dz    = 18.0; // cm
 
   /* Tower parameters */
@@ -74,8 +79,8 @@ makeMapping_EEMC()
   float tower_r = sqrt(  tower_dx * tower_dx + tower_dy * tower_dy );
 
   /* define center of crystal with index j=0, k=0 */
-  float xpos_j0_k0 = 0.0 - ( 0.5 * n_towers_j - 0.5 ) * tower_dx;
-  float ypos_j0_k0 = 0.0 - ( 0.5 * n_towers_k - 0.5 ) * tower_dy;
+  xpos_j0_k0 = 0.0 - ( 0.5 * n_towers_j - 0.5 ) * tower_dx;
+  ypos_j0_k0 = 0.0 - ( 0.5 * n_towers_k - 0.5 ) * tower_dy;
 
   unsigned idx_l = 0;
 
