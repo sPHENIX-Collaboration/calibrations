@@ -1,4 +1,10 @@
-makeMapping_FEMC_fsPHENIX()
+#include <iostream>
+#include <fstream>
+#include <TMath.h>
+
+using namespace std;
+
+void makeMapping_FEMC_fsPHENIX()
 {
 
   /* Global detector position / transformation */
@@ -50,9 +56,9 @@ makeMapping_FEMC_fsPHENIX()
       femc_rot_z0 =  0.0;
 
       /* Detector envelope size (cone shape) */
-      femc_rmin1 = 10.9; // cm
+      femc_rmin1 = 20.0; // cm - accomodate Mar 2020 EIC beam pipe
       femc_rmax1 = 183; // cm
-      femc_rmin2 = 10.9; // cm
+      femc_rmin2 = 20.0; // cm - accomodate Mar 2020 EIC beam pipe
       femc_rmax2 = 183; // cm
 
       /* Detector size */
@@ -180,8 +186,8 @@ makeMapping_FEMC_fsPHENIX()
 		      xposm = xpos - 0.5*towers_per_supermodule_x*tower_dx + (m_idx_j+0.5)*tower_dx;
 		      yposm = -(ypos - 0.5*towers_per_supermodule_y*tower_dy + (m_idx_k+0.5)*tower_dy);
 		      
-		      int f_idx_j = n_towers_j/2 + m_idx_j + idx_j*towers_per_supermodule_y; 
-		      int f_idx_k = n_towers_k/2 - m_idx_k - idx_k*towers_per_supermodule_y - 1; 
+		       f_idx_j = n_towers_j/2 + m_idx_j + idx_j*towers_per_supermodule_y;
+		       f_idx_k = n_towers_k/2 - m_idx_k - idx_k*towers_per_supermodule_y - 1;
 		      
 		      fout << "Tower " << 2 << " " << f_idx_j + idx_offset << " " << f_idx_k + idx_offset << " " << idx_l << " " << xposm << " " << yposm << " " << zpos << " " << tower_dx << " " << tower_dy << " " << tower_dz << " 0 0 0" << endl;
 	  
@@ -195,8 +201,8 @@ makeMapping_FEMC_fsPHENIX()
 		      xposm = -(xpos - 0.5*towers_per_supermodule_x*tower_dx + (m_idx_j+0.5)*tower_dx);
 		      yposm = ypos - 0.5*towers_per_supermodule_y*tower_dy + (m_idx_k+0.5)*tower_dy;
 		      
-		      int f_idx_j = n_towers_j/2 - m_idx_j - idx_j*towers_per_supermodule_y - 1; 
-		      int f_idx_k = n_towers_k/2 + m_idx_k + idx_k*towers_per_supermodule_y; 
+		       f_idx_j = n_towers_j/2 - m_idx_j - idx_j*towers_per_supermodule_y - 1;
+		       f_idx_k = n_towers_k/2 + m_idx_k + idx_k*towers_per_supermodule_y;
 
 		      fout << "Tower " << 2 << " " << f_idx_j + idx_offset << " " << f_idx_k + idx_offset  << " " << idx_l << " " << xposm << " " << yposm << " " << zpos << " " << tower_dx << " " << tower_dy << " " << tower_dz << " 0 0 0" << endl;
 	  
@@ -210,8 +216,8 @@ makeMapping_FEMC_fsPHENIX()
 		      xposm = -(xpos - 0.5*towers_per_supermodule_x*tower_dx + (m_idx_j+0.5)*tower_dx);
 		      yposm = -(ypos - 0.5*towers_per_supermodule_y*tower_dy + (m_idx_k+0.5)*tower_dy);
 
-		      int f_idx_j = n_towers_j/2 - m_idx_j - idx_j*towers_per_supermodule_y - 1; 
-		      int f_idx_k = n_towers_k/2 - m_idx_k - idx_k*towers_per_supermodule_y - 1; 
+		       f_idx_j = n_towers_j/2 - m_idx_j - idx_j*towers_per_supermodule_y - 1;
+		       f_idx_k = n_towers_k/2 - m_idx_k - idx_k*towers_per_supermodule_y - 1;
 		      
 		      fout << "Tower " << 2 << " " << f_idx_j + idx_offset << " " << f_idx_k + idx_offset << " " << idx_l << " " << xposm << " " << yposm << " " << zpos << " " << tower_dx << " " << tower_dy << " " << tower_dz << " 0 0 0" << endl;
 	  

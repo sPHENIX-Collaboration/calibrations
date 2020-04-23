@@ -1,4 +1,10 @@
-makeMapping_FEMC_EIC( string setup="PHENIXEMCal" )
+#include <iostream>
+#include <fstream>
+#include <TMath.h>
+
+using namespace std;
+
+void makeMapping_FEMC_EIC( string setup="PHENIXEMCal" )
 {
 
   /* Global detector position / transformation */
@@ -36,9 +42,9 @@ makeMapping_FEMC_EIC( string setup="PHENIXEMCal" )
       femc_rot_z0 =  0.0;
 
       /* Detector envelope size (cone shape) */
-      femc_rmin1 = 5.0; // cm
+      femc_rmin1 = 20.0; // cm - accomodate Mar 2020 EIC beam pipe
       femc_rmax1 = 182.655; // cm
-      femc_rmin2 = 5.0; // cm
+      femc_rmin2 = 20.0; // cm - accomodate Mar 2020 EIC beam pipe
       femc_rmax2 = 182.655; // cm
       femc_dz = 36.5; // cm (FULL SIZE)
 
