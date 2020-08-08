@@ -1,0 +1,1304 @@
+<?xml version="1.0"?>
+<gdml xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://service-spi.web.cern.ch/service-spi/app/releases/GDML/schema/gdml.xsd">
+  <define>
+    <position name="ConeABasis0_1inEndWheelsSideApos" x="0" y="0" z="14.5" unit="cm"/>
+    <position name="ConeAMidRing0_1inEndWheelsSideApos" x="0" y="0" z="31" unit="cm"/>
+    <position name="ConeARibVol0_1inEndWheelsSideApos" x="0" y="-5.665" z="31.900000000000002" unit="cm"/>
+    <rotation name="ConeARibVol0_1inEndWheelsSideArot" x="-3.508354649267438e-15" y="-90" z="0" unit="deg"/>
+    <position name="ConeARibVol0_10x1inEndWheelsSideApos" x="2.8324999999999996" y="-4.9060339124388452" z="31.900000000000002" unit="cm"/>
+    <rotation name="ConeARibVol0_10x1inEndWheelsSideArot" x="89.999999999999986" y="-60.000000000000021" z="-90" unit="deg"/>
+    <position name="ConeARibVol0_10x2inEndWheelsSideApos" x="4.9060339124388443" y="-2.8325000000000005" z="31.900000000000002" unit="cm"/>
+    <rotation name="ConeARibVol0_10x2inEndWheelsSideArot" x="90" y="-29.999999999999996" z="-90" unit="deg"/>
+    <position name="ConeARibVol0_10x3inEndWheelsSideApos" x="5.665" y="-3.468812058584878e-16" z="31.900000000000002" unit="cm"/>
+    <rotation name="ConeARibVol0_10x3inEndWheelsSideArot" x="90" y="-7.016709298534876e-15" z="-90" unit="deg"/>
+    <position name="ConeARibVol0_10x4inEndWheelsSideApos" x="4.9060339124388461" y="2.8324999999999987" z="31.900000000000002" unit="cm"/>
+    <rotation name="ConeARibVol0_10x4inEndWheelsSideArot" x="90" y="30.000000000000011" z="-90" unit="deg"/>
+    <position name="ConeARibVol0_10x5inEndWheelsSideApos" x="2.8324999999999996" y="4.9060339124388452" z="31.900000000000002" unit="cm"/>
+    <rotation name="ConeARibVol0_10x5inEndWheelsSideArot" x="89.999999999999986" y="59.999999999999972" z="-90.000000000000014" unit="deg"/>
+    <position name="ConeARibVol0_10x6inEndWheelsSideApos" x="6.937624117169756e-16" y="5.665" z="31.900000000000002" unit="cm"/>
+    <rotation name="ConeARibVol0_10x6inEndWheelsSideArot" x="-180" y="89.999999999999986" z="0" unit="deg"/>
+    <position name="ConeARibVol0_10x7inEndWheelsSideApos" x="-2.8325000000000005" y="4.9060339124388443" z="31.900000000000002" unit="cm"/>
+    <rotation name="ConeARibVol0_10x7inEndWheelsSideArot" x="-89.999999999999986" y="59.999999999999993" z="90" unit="deg"/>
+    <position name="ConeARibVol0_10x8inEndWheelsSideApos" x="-4.9060339124388435" y="2.8325000000000027" z="31.900000000000002" unit="cm"/>
+    <rotation name="ConeARibVol0_10x8inEndWheelsSideArot" x="-90" y="30.000000000000028" z="90" unit="deg"/>
+    <position name="ConeARibVol0_10x9inEndWheelsSideApos" x="-5.665" y="1.0406436175754632e-15" z="31.900000000000002" unit="cm"/>
+    <rotation name="ConeARibVol0_10x9inEndWheelsSideArot" x="-90" y="1.4033418597069752e-14" z="90" unit="deg"/>
+    <position name="ConeARibVol0_10x10inEndWheelsSideApos" x="-4.9060339124388443" y="-2.8325" z="31.900000000000002" unit="cm"/>
+    <rotation name="ConeARibVol0_10x10inEndWheelsSideArot" x="-90" y="-30.000000000000004" z="90" unit="deg"/>
+    <position name="ConeARibVol0_10x11inEndWheelsSideApos" x="-2.8325000000000027" y="-4.9060339124388435" z="31.900000000000002" unit="cm"/>
+    <rotation name="ConeARibVol0_10x11inEndWheelsSideArot" x="-89.999999999999986" y="-60.000000000000021" z="89.999999999999986" unit="deg"/>
+    <position name="ConeAStep0_1inEndWheelsSideApos" x="0" y="0" z="15.199999999999999" unit="cm"/>
+    <rotation name="ConeAStep0_1inEndWheelsSideArot" x="180" y="-8.5929905829982056e-31" z="89.299999999999983" unit="deg"/>
+    <position name="ConeAStep0_2inEndWheelsSideApos" x="0" y="0" z="15.199999999999999" unit="cm"/>
+    <rotation name="ConeAStep0_2inEndWheelsSideArot" x="180" y="-8.5929905829982056e-31" z="119.29999999999998" unit="deg"/>
+    <position name="ConeAStep0_3inEndWheelsSideApos" x="0" y="0" z="15.199999999999999" unit="cm"/>
+    <rotation name="ConeAStep0_3inEndWheelsSideArot" x="180" y="-8.5929905829982056e-31" z="149.30000000000001" unit="deg"/>
+    <position name="ConeAStep0_4inEndWheelsSideApos" x="0" y="0" z="15.199999999999999" unit="cm"/>
+    <rotation name="ConeAStep0_4inEndWheelsSideArot" x="180" y="-8.5929905829982056e-31" z="179.30000000000001" unit="deg"/>
+    <position name="ConeAStep0_5inEndWheelsSideApos" x="0" y="0" z="15.199999999999999" unit="cm"/>
+    <rotation name="ConeAStep0_5inEndWheelsSideArot" x="180" y="-8.5929905829982056e-31" z="-150.70000000000002" unit="deg"/>
+    <position name="ConeAStep0_6inEndWheelsSideApos" x="0" y="0" z="15.199999999999999" unit="cm"/>
+    <rotation name="ConeAStep0_6inEndWheelsSideArot" x="180" y="-8.5929905829982074e-31" z="-120.7" unit="deg"/>
+    <position name="ConeAStep0_7inEndWheelsSideApos" x="0" y="0" z="15.199999999999999" unit="cm"/>
+    <rotation name="ConeAStep0_7inEndWheelsSideArot" x="180" y="-8.5929905829982056e-31" z="-90.699999999999974" unit="deg"/>
+    <position name="ConeAStep0_8inEndWheelsSideApos" x="0" y="0" z="15.199999999999999" unit="cm"/>
+    <rotation name="ConeAStep0_8inEndWheelsSideArot" x="180" y="-8.5929905829982056e-31" z="-60.700000000000031" unit="deg"/>
+    <position name="ConeAStep0_9inEndWheelsSideApos" x="0" y="0" z="15.199999999999999" unit="cm"/>
+    <rotation name="ConeAStep0_9inEndWheelsSideArot" x="180" y="-8.5929905829982074e-31" z="-30.700000000000049" unit="deg"/>
+    <position name="ConeAStep0_10inEndWheelsSideApos" x="0" y="0" z="15.199999999999999" unit="cm"/>
+    <rotation name="ConeAStep0_10inEndWheelsSideArot" x="180" y="-8.5929905829982056e-31" z="-0.70000000000008633" unit="deg"/>
+    <position name="ConeAStep0_11inEndWheelsSideApos" x="0" y="0" z="15.199999999999999" unit="cm"/>
+    <rotation name="ConeAStep0_11inEndWheelsSideArot" x="180" y="-8.5929905829982056e-31" z="29.299999999999983" unit="deg"/>
+    <position name="ConeAStep0_12inEndWheelsSideApos" x="0" y="0" z="15.199999999999999" unit="cm"/>
+    <rotation name="ConeAStep0_12inEndWheelsSideArot" x="180" y="-8.5929905829982056e-31" z="59.299999999999947" unit="deg"/>
+    <position name="ConeABasis1_1inEndWheelsSideApos" x="0" y="0" z="14.5" unit="cm"/>
+    <position name="ConeAMidRing1_1inEndWheelsSideApos" x="0" y="0" z="30.800000000000004" unit="cm"/>
+    <position name="ConeARibVol1_1inEndWheelsSideApos" x="0" y="-8.6650000000000009" z="31.200000000000006" unit="cm"/>
+    <rotation name="ConeARibVol1_1inEndWheelsSideArot" x="-3.508354649267438e-15" y="-90" z="0" unit="deg"/>
+    <position name="ConeARibVol1_10x1inEndWheelsSideApos" x="3.3159519414435032" y="-8.0054161492103013" z="31.200000000000006" unit="cm"/>
+    <rotation name="ConeARibVol1_10x1inEndWheelsSideArot" x="89.999999999999986" y="-67.5" z="-90" unit="deg"/>
+    <position name="ConeARibVol1_10x2inEndWheelsSideApos" x="6.1270802589814348" y="-6.1270802589814357" z="31.200000000000006" unit="cm"/>
+    <rotation name="ConeARibVol1_10x2inEndWheelsSideArot" x="90" y="-45.000000000000007" z="-90" unit="deg"/>
+    <position name="ConeARibVol1_10x3inEndWheelsSideApos" x="8.0054161492103013" y="-3.3159519414435037" z="31.200000000000006" unit="cm"/>
+    <rotation name="ConeARibVol1_10x3inEndWheelsSideArot" x="90" y="-22.500000000000007" z="-90" unit="deg"/>
+    <position name="ConeARibVol1_10x4inEndWheelsSideApos" x="8.6650000000000009" y="-5.3057822573059087e-16" z="31.200000000000006" unit="cm"/>
+    <rotation name="ConeARibVol1_10x4inEndWheelsSideArot" x="90" y="-7.016709298534876e-15" z="-90" unit="deg"/>
+    <position name="ConeARibVol1_10x5inEndWheelsSideApos" x="8.0054161492103013" y="3.3159519414435028" z="31.200000000000006" unit="cm"/>
+    <rotation name="ConeARibVol1_10x5inEndWheelsSideArot" x="90" y="22.499999999999996" z="-90" unit="deg"/>
+    <position name="ConeARibVol1_10x6inEndWheelsSideApos" x="6.1270802589814357" y="6.1270802589814348" z="31.200000000000006" unit="cm"/>
+    <rotation name="ConeARibVol1_10x6inEndWheelsSideArot" x="90" y="44.999999999999993" z="-90.000000000000014" unit="deg"/>
+    <position name="ConeARibVol1_10x7inEndWheelsSideApos" x="3.3159519414435037" y="8.0054161492103013" z="31.200000000000006" unit="cm"/>
+    <rotation name="ConeARibVol1_10x7inEndWheelsSideArot" x="89.999999999999986" y="67.500000000000014" z="-90.000000000000014" unit="deg"/>
+    <position name="ConeARibVol1_10x8inEndWheelsSideApos" x="1.0611564514611817e-15" y="8.6650000000000009" z="31.200000000000006" unit="cm"/>
+    <rotation name="ConeARibVol1_10x8inEndWheelsSideArot" x="-180" y="89.999999999999986" z="0" unit="deg"/>
+    <position name="ConeARibVol1_10x9inEndWheelsSideApos" x="-3.3159519414435024" y="8.0054161492103013" z="31.200000000000006" unit="cm"/>
+    <rotation name="ConeARibVol1_10x9inEndWheelsSideArot" x="-89.999999999999986" y="67.499999999999986" z="90" unit="deg"/>
+    <position name="ConeARibVol1_10x10inEndWheelsSideApos" x="-6.1270802589814348" y="6.1270802589814366" z="31.200000000000006" unit="cm"/>
+    <rotation name="ConeARibVol1_10x10inEndWheelsSideArot" x="-90" y="45.000000000000014" z="90" unit="deg"/>
+    <position name="ConeARibVol1_10x11inEndWheelsSideApos" x="-8.0054161492103013" y="3.315951941443501" z="31.200000000000006" unit="cm"/>
+    <rotation name="ConeARibVol1_10x11inEndWheelsSideArot" x="-90" y="22.499999999999986" z="90" unit="deg"/>
+    <position name="ConeARibVol1_10x12inEndWheelsSideApos" x="-8.6650000000000009" y="1.5917346771917724e-15" z="31.200000000000006" unit="cm"/>
+    <rotation name="ConeARibVol1_10x12inEndWheelsSideArot" x="-90" y="1.4033418597069752e-14" z="90" unit="deg"/>
+    <position name="ConeARibVol1_10x13inEndWheelsSideApos" x="-8.0054161492102995" y="-3.315951941443505" z="31.200000000000006" unit="cm"/>
+    <rotation name="ConeARibVol1_10x13inEndWheelsSideArot" x="-90" y="-22.500000000000014" z="90" unit="deg"/>
+    <position name="ConeARibVol1_10x14inEndWheelsSideApos" x="-6.1270802589814366" y="-6.1270802589814348" z="31.200000000000006" unit="cm"/>
+    <rotation name="ConeARibVol1_10x14inEndWheelsSideArot" x="-90" y="-44.999999999999986" z="89.999999999999986" unit="deg"/>
+    <position name="ConeARibVol1_10x15inEndWheelsSideApos" x="-3.3159519414435015" y="-8.0054161492103013" z="31.200000000000006" unit="cm"/>
+    <rotation name="ConeARibVol1_10x15inEndWheelsSideArot" x="-89.999999999999986" y="-67.500000000000014" z="89.999999999999986" unit="deg"/>
+    <position name="ConeAStep1_1inEndWheelsSideApos" x="0" y="0" z="15.199999999999999" unit="cm"/>
+    <rotation name="ConeAStep1_1inEndWheelsSideArot" x="180" y="-8.5929905829982056e-31" z="106.2" unit="deg"/>
+    <position name="ConeAStep1_2inEndWheelsSideApos" x="0" y="0" z="15.199999999999999" unit="cm"/>
+    <rotation name="ConeAStep1_2inEndWheelsSideArot" x="180" y="-8.5929905829982056e-31" z="128.69999999999996" unit="deg"/>
+    <position name="ConeAStep1_3inEndWheelsSideApos" x="0" y="0" z="15.199999999999999" unit="cm"/>
+    <rotation name="ConeAStep1_3inEndWheelsSideArot" x="180" y="-8.5929905829982056e-31" z="151.19999999999999" unit="deg"/>
+    <position name="ConeAStep1_4inEndWheelsSideApos" x="0" y="0" z="15.199999999999999" unit="cm"/>
+    <rotation name="ConeAStep1_4inEndWheelsSideArot" x="180" y="-8.5929905829982074e-31" z="173.69999999999996" unit="deg"/>
+    <position name="ConeAStep1_5inEndWheelsSideApos" x="0" y="0" z="15.199999999999999" unit="cm"/>
+    <rotation name="ConeAStep1_5inEndWheelsSideArot" x="180" y="-8.5929905829982074e-31" z="-163.80000000000001" unit="deg"/>
+    <position name="ConeAStep1_6inEndWheelsSideApos" x="0" y="0" z="15.199999999999999" unit="cm"/>
+    <rotation name="ConeAStep1_6inEndWheelsSideArot" x="180" y="-8.5929905829982056e-31" z="-141.30000000000004" unit="deg"/>
+    <position name="ConeAStep1_7inEndWheelsSideApos" x="0" y="0" z="15.199999999999999" unit="cm"/>
+    <rotation name="ConeAStep1_7inEndWheelsSideArot" x="180" y="-8.5929905829982074e-31" z="-118.80000000000001" unit="deg"/>
+    <position name="ConeAStep1_8inEndWheelsSideApos" x="0" y="0" z="15.199999999999999" unit="cm"/>
+    <rotation name="ConeAStep1_8inEndWheelsSideArot" x="180" y="-8.5929905829982056e-31" z="-96.30000000000004" unit="deg"/>
+    <position name="ConeAStep1_9inEndWheelsSideApos" x="0" y="0" z="15.199999999999999" unit="cm"/>
+    <rotation name="ConeAStep1_9inEndWheelsSideArot" x="180" y="-8.5929905829982074e-31" z="-73.800000000000011" unit="deg"/>
+    <position name="ConeAStep1_10inEndWheelsSideApos" x="0" y="0" z="15.199999999999999" unit="cm"/>
+    <rotation name="ConeAStep1_10inEndWheelsSideArot" x="180" y="-8.5929905829982056e-31" z="-51.299999999999997" unit="deg"/>
+    <position name="ConeAStep1_11inEndWheelsSideApos" x="0" y="0" z="15.199999999999999" unit="cm"/>
+    <rotation name="ConeAStep1_11inEndWheelsSideArot" x="180" y="-8.5929905829982056e-31" z="-28.800000000000065" unit="deg"/>
+    <position name="ConeAStep1_12inEndWheelsSideApos" x="0" y="0" z="15.199999999999999" unit="cm"/>
+    <rotation name="ConeAStep1_12inEndWheelsSideArot" x="180" y="-8.5929905829982056e-31" z="-6.2999999999999412" unit="deg"/>
+    <position name="ConeAStep1_13inEndWheelsSideApos" x="0" y="0" z="15.199999999999999" unit="cm"/>
+    <rotation name="ConeAStep1_13inEndWheelsSideArot" x="180" y="-8.5929905829982056e-31" z="16.199999999999982" unit="deg"/>
+    <position name="ConeAStep1_14inEndWheelsSideApos" x="0" y="0" z="15.199999999999999" unit="cm"/>
+    <rotation name="ConeAStep1_14inEndWheelsSideArot" x="180" y="-8.5929905829982056e-31" z="38.70000000000001" unit="deg"/>
+    <position name="ConeAStep1_15inEndWheelsSideApos" x="0" y="0" z="15.199999999999999" unit="cm"/>
+    <rotation name="ConeAStep1_15inEndWheelsSideArot" x="180" y="-8.5929905829982056e-31" z="61.200000000000038" unit="deg"/>
+    <position name="ConeAStep1_16inEndWheelsSideApos" x="0" y="0" z="15.199999999999999" unit="cm"/>
+    <rotation name="ConeAStep1_16inEndWheelsSideArot" x="180" y="-8.5929905829982056e-31" z="83.70000000000006" unit="deg"/>
+    <position name="ConeABasis2_1inEndWheelsSideApos" x="0" y="0" z="14.5" unit="cm"/>
+    <position name="ConeAMidRing2_1inEndWheelsSideApos" x="0" y="0" z="30.100000000000001" unit="cm"/>
+    <position name="ConeARibVol2_1inEndWheelsSideApos" x="0" y="-11.665000000000001" z="30.500000000000004" unit="cm"/>
+    <rotation name="ConeARibVol2_1inEndWheelsSideArot" x="-3.508354649267438e-15" y="-90" z="0" unit="deg"/>
+    <position name="ConeARibVol2_10x1inEndWheelsSideApos" x="3.6046832393837618" y="-11.094074262582966" z="30.500000000000004" unit="cm"/>
+    <rotation name="ConeARibVol2_10x1inEndWheelsSideArot" x="89.999999999999986" y="-72.000000000000014" z="-89.999999999999986" unit="deg"/>
+    <position name="ConeARibVol2_10x2inEndWheelsSideApos" x="6.8565149679916999" y="-9.4371832393837636" z="30.500000000000004" unit="cm"/>
+    <rotation name="ConeARibVol2_10x2inEndWheelsSideArot" x="90" y="-54.000000000000007" z="-90" unit="deg"/>
+    <position name="ConeARibVol2_10x3inEndWheelsSideApos" x="9.4371832393837618" y="-6.8565149679917008" z="30.500000000000004" unit="cm"/>
+    <rotation name="ConeARibVol2_10x3inEndWheelsSideArot" x="90" y="-36.000000000000014" z="-90" unit="deg"/>
+    <position name="ConeARibVol2_10x4inEndWheelsSideApos" x="11.094074262582966" y="-3.6046832393837622" z="30.500000000000004" unit="cm"/>
+    <rotation name="ConeARibVol2_10x4inEndWheelsSideArot" x="90" y="-18.000000000000007" z="-90" unit="deg"/>
+    <position name="ConeARibVol2_10x5inEndWheelsSideApos" x="11.665000000000001" y="-7.1427524560269379e-16" z="30.500000000000004" unit="cm"/>
+    <rotation name="ConeARibVol2_10x5inEndWheelsSideArot" x="90" y="-7.016709298534876e-15" z="-90" unit="deg"/>
+    <position name="ConeARibVol2_10x6inEndWheelsSideApos" x="11.094074262582968" y="3.6046832393837609" z="30.500000000000004" unit="cm"/>
+    <rotation name="ConeARibVol2_10x6inEndWheelsSideArot" x="90" y="17.999999999999989" z="-90" unit="deg"/>
+    <position name="ConeARibVol2_10x7inEndWheelsSideApos" x="9.4371832393837636" y="6.8565149679916981" z="30.500000000000004" unit="cm"/>
+    <rotation name="ConeARibVol2_10x7inEndWheelsSideArot" x="90" y="35.999999999999993" z="-90" unit="deg"/>
+    <position name="ConeARibVol2_10x8inEndWheelsSideApos" x="6.8565149679917008" y="9.4371832393837618" z="30.500000000000004" unit="cm"/>
+    <rotation name="ConeARibVol2_10x8inEndWheelsSideArot" x="90" y="53.999999999999993" z="-90.000000000000014" unit="deg"/>
+    <position name="ConeARibVol2_10x9inEndWheelsSideApos" x="3.6046832393837631" y="11.094074262582966" z="30.500000000000004" unit="cm"/>
+    <rotation name="ConeARibVol2_10x9inEndWheelsSideArot" x="89.999999999999986" y="72" z="-90.000000000000014" unit="deg"/>
+    <position name="ConeARibVol2_10x10inEndWheelsSideApos" x="1.4285504912053876e-15" y="11.665000000000001" z="30.500000000000004" unit="cm"/>
+    <rotation name="ConeARibVol2_10x10inEndWheelsSideArot" x="-180" y="89.999999999999986" z="0" unit="deg"/>
+    <position name="ConeARibVol2_10x11inEndWheelsSideApos" x="-3.6046832393837605" y="11.094074262582968" z="30.500000000000004" unit="cm"/>
+    <rotation name="ConeARibVol2_10x11inEndWheelsSideArot" x="-89.999999999999986" y="72.000000000000014" z="90.000000000000014" unit="deg"/>
+    <position name="ConeARibVol2_10x12inEndWheelsSideApos" x="-6.8565149679916981" y="9.4371832393837636" z="30.500000000000004" unit="cm"/>
+    <rotation name="ConeARibVol2_10x12inEndWheelsSideArot" x="-90" y="54.000000000000021" z="90" unit="deg"/>
+    <position name="ConeARibVol2_10x13inEndWheelsSideApos" x="-9.4371832393837618" y="6.8565149679917008" z="30.500000000000004" unit="cm"/>
+    <rotation name="ConeARibVol2_10x13inEndWheelsSideArot" x="-90" y="36.000000000000014" z="90" unit="deg"/>
+    <position name="ConeARibVol2_10x14inEndWheelsSideApos" x="-11.094074262582966" y="3.6046832393837636" z="30.500000000000004" unit="cm"/>
+    <rotation name="ConeARibVol2_10x14inEndWheelsSideArot" x="-90" y="18.000000000000014" z="90" unit="deg"/>
+    <position name="ConeARibVol2_10x15inEndWheelsSideApos" x="-11.665000000000001" y="2.1428257368080812e-15" z="30.500000000000004" unit="cm"/>
+    <rotation name="ConeARibVol2_10x15inEndWheelsSideArot" x="-90" y="1.4033418597069752e-14" z="90" unit="deg"/>
+    <position name="ConeARibVol2_10x16inEndWheelsSideApos" x="-11.094074262582968" y="-3.6046832393837596" z="30.500000000000004" unit="cm"/>
+    <rotation name="ConeARibVol2_10x16inEndWheelsSideArot" x="-90" y="-17.999999999999986" z="90" unit="deg"/>
+    <position name="ConeARibVol2_10x17inEndWheelsSideApos" x="-9.4371832393837636" y="-6.8565149679916972" z="30.500000000000004" unit="cm"/>
+    <rotation name="ConeARibVol2_10x17inEndWheelsSideArot" x="-90" y="-35.999999999999986" z="90" unit="deg"/>
+    <position name="ConeARibVol2_10x18inEndWheelsSideApos" x="-6.8565149679917008" y="-9.4371832393837618" z="30.500000000000004" unit="cm"/>
+    <rotation name="ConeARibVol2_10x18inEndWheelsSideArot" x="-90" y="-53.999999999999986" z="89.999999999999986" unit="deg"/>
+    <position name="ConeARibVol2_10x19inEndWheelsSideApos" x="-3.6046832393837644" y="-11.094074262582966" z="30.500000000000004" unit="cm"/>
+    <rotation name="ConeARibVol2_10x19inEndWheelsSideArot" x="-89.999999999999986" y="-71.999999999999986" z="89.999999999999986" unit="deg"/>
+    <position name="ConeAStep2_1inEndWheelsSideApos" x="0" y="0" z="15.199999999999999" unit="cm"/>
+    <rotation name="ConeAStep2_1inEndWheelsSideArot" x="180" y="-8.5929905829982056e-31" z="100.5" unit="deg"/>
+    <position name="ConeAStep2_2inEndWheelsSideApos" x="0" y="0" z="15.199999999999999" unit="cm"/>
+    <rotation name="ConeAStep2_2inEndWheelsSideArot" x="180" y="-8.5929905829982056e-31" z="118.49999999999999" unit="deg"/>
+    <position name="ConeAStep2_3inEndWheelsSideApos" x="0" y="0" z="15.199999999999999" unit="cm"/>
+    <rotation name="ConeAStep2_3inEndWheelsSideArot" x="180" y="-8.5929905829982074e-31" z="136.49999999999997" unit="deg"/>
+    <position name="ConeAStep2_4inEndWheelsSideApos" x="0" y="0" z="15.199999999999999" unit="cm"/>
+    <rotation name="ConeAStep2_4inEndWheelsSideArot" x="180" y="-8.5929905829982056e-31" z="154.5" unit="deg"/>
+    <position name="ConeAStep2_5inEndWheelsSideApos" x="0" y="0" z="15.199999999999999" unit="cm"/>
+    <rotation name="ConeAStep2_5inEndWheelsSideArot" x="180" y="-8.5929905829982056e-31" z="172.49999999999997" unit="deg"/>
+    <position name="ConeAStep2_6inEndWheelsSideApos" x="0" y="0" z="15.199999999999999" unit="cm"/>
+    <rotation name="ConeAStep2_6inEndWheelsSideArot" x="180" y="-8.5929905829982056e-31" z="-169.50000000000003" unit="deg"/>
+    <position name="ConeAStep2_7inEndWheelsSideApos" x="0" y="0" z="15.199999999999999" unit="cm"/>
+    <rotation name="ConeAStep2_7inEndWheelsSideArot" x="180" y="-8.5929905829982056e-31" z="-151.50000000000003" unit="deg"/>
+    <position name="ConeAStep2_8inEndWheelsSideApos" x="0" y="0" z="15.199999999999999" unit="cm"/>
+    <rotation name="ConeAStep2_8inEndWheelsSideArot" x="180" y="-8.5929905829982056e-31" z="-133.50000000000003" unit="deg"/>
+    <position name="ConeAStep2_9inEndWheelsSideApos" x="0" y="0" z="15.199999999999999" unit="cm"/>
+    <rotation name="ConeAStep2_9inEndWheelsSideArot" x="180" y="-8.5929905829982056e-31" z="-115.50000000000001" unit="deg"/>
+    <position name="ConeAStep2_10inEndWheelsSideApos" x="0" y="0" z="15.199999999999999" unit="cm"/>
+    <rotation name="ConeAStep2_10inEndWheelsSideArot" x="180" y="-8.5929905829982056e-31" z="-97.500000000000014" unit="deg"/>
+    <position name="ConeAStep2_11inEndWheelsSideApos" x="0" y="0" z="15.199999999999999" unit="cm"/>
+    <rotation name="ConeAStep2_11inEndWheelsSideArot" x="180" y="-8.5929905829982056e-31" z="-79.499999999999972" unit="deg"/>
+    <position name="ConeAStep2_12inEndWheelsSideApos" x="0" y="0" z="15.199999999999999" unit="cm"/>
+    <rotation name="ConeAStep2_12inEndWheelsSideArot" x="180" y="-8.5929905829982056e-31" z="-61.499999999999964" unit="deg"/>
+    <position name="ConeAStep2_13inEndWheelsSideApos" x="0" y="0" z="15.199999999999999" unit="cm"/>
+    <rotation name="ConeAStep2_13inEndWheelsSideArot" x="180" y="-8.5929905829982056e-31" z="-43.499999999999964" unit="deg"/>
+    <position name="ConeAStep2_14inEndWheelsSideApos" x="0" y="0" z="15.199999999999999" unit="cm"/>
+    <rotation name="ConeAStep2_14inEndWheelsSideArot" x="180" y="-8.5929905829982056e-31" z="-25.499999999999968" unit="deg"/>
+    <position name="ConeAStep2_15inEndWheelsSideApos" x="0" y="0" z="15.199999999999999" unit="cm"/>
+    <rotation name="ConeAStep2_15inEndWheelsSideArot" x="180" y="-8.5929905829982056e-31" z="-7.499999999999968" unit="deg"/>
+    <position name="ConeAStep2_16inEndWheelsSideApos" x="0" y="0" z="15.199999999999999" unit="cm"/>
+    <rotation name="ConeAStep2_16inEndWheelsSideArot" x="180" y="-8.5929905829982056e-31" z="10.500000000000032" unit="deg"/>
+    <position name="ConeAStep2_17inEndWheelsSideApos" x="0" y="0" z="15.199999999999999" unit="cm"/>
+    <rotation name="ConeAStep2_17inEndWheelsSideArot" x="180" y="-8.5929905829982056e-31" z="28.500000000000028" unit="deg"/>
+    <position name="ConeAStep2_18inEndWheelsSideApos" x="0" y="0" z="15.199999999999999" unit="cm"/>
+    <rotation name="ConeAStep2_18inEndWheelsSideArot" x="180" y="-8.5929905829982056e-31" z="46.500000000000028" unit="deg"/>
+    <position name="ConeAStep2_19inEndWheelsSideApos" x="0" y="0" z="15.199999999999999" unit="cm"/>
+    <rotation name="ConeAStep2_19inEndWheelsSideArot" x="180" y="-8.5929905829982056e-31" z="64.500000000000028" unit="deg"/>
+    <position name="ConeAStep2_20inEndWheelsSideApos" x="0" y="0" z="15.199999999999999" unit="cm"/>
+    <rotation name="ConeAStep2_20inEndWheelsSideArot" x="180" y="-8.5929905829982056e-31" z="82.500000000000028" unit="deg"/>
+  </define>
+  <materials>
+    <element name="CARBON_elm" formula="C" Z="6">
+      <atom unit="g/mole" value="12.0107"/>
+    </element>
+    <element name="NITROGEN_elm" formula="N" Z="7">
+      <atom unit="g/mole" value="14.006740000000001"/>
+    </element>
+    <element name="OXYGEN_elm" formula="O" Z="8">
+      <atom unit="g/mole" value="15.9994"/>
+    </element>
+    <element name="HYDROGEN_elm" formula="H" Z="1">
+      <atom unit="g/mole" value="1.0079400000000001"/>
+    </element>
+    <material name="ITS_EW_SideA_ALUMINUM" Z="13">
+      <D unit="g/cm3" value="2.6988999843597412"/>
+      <atom unit="g/mole" value="26.982000350952148"/>
+    </material>
+    <material name="ITS_EW_SideA_PEEKCF30">
+      <D unit="g/cm3" value="1.3200000524520874"/>
+      <fraction n="0.79155689477920532" ref="CARBON_elm"/>
+      <fraction n="0.041954267770051956" ref="HYDROGEN_elm"/>
+      <fraction n="0.16648884117603302" ref="OXYGEN_elm"/>
+    </material>
+  </materials>
+  <solids>
+    <polycone name="coneabasis0" startphi="0" deltaphi="360" aunit="deg" lunit="cm">
+      <zplane z="0" rmin="2.79" rmax="2.8500000000000001"/>
+      <zplane z="1.4500000000000002" rmin="2.79" rmax="2.8500000000000001"/>
+      <zplane z="1.4500000000000002" rmin="2.7149999999999999" rmax="2.8500000000000001"/>
+      <zplane z="1.7000000000000002" rmin="2.7149999999999999" rmax="2.8500000000000001"/>
+      <zplane z="1.7000000000000002" rmin="2.79" rmax="2.8500000000000001"/>
+      <zplane z="4.0350000000000001" rmin="2.79" rmax="2.8500000000000001"/>
+      <zplane z="4.0350000000000001" rmin="2.79" rmax="2.9300000000000002"/>
+      <zplane z="4.7000000000000002" rmin="2.79" rmax="2.9300000000000002"/>
+    </polycone>
+    <tube name="coneawallhole0" rmin="0" rmax="0.22500000000000001" z="0.48000000000000043" startphi="0" deltaphi="360" aunit="deg" lunit="cm"/>
+    <subtraction name="TGeoCompositeShape0x17">
+      <first ref="coneabasis0"/>
+      <second ref="coneawallhole0"/>
+      <position name="TGeoCompositeShape0x17coneawallhole0pos" x="0.7298697071891086" y="2.7239108301351731" z="0.40000000000000002" unit="cm"/>
+      <rotation name="TGeoCompositeShape0x17coneawallhole0rot" x="90" y="-0" z="-14.999999999999998" unit="deg"/>
+    </subtraction>
+    <subtraction name="TGeoCompositeShape0x16">
+      <first ref="TGeoCompositeShape0x17"/>
+      <second ref="coneawallhole0"/>
+      <position name="TGeoCompositeShape0x16coneawallhole0pos" x="1.9940411229460639" y="1.9940411229460644" z="0.40000000000000002" unit="cm"/>
+      <rotation name="TGeoCompositeShape0x16coneawallhole0rot" x="90" y="-0" z="-44.999999999999993" unit="deg"/>
+    </subtraction>
+    <subtraction name="TGeoCompositeShape0x15">
+      <first ref="TGeoCompositeShape0x16"/>
+      <second ref="coneawallhole0"/>
+      <position name="TGeoCompositeShape0x15coneawallhole0pos" x="2.7239108301351731" y="0.7298697071891086" z="0.40000000000000002" unit="cm"/>
+      <rotation name="TGeoCompositeShape0x15coneawallhole0rot" x="90" y="-0" z="-75" unit="deg"/>
+    </subtraction>
+    <subtraction name="TGeoCompositeShape0x14">
+      <first ref="TGeoCompositeShape0x15"/>
+      <second ref="coneawallhole0"/>
+      <position name="TGeoCompositeShape0x14coneawallhole0pos" x="2.7239108301351731" y="-0.72986970718910882" z="0.40000000000000002" unit="cm"/>
+      <rotation name="TGeoCompositeShape0x14coneawallhole0rot" x="90" y="-0" z="-105.00000000000001" unit="deg"/>
+    </subtraction>
+    <subtraction name="TGeoCompositeShape0x13">
+      <first ref="TGeoCompositeShape0x14"/>
+      <second ref="coneawallhole0"/>
+      <position name="TGeoCompositeShape0x13coneawallhole0pos" x="1.9940411229460644" y="-1.9940411229460639" z="0.40000000000000002" unit="cm"/>
+      <rotation name="TGeoCompositeShape0x13coneawallhole0rot" x="90" y="-0" z="-135" unit="deg"/>
+    </subtraction>
+    <subtraction name="TGeoCompositeShape0x12">
+      <first ref="TGeoCompositeShape0x13"/>
+      <second ref="coneawallhole0"/>
+      <position name="TGeoCompositeShape0x12coneawallhole0pos" x="0.72986970718910937" y="-2.7239108301351727" z="0.40000000000000002" unit="cm"/>
+      <rotation name="TGeoCompositeShape0x12coneawallhole0rot" x="90" y="-0" z="-165" unit="deg"/>
+    </subtraction>
+    <subtraction name="TGeoCompositeShape0x11">
+      <first ref="TGeoCompositeShape0x12"/>
+      <second ref="coneawallhole0"/>
+      <position name="TGeoCompositeShape0x11coneawallhole0pos" x="-0.72986970718910871" y="-2.7239108301351731" z="0.40000000000000002" unit="cm"/>
+      <rotation name="TGeoCompositeShape0x11coneawallhole0rot" x="90" y="-0" z="165.00000000000003" unit="deg"/>
+    </subtraction>
+    <subtraction name="TGeoCompositeShape0x10">
+      <first ref="TGeoCompositeShape0x11"/>
+      <second ref="coneawallhole0"/>
+      <position name="TGeoCompositeShape0x10coneawallhole0pos" x="-1.9940411229460639" y="-1.9940411229460646" z="0.40000000000000002" unit="cm"/>
+      <rotation name="TGeoCompositeShape0x10coneawallhole0rot" x="90" y="-0" z="135.00000000000003" unit="deg"/>
+    </subtraction>
+    <subtraction name="TGeoCompositeShape0x9">
+      <first ref="TGeoCompositeShape0x10"/>
+      <second ref="coneawallhole0"/>
+      <position name="TGeoCompositeShape0x9coneawallhole0pos" x="-2.7239108301351731" y="-0.72986970718910826" z="0.40000000000000002" unit="cm"/>
+      <rotation name="TGeoCompositeShape0x9coneawallhole0rot" x="90" y="-0" z="105" unit="deg"/>
+    </subtraction>
+    <subtraction name="TGeoCompositeShape0x8">
+      <first ref="TGeoCompositeShape0x9"/>
+      <second ref="coneawallhole0"/>
+      <position name="TGeoCompositeShape0x8coneawallhole0pos" x="-2.7239108301351731" y="0.72986970718910726" z="0.40000000000000002" unit="cm"/>
+      <rotation name="TGeoCompositeShape0x8coneawallhole0rot" x="90" y="-0" z="75.000000000000028" unit="deg"/>
+    </subtraction>
+    <subtraction name="TGeoCompositeShape0x7">
+      <first ref="TGeoCompositeShape0x8"/>
+      <second ref="coneawallhole0"/>
+      <position name="TGeoCompositeShape0x7coneawallhole0pos" x="-1.9940411229460646" y="1.9940411229460639" z="0.40000000000000002" unit="cm"/>
+      <rotation name="TGeoCompositeShape0x7coneawallhole0rot" x="90" y="-0" z="45.000000000000014" unit="deg"/>
+    </subtraction>
+    <subtraction name="TGeoCompositeShape0x6">
+      <first ref="TGeoCompositeShape0x7"/>
+      <second ref="coneawallhole0"/>
+      <position name="TGeoCompositeShape0x6coneawallhole0pos" x="-0.72986970718910837" y="2.7239108301351731" z="0.40000000000000002" unit="cm"/>
+      <rotation name="TGeoCompositeShape0x6coneawallhole0rot" x="90" y="-0" z="14.999999999999996" unit="deg"/>
+    </subtraction>
+    <tube name="coneacenthole1l0" rmin="0" rmax="0.15000000000000002" z="0.48000000000000043" startphi="0" deltaphi="360" aunit="deg" lunit="cm"/>
+    <subtraction name="TGeoCompositeShape0x5">
+      <first ref="TGeoCompositeShape0x6"/>
+      <second ref="coneacenthole1l0"/>
+      <position name="TGeoCompositeShape0x5coneacenthole1l0pos" x="0" y="2.8200000000000003" z="2" unit="cm"/>
+      <rotation name="TGeoCompositeShape0x5coneacenthole1l0rot" x="90" y="-0" z="0" unit="deg"/>
+    </subtraction>
+    <subtraction name="TGeoCompositeShape0x4">
+      <first ref="TGeoCompositeShape0x5"/>
+      <second ref="coneacenthole1l0"/>
+      <position name="TGeoCompositeShape0x4coneacenthole1l0pos" x="0" y="-2.8200000000000003" z="2" unit="cm"/>
+      <rotation name="TGeoCompositeShape0x4coneacenthole1l0rot" x="90" y="-0" z="0" unit="deg"/>
+    </subtraction>
+    <tube name="coneacenthole2l0" rmin="0" rmax="0.17000000000000001" z="0.48000000000000043" startphi="0" deltaphi="360" aunit="deg" lunit="cm"/>
+    <subtraction name="TGeoCompositeShape0x3">
+      <first ref="TGeoCompositeShape0x4"/>
+      <second ref="coneacenthole2l0"/>
+      <position name="TGeoCompositeShape0x3coneacenthole2l0pos" x="0" y="2.8200000000000003" z="3" unit="cm"/>
+      <rotation name="TGeoCompositeShape0x3coneacenthole2l0rot" x="90" y="-0" z="0" unit="deg"/>
+    </subtraction>
+    <subtraction name="TGeoCompositeShapeEWsideA">
+      <first ref="TGeoCompositeShape0x3"/>
+      <second ref="coneacenthole2l0"/>
+      <position name="TGeoCompositeShape0x2coneacenthole2l0pos" x="0" y="-2.8200000000000003" z="3" unit="cm"/>
+      <rotation name="TGeoCompositeShape0x2coneacenthole2l0rot" x="90" y="-0" z="0" unit="deg"/>
+    </subtraction>
+    <tube name="coneacenthole3l0" rmin="0" rmax="0.15000000000000002" z="0.48000000000000043" startphi="0" deltaphi="360" aunit="deg" lunit="cm"/>
+    <!--
+    <subtraction name="TGeoCompositeShape0x1">
+      <first ref="TGeoCompositeShape0x2"/>
+      <second ref="coneacenthole3l0"/>
+      <position name="TGeoCompositeShape0x1coneacenthole3l0pos" x="0" y="5.7700000000000005" z="17.699999999999999" unit="cm"/>
+      <rotation name="TGeoCompositeShape0x1coneacenthole3l0rot" x="90" y="-0" z="0" unit="deg"/>
+    </subtraction>
+
+    <subtraction name="TGeoCompositeShapeEWsideA">
+      <first ref="TGeoCompositeShape0x2"/>
+      <second ref="coneacenthole3l0"/>
+      <position name="TGeoCompositeShapeconeacenthole3l0pos" x="0" y="-5.7700000000000005" z="17.699999999999999" unit="cm"/>
+      <rotation name="TGeoCompositeShapeconeacenthole3l0rot" x="90" y="-0" z="0" unit="deg"/>
+    </subtraction>
+    -->
+    <tube name="midRingSh0" rmin="2.8000000000000003" rmax="2.9000000000000004" z="4.2000000000000002" startphi="0" deltaphi="360" aunit="deg" lunit="cm"/>
+    <xtru name="TGeoXtru" lunit="cm">
+      <twoDimVertex x="0" y="0"/>
+      <twoDimVertex x="4.2000000000000002" y="0"/>
+      <twoDimVertex x="4.2000000000000002" y="0.10000000000000001"/>
+      <twoDimVertex x="5.0500000000000007" y="0.10000000000000001"/>
+      <twoDimVertex x="9.8030000000000008" y="1.8300000000000005"/>
+      <twoDimVertex x="5.9000000000000004" y="1.8300000000000005"/>
+      <twoDimVertex x="5" y="2.7300000000000004"/>
+      <twoDimVertex x="0" y="2.7300000000000004"/>
+      <section zOrder="0" zPosition="-0.045000000000000005" xOffset="0" yOffset="0" scalingFactor="1"/>
+      <section zOrder="1" zPosition="0.045000000000000005" xOffset="0" yOffset="0" scalingFactor="1"/>
+    </xtru>
+    <box name="stepBoxASh0" x="0.93221619867047167" y="0.3110725181281575" z="1.4000000000000001" lunit="cm"/>
+    <polycone name="stepPconASh0" startphi="56.365890281967452" deltaphi="35.361398622336438" aunit="deg" lunit="cm">
+      <zplane z="-0.7350000000000001" rmin="2.7800000000000002" rmax="3.0910725181281578"/>
+      <zplane z="0.7350000000000001" rmin="2.7800000000000002" rmax="3.0910725181281578"/>
+    </polycone>
+    <subtraction name="TGeoCompositeShape0x18">
+      <first ref="stepBoxASh0"/>
+      <second ref="stepPconASh0"/>
+      <firstposition name="TGeoCompositeShape0x18stepBoxASh0pos" x="0.86610809933523591" y="2.5955362590640787" z="0" unit="cm"/>
+    </subtraction>
+    <polycone name="coneabasis1" startphi="0" deltaphi="360" aunit="deg" lunit="cm">
+      <zplane z="0" rmin="3.5899999999999999" rmax="3.6500000000000004"/>
+      <zplane z="1.4500000000000002" rmin="3.5899999999999999" rmax="3.6500000000000004"/>
+      <zplane z="1.4500000000000002" rmin="3.4924999999999997" rmax="3.6500000000000004"/>
+      <zplane z="1.7000000000000002" rmin="3.4924999999999997" rmax="3.6500000000000004"/>
+      <zplane z="1.7000000000000002" rmin="3.5899999999999999" rmax="3.6500000000000004"/>
+      <zplane z="3.9000000000000004" rmin="3.5899999999999999" rmax="3.6500000000000004"/>
+      <zplane z="3.9000000000000004" rmin="3.5899999999999999" rmax="3.7300000000000004"/>
+      <zplane z="4.4000000000000004" rmin="3.5899999999999999" rmax="3.7300000000000004"/>
+    </polycone>
+    <tube name="coneawallhole1" rmin="0" rmax="0.22500000000000001" z="0.48000000000000398" startphi="0" deltaphi="360" aunit="deg" lunit="cm"/>
+    <subtraction name="TGeoCompositeShape0x40">
+      <first ref="coneabasis1"/>
+      <second ref="coneawallhole1"/>
+      <position name="TGeoCompositeShape0x40coneawallhole1pos" x="0.70622696569838428" y="3.5504427150596944" z="0.40000000000000002" unit="cm"/>
+      <rotation name="TGeoCompositeShape0x40coneawallhole1rot" x="90" y="-0" z="-11.25" unit="deg"/>
+    </subtraction>
+    <subtraction name="TGeoCompositeShape0x39">
+      <first ref="TGeoCompositeShape0x40"/>
+      <second ref="coneawallhole1"/>
+      <position name="TGeoCompositeShape0x39coneawallhole1pos" x="2.0111642435309598" y="3.0099199965352139" z="0.40000000000000002" unit="cm"/>
+      <rotation name="TGeoCompositeShape0x39coneawallhole1rot" x="90" y="-0" z="-33.75" unit="deg"/>
+    </subtraction>
+    <subtraction name="TGeoCompositeShape0x38">
+      <first ref="TGeoCompositeShape0x39"/>
+      <second ref="coneawallhole1"/>
+      <position name="TGeoCompositeShape0x38coneawallhole1pos" x="3.0099199965352135" y="2.0111642435309602" z="0.40000000000000002" unit="cm"/>
+      <rotation name="TGeoCompositeShape0x38coneawallhole1rot" x="90" y="-0" z="-56.249999999999993" unit="deg"/>
+    </subtraction>
+    <subtraction name="TGeoCompositeShape0x37">
+      <first ref="TGeoCompositeShape0x38"/>
+      <second ref="coneawallhole1"/>
+      <position name="TGeoCompositeShape0x37coneawallhole1pos" x="3.5504427150596944" y="0.7062269656983845" z="0.40000000000000002" unit="cm"/>
+      <rotation name="TGeoCompositeShape0x37coneawallhole1rot" x="90" y="-0" z="-78.75" unit="deg"/>
+    </subtraction>
+    <subtraction name="TGeoCompositeShape0x36">
+      <first ref="TGeoCompositeShape0x37"/>
+      <second ref="coneawallhole1"/>
+      <position name="TGeoCompositeShape0x36coneawallhole1pos" x="3.5504427150596944" y="-0.70622696569838406" z="0.40000000000000002" unit="cm"/>
+      <rotation name="TGeoCompositeShape0x36coneawallhole1rot" x="90" y="-0" z="-101.25" unit="deg"/>
+    </subtraction>
+    <subtraction name="TGeoCompositeShape0x35">
+      <first ref="TGeoCompositeShape0x36"/>
+      <second ref="coneawallhole1"/>
+      <position name="TGeoCompositeShape0x35coneawallhole1pos" x="3.0099199965352135" y="-2.0111642435309602" z="0.40000000000000002" unit="cm"/>
+      <rotation name="TGeoCompositeShape0x35coneawallhole1rot" x="90" y="-0" z="-123.75000000000001" unit="deg"/>
+    </subtraction>
+    <subtraction name="TGeoCompositeShape0x34">
+      <first ref="TGeoCompositeShape0x35"/>
+      <second ref="coneawallhole1"/>
+      <position name="TGeoCompositeShape0x34coneawallhole1pos" x="2.0111642435309598" y="-3.0099199965352144" z="0.40000000000000002" unit="cm"/>
+      <rotation name="TGeoCompositeShape0x34coneawallhole1rot" x="90" y="-0" z="-146.25" unit="deg"/>
+    </subtraction>
+    <subtraction name="TGeoCompositeShape0x33">
+      <first ref="TGeoCompositeShape0x34"/>
+      <second ref="coneawallhole1"/>
+      <position name="TGeoCompositeShape0x33coneawallhole1pos" x="0.70622696569838395" y="-3.5504427150596944" z="0.40000000000000002" unit="cm"/>
+      <rotation name="TGeoCompositeShape0x33coneawallhole1rot" x="90" y="-0" z="-168.75" unit="deg"/>
+    </subtraction>
+    <subtraction name="TGeoCompositeShape0x32">
+      <first ref="TGeoCompositeShape0x33"/>
+      <second ref="coneawallhole1"/>
+      <position name="TGeoCompositeShape0x32coneawallhole1pos" x="-0.70622696569838472" y="-3.5504427150596944" z="0.40000000000000002" unit="cm"/>
+      <rotation name="TGeoCompositeShape0x32coneawallhole1rot" x="90" y="-0" z="168.75" unit="deg"/>
+    </subtraction>
+    <subtraction name="TGeoCompositeShape0x31">
+      <first ref="TGeoCompositeShape0x32"/>
+      <second ref="coneawallhole1"/>
+      <position name="TGeoCompositeShape0x31coneawallhole1pos" x="-2.0111642435309602" y="-3.0099199965352135" z="0.40000000000000002" unit="cm"/>
+      <rotation name="TGeoCompositeShape0x31coneawallhole1rot" x="90" y="-0" z="146.25" unit="deg"/>
+    </subtraction>
+    <subtraction name="TGeoCompositeShape0x30">
+      <first ref="TGeoCompositeShape0x31"/>
+      <second ref="coneawallhole1"/>
+      <position name="TGeoCompositeShape0x30coneawallhole1pos" x="-3.0099199965352139" y="-2.0111642435309598" z="0.40000000000000002" unit="cm"/>
+      <rotation name="TGeoCompositeShape0x30coneawallhole1rot" x="90" y="-0" z="123.75000000000001" unit="deg"/>
+    </subtraction>
+    <subtraction name="TGeoCompositeShape0x29">
+      <first ref="TGeoCompositeShape0x30"/>
+      <second ref="coneawallhole1"/>
+      <position name="TGeoCompositeShape0x29coneawallhole1pos" x="-3.550442715059694" y="-0.70622696569838583" z="0.40000000000000002" unit="cm"/>
+      <rotation name="TGeoCompositeShape0x29coneawallhole1rot" x="90" y="-0" z="101.25000000000003" unit="deg"/>
+    </subtraction>
+    <subtraction name="TGeoCompositeShape0x28">
+      <first ref="TGeoCompositeShape0x29"/>
+      <second ref="coneawallhole1"/>
+      <position name="TGeoCompositeShape0x28coneawallhole1pos" x="-3.5504427150596944" y="0.70622696569838439" z="0.40000000000000002" unit="cm"/>
+      <rotation name="TGeoCompositeShape0x28coneawallhole1rot" x="90" y="-0" z="78.75" unit="deg"/>
+    </subtraction>
+    <subtraction name="TGeoCompositeShape0x27">
+      <first ref="TGeoCompositeShape0x28"/>
+      <second ref="coneawallhole1"/>
+      <position name="TGeoCompositeShape0x27coneawallhole1pos" x="-3.0099199965352152" y="2.0111642435309589" z="0.40000000000000002" unit="cm"/>
+      <rotation name="TGeoCompositeShape0x27coneawallhole1rot" x="90" y="-0" z="56.250000000000028" unit="deg"/>
+    </subtraction>
+    <subtraction name="TGeoCompositeShape0x26">
+      <first ref="TGeoCompositeShape0x27"/>
+      <second ref="coneawallhole1"/>
+      <position name="TGeoCompositeShape0x26coneawallhole1pos" x="-2.0111642435309598" y="3.0099199965352139" z="0.40000000000000002" unit="cm"/>
+      <rotation name="TGeoCompositeShape0x26coneawallhole1rot" x="90" y="-0" z="33.75" unit="deg"/>
+    </subtraction>
+    <subtraction name="TGeoCompositeShape0x25">
+      <first ref="TGeoCompositeShape0x26"/>
+      <second ref="coneawallhole1"/>
+      <position name="TGeoCompositeShape0x25coneawallhole1pos" x="-0.70622696569838594" y="3.550442715059694" z="0.40000000000000002" unit="cm"/>
+      <rotation name="TGeoCompositeShape0x25coneawallhole1rot" x="90" y="-0" z="11.250000000000027" unit="deg"/>
+    </subtraction>
+    <tube name="coneacenthole1l1" rmin="0" rmax="0.15000000000000002" z="0.48000000000000398" startphi="0" deltaphi="360" aunit="deg" lunit="cm"/>
+    <subtraction name="TGeoCompositeShape0x24">
+      <first ref="TGeoCompositeShape0x25"/>
+      <second ref="coneacenthole1l1"/>
+      <position name="TGeoCompositeShape0x24coneacenthole1l1pos" x="0" y="3.6200000000000001" z="2" unit="cm"/>
+      <rotation name="TGeoCompositeShape0x24coneacenthole1l1rot" x="90" y="-0" z="0" unit="deg"/>
+    </subtraction>
+    <subtraction name="TGeoCompositeShape0x23">
+      <first ref="TGeoCompositeShape0x24"/>
+      <second ref="coneacenthole1l1"/>
+      <position name="TGeoCompositeShape0x23coneacenthole1l1pos" x="0" y="-3.6200000000000001" z="2" unit="cm"/>
+      <rotation name="TGeoCompositeShape0x23coneacenthole1l1rot" x="90" y="-0" z="0" unit="deg"/>
+    </subtraction>
+    <tube name="coneacenthole2l1" rmin="0" rmax="0.17000000000000001" z="0.48000000000000398" startphi="0" deltaphi="360" aunit="deg" lunit="cm"/>
+    <subtraction name="TGeoCompositeShape0x22">
+      <first ref="TGeoCompositeShape0x23"/>
+      <second ref="coneacenthole2l1"/>
+      <position name="TGeoCompositeShape0x22coneacenthole2l1pos" x="0" y="3.6200000000000001" z="3" unit="cm"/>
+      <rotation name="TGeoCompositeShape0x22coneacenthole2l1rot" x="90" y="-0" z="0" unit="deg"/>
+    </subtraction>
+    <subtraction name="TGeoCompositeShape0x21">
+      <first ref="TGeoCompositeShape0x22"/>
+      <second ref="coneacenthole2l1"/>
+      <position name="TGeoCompositeShape0x21coneacenthole2l1pos" x="0" y="-3.6200000000000001" z="3" unit="cm"/>
+      <rotation name="TGeoCompositeShape0x21coneacenthole2l1rot" x="90" y="-0" z="0" unit="deg"/>
+    </subtraction>
+    <tube name="coneacenthole3l1" rmin="0" rmax="0.15000000000000002" z="0.48000000000000398" startphi="0" deltaphi="360" aunit="deg" lunit="cm"/>
+    <subtraction name="TGeoCompositeShape0x20">
+      <first ref="TGeoCompositeShape0x21"/>
+      <second ref="coneacenthole3l1"/>
+      <position name="TGeoCompositeShape0x20coneacenthole3l1pos" x="0" y="8.7699999999999996" z="17" unit="cm"/>
+      <rotation name="TGeoCompositeShape0x20coneacenthole3l1rot" x="90" y="-0" z="0" unit="deg"/>
+    </subtraction>
+    <subtraction name="TGeoCompositeShape0x19">
+      <first ref="TGeoCompositeShape0x20"/>
+      <second ref="coneacenthole3l1"/>
+      <position name="TGeoCompositeShape0x19coneacenthole3l1pos" x="0" y="-8.7699999999999996" z="17" unit="cm"/>
+      <rotation name="TGeoCompositeShape0x19coneacenthole3l1rot" x="90" y="-0" z="0" unit="deg"/>
+    </subtraction>
+    <tube name="midRingSh1" rmin="5.8000000000000007" rmax="5.9000000000000004" z="4.2000000000000002" startphi="0" deltaphi="360" aunit="deg" lunit="cm"/>
+    <xtru name="TGeoXtru0x1" lunit="cm">
+      <twoDimVertex x="0" y="0"/>
+      <twoDimVertex x="2.9000000000000004" y="0"/>
+      <twoDimVertex x="2.9000000000000004" y="0.11000000000000001"/>
+      <twoDimVertex x="3.7000000000000002" y="0.11000000000000001"/>
+      <twoDimVertex x="10.465000000000002" y="4"/>
+      <twoDimVertex x="7.4892963227073697" y="4"/>
+      <twoDimVertex x="4" y="2.7300000000000004"/>
+      <twoDimVertex x="0" y="2.7300000000000004"/>
+      <section zOrder="0" zPosition="-0.045000000000000005" xOffset="0" yOffset="0" scalingFactor="1"/>
+      <section zOrder="1" zPosition="0.045000000000000005" xOffset="0" yOffset="0" scalingFactor="1"/>
+    </xtru>
+    <box name="stepBoxASh1" x="0.93502365912941443" y="0.31049712398689477" z="1.4000000000000001" lunit="cm"/>
+    <polycone name="stepPconASh1" startphi="58.720906883102849" deltaphi="30.818207147581212" aunit="deg" lunit="cm">
+      <zplane z="-0.7350000000000001" rmin="3.5800000000000001" rmax="3.8904971239868948"/>
+      <zplane z="0.7350000000000001" rmin="3.5800000000000001" rmax="3.8904971239868948"/>
+    </polycone>
+    <subtraction name="TGeoCompositeShape0x41">
+      <first ref="stepBoxASh1"/>
+      <second ref="stepPconASh1"/>
+      <firstposition name="TGeoCompositeShape0x41stepBoxASh1pos" x="1.1175118295647073" y="3.3652485619934476" z="0" unit="cm"/>
+    </subtraction>
+    <polycone name="coneabasis2" startphi="0" deltaphi="360" aunit="deg" lunit="cm">
+      <zplane z="0" rmin="4.3899999999999997" rmax="4.4500000000000002"/>
+      <zplane z="1.4500000000000002" rmin="4.3899999999999997" rmax="4.4500000000000002"/>
+      <zplane z="1.4500000000000002" rmin="4.25" rmax="4.4500000000000002"/>
+      <zplane z="1.7000000000000002" rmin="4.25" rmax="4.4500000000000002"/>
+      <zplane z="1.7000000000000002" rmin="4.3899999999999997" rmax="4.4500000000000002"/>
+      <zplane z="3.6000000000000001" rmin="4.3899999999999997" rmax="4.4500000000000002"/>
+      <zplane z="3.6000000000000001" rmin="4.3899999999999997" rmax="4.5300000000000002"/>
+      <zplane z="4.1000000000000005" rmin="4.3899999999999997" rmax="4.5300000000000002"/>
+    </polycone>
+    <tube name="coneawallhole2" rmin="0" rmax="0.22500000000000001" z="0.48000000000000398" startphi="0" deltaphi="360" aunit="deg" lunit="cm"/>
+    <subtraction name="TGeoCompositeShape0x67">
+      <first ref="coneabasis2"/>
+      <second ref="coneawallhole2"/>
+      <position name="TGeoCompositeShape0x67coneawallhole2pos" x="0.69144033547782047" y="4.3655824654305091" z="0.40000000000000002" unit="cm"/>
+      <rotation name="TGeoCompositeShape0x67coneawallhole2rot" x="90" y="-0" z="-9" unit="deg"/>
+    </subtraction>
+    <subtraction name="TGeoCompositeShape0x66">
+      <first ref="TGeoCompositeShape0x67"/>
+      <second ref="coneawallhole2"/>
+      <position name="TGeoCompositeShape0x66coneawallhole2pos" x="2.0066380088487965" y="3.9382488369125861" z="0.40000000000000002" unit="cm"/>
+      <rotation name="TGeoCompositeShape0x66coneawallhole2rot" x="90" y="-0" z="-26.999999999999996" unit="deg"/>
+    </subtraction>
+    <subtraction name="TGeoCompositeShape0x65">
+      <first ref="TGeoCompositeShape0x66"/>
+      <second ref="coneawallhole2"/>
+      <position name="TGeoCompositeShape0x65coneawallhole2pos" x="3.1254119728445398" y="3.1254119728445402" z="0.40000000000000002" unit="cm"/>
+      <rotation name="TGeoCompositeShape0x65coneawallhole2rot" x="90" y="-0" z="-44.999999999999993" unit="deg"/>
+    </subtraction>
+    <subtraction name="TGeoCompositeShape0x64">
+      <first ref="TGeoCompositeShape0x65"/>
+      <second ref="coneawallhole2"/>
+      <position name="TGeoCompositeShape0x64coneawallhole2pos" x="3.9382488369125856" y="2.006638008848797" z="0.40000000000000002" unit="cm"/>
+      <rotation name="TGeoCompositeShape0x64coneawallhole2rot" x="90" y="-0" z="-63" unit="deg"/>
+    </subtraction>
+    <subtraction name="TGeoCompositeShape0x63">
+      <first ref="TGeoCompositeShape0x64"/>
+      <second ref="coneawallhole2"/>
+      <position name="TGeoCompositeShape0x63coneawallhole2pos" x="4.3655824654305091" y="0.69144033547782069" z="0.40000000000000002" unit="cm"/>
+      <rotation name="TGeoCompositeShape0x63coneawallhole2rot" x="90" y="-0" z="-81" unit="deg"/>
+    </subtraction>
+    <subtraction name="TGeoCompositeShape0x62">
+      <first ref="TGeoCompositeShape0x63"/>
+      <second ref="coneawallhole2"/>
+      <position name="TGeoCompositeShape0x62coneawallhole2pos" x="4.3655824654305091" y="-0.69144033547782013" z="0.40000000000000002" unit="cm"/>
+      <rotation name="TGeoCompositeShape0x62coneawallhole2rot" x="90" y="-0" z="-99" unit="deg"/>
+    </subtraction>
+    <subtraction name="TGeoCompositeShape0x61">
+      <first ref="TGeoCompositeShape0x62"/>
+      <second ref="coneawallhole2"/>
+      <position name="TGeoCompositeShape0x61coneawallhole2pos" x="3.9382488369125861" y="-2.0066380088487965" z="0.40000000000000002" unit="cm"/>
+      <rotation name="TGeoCompositeShape0x61coneawallhole2rot" x="90" y="-0" z="-117" unit="deg"/>
+    </subtraction>
+    <subtraction name="TGeoCompositeShape0x60">
+      <first ref="TGeoCompositeShape0x61"/>
+      <second ref="coneawallhole2"/>
+      <position name="TGeoCompositeShape0x60coneawallhole2pos" x="3.1254119728445402" y="-3.1254119728445398" z="0.40000000000000002" unit="cm"/>
+      <rotation name="TGeoCompositeShape0x60coneawallhole2rot" x="90" y="-0" z="-135" unit="deg"/>
+    </subtraction>
+    <subtraction name="TGeoCompositeShape0x59">
+      <first ref="TGeoCompositeShape0x60"/>
+      <second ref="coneawallhole2"/>
+      <position name="TGeoCompositeShape0x59coneawallhole2pos" x="2.006638008848797" y="-3.9382488369125856" z="0.40000000000000002" unit="cm"/>
+      <rotation name="TGeoCompositeShape0x59coneawallhole2rot" x="90" y="-0" z="-153" unit="deg"/>
+    </subtraction>
+    <subtraction name="TGeoCompositeShape0x58">
+      <first ref="TGeoCompositeShape0x59"/>
+      <second ref="coneawallhole2"/>
+      <position name="TGeoCompositeShape0x58coneawallhole2pos" x="0.69144033547782091" y="-4.3655824654305082" z="0.40000000000000002" unit="cm"/>
+      <rotation name="TGeoCompositeShape0x58coneawallhole2rot" x="90" y="-0" z="-171" unit="deg"/>
+    </subtraction>
+    <subtraction name="TGeoCompositeShape0x57">
+      <first ref="TGeoCompositeShape0x58"/>
+      <second ref="coneawallhole2"/>
+      <position name="TGeoCompositeShape0x57coneawallhole2pos" x="-0.69144033547781991" y="-4.3655824654305091" z="0.40000000000000002" unit="cm"/>
+      <rotation name="TGeoCompositeShape0x57coneawallhole2rot" x="90" y="-0" z="171.00000000000003" unit="deg"/>
+    </subtraction>
+    <subtraction name="TGeoCompositeShape0x56">
+      <first ref="TGeoCompositeShape0x57"/>
+      <second ref="coneawallhole2"/>
+      <position name="TGeoCompositeShape0x56coneawallhole2pos" x="-2.0066380088487965" y="-3.9382488369125861" z="0.40000000000000002" unit="cm"/>
+      <rotation name="TGeoCompositeShape0x56coneawallhole2rot" x="90" y="-0" z="153" unit="deg"/>
+    </subtraction>
+    <subtraction name="TGeoCompositeShape0x55">
+      <first ref="TGeoCompositeShape0x56"/>
+      <second ref="coneawallhole2"/>
+      <position name="TGeoCompositeShape0x55coneawallhole2pos" x="-3.1254119728445398" y="-3.1254119728445406" z="0.40000000000000002" unit="cm"/>
+      <rotation name="TGeoCompositeShape0x55coneawallhole2rot" x="90" y="-0" z="135.00000000000003" unit="deg"/>
+    </subtraction>
+    <subtraction name="TGeoCompositeShape0x54">
+      <first ref="TGeoCompositeShape0x55"/>
+      <second ref="coneawallhole2"/>
+      <position name="TGeoCompositeShape0x54coneawallhole2pos" x="-3.9382488369125856" y="-2.0066380088487974" z="0.40000000000000002" unit="cm"/>
+      <rotation name="TGeoCompositeShape0x54coneawallhole2rot" x="90" y="-0" z="117.00000000000003" unit="deg"/>
+    </subtraction>
+    <subtraction name="TGeoCompositeShape0x53">
+      <first ref="TGeoCompositeShape0x54"/>
+      <second ref="coneawallhole2"/>
+      <position name="TGeoCompositeShape0x53coneawallhole2pos" x="-4.3655824654305082" y="-0.69144033547782124" z="0.40000000000000002" unit="cm"/>
+      <rotation name="TGeoCompositeShape0x53coneawallhole2rot" x="90" y="-0" z="99.000000000000014" unit="deg"/>
+    </subtraction>
+    <subtraction name="TGeoCompositeShape0x52">
+      <first ref="TGeoCompositeShape0x53"/>
+      <second ref="coneawallhole2"/>
+      <position name="TGeoCompositeShape0x52coneawallhole2pos" x="-4.3655824654305091" y="0.69144033547781958" z="0.40000000000000002" unit="cm"/>
+      <rotation name="TGeoCompositeShape0x52coneawallhole2rot" x="90" y="-0" z="81.000000000000014" unit="deg"/>
+    </subtraction>
+    <subtraction name="TGeoCompositeShape0x51">
+      <first ref="TGeoCompositeShape0x52"/>
+      <second ref="coneawallhole2"/>
+      <position name="TGeoCompositeShape0x51coneawallhole2pos" x="-3.9382488369125865" y="2.0066380088487961" z="0.40000000000000002" unit="cm"/>
+      <rotation name="TGeoCompositeShape0x51coneawallhole2rot" x="90" y="-0" z="63.000000000000014" unit="deg"/>
+    </subtraction>
+    <subtraction name="TGeoCompositeShape0x50">
+      <first ref="TGeoCompositeShape0x51"/>
+      <second ref="coneawallhole2"/>
+      <position name="TGeoCompositeShape0x50coneawallhole2pos" x="-3.1254119728445406" y="3.1254119728445398" z="0.40000000000000002" unit="cm"/>
+      <rotation name="TGeoCompositeShape0x50coneawallhole2rot" x="90" y="-0" z="45.000000000000014" unit="deg"/>
+    </subtraction>
+    <subtraction name="TGeoCompositeShape0x49">
+      <first ref="TGeoCompositeShape0x50"/>
+      <second ref="coneawallhole2"/>
+      <position name="TGeoCompositeShape0x49coneawallhole2pos" x="-2.0066380088487974" y="3.9382488369125856" z="0.40000000000000002" unit="cm"/>
+      <rotation name="TGeoCompositeShape0x49coneawallhole2rot" x="90" y="-0" z="27.000000000000014" unit="deg"/>
+    </subtraction>
+    <subtraction name="TGeoCompositeShape0x48">
+      <first ref="TGeoCompositeShape0x49"/>
+      <second ref="coneawallhole2"/>
+      <position name="TGeoCompositeShape0x48coneawallhole2pos" x="-0.69144033547782158" y="4.3655824654305082" z="0.40000000000000002" unit="cm"/>
+      <rotation name="TGeoCompositeShape0x48coneawallhole2rot" x="90" y="-0" z="9.0000000000000142" unit="deg"/>
+    </subtraction>
+    <tube name="coneacenthole1l2" rmin="0" rmax="0.15000000000000002" z="0.48000000000000398" startphi="0" deltaphi="360" aunit="deg" lunit="cm"/>
+    <subtraction name="TGeoCompositeShape0x47">
+      <first ref="TGeoCompositeShape0x48"/>
+      <second ref="coneacenthole1l2"/>
+      <position name="TGeoCompositeShape0x47coneacenthole1l2pos" x="0" y="4.4199999999999999" z="2" unit="cm"/>
+      <rotation name="TGeoCompositeShape0x47coneacenthole1l2rot" x="90" y="-0" z="0" unit="deg"/>
+    </subtraction>
+    <subtraction name="TGeoCompositeShape0x46">
+      <first ref="TGeoCompositeShape0x47"/>
+      <second ref="coneacenthole1l2"/>
+      <position name="TGeoCompositeShape0x46coneacenthole1l2pos" x="0" y="-4.4199999999999999" z="2" unit="cm"/>
+      <rotation name="TGeoCompositeShape0x46coneacenthole1l2rot" x="90" y="-0" z="0" unit="deg"/>
+    </subtraction>
+    <tube name="coneacenthole2l2" rmin="0" rmax="0.17000000000000001" z="0.48000000000000398" startphi="0" deltaphi="360" aunit="deg" lunit="cm"/>
+    <subtraction name="TGeoCompositeShape0x45">
+      <first ref="TGeoCompositeShape0x46"/>
+      <second ref="coneacenthole2l2"/>
+      <position name="TGeoCompositeShape0x45coneacenthole2l2pos" x="0" y="4.4199999999999999" z="3" unit="cm"/>
+      <rotation name="TGeoCompositeShape0x45coneacenthole2l2rot" x="90" y="-0" z="0" unit="deg"/>
+    </subtraction>
+    <subtraction name="TGeoCompositeShape0x44">
+      <first ref="TGeoCompositeShape0x45"/>
+      <second ref="coneacenthole2l2"/>
+      <position name="TGeoCompositeShape0x44coneacenthole2l2pos" x="0" y="-4.4199999999999999" z="3" unit="cm"/>
+      <rotation name="TGeoCompositeShape0x44coneacenthole2l2rot" x="90" y="-0" z="0" unit="deg"/>
+    </subtraction>
+    <tube name="coneacenthole3l2" rmin="0" rmax="0.15000000000000002" z="0.48000000000000398" startphi="0" deltaphi="360" aunit="deg" lunit="cm"/>
+    <subtraction name="TGeoCompositeShape0x43">
+      <first ref="TGeoCompositeShape0x44"/>
+      <second ref="coneacenthole3l2"/>
+      <position name="TGeoCompositeShape0x43coneacenthole3l2pos" x="0" y="11.77" z="16.300000000000001" unit="cm"/>
+      <rotation name="TGeoCompositeShape0x43coneacenthole3l2rot" x="90" y="-0" z="0" unit="deg"/>
+    </subtraction>
+    <subtraction name="TGeoCompositeShape0x42">
+      <first ref="TGeoCompositeShape0x43"/>
+      <second ref="coneacenthole3l2"/>
+      <position name="TGeoCompositeShape0x42coneacenthole3l2pos" x="0" y="-11.77" z="16.300000000000001" unit="cm"/>
+      <rotation name="TGeoCompositeShape0x42coneacenthole3l2rot" x="90" y="-0" z="0" unit="deg"/>
+    </subtraction>
+    <tube name="midRingSh2" rmin="8.8000000000000007" rmax="8.9000000000000004" z="4.2000000000000002" startphi="0" deltaphi="360" aunit="deg" lunit="cm"/>
+    <xtru name="TGeoXtru0x2" lunit="cm">
+      <twoDimVertex x="0" y="0"/>
+      <twoDimVertex x="2.6000000000000001" y="0"/>
+      <twoDimVertex x="2.6000000000000001" y="0.10000000000000001"/>
+      <twoDimVertex x="3.3500000000000001" y="0.10000000000000001"/>
+      <twoDimVertex x="10.143000000000001" y="5.8000000000000007"/>
+      <twoDimVertex x="8.1673959792364546" y="5.8000000000000007"/>
+      <twoDimVertex x="2.8500000000000001" y="2.7300000000000004"/>
+      <twoDimVertex x="0" y="2.7300000000000004"/>
+      <section zOrder="0" zPosition="-0.045000000000000005" xOffset="0" yOffset="0" scalingFactor="1"/>
+      <section zOrder="1" zPosition="0.045000000000000005" xOffset="0" yOffset="0" scalingFactor="1"/>
+    </xtru>
+    <box name="stepBoxASh2" x="1.0215768752578658" y="0.33673131577947268" z="1.4000000000000001" lunit="cm"/>
+    <polycone name="stepPconASh2" startphi="59.703625406724129" deltaphi="29.10632858962596" aunit="deg" lunit="cm">
+      <zplane z="-0.7350000000000001" rmin="4.3799999999999999" rmax="4.716731315779473"/>
+      <zplane z="0.7350000000000001" rmin="4.3799999999999999" rmax="4.716731315779473"/>
+    </polycone>
+    <subtraction name="TGeoCompositeShape0x68">
+      <first ref="stepBoxASh2"/>
+      <second ref="stepPconASh2"/>
+      <firstposition name="TGeoCompositeShape0x68stepBoxASh2pos" x="1.360788437628933" y="4.128365657889737" z="0" unit="cm"/>
+    </subtraction>
+  </solids>
+  <structure>
+    <volume name="ConeABasis0">
+      <materialref ref="ITS_EW_SideA_PEEKCF30"/>
+      <solidref ref="TGeoCompositeShapeEWsideA"/>
+    </volume>
+    <volume name="ConeAMidRing0">
+      <materialref ref="ITS_EW_SideA_PEEKCF30"/>
+      <solidref ref="midRingSh0"/>
+    </volume>
+    <volume name="ConeARibVol0">
+      <materialref ref="ITS_EW_SideA_PEEKCF30"/>
+      <solidref ref="TGeoXtru"/>
+    </volume>
+    <volume name="ConeAStep0">
+      <materialref ref="ITS_EW_SideA_PEEKCF30"/>
+      <solidref ref="TGeoCompositeShape0x18"/>
+    </volume>
+    <volume name="ConeABasis1">
+      <materialref ref="ITS_EW_SideA_PEEKCF30"/>
+      <solidref ref="TGeoCompositeShape0x21"/>
+    </volume>
+    <volume name="ConeAMidRing1">
+      <materialref ref="ITS_EW_SideA_PEEKCF30"/>
+      <solidref ref="midRingSh1"/>
+    </volume>
+    <volume name="ConeARibVol1">
+      <materialref ref="ITS_EW_SideA_PEEKCF30"/>
+      <solidref ref="TGeoXtru0x1"/>
+    </volume>
+    <volume name="ConeAStep1">
+      <materialref ref="ITS_EW_SideA_PEEKCF30"/>
+      <solidref ref="TGeoCompositeShape0x41"/>
+    </volume>
+    <volume name="ConeABasis2">
+      <materialref ref="ITS_EW_SideA_PEEKCF30"/>
+      <solidref ref="TGeoCompositeShape0x44"/>
+    </volume>
+    <volume name="ConeAMidRing2">
+      <materialref ref="ITS_EW_SideA_PEEKCF30"/>
+      <solidref ref="midRingSh2"/>
+    </volume>
+    <volume name="ConeARibVol2">
+      <materialref ref="ITS_EW_SideA_PEEKCF30"/>
+      <solidref ref="TGeoXtru0x2"/>
+    </volume>
+    <volume name="ConeAStep2">
+      <materialref ref="ITS_EW_SideA_PEEKCF30"/>
+      <solidref ref="TGeoCompositeShape0x68"/>
+    </volume>
+    <assembly name="EndWheelsSideA">
+      <physvol name="ConeABasis0_1" copynumber="1">
+        <volumeref ref="ConeABasis0"/>
+        <positionref ref="ConeABasis0_1inEndWheelsSideApos"/>
+      </physvol>
+    <!--
+      <physvol name="ConeAMidRing0_1" copynumber="1">
+        <volumeref ref="ConeAMidRing0"/>
+        <positionref ref="ConeAMidRing0_1inEndWheelsSideApos"/>
+      </physvol>
+      <physvol name="ConeARibVol0_1" copynumber="1">
+        <volumeref ref="ConeARibVol0"/>
+        <positionref ref="ConeARibVol0_1inEndWheelsSideApos"/>
+        <rotationref ref="ConeARibVol0_1inEndWheelsSideArot"/>
+      </physvol>
+      <physvol name="ConeARibVol0_1" copynumber="1">
+        <volumeref ref="ConeARibVol0"/>
+        <positionref ref="ConeARibVol0_10x1inEndWheelsSideApos"/>
+        <rotationref ref="ConeARibVol0_10x1inEndWheelsSideArot"/>
+      </physvol>
+      <physvol name="ConeARibVol0_1" copynumber="1">
+        <volumeref ref="ConeARibVol0"/>
+        <positionref ref="ConeARibVol0_10x2inEndWheelsSideApos"/>
+        <rotationref ref="ConeARibVol0_10x2inEndWheelsSideArot"/>
+      </physvol>
+      <physvol name="ConeARibVol0_1" copynumber="1">
+        <volumeref ref="ConeARibVol0"/>
+        <positionref ref="ConeARibVol0_10x3inEndWheelsSideApos"/>
+        <rotationref ref="ConeARibVol0_10x3inEndWheelsSideArot"/>
+      </physvol>
+      <physvol name="ConeARibVol0_1" copynumber="1">
+        <volumeref ref="ConeARibVol0"/>
+        <positionref ref="ConeARibVol0_10x4inEndWheelsSideApos"/>
+        <rotationref ref="ConeARibVol0_10x4inEndWheelsSideArot"/>
+      </physvol>
+      <physvol name="ConeARibVol0_1" copynumber="1">
+        <volumeref ref="ConeARibVol0"/>
+        <positionref ref="ConeARibVol0_10x5inEndWheelsSideApos"/>
+        <rotationref ref="ConeARibVol0_10x5inEndWheelsSideArot"/>
+      </physvol>
+      <physvol name="ConeARibVol0_1" copynumber="1">
+        <volumeref ref="ConeARibVol0"/>
+        <positionref ref="ConeARibVol0_10x6inEndWheelsSideApos"/>
+        <rotationref ref="ConeARibVol0_10x6inEndWheelsSideArot"/>
+      </physvol>
+      <physvol name="ConeARibVol0_1" copynumber="1">
+        <volumeref ref="ConeARibVol0"/>
+        <positionref ref="ConeARibVol0_10x7inEndWheelsSideApos"/>
+        <rotationref ref="ConeARibVol0_10x7inEndWheelsSideArot"/>
+      </physvol>
+      <physvol name="ConeARibVol0_1" copynumber="1">
+        <volumeref ref="ConeARibVol0"/>
+        <positionref ref="ConeARibVol0_10x8inEndWheelsSideApos"/>
+        <rotationref ref="ConeARibVol0_10x8inEndWheelsSideArot"/>
+      </physvol>
+      <physvol name="ConeARibVol0_1" copynumber="1">
+        <volumeref ref="ConeARibVol0"/>
+        <positionref ref="ConeARibVol0_10x9inEndWheelsSideApos"/>
+        <rotationref ref="ConeARibVol0_10x9inEndWheelsSideArot"/>
+      </physvol>
+      <physvol name="ConeARibVol0_1" copynumber="1">
+        <volumeref ref="ConeARibVol0"/>
+        <positionref ref="ConeARibVol0_10x10inEndWheelsSideApos"/>
+        <rotationref ref="ConeARibVol0_10x10inEndWheelsSideArot"/>
+      </physvol>
+      <physvol name="ConeARibVol0_1" copynumber="1">
+        <volumeref ref="ConeARibVol0"/>
+        <positionref ref="ConeARibVol0_10x11inEndWheelsSideApos"/>
+        <rotationref ref="ConeARibVol0_10x11inEndWheelsSideArot"/>
+      </physvol>
+      -->
+      <physvol name="ConeAStep0_1" copynumber="1">
+        <volumeref ref="ConeAStep0"/>
+        <positionref ref="ConeAStep0_1inEndWheelsSideApos"/>
+        <rotationref ref="ConeAStep0_1inEndWheelsSideArot"/>
+      </physvol>
+      <physvol name="ConeAStep0_2" copynumber="2">
+        <volumeref ref="ConeAStep0"/>
+        <positionref ref="ConeAStep0_2inEndWheelsSideApos"/>
+        <rotationref ref="ConeAStep0_2inEndWheelsSideArot"/>
+      </physvol>
+      <physvol name="ConeAStep0_3" copynumber="3">
+        <volumeref ref="ConeAStep0"/>
+        <positionref ref="ConeAStep0_3inEndWheelsSideApos"/>
+        <rotationref ref="ConeAStep0_3inEndWheelsSideArot"/>
+      </physvol>
+      <physvol name="ConeAStep0_4" copynumber="4">
+        <volumeref ref="ConeAStep0"/>
+        <positionref ref="ConeAStep0_4inEndWheelsSideApos"/>
+        <rotationref ref="ConeAStep0_4inEndWheelsSideArot"/>
+      </physvol>
+      <physvol name="ConeAStep0_5" copynumber="5">
+        <volumeref ref="ConeAStep0"/>
+        <positionref ref="ConeAStep0_5inEndWheelsSideApos"/>
+        <rotationref ref="ConeAStep0_5inEndWheelsSideArot"/>
+      </physvol>
+      <physvol name="ConeAStep0_6" copynumber="6">
+        <volumeref ref="ConeAStep0"/>
+        <positionref ref="ConeAStep0_6inEndWheelsSideApos"/>
+        <rotationref ref="ConeAStep0_6inEndWheelsSideArot"/>
+      </physvol>
+      <physvol name="ConeAStep0_7" copynumber="7">
+        <volumeref ref="ConeAStep0"/>
+        <positionref ref="ConeAStep0_7inEndWheelsSideApos"/>
+        <rotationref ref="ConeAStep0_7inEndWheelsSideArot"/>
+      </physvol>
+      <physvol name="ConeAStep0_8" copynumber="8">
+        <volumeref ref="ConeAStep0"/>
+        <positionref ref="ConeAStep0_8inEndWheelsSideApos"/>
+        <rotationref ref="ConeAStep0_8inEndWheelsSideArot"/>
+      </physvol>
+      <physvol name="ConeAStep0_9" copynumber="9">
+        <volumeref ref="ConeAStep0"/>
+        <positionref ref="ConeAStep0_9inEndWheelsSideApos"/>
+        <rotationref ref="ConeAStep0_9inEndWheelsSideArot"/>
+      </physvol>
+      <physvol name="ConeAStep0_10" copynumber="10">
+        <volumeref ref="ConeAStep0"/>
+        <positionref ref="ConeAStep0_10inEndWheelsSideApos"/>
+        <rotationref ref="ConeAStep0_10inEndWheelsSideArot"/>
+      </physvol>
+      <physvol name="ConeAStep0_11" copynumber="11">
+        <volumeref ref="ConeAStep0"/>
+        <positionref ref="ConeAStep0_11inEndWheelsSideApos"/>
+        <rotationref ref="ConeAStep0_11inEndWheelsSideArot"/>
+      </physvol>
+      <physvol name="ConeAStep0_12" copynumber="12">
+        <volumeref ref="ConeAStep0"/>
+        <positionref ref="ConeAStep0_12inEndWheelsSideApos"/>
+        <rotationref ref="ConeAStep0_12inEndWheelsSideArot"/>
+      </physvol>
+      <physvol name="ConeABasis1_1" copynumber="1">
+        <volumeref ref="ConeABasis1"/>
+        <positionref ref="ConeABasis1_1inEndWheelsSideApos"/>
+      </physvol>
+    <!--
+      <physvol name="ConeAMidRing1_1" copynumber="1">
+        <volumeref ref="ConeAMidRing1"/>
+        <positionref ref="ConeAMidRing1_1inEndWheelsSideApos"/>
+      </physvol>
+      <physvol name="ConeARibVol1_1" copynumber="1">
+        <volumeref ref="ConeARibVol1"/>
+        <positionref ref="ConeARibVol1_1inEndWheelsSideApos"/>
+        <rotationref ref="ConeARibVol1_1inEndWheelsSideArot"/>
+      </physvol>
+      <physvol name="ConeARibVol1_1" copynumber="1">
+        <volumeref ref="ConeARibVol1"/>
+        <positionref ref="ConeARibVol1_10x1inEndWheelsSideApos"/>
+        <rotationref ref="ConeARibVol1_10x1inEndWheelsSideArot"/>
+      </physvol>
+      <physvol name="ConeARibVol1_1" copynumber="1">
+        <volumeref ref="ConeARibVol1"/>
+        <positionref ref="ConeARibVol1_10x2inEndWheelsSideApos"/>
+        <rotationref ref="ConeARibVol1_10x2inEndWheelsSideArot"/>
+      </physvol>
+      <physvol name="ConeARibVol1_1" copynumber="1">
+        <volumeref ref="ConeARibVol1"/>
+        <positionref ref="ConeARibVol1_10x3inEndWheelsSideApos"/>
+        <rotationref ref="ConeARibVol1_10x3inEndWheelsSideArot"/>
+      </physvol>
+      <physvol name="ConeARibVol1_1" copynumber="1">
+        <volumeref ref="ConeARibVol1"/>
+        <positionref ref="ConeARibVol1_10x4inEndWheelsSideApos"/>
+        <rotationref ref="ConeARibVol1_10x4inEndWheelsSideArot"/>
+      </physvol>
+      <physvol name="ConeARibVol1_1" copynumber="1">
+        <volumeref ref="ConeARibVol1"/>
+        <positionref ref="ConeARibVol1_10x5inEndWheelsSideApos"/>
+        <rotationref ref="ConeARibVol1_10x5inEndWheelsSideArot"/>
+      </physvol>
+      <physvol name="ConeARibVol1_1" copynumber="1">
+        <volumeref ref="ConeARibVol1"/>
+        <positionref ref="ConeARibVol1_10x6inEndWheelsSideApos"/>
+        <rotationref ref="ConeARibVol1_10x6inEndWheelsSideArot"/>
+      </physvol>
+      <physvol name="ConeARibVol1_1" copynumber="1">
+        <volumeref ref="ConeARibVol1"/>
+        <positionref ref="ConeARibVol1_10x7inEndWheelsSideApos"/>
+        <rotationref ref="ConeARibVol1_10x7inEndWheelsSideArot"/>
+      </physvol>
+      <physvol name="ConeARibVol1_1" copynumber="1">
+        <volumeref ref="ConeARibVol1"/>
+        <positionref ref="ConeARibVol1_10x8inEndWheelsSideApos"/>
+        <rotationref ref="ConeARibVol1_10x8inEndWheelsSideArot"/>
+      </physvol>
+      <physvol name="ConeARibVol1_1" copynumber="1">
+        <volumeref ref="ConeARibVol1"/>
+        <positionref ref="ConeARibVol1_10x9inEndWheelsSideApos"/>
+        <rotationref ref="ConeARibVol1_10x9inEndWheelsSideArot"/>
+      </physvol>
+      <physvol name="ConeARibVol1_1" copynumber="1">
+        <volumeref ref="ConeARibVol1"/>
+        <positionref ref="ConeARibVol1_10x10inEndWheelsSideApos"/>
+        <rotationref ref="ConeARibVol1_10x10inEndWheelsSideArot"/>
+      </physvol>
+      <physvol name="ConeARibVol1_1" copynumber="1">
+        <volumeref ref="ConeARibVol1"/>
+        <positionref ref="ConeARibVol1_10x11inEndWheelsSideApos"/>
+        <rotationref ref="ConeARibVol1_10x11inEndWheelsSideArot"/>
+      </physvol>
+      <physvol name="ConeARibVol1_1" copynumber="1">
+        <volumeref ref="ConeARibVol1"/>
+        <positionref ref="ConeARibVol1_10x12inEndWheelsSideApos"/>
+        <rotationref ref="ConeARibVol1_10x12inEndWheelsSideArot"/>
+      </physvol>
+      <physvol name="ConeARibVol1_1" copynumber="1">
+        <volumeref ref="ConeARibVol1"/>
+        <positionref ref="ConeARibVol1_10x13inEndWheelsSideApos"/>
+        <rotationref ref="ConeARibVol1_10x13inEndWheelsSideArot"/>
+      </physvol>
+      <physvol name="ConeARibVol1_1" copynumber="1">
+        <volumeref ref="ConeARibVol1"/>
+        <positionref ref="ConeARibVol1_10x14inEndWheelsSideApos"/>
+        <rotationref ref="ConeARibVol1_10x14inEndWheelsSideArot"/>
+      </physvol>
+      <physvol name="ConeARibVol1_1" copynumber="1">
+        <volumeref ref="ConeARibVol1"/>
+        <positionref ref="ConeARibVol1_10x15inEndWheelsSideApos"/>
+        <rotationref ref="ConeARibVol1_10x15inEndWheelsSideArot"/>
+      </physvol>
+      -->
+      <physvol name="ConeAStep1_1" copynumber="1">
+        <volumeref ref="ConeAStep1"/>
+        <positionref ref="ConeAStep1_1inEndWheelsSideApos"/>
+        <rotationref ref="ConeAStep1_1inEndWheelsSideArot"/>
+      </physvol>
+      <physvol name="ConeAStep1_2" copynumber="2">
+        <volumeref ref="ConeAStep1"/>
+        <positionref ref="ConeAStep1_2inEndWheelsSideApos"/>
+        <rotationref ref="ConeAStep1_2inEndWheelsSideArot"/>
+      </physvol>
+      <physvol name="ConeAStep1_3" copynumber="3">
+        <volumeref ref="ConeAStep1"/>
+        <positionref ref="ConeAStep1_3inEndWheelsSideApos"/>
+        <rotationref ref="ConeAStep1_3inEndWheelsSideArot"/>
+      </physvol>
+      <physvol name="ConeAStep1_4" copynumber="4">
+        <volumeref ref="ConeAStep1"/>
+        <positionref ref="ConeAStep1_4inEndWheelsSideApos"/>
+        <rotationref ref="ConeAStep1_4inEndWheelsSideArot"/>
+      </physvol>
+      <physvol name="ConeAStep1_5" copynumber="5">
+        <volumeref ref="ConeAStep1"/>
+        <positionref ref="ConeAStep1_5inEndWheelsSideApos"/>
+        <rotationref ref="ConeAStep1_5inEndWheelsSideArot"/>
+      </physvol>
+      <physvol name="ConeAStep1_6" copynumber="6">
+        <volumeref ref="ConeAStep1"/>
+        <positionref ref="ConeAStep1_6inEndWheelsSideApos"/>
+        <rotationref ref="ConeAStep1_6inEndWheelsSideArot"/>
+      </physvol>
+      <physvol name="ConeAStep1_7" copynumber="7">
+        <volumeref ref="ConeAStep1"/>
+        <positionref ref="ConeAStep1_7inEndWheelsSideApos"/>
+        <rotationref ref="ConeAStep1_7inEndWheelsSideArot"/>
+      </physvol>
+      <physvol name="ConeAStep1_8" copynumber="8">
+        <volumeref ref="ConeAStep1"/>
+        <positionref ref="ConeAStep1_8inEndWheelsSideApos"/>
+        <rotationref ref="ConeAStep1_8inEndWheelsSideArot"/>
+      </physvol>
+      <physvol name="ConeAStep1_9" copynumber="9">
+        <volumeref ref="ConeAStep1"/>
+        <positionref ref="ConeAStep1_9inEndWheelsSideApos"/>
+        <rotationref ref="ConeAStep1_9inEndWheelsSideArot"/>
+      </physvol>
+      <physvol name="ConeAStep1_10" copynumber="10">
+        <volumeref ref="ConeAStep1"/>
+        <positionref ref="ConeAStep1_10inEndWheelsSideApos"/>
+        <rotationref ref="ConeAStep1_10inEndWheelsSideArot"/>
+      </physvol>
+      <physvol name="ConeAStep1_11" copynumber="11">
+        <volumeref ref="ConeAStep1"/>
+        <positionref ref="ConeAStep1_11inEndWheelsSideApos"/>
+        <rotationref ref="ConeAStep1_11inEndWheelsSideArot"/>
+      </physvol>
+      <physvol name="ConeAStep1_12" copynumber="12">
+        <volumeref ref="ConeAStep1"/>
+        <positionref ref="ConeAStep1_12inEndWheelsSideApos"/>
+        <rotationref ref="ConeAStep1_12inEndWheelsSideArot"/>
+      </physvol>
+      <physvol name="ConeAStep1_13" copynumber="13">
+        <volumeref ref="ConeAStep1"/>
+        <positionref ref="ConeAStep1_13inEndWheelsSideApos"/>
+        <rotationref ref="ConeAStep1_13inEndWheelsSideArot"/>
+      </physvol>
+      <physvol name="ConeAStep1_14" copynumber="14">
+        <volumeref ref="ConeAStep1"/>
+        <positionref ref="ConeAStep1_14inEndWheelsSideApos"/>
+        <rotationref ref="ConeAStep1_14inEndWheelsSideArot"/>
+      </physvol>
+      <physvol name="ConeAStep1_15" copynumber="15">
+        <volumeref ref="ConeAStep1"/>
+        <positionref ref="ConeAStep1_15inEndWheelsSideApos"/>
+        <rotationref ref="ConeAStep1_15inEndWheelsSideArot"/>
+      </physvol>
+      <physvol name="ConeAStep1_16" copynumber="16">
+        <volumeref ref="ConeAStep1"/>
+        <positionref ref="ConeAStep1_16inEndWheelsSideApos"/>
+        <rotationref ref="ConeAStep1_16inEndWheelsSideArot"/>
+      </physvol>
+      <physvol name="ConeABasis2_1" copynumber="1">
+        <volumeref ref="ConeABasis2"/>
+        <positionref ref="ConeABasis2_1inEndWheelsSideApos"/>
+      </physvol>
+    <!--
+      <physvol name="ConeAMidRing2_1" copynumber="1">
+        <volumeref ref="ConeAMidRing2"/>
+        <positionref ref="ConeAMidRing2_1inEndWheelsSideApos"/>
+      </physvol>
+      <physvol name="ConeARibVol2_1" copynumber="1">
+        <volumeref ref="ConeARibVol2"/>
+        <positionref ref="ConeARibVol2_1inEndWheelsSideApos"/>
+        <rotationref ref="ConeARibVol2_1inEndWheelsSideArot"/>
+      </physvol>
+      <physvol name="ConeARibVol2_1" copynumber="1">
+        <volumeref ref="ConeARibVol2"/>
+        <positionref ref="ConeARibVol2_10x1inEndWheelsSideApos"/>
+        <rotationref ref="ConeARibVol2_10x1inEndWheelsSideArot"/>
+      </physvol>
+      <physvol name="ConeARibVol2_1" copynumber="1">
+        <volumeref ref="ConeARibVol2"/>
+        <positionref ref="ConeARibVol2_10x2inEndWheelsSideApos"/>
+        <rotationref ref="ConeARibVol2_10x2inEndWheelsSideArot"/>
+      </physvol>
+      <physvol name="ConeARibVol2_1" copynumber="1">
+        <volumeref ref="ConeARibVol2"/>
+        <positionref ref="ConeARibVol2_10x3inEndWheelsSideApos"/>
+        <rotationref ref="ConeARibVol2_10x3inEndWheelsSideArot"/>
+      </physvol>
+      <physvol name="ConeARibVol2_1" copynumber="1">
+        <volumeref ref="ConeARibVol2"/>
+        <positionref ref="ConeARibVol2_10x4inEndWheelsSideApos"/>
+        <rotationref ref="ConeARibVol2_10x4inEndWheelsSideArot"/>
+      </physvol>
+      <physvol name="ConeARibVol2_1" copynumber="1">
+        <volumeref ref="ConeARibVol2"/>
+        <positionref ref="ConeARibVol2_10x5inEndWheelsSideApos"/>
+        <rotationref ref="ConeARibVol2_10x5inEndWheelsSideArot"/>
+      </physvol>
+      <physvol name="ConeARibVol2_1" copynumber="1">
+        <volumeref ref="ConeARibVol2"/>
+        <positionref ref="ConeARibVol2_10x6inEndWheelsSideApos"/>
+        <rotationref ref="ConeARibVol2_10x6inEndWheelsSideArot"/>
+      </physvol>
+      <physvol name="ConeARibVol2_1" copynumber="1">
+        <volumeref ref="ConeARibVol2"/>
+        <positionref ref="ConeARibVol2_10x7inEndWheelsSideApos"/>
+        <rotationref ref="ConeARibVol2_10x7inEndWheelsSideArot"/>
+      </physvol>
+      <physvol name="ConeARibVol2_1" copynumber="1">
+        <volumeref ref="ConeARibVol2"/>
+        <positionref ref="ConeARibVol2_10x8inEndWheelsSideApos"/>
+        <rotationref ref="ConeARibVol2_10x8inEndWheelsSideArot"/>
+      </physvol>
+      <physvol name="ConeARibVol2_1" copynumber="1">
+        <volumeref ref="ConeARibVol2"/>
+        <positionref ref="ConeARibVol2_10x9inEndWheelsSideApos"/>
+        <rotationref ref="ConeARibVol2_10x9inEndWheelsSideArot"/>
+      </physvol>
+      <physvol name="ConeARibVol2_1" copynumber="1">
+        <volumeref ref="ConeARibVol2"/>
+        <positionref ref="ConeARibVol2_10x10inEndWheelsSideApos"/>
+        <rotationref ref="ConeARibVol2_10x10inEndWheelsSideArot"/>
+      </physvol>
+      <physvol name="ConeARibVol2_1" copynumber="1">
+        <volumeref ref="ConeARibVol2"/>
+        <positionref ref="ConeARibVol2_10x11inEndWheelsSideApos"/>
+        <rotationref ref="ConeARibVol2_10x11inEndWheelsSideArot"/>
+      </physvol>
+      <physvol name="ConeARibVol2_1" copynumber="1">
+        <volumeref ref="ConeARibVol2"/>
+        <positionref ref="ConeARibVol2_10x12inEndWheelsSideApos"/>
+        <rotationref ref="ConeARibVol2_10x12inEndWheelsSideArot"/>
+      </physvol>
+      <physvol name="ConeARibVol2_1" copynumber="1">
+        <volumeref ref="ConeARibVol2"/>
+        <positionref ref="ConeARibVol2_10x13inEndWheelsSideApos"/>
+        <rotationref ref="ConeARibVol2_10x13inEndWheelsSideArot"/>
+      </physvol>
+      <physvol name="ConeARibVol2_1" copynumber="1">
+        <volumeref ref="ConeARibVol2"/>
+        <positionref ref="ConeARibVol2_10x14inEndWheelsSideApos"/>
+        <rotationref ref="ConeARibVol2_10x14inEndWheelsSideArot"/>
+      </physvol>
+      <physvol name="ConeARibVol2_1" copynumber="1">
+        <volumeref ref="ConeARibVol2"/>
+        <positionref ref="ConeARibVol2_10x15inEndWheelsSideApos"/>
+        <rotationref ref="ConeARibVol2_10x15inEndWheelsSideArot"/>
+      </physvol>
+      <physvol name="ConeARibVol2_1" copynumber="1">
+        <volumeref ref="ConeARibVol2"/>
+        <positionref ref="ConeARibVol2_10x16inEndWheelsSideApos"/>
+        <rotationref ref="ConeARibVol2_10x16inEndWheelsSideArot"/>
+      </physvol>
+      <physvol name="ConeARibVol2_1" copynumber="1">
+        <volumeref ref="ConeARibVol2"/>
+        <positionref ref="ConeARibVol2_10x17inEndWheelsSideApos"/>
+        <rotationref ref="ConeARibVol2_10x17inEndWheelsSideArot"/>
+      </physvol>
+      <physvol name="ConeARibVol2_1" copynumber="1">
+        <volumeref ref="ConeARibVol2"/>
+        <positionref ref="ConeARibVol2_10x18inEndWheelsSideApos"/>
+        <rotationref ref="ConeARibVol2_10x18inEndWheelsSideArot"/>
+      </physvol>
+      <physvol name="ConeARibVol2_1" copynumber="1">
+        <volumeref ref="ConeARibVol2"/>
+        <positionref ref="ConeARibVol2_10x19inEndWheelsSideApos"/>
+        <rotationref ref="ConeARibVol2_10x19inEndWheelsSideArot"/>
+      </physvol>
+      -->
+      <physvol name="ConeAStep2_1" copynumber="1">
+        <volumeref ref="ConeAStep2"/>
+        <positionref ref="ConeAStep2_1inEndWheelsSideApos"/>
+        <rotationref ref="ConeAStep2_1inEndWheelsSideArot"/>
+      </physvol>
+      <physvol name="ConeAStep2_2" copynumber="2">
+        <volumeref ref="ConeAStep2"/>
+        <positionref ref="ConeAStep2_2inEndWheelsSideApos"/>
+        <rotationref ref="ConeAStep2_2inEndWheelsSideArot"/>
+      </physvol>
+      <physvol name="ConeAStep2_3" copynumber="3">
+        <volumeref ref="ConeAStep2"/>
+        <positionref ref="ConeAStep2_3inEndWheelsSideApos"/>
+        <rotationref ref="ConeAStep2_3inEndWheelsSideArot"/>
+      </physvol>
+      <physvol name="ConeAStep2_4" copynumber="4">
+        <volumeref ref="ConeAStep2"/>
+        <positionref ref="ConeAStep2_4inEndWheelsSideApos"/>
+        <rotationref ref="ConeAStep2_4inEndWheelsSideArot"/>
+      </physvol>
+      <physvol name="ConeAStep2_5" copynumber="5">
+        <volumeref ref="ConeAStep2"/>
+        <positionref ref="ConeAStep2_5inEndWheelsSideApos"/>
+        <rotationref ref="ConeAStep2_5inEndWheelsSideArot"/>
+      </physvol>
+      <physvol name="ConeAStep2_6" copynumber="6">
+        <volumeref ref="ConeAStep2"/>
+        <positionref ref="ConeAStep2_6inEndWheelsSideApos"/>
+        <rotationref ref="ConeAStep2_6inEndWheelsSideArot"/>
+      </physvol>
+      <physvol name="ConeAStep2_7" copynumber="7">
+        <volumeref ref="ConeAStep2"/>
+        <positionref ref="ConeAStep2_7inEndWheelsSideApos"/>
+        <rotationref ref="ConeAStep2_7inEndWheelsSideArot"/>
+      </physvol>
+      <physvol name="ConeAStep2_8" copynumber="8">
+        <volumeref ref="ConeAStep2"/>
+        <positionref ref="ConeAStep2_8inEndWheelsSideApos"/>
+        <rotationref ref="ConeAStep2_8inEndWheelsSideArot"/>
+      </physvol>
+      <physvol name="ConeAStep2_9" copynumber="9">
+        <volumeref ref="ConeAStep2"/>
+        <positionref ref="ConeAStep2_9inEndWheelsSideApos"/>
+        <rotationref ref="ConeAStep2_9inEndWheelsSideArot"/>
+      </physvol>
+      <physvol name="ConeAStep2_10" copynumber="10">
+        <volumeref ref="ConeAStep2"/>
+        <positionref ref="ConeAStep2_10inEndWheelsSideApos"/>
+        <rotationref ref="ConeAStep2_10inEndWheelsSideArot"/>
+      </physvol>
+      <physvol name="ConeAStep2_11" copynumber="11">
+        <volumeref ref="ConeAStep2"/>
+        <positionref ref="ConeAStep2_11inEndWheelsSideApos"/>
+        <rotationref ref="ConeAStep2_11inEndWheelsSideArot"/>
+      </physvol>
+      <physvol name="ConeAStep2_12" copynumber="12">
+        <volumeref ref="ConeAStep2"/>
+        <positionref ref="ConeAStep2_12inEndWheelsSideApos"/>
+        <rotationref ref="ConeAStep2_12inEndWheelsSideArot"/>
+      </physvol>
+      <physvol name="ConeAStep2_13" copynumber="13">
+        <volumeref ref="ConeAStep2"/>
+        <positionref ref="ConeAStep2_13inEndWheelsSideApos"/>
+        <rotationref ref="ConeAStep2_13inEndWheelsSideArot"/>
+      </physvol>
+      <physvol name="ConeAStep2_14" copynumber="14">
+        <volumeref ref="ConeAStep2"/>
+        <positionref ref="ConeAStep2_14inEndWheelsSideApos"/>
+        <rotationref ref="ConeAStep2_14inEndWheelsSideArot"/>
+      </physvol>
+      <physvol name="ConeAStep2_15" copynumber="15">
+        <volumeref ref="ConeAStep2"/>
+        <positionref ref="ConeAStep2_15inEndWheelsSideApos"/>
+        <rotationref ref="ConeAStep2_15inEndWheelsSideArot"/>
+      </physvol>
+      <physvol name="ConeAStep2_16" copynumber="16">
+        <volumeref ref="ConeAStep2"/>
+        <positionref ref="ConeAStep2_16inEndWheelsSideApos"/>
+        <rotationref ref="ConeAStep2_16inEndWheelsSideArot"/>
+      </physvol>
+      <physvol name="ConeAStep2_17" copynumber="17">
+        <volumeref ref="ConeAStep2"/>
+        <positionref ref="ConeAStep2_17inEndWheelsSideApos"/>
+        <rotationref ref="ConeAStep2_17inEndWheelsSideArot"/>
+      </physvol>
+      <physvol name="ConeAStep2_18" copynumber="18">
+        <volumeref ref="ConeAStep2"/>
+        <positionref ref="ConeAStep2_18inEndWheelsSideApos"/>
+        <rotationref ref="ConeAStep2_18inEndWheelsSideArot"/>
+      </physvol>
+      <physvol name="ConeAStep2_19" copynumber="19">
+        <volumeref ref="ConeAStep2"/>
+        <positionref ref="ConeAStep2_19inEndWheelsSideApos"/>
+        <rotationref ref="ConeAStep2_19inEndWheelsSideArot"/>
+      </physvol>
+      <physvol name="ConeAStep2_20" copynumber="20">
+        <volumeref ref="ConeAStep2"/>
+        <positionref ref="ConeAStep2_20inEndWheelsSideApos"/>
+        <rotationref ref="ConeAStep2_20inEndWheelsSideArot"/>
+      </physvol>
+    </assembly>
+ </structure>
+  <setup name="default" version="1.0">
+    <world ref="EndWheelsSideA"/>
+  </setup>
+</gdml>
