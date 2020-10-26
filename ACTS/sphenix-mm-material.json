@@ -1,0 +1,339 @@
+{
+    "volumes": {
+        "10": {
+            "Geoid": "vol=10|lay=2",
+            "Name": "",
+            "layers": {
+                "2": {
+                    "Geoid": "vol=10|lay=2",
+                    "representing": {
+                        "data": [
+                            [
+                                {
+                                    "material": [
+                                        6097.732421875,
+                                        10084.20703125,
+                                        10.783726692199707,
+                                        5.031980991363525,
+                                        7.1241579462366644e-06
+                                    ],
+                                    "thickness": 31.838315963745117
+                                }
+                            ]
+                        ],
+                        "mapMaterial": true,
+                        "type": "homogeneous"
+                    }
+                },
+                "4": {
+                    "Geoid": "vol=10|lay=4",
+                    "representing": {
+                        "data": [
+                            [
+                                {
+                                    "material": [
+                                        2486.689453125,
+                                        6206.859375,
+                                        14.667505264282227,
+                                        7.294337749481201,
+                                        9.306769243266899e-06
+                                    ],
+                                    "thickness": 7.7224884033203125
+                                }
+                            ]
+                        ],
+                        "mapMaterial": true,
+                        "type": "homogeneous"
+                    }
+                },
+                "6": {
+                    "Geoid": "vol=10|lay=6",
+                    "representing": {
+                        "data": [
+                            [
+                                {
+                                    "material": [
+                                        5061.32763671875,
+                                        11383.0732421875,
+                                        13.669127464294434,
+                                        6.8188557624816895,
+                                        5.245251486485358e-06
+                                    ],
+                                    "thickness": 22.858417510986328
+                                }
+                            ]
+                        ],
+                        "mapMaterial": true,
+                        "type": "homogeneous"
+                    }
+                }
+            }
+        },
+        "12": {
+            "Geoid": "vol=12|lay=2",
+            "Name": "",
+            "layers": {
+                "2": {
+                    "Geoid": "vol=12|lay=2",
+                    "representing": {
+                        "data": [
+                            [
+                                {
+                                    "material": [
+                                        1405.4613037109375,
+                                        4157.7919921875,
+                                        15.272787094116211,
+                                        7.558535099029541,
+                                        1.352287108602468e-05
+                                    ],
+                                    "thickness": 13.224169731140137
+                                }
+                            ]
+                        ],
+                        "mapMaterial": true,
+                        "type": "homogeneous"
+                    }
+                },
+                "4": {
+                    "Geoid": "vol=12|lay=4",
+                    "representing": {
+                        "data": [
+                            [
+                                {
+                                    "material": [
+                                        2215.947998046875,
+                                        6165.5859375,
+                                        14.703286170959473,
+                                        7.290060043334961,
+                                        9.312630936619826e-06
+                                    ],
+                                    "thickness": 21.599279403686523
+                                }
+                            ]
+                        ],
+                        "mapMaterial": true,
+                        "type": "homogeneous"
+                    }
+                },
+                "6": {
+                    "Geoid": "vol=12|lay=6",
+                    "representing": {
+                        "data": [
+                            [
+                                {
+                                    "material": [
+                                        396.577392578125,
+                                        1249.379638671875,
+                                        15.910670280456543,
+                                        7.858933925628662,
+                                        4.395990981720388e-05
+                                    ],
+                                    "thickness": 3.37949538230896
+                                }
+                            ]
+                        ],
+                        "mapMaterial": true,
+                        "type": "homogeneous"
+                    }
+                },
+                "8": {
+                    "Geoid": "vol=12|lay=8",
+                    "representing": {
+                        "data": [
+                            [
+                                {
+                                    "material": [
+                                        2055.057861328125,
+                                        5778.587890625,
+                                        14.797208786010742,
+                                        7.334417819976807,
+                                        9.901660632749554e-06
+                                    ],
+                                    "thickness": 19.82805061340332
+                                }
+                            ]
+                        ],
+                        "mapMaterial": true,
+                        "type": "homogeneous"
+                    }
+                }
+            }
+        },
+        "14": {
+            "Geoid": "vol=14",
+            "Name": "",
+            "material": {
+                "bin0": [
+                    "binR",
+                    "open",
+                    1,
+                    [
+                        109.14832305908203,
+                        773.5220336914063
+                    ]
+                ],
+                "bin1": [
+                    "binPhi",
+                    "closed",
+                    1,
+                    [
+                        -3.1415927410125732,
+                        3.1415927410125732
+                    ]
+                ],
+                "bin2": [
+                    "binZ",
+                    "open",
+                    1,
+                    [
+                        -1058.2945556640625,
+                        1058.2945556640625
+                    ]
+                ],
+                "data": [
+                    [
+                        12025.8662109375,
+                        30221.1796875,
+                        14.067083358764648,
+                        6.990403652191162,
+                        1.2298936553634121e-06
+                    ],
+                    null,
+                    null,
+                    null,
+                    null,
+                    null,
+                    null,
+                    null,
+                    null,
+                    null,
+                    null,
+                    null,
+                    null,
+                    null,
+                    null,
+                    null,
+                    null,
+                    null,
+                    null,
+                    null,
+                    null,
+                    null,
+                    null,
+                    null,
+                    null,
+                    null,
+                    null
+                ],
+                "mapMaterial": true,
+                "tranformation": [
+                    1.0,
+                    0.0,
+                    0.0,
+                    0.0,
+                    0.0,
+                    1.0,
+                    0.0,
+                    0.0,
+                    0.0,
+                    0.0,
+                    1.0,
+                    0.0,
+                    0.0,
+                    0.0,
+                    0.0,
+                    1.0
+                ],
+                "type": "interpolated3D"
+            }
+        },
+        "16": {
+            "Geoid": "vol=16",
+            "Name": "",
+            "material": {
+                "bin0": [
+                    "binR",
+                    "open",
+                    1,
+                    [
+                        773.5220336914063,
+                        833.6940307617188
+                    ]
+                ],
+                "bin1": [
+                    "binPhi",
+                    "closed",
+                    1,
+                    [
+                        -3.1415927410125732,
+                        3.1415927410125732
+                    ]
+                ],
+                "bin2": [
+                    "binZ",
+                    "open",
+                    1,
+                    [
+                        -1101.949951171875,
+                        1101.949951171875
+                    ]
+                ],
+                "data": [
+                    [
+                        370840.21875,
+                        1048757.125,
+                        19.101377487182617,
+                        9.381903648376465,
+                        5.158037907904145e-08
+                    ],
+                    null,
+                    null,
+                    null,
+                    null,
+                    null,
+                    null,
+                    null,
+                    null,
+                    null,
+                    null,
+                    null,
+                    null,
+                    null,
+                    null,
+                    null,
+                    null,
+                    null,
+                    null,
+                    null,
+                    null,
+                    null,
+                    null,
+                    null,
+                    null,
+                    null,
+                    null
+                ],
+                "mapMaterial": true,
+                "tranformation": [
+                    1.0,
+                    0.0,
+                    0.0,
+                    0.0,
+                    0.0,
+                    1.0,
+                    0.0,
+                    0.0,
+                    0.0,
+                    0.0,
+                    1.0,
+                    0.0,
+                    0.0,
+                    0.0,
+                    0.0,
+                    1.0
+                ],
+                "type": "interpolated3D"
+            }
+        }
+    }
+}
