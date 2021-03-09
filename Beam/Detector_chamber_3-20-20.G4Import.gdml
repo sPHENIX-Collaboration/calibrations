@@ -40142,6 +40142,8 @@
     <position name="center" z="0.000000" x="0" y="-0.000000" unit="mm"/>
     <position name="center-100umx" z="0.000000" x="-.1" y="-0.000000" unit="mm"/>
     <position name="center-10umx" z="0.000000" x="-.01" y="-0.000000" unit="mm"/>
+    <position name="center-10umx" z="0.000000" x="-.01" y="-0.000000" unit="mm"/>
+    <rotation name="RotateY" y="-3" unit="deg" />
   </define>
   <solids>
     <box name="worldbox" z="10000" x="10000" y="10000" lunit="mm"/>
@@ -40197,7 +40199,12 @@
       <materialref ref="ALUMINUM"/>
       <solidref ref="T-Detector chamber - hadron rear"/>
     </volume>
-	
+
+    <volume name="V-FWVACUUM">
+      <materialref ref="VACUUM"/>
+      <solidref ref="HadronForwardEnvelope0x1"/>
+    </volume>
+
     <volume name="HadronForwardEnvelope">
       <materialref ref="VACUUM"/>
       <solidref ref="HadronForwardEnvelope0x1"/>
@@ -40218,6 +40225,7 @@
       <physvol name="P-SOLID_2">
         <volumeref ref="V-SOLID_2"/>
         <positionref ref="center-100umx"/>
+        
       </physvol>
       <physvol name="P-Electron beam screen - inner chamber:1">
         <volumeref ref="V-Electron beam screen - inner chamber:1"/>
