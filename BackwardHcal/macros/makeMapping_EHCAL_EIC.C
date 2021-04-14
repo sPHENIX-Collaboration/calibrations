@@ -4,7 +4,7 @@
 
 using namespace std;
 
-void makeMapping_DRCALO_notch( TString setup="large_tower" )
+void makeMapping_EHCAL_EIC( TString setup="default" )
 {
 
   /* Global detector position / transformation */
@@ -30,55 +30,125 @@ void makeMapping_DRCALO_notch( TString setup="large_tower" )
 
   cout << "Setup selected: " << setup << endl;
 
-
-  if ( setup == "default" )
+  if ( setup == "2x" )
     {
       /* Global detector position / transformation */
       femc_x0 =  0.0; // cm,
       femc_y0 =  0.0; // cm,
-      femc_z0 = 375.0; // cm,
+      femc_z0 = 400.0; // cm,
 
       /* Detector envelope size (cone shape) */
-      femc_rmin1 = 14; // cm  //was 14
-      femc_rmax1 = 220; // cm
-      // femc_rmax1 = 262; // cm
-      femc_rmin2 = femc_rmin1; // cm
-      femc_rmax2 = femc_rmax1; // cm
-      // femc_rmax2 = 262; // cm
-      femc_dz = 150; // cm
+      femc_rmin1 = 14; // cm
+      femc_rmax1 = 262; // cm
+      femc_rmin2 = 14; // cm
+      femc_rmax2 = 262; // cm
+      femc_dz = 100; // cm
 
       /* Tower parameters */
-      double scalefac = 1;
-      tower_dx = 0.15*scalefac; // cm
-      tower_dy = tower_dx; // cm
-      tower_dz = 150.0; // cm
-} else if ( setup == "large_tower" )
+      tower_dx = 5.0; // cm
+      tower_dy = 5.0; // cm
+      tower_dz = 100.0; // cm
+    }
+  else if ( setup == "4x" )
     {
       /* Global detector position / transformation */
       femc_x0 =  0.0; // cm,
       femc_y0 =  0.0; // cm,
-      femc_z0 = 375.0; // cm,
+      femc_z0 = 400.0; // cm,
 
       /* Detector envelope size (cone shape) */
-      femc_rmin1 = 20; // cm  //was 14
-      femc_rmax1 = 220; // cm
-      // femc_rmax1 = 262; // cm
-      femc_rmin2 = femc_rmin1; // cm
-      femc_rmax2 = femc_rmax1; // cm
-      // femc_rmax2 = 262; // cm
-      femc_dz = 150; // cm
+      femc_rmin1 = 14; // cm
+      femc_rmax1 = 262; // cm
+      femc_rmin2 = 14; // cm
+      femc_rmax2 = 262; // cm
+      femc_dz = 100; // cm
 
       /* Tower parameters */
-      double scalefac = 10;
-      tower_dx = 0.15*scalefac; // cm
-      tower_dy = tower_dx; // cm
-      tower_dz = 150.0; // cm
+      tower_dx = 2.5; // cm
+      tower_dy = 2.5; // cm
+      tower_dz = 100.0; // cm
+    }
+  else if ( setup == "2xdefeta" )
+    {
+      /* Global detector position / transformation */
+      femc_x0 =  0.0; // cm,
+      femc_y0 =  0.0; // cm,
+      femc_z0 = 400.0; // cm,
+
+      /* Detector envelope size (cone shape) */
+      femc_rmin1 = 23; // cm
+      femc_rmax1 = 262; // cm
+      femc_rmin2 = 23; // cm
+      femc_rmax2 = 262; // cm
+      femc_dz = 100; // cm
+
+      /* Tower parameters */
+      tower_dx = 5.0; // cm
+      tower_dy = 5.0; // cm
+      tower_dz = 100.0; // cm
+    }
+  else if ( setup == "4xdefeta" )
+    {
+      /* Global detector position / transformation */
+      femc_x0 =  0.0; // cm,
+      femc_y0 =  0.0; // cm,
+      femc_z0 = 400.0; // cm,
+
+      /* Detector envelope size (cone shape) */
+      femc_rmin1 = 23; // cm
+      femc_rmax1 = 262; // cm
+      femc_rmin2 = 23; // cm
+      femc_rmax2 = 262; // cm
+      femc_dz = 100; // cm
+
+      /* Tower parameters */
+      tower_dx = 2.5; // cm
+      tower_dy = 2.5; // cm
+      tower_dz = 100.0; // cm
+    }
+  else if ( setup == "default" )
+    {
+      /* Global detector position / transformation */
+      femc_x0 =  0.0; // cm,
+      femc_y0 =  0.0; // cm,
+      femc_z0 = -284.0; // cm,
+
+      /* Detector envelope size (cone shape) */
+      femc_rmin1 = 15; // cm
+      femc_rmax1 = 160; // cm
+      femc_rmin2 = 15; // cm
+      femc_rmax2 = 160; // cm
+      femc_dz = 100; // cm
+
+      /* Tower parameters */
+      tower_dx = 5.0; // cm
+      tower_dy = 5.0; // cm
+      tower_dz = 90.0; // cm
+    }
+  else if ( setup == "default_offset" )
+    {
+      /* Global detector position / transformation */
+      femc_x0 =  0.0; // cm,
+      femc_y0 =  0.0; // cm,
+      femc_z0 = 400.0; // cm,
+
+      /* Detector envelope size (cone shape) */
+      femc_rmin1 = 14; // cm
+      femc_rmax1 = 262; // cm
+      femc_rmin2 = 14; // cm
+      femc_rmax2 = 262; // cm
+      femc_dz = 100; // cm
+
+      /* Tower parameters */
+      tower_dx = 10.0; // cm
+      tower_dy = 10.0; // cm
+      tower_dz = 100.0; // cm
     }
 
   // NOTE: code below assumes tower_dx = tower_dy
   // Will need to be updated if that's not the case JGL 12/27/2015
   unsigned n_towers_j = 2 * ( (unsigned)( ( (femc_rmax1+0.5*tower_dx) /tower_dx) )) + 1;
-  unsigned n_towers_k = 2 * ( (unsigned)( ( (femc_rmax1+0.5*tower_dy) /tower_dy) )) + 1;
+  unsigned n_towers_k = n_towers_j;
 
   // double xpos_j0_k0 = (-1 * ( (double)( n_towers_j - 1 ) / 2 ) * tower_dx) + 0.5*tower_dx;
   double xpos_j0_k0 = -1 * ( (float)( n_towers_j - 1 ) / 2 ) * tower_dx - tower_dx;
@@ -90,7 +160,7 @@ void makeMapping_DRCALO_notch( TString setup="large_tower" )
   cout << "ypos_j0_k0 = " << ypos_j0_k0 << endl;
 
   // create map
-  ofstream fout(Form("towerMap_DRCALO_%s.txt",setup.Data()));
+  ofstream fout(Form("towerMap_EHCAL_%s.txt",setup.Data()));
 
   /* Global detector transformation */
   fout << "#Global detector geometry and transforamtion; lengths given in cm" << endl;
@@ -114,7 +184,6 @@ void makeMapping_DRCALO_notch( TString setup="large_tower" )
   fout << "#Tower type,idx_j,idx_k,idx_l,x[cm],y[cm],z[cm],dx[cm],dy[cm],dz[cm],rot_x,rot_y,rot_z" << endl;
 
   unsigned int twr_count = 0; 
-  unsigned type = 0;
   unsigned idx_l = 0;
 
   for (int idx_j = 0; idx_j < n_towers_j; idx_j++)
@@ -124,7 +193,6 @@ void makeMapping_DRCALO_notch( TString setup="large_tower" )
 
 	  /* Calculate center position for tower */
 	  double xpos = xpos_j0_k0 + idx_j * tower_dx;
-    // if((idx_k%2)==0) xpos+=tower_dx/2;
 	  double ypos = ypos_j0_k0 + idx_k * tower_dy;
 	  double zpos = 0;
 
@@ -145,11 +213,8 @@ void makeMapping_DRCALO_notch( TString setup="large_tower" )
 	       r_corner_3 < femc_rmin1 ||
 	       r_corner_4 < femc_rmin1 )
 	    continue;
-    
-    type = ((idx_k%2)==0) ? 0 : 1;
-    type = ((idx_j%2)==0) ? type : !type;
 
-	  fout << "Tower " << type << "\t" << idx_j << "\t" << idx_k << "\t" << idx_l << "\t" << xpos << "\t" << ypos << "\t" << zpos << "\t" << tower_dx << "\t" << tower_dy << "\t" << tower_dz << "\t0\t0\t0" << endl;
+	  fout << "Tower " << 0 << "\t" << idx_j << "\t" << idx_k << "\t" << idx_l << "\t" << xpos << "\t" << ypos << "\t" << zpos << "\t" << tower_dx << "\t" << tower_dy << "\t" << tower_dz << "\t0\t0\t0" << endl;
 	  
 	  twr_count++; 
 	  
