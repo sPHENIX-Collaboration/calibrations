@@ -1,0 +1,17 @@
+#Global detector geometry and transforamtion; lengths given in cm
+Gx0 0
+Gy0 0
+Gz0 0
+Grot_x 0
+Grot_y 0
+Grot_z 0
+Gtower_dx 10
+Gtower_dy 15
+Gtower_dz 60
+#Tower type,idx_j,idx_k,idx_l,x[cm],y[cm],z[cm],dx[cm],dy[cm],dz[cm],rot_x,rot_y,rot_z
+Tower 0	0	0	0	0	0	1850	10	15	20	0	0	0
+Tower 0	0	1	0	0	0	1870	10	15	20	0	0	0
+Tower 0	0	2	0	0	0	1890	10	15	20	0	0	0	
+Tower 0	1	0	0	0	0	-1850	10	15	-20	0	0	0
+Tower 0	1	1	0	0	0	-1870	10	15	-20	0	0	0
+Tower 0	1	2	0	0	0	-1890	10	15	-20	0	0	0
