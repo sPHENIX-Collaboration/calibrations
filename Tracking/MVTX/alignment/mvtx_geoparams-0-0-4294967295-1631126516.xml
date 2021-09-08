@@ -1,0 +1,110 @@
+<?xml version="1.0"?>
+<root setup="2xoo" ref="null" created="2021-09-08 14:41:56" modified="2021-09-08 14:41:56" uuid="71a87962-10d4-11ec-b9d0-6330c782beef" version="3" file_version="62202">
+  <XmlKey name="PdbParameterMapContainer" cycle="1" created="2021-09-08 14:41:56">
+    <Object class="PdbParameterMapContainer">
+      <PdbParameterMapContainer version="1">
+        <PdbCalChan version="1">
+          <PHObject version="0">
+            <TObject fUniqueID="0" fBits="0"/>
+          </PHObject>
+        </PdbCalChan>
+        <parametermap>
+          <Version v="9"/>
+          <Int_t v="1"/>
+          <Int_t v="-4"/>
+          <Object class="PdbParameterMap">
+            <PdbParameterMap version="1">
+              <PdbCalChan version="1">
+                <PHObject version="0">
+                  <TObject fUniqueID="0" fBits="0"/>
+                </PHObject>
+              </PdbCalChan>
+              <dparams>
+                <Version v="9"/>
+                <Int_t v="20"/>
+                <string v="layer_0_stave_0_tilt"/>
+                <Double_t v="1.000000000000000e-01"/>
+                <string v="layer_0_stave_0_x_offset"/>
+                <Double_t v="0.000000000000000e+00"/>
+                <string v="layer_0_stave_0_y_offset"/>
+                <Double_t v="0.000000000000000e+00"/>
+                <string v="layer_0_stave_0_z_offset"/>
+                <Double_t v="1.000000000000000e+00"/>
+                <string v="layer_0_stave_1_tilt"/>
+                <Double_t v="1.000000000000000e-01"/>
+                <string v="layer_0_stave_1_x_offset"/>
+                <Double_t v="0.000000000000000e+00"/>
+                <string v="layer_0_stave_1_y_offset"/>
+                <Double_t v="0.000000000000000e+00"/>
+                <string v="layer_0_stave_1_z_offset"/>
+                <Double_t v="1.000000000000000e+00"/>
+                <string v="layer_1_stave_3_tilt"/>
+                <Double_t v="2.000000000000000e-01"/>
+                <string v="layer_1_stave_3_x_offset"/>
+                <Double_t v="3.000000000000000e-01"/>
+                <string v="layer_1_stave_3_y_offset"/>
+                <Double_t v="5.000000000000000e-01"/>
+                <string v="layer_1_stave_3_z_offset"/>
+                <Double_t v="1.000000000000000e+00"/>
+                <string v="layer_2_stave_4_tilt"/>
+                <Double_t v="4.000000000000000e-01"/>
+                <string v="layer_2_stave_4_x_offset"/>
+                <Double_t v="0.000000000000000e+00"/>
+                <string v="layer_2_stave_4_y_offset"/>
+                <Double_t v="1.000000000000000e-01"/>
+                <string v="layer_2_stave_4_z_offset"/>
+                <Double_t v="5.000000000000000e+00"/>
+                <string v="layer_2_stave_9_tilt"/>
+                <Double_t v="3.000000000000000e-01"/>
+                <string v="layer_2_stave_9_x_offset"/>
+                <Double_t v="2.000000000000000e-01"/>
+                <string v="layer_2_stave_9_y_offset"/>
+                <Double_t v="0.000000000000000e+00"/>
+                <string v="layer_2_stave_9_z_offset"/>
+                <Double_t v="3.000000000000000e+00"/>
+              </dparams>
+              <iparams>
+                <Version v="9"/>
+                <Int_t v="0"/>
+              </iparams>
+              <cparams>
+                <Version v="9"/>
+                <Int_t v="6"/>
+                <string v="description"/>
+                <string v="MVTX alignment parameters"/>
+                <string v="layer_0_stave_0_name"/>
+                <string v="X000"/>
+                <string v="layer_0_stave_1_name"/>
+                <string v="X000"/>
+                <string v="layer_1_stave_3_name"/>
+                <string v="X000"/>
+                <string v="layer_2_stave_4_name"/>
+                <string v="X000"/>
+                <string v="layer_2_stave_9_name"/>
+                <string v="X000"/>
+              </cparams>
+            </PdbParameterMap>
+          </Object>
+        </parametermap>
+      </PdbParameterMapContainer>
+    </Object>
+  </XmlKey>
+  <StreamerInfos>
+    <TStreamerInfo name="PdbParameterMapContainer" title="" v="9" classversion="1" canoptimize="true" checksum="-1660157473">
+      <TStreamerBase name="PdbCalChan" v="3" type="0" typename="BASE" size="16" baseversion="1" basechecksum="-1932344380"/>
+      <TStreamerSTL name="parametermap" v="3" type="300" typename="map&lt;int,PdbParameterMap*&gt;" size="48" STLtype="4" Ctype="61"/>
+    </TStreamerInfo>
+    <TStreamerInfo name="PdbCalChan" title="" v="9" classversion="1" canoptimize="true" checksum="-1932344380">
+      <TStreamerBase name="PHObject" v="3" type="0" typename="BASE" size="16" baseversion="0" basechecksum="-179181571"/>
+    </TStreamerInfo>
+    <TStreamerInfo name="PHObject" title="" v="9" classversion="0" canoptimize="true" checksum="-179181571">
+      <TStreamerBase name="TObject" title="Basic ROOT object" v="3" type="66" typename="BASE" size="16" baseversion="1" basechecksum="-1877229523"/>
+    </TStreamerInfo>
+    <TStreamerInfo name="PdbParameterMap" title="" v="9" classversion="1" canoptimize="true" checksum="916496646">
+      <TStreamerBase name="PdbCalChan" v="3" type="0" typename="BASE" size="16" baseversion="1" basechecksum="-1932344380"/>
+      <TStreamerSTL name="dparams" v="3" type="300" typename="map&lt;const string,double&gt;" size="48" STLtype="4" Ctype="61"/>
+      <TStreamerSTL name="iparams" v="3" type="300" typename="map&lt;const string,int&gt;" size="48" STLtype="4" Ctype="61"/>
+      <TStreamerSTL name="cparams" v="3" type="300" typename="map&lt;const string,string&gt;" size="48" STLtype="4" Ctype="61"/>
+    </TStreamerInfo>
+  </StreamerInfos>
+</root>
