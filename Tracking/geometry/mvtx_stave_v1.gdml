@@ -108,157 +108,157 @@
     <position name="EndSupport_1inMVTXStave_StaveStructpos" x="0" y="0" z="14.375" unit="cm"/>
     <position name="EndSupport_2inMVTXStave_StaveStructpos" x="0" y="0" z="-14.375" unit="cm"/>
     <position name="TopFilament_1inMVTXStave_StaveStructpos" x="0.405" y="0.300225" z="-13.875" unit="cm"/>
-    <rotation name="TopFilament_1inMVTXStave_StaveStructrot" x="-19.5405" y="-29.75556" z="35.5693" unit="deg"/>
+    <rotation name="TopFilament_1inMVTXStave_StaveStructrot" x="-19.5405" y="-29.75556" z="35.53" unit="deg"/>
     <position name="TopFilament_2inMVTXStave_StaveStructpos" x="-0.405" y="0.300225" z="-13.875" unit="cm"/>
-    <rotation name="TopFilament_2inMVTXStave_StaveStructrot" x="-19.5405" y="29.75556" z="-35.5693" unit="deg"/>
+    <rotation name="TopFilament_2inMVTXStave_StaveStructrot" x="-19.5405" y="29.75556" z="-35.53" unit="deg"/>
     <position name="TopFilament_3inMVTXStave_StaveStructpos" x="0.405" y="0.300225" z="-13.125" unit="cm"/>
-    <rotation name="TopFilament_3inMVTXStave_StaveStructrot" x="19.5405" y="29.75556" z="35.5693" unit="deg"/>
+    <rotation name="TopFilament_3inMVTXStave_StaveStructrot" x="19.5405" y="29.75556" z="35.53" unit="deg"/>
     <position name="TopFilament_4inMVTXStave_StaveStructpos" x="-0.405" y="0.300225" z="-13.125" unit="cm"/>
-    <rotation name="TopFilament_4inMVTXStave_StaveStructrot" x="19.5405" y="-29.75556" z="-35.5693" unit="deg"/>
+    <rotation name="TopFilament_4inMVTXStave_StaveStructrot" x="19.5405" y="-29.75556" z="-35.53" unit="deg"/>
     <position name="TopFilament_5inMVTXStave_StaveStructpos" x="0.405" y="0.300225" z="-12.375" unit="cm"/>
-    <rotation name="TopFilament_5inMVTXStave_StaveStructrot" x="-19.5405" y="-29.75556" z="35.569311753117134" unit="deg"/>
+    <rotation name="TopFilament_5inMVTXStave_StaveStructrot" x="-19.5405" y="-29.75556" z="35.53" unit="deg"/>
     <position name="TopFilament_6inMVTXStave_StaveStructpos" x="-0.405" y="0.300225" z="-12.375" unit="cm"/>
-    <rotation name="TopFilament_6inMVTXStave_StaveStructrot" x="-19.5405" y="29.75556" z="-35.5693" unit="deg"/>
+    <rotation name="TopFilament_6inMVTXStave_StaveStructrot" x="-19.5405" y="29.75556" z="-35.53" unit="deg"/>
     <position name="TopFilament_7inMVTXStave_StaveStructpos" x="0.405" y="0.300225" z="-11.625" unit="cm"/>
-    <rotation name="TopFilament_7inMVTXStave_StaveStructrot" x="19.5405" y="29.75556" z="35.569311753117134" unit="deg"/>
+    <rotation name="TopFilament_7inMVTXStave_StaveStructrot" x="19.5405" y="29.75556" z="35.53" unit="deg"/>
     <position name="TopFilament_8inMVTXStave_StaveStructpos" x="-0.405" y="0.300225" z="-11.625" unit="cm"/>
-    <rotation name="TopFilament_8inMVTXStave_StaveStructrot" x="19.5405" y="-29.75556" z="-35.5693" unit="deg"/>
+    <rotation name="TopFilament_8inMVTXStave_StaveStructrot" x="19.5405" y="-29.75556" z="-35.53" unit="deg"/>
     <position name="TopFilament_9inMVTXStave_StaveStructpos" x="0.405" y="0.300225" z="-10.875" unit="cm"/>
-    <rotation name="TopFilament_9inMVTXStave_StaveStructrot" x="-19.5405" y="-29.75556" z="35.569311753117134" unit="deg"/>
+    <rotation name="TopFilament_9inMVTXStave_StaveStructrot" x="-19.5405" y="-29.75556" z="35.53" unit="deg"/>
     <position name="TopFilament_10inMVTXStave_StaveStructpos" x="-0.405" y="0.300225" z="-10.875" unit="cm"/>
-    <rotation name="TopFilament_10inMVTXStave_StaveStructrot" x="-19.5405" y="29.75556" z="-35.5693" unit="deg"/>
+    <rotation name="TopFilament_10inMVTXStave_StaveStructrot" x="-19.5405" y="29.75556" z="-35.53" unit="deg"/>
     <position name="TopFilament_11inMVTXStave_StaveStructpos" x="0.405" y="0.300225" z="-10.125" unit="cm"/>
-    <rotation name="TopFilament_11inMVTXStave_StaveStructrot" x="19.5405" y="29.75556" z="35.569311753117134" unit="deg"/>
+    <rotation name="TopFilament_11inMVTXStave_StaveStructrot" x="19.5405" y="29.75556" z="35.53" unit="deg"/>
     <position name="TopFilament_12inMVTXStave_StaveStructpos" x="-0.405" y="0.300225" z="-10.125" unit="cm"/>
-    <rotation name="TopFilament_12inMVTXStave_StaveStructrot" x="19.5405" y="-29.75556" z="-35.5693" unit="deg"/>
+    <rotation name="TopFilament_12inMVTXStave_StaveStructrot" x="19.5405" y="-29.75556" z="-35.53" unit="deg"/>
     <position name="TopFilament_13inMVTXStave_StaveStructpos" x="0.405" y="0.300225" z="-9.375" unit="cm"/>
-    <rotation name="TopFilament_13inMVTXStave_StaveStructrot" x="-19.5405" y="-29.75556" z="35.569311753117134" unit="deg"/>
+    <rotation name="TopFilament_13inMVTXStave_StaveStructrot" x="-19.5405" y="-29.75556" z="35.53" unit="deg"/>
     <position name="TopFilament_14inMVTXStave_StaveStructpos" x="-0.405" y="0.300225" z="-9.375" unit="cm"/>
-    <rotation name="TopFilament_14inMVTXStave_StaveStructrot" x="-19.5405" y="29.75556" z="-35.5693" unit="deg"/>
+    <rotation name="TopFilament_14inMVTXStave_StaveStructrot" x="-19.5405" y="29.75556" z="-35.53" unit="deg"/>
     <position name="TopFilament_15inMVTXStave_StaveStructpos" x="0.405" y="0.300225" z="-8.625" unit="cm"/>
-    <rotation name="TopFilament_15inMVTXStave_StaveStructrot" x="19.5405" y="29.75556" z="35.569311753117134" unit="deg"/>
+    <rotation name="TopFilament_15inMVTXStave_StaveStructrot" x="19.5405" y="29.75556" z="35.53" unit="deg"/>
     <position name="TopFilament_16inMVTXStave_StaveStructpos" x="-0.405" y="0.300225" z="-8.625" unit="cm"/>
-    <rotation name="TopFilament_16inMVTXStave_StaveStructrot" x="19.5405" y="-29.75556" z="-35.5693" unit="deg"/>
+    <rotation name="TopFilament_16inMVTXStave_StaveStructrot" x="19.5405" y="-29.75556" z="-35.53" unit="deg"/>
     <position name="TopFilament_17inMVTXStave_StaveStructpos" x="0.405" y="0.300225" z="-7.875" unit="cm"/>
-    <rotation name="TopFilament_17inMVTXStave_StaveStructrot" x="-19.5405" y="-29.75556" z="35.569311753117134" unit="deg"/>
+    <rotation name="TopFilament_17inMVTXStave_StaveStructrot" x="-19.5405" y="-29.75556" z="35.53" unit="deg"/>
     <position name="TopFilament_18inMVTXStave_StaveStructpos" x="-0.405" y="0.300225" z="-7.875" unit="cm"/>
-    <rotation name="TopFilament_18inMVTXStave_StaveStructrot" x="-19.5405" y="29.75556" z="-35.5693" unit="deg"/>
+    <rotation name="TopFilament_18inMVTXStave_StaveStructrot" x="-19.5405" y="29.75556" z="-35.53" unit="deg"/>
     <position name="TopFilament_19inMVTXStave_StaveStructpos" x="0.405" y="0.300225" z="-7.125" unit="cm"/>
-    <rotation name="TopFilament_19inMVTXStave_StaveStructrot" x="19.5405" y="29.75556" z="35.569311753117134" unit="deg"/>
+    <rotation name="TopFilament_19inMVTXStave_StaveStructrot" x="19.5405" y="29.75556" z="35.53" unit="deg"/>
     <position name="TopFilament_20inMVTXStave_StaveStructpos" x="-0.405" y="0.300225" z="-7.125" unit="cm"/>
-    <rotation name="TopFilament_20inMVTXStave_StaveStructrot" x="19.5405" y="-29.75556" z="-35.5693" unit="deg"/>
+    <rotation name="TopFilament_20inMVTXStave_StaveStructrot" x="19.5405" y="-29.75556" z="-35.53" unit="deg"/>
     <position name="TopFilament_21inMVTXStave_StaveStructpos" x="0.405" y="0.300225" z="-6.375" unit="cm"/>
-    <rotation name="TopFilament_21inMVTXStave_StaveStructrot" x="-19.5405" y="-29.75556" z="35.569311753117134" unit="deg"/>
+    <rotation name="TopFilament_21inMVTXStave_StaveStructrot" x="-19.5405" y="-29.75556" z="35.53" unit="deg"/>
     <position name="TopFilament_22inMVTXStave_StaveStructpos" x="-0.405" y="0.300225" z="-6.375" unit="cm"/>
-    <rotation name="TopFilament_22inMVTXStave_StaveStructrot" x="-19.5405" y="29.75556" z="-35.5693" unit="deg"/>
+    <rotation name="TopFilament_22inMVTXStave_StaveStructrot" x="-19.5405" y="29.75556" z="-35.53" unit="deg"/>
     <position name="TopFilament_23inMVTXStave_StaveStructpos" x="0.405" y="0.300225" z="-5.625" unit="cm"/>
-    <rotation name="TopFilament_23inMVTXStave_StaveStructrot" x="19.5405" y="29.75556" z="35.569311753117134" unit="deg"/>
+    <rotation name="TopFilament_23inMVTXStave_StaveStructrot" x="19.5405" y="29.75556" z="35.53" unit="deg"/>
     <position name="TopFilament_24inMVTXStave_StaveStructpos" x="-0.405" y="0.300225" z="-5.625" unit="cm"/>
-    <rotation name="TopFilament_24inMVTXStave_StaveStructrot" x="19.5405" y="-29.75556" z="-35.5693" unit="deg"/>
+    <rotation name="TopFilament_24inMVTXStave_StaveStructrot" x="19.5405" y="-29.75556" z="-35.53" unit="deg"/>
     <position name="TopFilament_25inMVTXStave_StaveStructpos" x="0.405" y="0.300225" z="-4.875" unit="cm"/>
-    <rotation name="TopFilament_25inMVTXStave_StaveStructrot" x="-19.5405" y="-29.75556" z="35.569311753117134" unit="deg"/>
+    <rotation name="TopFilament_25inMVTXStave_StaveStructrot" x="-19.5405" y="-29.75556" z="35.53" unit="deg"/>
     <position name="TopFilament_26inMVTXStave_StaveStructpos" x="-0.405" y="0.300225" z="-4.875" unit="cm"/>
-    <rotation name="TopFilament_26inMVTXStave_StaveStructrot" x="-19.5405" y="29.75556" z="-35.5693" unit="deg"/>
+    <rotation name="TopFilament_26inMVTXStave_StaveStructrot" x="-19.5405" y="29.75556" z="-35.53" unit="deg"/>
     <position name="TopFilament_27inMVTXStave_StaveStructpos" x="0.405" y="0.300225" z="-4.125" unit="cm"/>
-    <rotation name="TopFilament_27inMVTXStave_StaveStructrot" x="19.5405" y="29.75556" z="35.569311753117134" unit="deg"/>
+    <rotation name="TopFilament_27inMVTXStave_StaveStructrot" x="19.5405" y="29.75556" z="35.53" unit="deg"/>
     <position name="TopFilament_28inMVTXStave_StaveStructpos" x="-0.405" y="0.300225" z="-4.125" unit="cm"/>
-    <rotation name="TopFilament_28inMVTXStave_StaveStructrot" x="19.5405" y="-29.75556" z="-35.5693" unit="deg"/>
+    <rotation name="TopFilament_28inMVTXStave_StaveStructrot" x="19.5405" y="-29.75556" z="-35.53" unit="deg"/>
     <position name="TopFilament_29inMVTXStave_StaveStructpos" x="0.405" y="0.300225" z="-3.375" unit="cm"/>
-    <rotation name="TopFilament_29inMVTXStave_StaveStructrot" x="-19.5405" y="-29.75556" z="35.569311753117134" unit="deg"/>
+    <rotation name="TopFilament_29inMVTXStave_StaveStructrot" x="-19.5405" y="-29.75556" z="35.53" unit="deg"/>
     <position name="TopFilament_30inMVTXStave_StaveStructpos" x="-0.405" y="0.300225" z="-3.375" unit="cm"/>
-    <rotation name="TopFilament_30inMVTXStave_StaveStructrot" x="-19.5405" y="29.75556" z="-35.5693" unit="deg"/>
+    <rotation name="TopFilament_30inMVTXStave_StaveStructrot" x="-19.5405" y="29.75556" z="-35.53" unit="deg"/>
     <position name="TopFilament_31inMVTXStave_StaveStructpos" x="0.405" y="0.300225" z="-2.625" unit="cm"/>
-    <rotation name="TopFilament_31inMVTXStave_StaveStructrot" x="19.5405" y="29.75556" z="35.569311753117134" unit="deg"/>
+    <rotation name="TopFilament_31inMVTXStave_StaveStructrot" x="19.5405" y="29.75556" z="35.53" unit="deg"/>
     <position name="TopFilament_32inMVTXStave_StaveStructpos" x="-0.405" y="0.300225" z="-2.625" unit="cm"/>
-    <rotation name="TopFilament_32inMVTXStave_StaveStructrot" x="19.5405" y="-29.75556" z="-35.5693" unit="deg"/>
+    <rotation name="TopFilament_32inMVTXStave_StaveStructrot" x="19.5405" y="-29.75556" z="-35.53" unit="deg"/>
     <position name="TopFilament_33inMVTXStave_StaveStructpos" x="0.405" y="0.300225" z="-1.875" unit="cm"/>
-    <rotation name="TopFilament_33inMVTXStave_StaveStructrot" x="-19.5405" y="-29.75556" z="35.569311753117134" unit="deg"/>
+    <rotation name="TopFilament_33inMVTXStave_StaveStructrot" x="-19.5405" y="-29.75556" z="35.53" unit="deg"/>
     <position name="TopFilament_34inMVTXStave_StaveStructpos" x="-0.405" y="0.300225" z="-1.875" unit="cm"/>
-    <rotation name="TopFilament_34inMVTXStave_StaveStructrot" x="-19.5405" y="29.75556" z="-35.5693" unit="deg"/>
+    <rotation name="TopFilament_34inMVTXStave_StaveStructrot" x="-19.5405" y="29.75556" z="-35.53" unit="deg"/>
     <position name="TopFilament_35inMVTXStave_StaveStructpos" x="0.405" y="0.300225" z="-1.125" unit="cm"/>
-    <rotation name="TopFilament_35inMVTXStave_StaveStructrot" x="19.5405" y="29.75556" z="35.5693" unit="deg"/>
+    <rotation name="TopFilament_35inMVTXStave_StaveStructrot" x="19.5405" y="29.75556" z="35.53" unit="deg"/>
     <position name="TopFilament_36inMVTXStave_StaveStructpos" x="-0.405" y="0.300225" z="-1.125" unit="cm"/>
-    <rotation name="TopFilament_36inMVTXStave_StaveStructrot" x="19.5405" y="-29.75556" z="-35.5693" unit="deg"/>
+    <rotation name="TopFilament_36inMVTXStave_StaveStructrot" x="19.5405" y="-29.75556" z="-35.53" unit="deg"/>
     <position name="TopFilament_37inMVTXStave_StaveStructpos" x="0.405" y="0.300225" z="-0.375" unit="cm"/>
-    <rotation name="TopFilament_37inMVTXStave_StaveStructrot" x="-19.5405" y="-29.75556" z="35.5693" unit="deg"/>
+    <rotation name="TopFilament_37inMVTXStave_StaveStructrot" x="-19.5405" y="-29.75556" z="35.53" unit="deg"/>
     <position name="TopFilament_38inMVTXStave_StaveStructpos" x="-0.405" y="0.300225" z="-0.375" unit="cm"/>
-    <rotation name="TopFilament_38inMVTXStave_StaveStructrot" x="-19.5405" y="29.75556" z="-35.5693" unit="deg"/>
+    <rotation name="TopFilament_38inMVTXStave_StaveStructrot" x="-19.5405" y="29.75556" z="-35.53" unit="deg"/>
     <position name="TopFilament_39inMVTXStave_StaveStructpos" x="0.405" y="0.300225" z="0.375" unit="cm"/>
-    <rotation name="TopFilament_39inMVTXStave_StaveStructrot" x="19.5405" y="29.75556" z="35.5693" unit="deg"/>
+    <rotation name="TopFilament_39inMVTXStave_StaveStructrot" x="19.5405" y="29.75556" z="35.53" unit="deg"/>
     <position name="TopFilament_40inMVTXStave_StaveStructpos" x="-0.405" y="0.300225" z="0.375" unit="cm"/>
-    <rotation name="TopFilament_40inMVTXStave_StaveStructrot" x="19.5405" y="-29.75556" z="-35.5693" unit="deg"/>
+    <rotation name="TopFilament_40inMVTXStave_StaveStructrot" x="19.5405" y="-29.75556" z="-35.53" unit="deg"/>
     <position name="TopFilament_41inMVTXStave_StaveStructpos" x="0.405" y="0.300225" z="1.125" unit="cm"/>
-    <rotation name="TopFilament_41inMVTXStave_StaveStructrot" x="-19.5405" y="-29.75556" z="35.5693" unit="deg"/>
+    <rotation name="TopFilament_41inMVTXStave_StaveStructrot" x="-19.5405" y="-29.75556" z="35.53" unit="deg"/>
     <position name="TopFilament_42inMVTXStave_StaveStructpos" x="-0.405" y="0.300225" z="1.125" unit="cm"/>
-    <rotation name="TopFilament_42inMVTXStave_StaveStructrot" x="-19.5405" y="29.75556" z="-35.5693" unit="deg"/>
+    <rotation name="TopFilament_42inMVTXStave_StaveStructrot" x="-19.5405" y="29.75556" z="-35.53" unit="deg"/>
     <position name="TopFilament_43inMVTXStave_StaveStructpos" x="0.405" y="0.300225" z="1.875" unit="cm"/>
-    <rotation name="TopFilament_43inMVTXStave_StaveStructrot" x="19.5405" y="29.75556" z="35.5693" unit="deg"/>
+    <rotation name="TopFilament_43inMVTXStave_StaveStructrot" x="19.5405" y="29.75556" z="35.53" unit="deg"/>
     <position name="TopFilament_44inMVTXStave_StaveStructpos" x="-0.405" y="0.300225" z="1.875" unit="cm"/>
-    <rotation name="TopFilament_44inMVTXStave_StaveStructrot" x="19.5405" y="-29.75556" z="-35.5693" unit="deg"/>
+    <rotation name="TopFilament_44inMVTXStave_StaveStructrot" x="19.5405" y="-29.75556" z="-35.53" unit="deg"/>
     <position name="TopFilament_45inMVTXStave_StaveStructpos" x="0.405" y="0.300225" z="2.625" unit="cm"/>
-    <rotation name="TopFilament_45inMVTXStave_StaveStructrot" x="-19.5405" y="-29.75556" z="35.5693" unit="deg"/>
+    <rotation name="TopFilament_45inMVTXStave_StaveStructrot" x="-19.5405" y="-29.75556" z="35.53" unit="deg"/>
     <position name="TopFilament_46inMVTXStave_StaveStructpos" x="-0.405" y="0.300225" z="2.625" unit="cm"/>
-    <rotation name="TopFilament_46inMVTXStave_StaveStructrot" x="-19.5405" y="29.75556" z="-35.5693" unit="deg"/>
+    <rotation name="TopFilament_46inMVTXStave_StaveStructrot" x="-19.5405" y="29.75556" z="-35.53" unit="deg"/>
     <position name="TopFilament_47inMVTXStave_StaveStructpos" x="0.405" y="0.300225" z="3.375" unit="cm"/>
-    <rotation name="TopFilament_47inMVTXStave_StaveStructrot" x="19.5405" y="29.75556" z="35.5693" unit="deg"/>
+    <rotation name="TopFilament_47inMVTXStave_StaveStructrot" x="19.5405" y="29.75556" z="35.53" unit="deg"/>
     <position name="TopFilament_48inMVTXStave_StaveStructpos" x="-0.405" y="0.300225" z="3.375" unit="cm"/>
-    <rotation name="TopFilament_48inMVTXStave_StaveStructrot" x="19.5405" y="-29.75556" z="-35.5693" unit="deg"/>
+    <rotation name="TopFilament_48inMVTXStave_StaveStructrot" x="19.5405" y="-29.75556" z="-35.53" unit="deg"/>
     <position name="TopFilament_49inMVTXStave_StaveStructpos" x="0.405" y="0.300225" z="4.125" unit="cm"/>
-    <rotation name="TopFilament_49inMVTXStave_StaveStructrot" x="-19.5405" y="-29.75556" z="35.5693" unit="deg"/>
+    <rotation name="TopFilament_49inMVTXStave_StaveStructrot" x="-19.5405" y="-29.75556" z="35.53" unit="deg"/>
     <position name="TopFilament_50inMVTXStave_StaveStructpos" x="-0.405" y="0.300225" z="4.125" unit="cm"/>
-    <rotation name="TopFilament_50inMVTXStave_StaveStructrot" x="-19.5405" y="29.75556" z="-35.5693" unit="deg"/>
+    <rotation name="TopFilament_50inMVTXStave_StaveStructrot" x="-19.5405" y="29.75556" z="-35.53" unit="deg"/>
     <position name="TopFilament_51inMVTXStave_StaveStructpos" x="0.405" y="0.300225" z="4.875" unit="cm"/>
-    <rotation name="TopFilament_51inMVTXStave_StaveStructrot" x="19.5405" y="29.75556" z="35.5693" unit="deg"/>
+    <rotation name="TopFilament_51inMVTXStave_StaveStructrot" x="19.5405" y="29.75556" z="35.53" unit="deg"/>
     <position name="TopFilament_52inMVTXStave_StaveStructpos" x="-0.405" y="0.300225" z="4.875" unit="cm"/>
-    <rotation name="TopFilament_52inMVTXStave_StaveStructrot" x="19.5405" y="-29.75556" z="-35.5693" unit="deg"/>
+    <rotation name="TopFilament_52inMVTXStave_StaveStructrot" x="19.5405" y="-29.75556" z="-35.53" unit="deg"/>
     <position name="TopFilament_53inMVTXStave_StaveStructpos" x="0.405" y="0.300225" z="5.625" unit="cm"/>
-    <rotation name="TopFilament_53inMVTXStave_StaveStructrot" x="-19.5405" y="-29.75556" z="35.5693" unit="deg"/>
+    <rotation name="TopFilament_53inMVTXStave_StaveStructrot" x="-19.5405" y="-29.75556" z="35.53" unit="deg"/>
     <position name="TopFilament_54inMVTXStave_StaveStructpos" x="-0.405" y="0.300225" z="5.625" unit="cm"/>
-    <rotation name="TopFilament_54inMVTXStave_StaveStructrot" x="-19.5405" y="29.75556" z="-35.5693" unit="deg"/>
+    <rotation name="TopFilament_54inMVTXStave_StaveStructrot" x="-19.5405" y="29.75556" z="-35.53" unit="deg"/>
     <position name="TopFilament_55inMVTXStave_StaveStructpos" x="0.405" y="0.300225" z="6.375" unit="cm"/>
-    <rotation name="TopFilament_55inMVTXStave_StaveStructrot" x="19.5405" y="29.75556" z="35.5693" unit="deg"/>
+    <rotation name="TopFilament_55inMVTXStave_StaveStructrot" x="19.5405" y="29.75556" z="35.53" unit="deg"/>
     <position name="TopFilament_56inMVTXStave_StaveStructpos" x="-0.405" y="0.300225" z="6.375" unit="cm"/>
-    <rotation name="TopFilament_56inMVTXStave_StaveStructrot" x="19.5405" y="-29.75556" z="-35.5693" unit="deg"/>
+    <rotation name="TopFilament_56inMVTXStave_StaveStructrot" x="19.5405" y="-29.75556" z="-35.53" unit="deg"/>
     <position name="TopFilament_57inMVTXStave_StaveStructpos" x="0.405" y="0.300225" z="7.125" unit="cm"/>
-    <rotation name="TopFilament_57inMVTXStave_StaveStructrot" x="-19.5405" y="-29.75556" z="35.5693" unit="deg"/>
+    <rotation name="TopFilament_57inMVTXStave_StaveStructrot" x="-19.5405" y="-29.75556" z="35.53" unit="deg"/>
     <position name="TopFilament_58inMVTXStave_StaveStructpos" x="-0.405" y="0.300225" z="7.125" unit="cm"/>
-    <rotation name="TopFilament_58inMVTXStave_StaveStructrot" x="-19.5405" y="29.75556" z="-35.5693" unit="deg"/>
+    <rotation name="TopFilament_58inMVTXStave_StaveStructrot" x="-19.5405" y="29.75556" z="-35.53" unit="deg"/>
     <position name="TopFilament_59inMVTXStave_StaveStructpos" x="0.405" y="0.300225" z="7.875" unit="cm"/>
-    <rotation name="TopFilament_59inMVTXStave_StaveStructrot" x="19.5405" y="29.75556" z="35.5693" unit="deg"/>
+    <rotation name="TopFilament_59inMVTXStave_StaveStructrot" x="19.5405" y="29.75556" z="35.53" unit="deg"/>
     <position name="TopFilament_60inMVTXStave_StaveStructpos" x="-0.405" y="0.300225" z="7.875" unit="cm"/>
-    <rotation name="TopFilament_60inMVTXStave_StaveStructrot" x="19.5405" y="-29.75556" z="-35.5693" unit="deg"/>
+    <rotation name="TopFilament_60inMVTXStave_StaveStructrot" x="19.5405" y="-29.75556" z="-35.53" unit="deg"/>
     <position name="TopFilament_61inMVTXStave_StaveStructpos" x="0.405" y="0.300225" z="8.625" unit="cm"/>
-    <rotation name="TopFilament_61inMVTXStave_StaveStructrot" x="-19.5405" y="-29.75556" z="35.5693" unit="deg"/>
+    <rotation name="TopFilament_61inMVTXStave_StaveStructrot" x="-19.5405" y="-29.75556" z="35.53" unit="deg"/>
     <position name="TopFilament_62inMVTXStave_StaveStructpos" x="-0.405" y="0.300225" z="8.625" unit="cm"/>
-    <rotation name="TopFilament_62inMVTXStave_StaveStructrot" x="-19.5405" y="29.75556" z="-35.5693" unit="deg"/>
+    <rotation name="TopFilament_62inMVTXStave_StaveStructrot" x="-19.5405" y="29.75556" z="-35.53" unit="deg"/>
     <position name="TopFilament_63inMVTXStave_StaveStructpos" x="0.405" y="0.300225" z="9.375" unit="cm"/>
-    <rotation name="TopFilament_63inMVTXStave_StaveStructrot" x="19.5405" y="29.75556" z="35.5693" unit="deg"/>
+    <rotation name="TopFilament_63inMVTXStave_StaveStructrot" x="19.5405" y="29.75556" z="35.53" unit="deg"/>
     <position name="TopFilament_64inMVTXStave_StaveStructpos" x="-0.405" y="0.300225" z="9.375" unit="cm"/>
-    <rotation name="TopFilament_64inMVTXStave_StaveStructrot" x="19.5405" y="-29.75556" z="-35.5693" unit="deg"/>
+    <rotation name="TopFilament_64inMVTXStave_StaveStructrot" x="19.5405" y="-29.75556" z="-35.53" unit="deg"/>
     <position name="TopFilament_65inMVTXStave_StaveStructpos" x="0.405" y="0.300225" z="10.125" unit="cm"/>
-    <rotation name="TopFilament_65inMVTXStave_StaveStructrot" x="-19.5405" y="-29.75556" z="35.5693" unit="deg"/>
+    <rotation name="TopFilament_65inMVTXStave_StaveStructrot" x="-19.5405" y="-29.75556" z="35.53" unit="deg"/>
     <position name="TopFilament_66inMVTXStave_StaveStructpos" x="-0.405" y="0.300225" z="10.125" unit="cm"/>
-    <rotation name="TopFilament_66inMVTXStave_StaveStructrot" x="-19.5405" y="29.75556" z="-35.5693" unit="deg"/>
+    <rotation name="TopFilament_66inMVTXStave_StaveStructrot" x="-19.5405" y="29.75556" z="-35.53" unit="deg"/>
     <position name="TopFilament_67inMVTXStave_StaveStructpos" x="0.405" y="0.300225" z="10.875" unit="cm"/>
-    <rotation name="TopFilament_67inMVTXStave_StaveStructrot" x="19.5405" y="29.75556" z="35.5693" unit="deg"/>
+    <rotation name="TopFilament_67inMVTXStave_StaveStructrot" x="19.5405" y="29.75556" z="35.53" unit="deg"/>
     <position name="TopFilament_68inMVTXStave_StaveStructpos" x="-0.405" y="0.300225" z="10.875" unit="cm"/>
-    <rotation name="TopFilament_68inMVTXStave_StaveStructrot" x="19.5405" y="-29.75556" z="-35.5693" unit="deg"/>
+    <rotation name="TopFilament_68inMVTXStave_StaveStructrot" x="19.5405" y="-29.75556" z="-35.53" unit="deg"/>
     <position name="TopFilament_69inMVTXStave_StaveStructpos" x="0.405" y="0.300225" z="11.625" unit="cm"/>
-    <rotation name="TopFilament_69inMVTXStave_StaveStructrot" x="-19.5405" y="-29.75556" z="35.5693" unit="deg"/>
+    <rotation name="TopFilament_69inMVTXStave_StaveStructrot" x="-19.5405" y="-29.75556" z="35.53" unit="deg"/>
     <position name="TopFilament_70inMVTXStave_StaveStructpos" x="-0.405" y="0.300225" z="11.625" unit="cm"/>
-    <rotation name="TopFilament_70inMVTXStave_StaveStructrot" x="-19.5405" y="29.75556" z="-35.5693" unit="deg"/>
+    <rotation name="TopFilament_70inMVTXStave_StaveStructrot" x="-19.5405" y="29.75556" z="-35.53" unit="deg"/>
     <position name="TopFilament_71inMVTXStave_StaveStructpos" x="0.405" y="0.300225" z="12.375" unit="cm"/>
-    <rotation name="TopFilament_71inMVTXStave_StaveStructrot" x="19.5405" y="29.75556" z="35.5693" unit="deg"/>
+    <rotation name="TopFilament_71inMVTXStave_StaveStructrot" x="19.5405" y="29.75556" z="35.53" unit="deg"/>
     <position name="TopFilament_72inMVTXStave_StaveStructpos" x="-0.405" y="0.300225" z="12.375" unit="cm"/>
-    <rotation name="TopFilament_72inMVTXStave_StaveStructrot" x="19.5405" y="-29.75556" z="-35.5693" unit="deg"/>
+    <rotation name="TopFilament_72inMVTXStave_StaveStructrot" x="19.5405" y="-29.75556" z="-35.53" unit="deg"/>
     <position name="TopFilament_73inMVTXStave_StaveStructpos" x="0.405" y="0.300225" z="13.125" unit="cm"/>
-    <rotation name="TopFilament_73inMVTXStave_StaveStructrot" x="-19.5405" y="-29.75556" z="35.5693" unit="deg"/>
+    <rotation name="TopFilament_73inMVTXStave_StaveStructrot" x="-19.5405" y="-29.75556" z="35.53" unit="deg"/>
     <position name="TopFilament_74inMVTXStave_StaveStructpos" x="-0.405" y="0.300225" z="13.125" unit="cm"/>
-    <rotation name="TopFilament_74inMVTXStave_StaveStructrot" x="-19.5405" y="29.75556" z="-35.5693" unit="deg"/>
+    <rotation name="TopFilament_74inMVTXStave_StaveStructrot" x="-19.5405" y="29.75556" z="-35.53" unit="deg"/>
     <position name="TopFilament_75inMVTXStave_StaveStructpos" x="0.405" y="0.300225" z="13.875" unit="cm"/>
-    <rotation name="TopFilament_75inMVTXStave_StaveStructrot" x="19.5405" y="29.75556" z="35.5693" unit="deg"/>
+    <rotation name="TopFilament_75inMVTXStave_StaveStructrot" x="19.5405" y="29.75556" z="35.53" unit="deg"/>
     <position name="TopFilament_76inMVTXStave_StaveStructpos" x="-0.405" y="0.300225" z="13.875" unit="cm"/>
-    <rotation name="TopFilament_76inMVTXStave_StaveStructrot" x="19.5405" y="-29.75556" z="-35.5693" unit="deg"/>
+    <rotation name="TopFilament_76inMVTXStave_StaveStructrot" x="19.5405" y="-29.75556" z="-35.53" unit="deg"/>
     <position name="IBConnectorBlockTailASide_1inIBConnectorASidepos" x="0" y="-0.235" z="-1.45" unit="cm"/>
     <position name="IBConnectorBlockBodyASide_1inIBConnectorASidepos" x="0" y="-0.11" z="-0.5" unit="cm"/>
     <position name="IBConnectorFitting_1inIBConnectorASidepos" x="0.25" y="-0.11" z="0.575" unit="cm"/>
@@ -534,7 +534,7 @@
       <section zOrder="0" zPosition="-0.125" xOffset="0" yOffset="0" scalingFactor="1"/>
       <section zOrder="1" zPosition="0.125" xOffset="0" yOffset="0" scalingFactor="1"/>
     </xtru>
-    <box name="TGeoBBox0x21" x="1.09018" y="0.04" z="0.04" lunit="cm"/>
+    <box name="TGeoBBox0x21" x="1.08" y="0.04" z="0.04" lunit="cm"/>
     <box name="connBoxA" x="1" y="0.47" z="2.40" lunit="cm"/>
     <tube name="tube2HoleA" rmin="0" rmax="0.06" z="1.4" startphi="0" deltaphi="360" aunit="deg" lunit="cm"/>
     <subtraction name="TGeoCompositeShape0x6">
@@ -1198,10 +1198,10 @@
     </volume>
     <volume name="IBConnectorASide">
       <materialref ref="ITS_AIR"/>
-      <solidref ref="connBoxA"/>
       <!--
-      <solidref ref="TGeoCompositeShape0x2"/>
+      <solidref ref="connBoxA"/>
       -->
+      <solidref ref="TGeoCompositeShape0x2"/>
       <physvol name="IBConnectorBlockTailASide_1" copynumber="1">
         <volumeref ref="IBConnectorBlockTailASide"/>
         <positionref ref="IBConnectorBlockTailASide_1inIBConnectorASidepos"/>
@@ -1233,10 +1233,10 @@
     </volume>
     <volume name="IBConnectorCSide">
       <materialref ref="ITS_AIR"/>
-      <solidref ref="connBoxC"/>
       <!--
-      <solidref ref="TGeoCompositeShape0x21"/>
+      <solidref ref="connBoxC"/>
       -->
+      <solidref ref="TGeoCompositeShape0x21"/>
       <physvol name="IBConnectorBlockTailCSide_1" copynumber="1">
         <volumeref ref="IBConnectorBlockTailCSide"/>
         <positionref ref="IBConnectorBlockTailCSide_1inIBConnectorCSidepos"/>
