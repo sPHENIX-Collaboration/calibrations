@@ -38,7 +38,7 @@
           <string v="epd_centile_10"/>
           <Double_t v="13.944299697875977"/>
           <string v="epd_centile_100"/>
-          <Double_t v="0"/>
+          <Double_t v="-1"/>
           <string v="epd_centile_20"/>
           <Double_t v="9.5999202728271484"/>
           <string v="epd_centile_30"/>
@@ -60,7 +60,7 @@
           <string v="mbd_centile_10"/>
           <Double_t v="1.0260200500488281"/>
           <string v="mbd_centile_100"/>
-          <Double_t v="0"/>
+          <Double_t v="-1"/>
           <string v="mbd_centile_20"/>
           <Double_t v="0.72231000661849976"/>
           <string v="mbd_centile_30"/>
