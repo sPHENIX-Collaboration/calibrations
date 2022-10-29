@@ -35,13 +35,6 @@ void populate_mvtx_stave(int layer, int stave, ofstream& fout, float params[])
   for(int stave = 0; stave < staveNum; stave++) // loop over staves
     {    
       populate_mvtx_stave(layer, stave, fout, params);
-
-
-      //      for(int chip = 0; chip <= 8; chip++)      // loops over chips 
-      //{
-      //TrkrDefs::hitsetkey hitSetKey = MvtxDefs::genHitSetKey(layer,stave,chip,0);	  
-      //fout << hitSetKey << " " <<params[0] << " " << params[1]  << " " << params[2]  << " " << params[3]  << " " << params[4]  << " " << params[5]  << std::endl;
-    //}
     }
  }
 
@@ -65,65 +58,43 @@ void populate_entire_intt_layer(int layer, ofstream& fout, float params[])
   for(int stave = 0; stave < staveNum; stave++)  // loop over staves
     {    
       populate_intt_stave(layer, stave, fout, params);
-
-      //      for(int chip = 0; chip <= 3; chip++)       // loops over chips 
-		//{
-      //TrkrDefs::hitsetkey hitSetKey = InttDefs::genHitSetKey(layer,chip,stave,0);
-	  //fout << hitSetKey <<" " << params[0] << " " << params[1]  << " " << params[2]  << " " << params[3]  << " " << params[4]  << " " << params[5]  << std::endl;
-	//}
     }
  }
 
 void populate_tpc_sector(int layer, int sector, ofstream& fout, float params[])
 { 
-  for(unsigned int side = 0; side < 2; side++)        // loops over sides
-    {
-      TrkrDefs::hitsetkey hitSetKey = TpcDefs::genHitSetKey(layer,sector,side);
-      fout << hitSetKey <<" " << params[0] << " " << params[1]  << " " << params[2]  << " " << params[3]  << " " << params[4]  << " " << params[5]  << std::endl;
-    }
+  int side = sector/12;
+
+  TrkrDefs::hitsetkey hitSetKey = TpcDefs::genHitSetKey(layer,sector,side);
+  fout << hitSetKey <<" " << params[0] << " " << params[1]  << " " << params[2]  << " " << params[3]  << " " << params[4]  << " " << params[5]  << std::endl;
 }
 
  void populate_entire_tpc_layer(int layer, ofstream& fout, float params[])
 {
   // Create TPC hitsetkeys
-  for(unsigned int sector = 0; sector < 12; sector++)     // loop over sectors
+  for(unsigned int sector = 0; sector < 24; sector++)     // loop over sectors, sector 0-11 is side 0, 12-23 side 1
     {    
       populate_tpc_sector(layer, sector, fout, params);
-
-      //      for(unsigned int side = 0; side < 2; side++)        // loops over sides
-      //{
-      //TrkrDefs::hitsetkey hitSetKey = TpcDefs::genHitSetKey(layer,sector,side);
-      //fout << hitSetKey <<" " << params[0] << " " << params[1]  << " " << params[2]  << " " << params[3]  << " " << params[4]  << " " << params[5]  << std::endl;
-      //	}
     }
  }
 
 void populate_mms_tile(int layer, int tile, ofstream& fout, float params[])
 { 
   unsigned short segmentation = 0;
-  if(layer == 55){segmentation=1;}
-  else if(layer == 56){segmentation=0;}
+  if(tile < 8){segmentation=1; layer = 55;}
+  else {segmentation=0; layer = 56;}
   MicromegasDefs::SegmentationType mmDefsSeg =  (MicromegasDefs::SegmentationType) segmentation;
   
   TrkrDefs::hitsetkey hitSetKey = MicromegasDefs::genHitSetKey(layer, mmDefsSeg, tile);
-  fout << hitSetKey <<" " << params[0] << " " << params[1]  << " " << params[2]  << " " << params[3]  << " " << params[4]  << " " << params[5]  << std::endl;
+  fout << hitSetKey <<"  " << params[0] << " " << params[1]  << " " << params[2]  << " " << params[3]  << " " << params[4]  << " " << params[5]  << std::endl;
   
 }
 
  void populate_entire_mms_layer(int layer, ofstream& fout, float params[])
 {
-  // Create Micromegas hitsetkeys
-  //  unsigned short segmentation = 0;  
-  //if(layer == 55){segmentation=1;}
-  //else if(layer == 56){segmentation=0;}
-  
-  //  MicromegasDefs::SegmentationType mmDefsSeg =  (MicromegasDefs::SegmentationType) segmentation;
-  
   for(unsigned int tile = 0; tile < 8; tile++)        // loops over tiles with each tile having corresponding segmentation values
     {
       populate_mms_tile(layer, tile, fout, params);
-      //      TrkrDefs::hitsetkey hitSetKey = MicromegasDefs::genHitSetKey(layer, mmDefsSeg, tile);
-      //fout << hitSetKey <<" " << params[0] << " " << params[1]  << " " << params[2]  << " " << params[3]  << " " << params[4]  << " " << params[5]  << std::endl;
     }
 }
       
@@ -139,10 +110,8 @@ TrkrDefs::hitsetkey getHitSetKey(int layer, int stave, int sensor)
 
   if(layer > 6 && layer < 55)
     {
-      // need to deduce side somehow
-      // sector will have surfaces from both sides?
-      int sector = stave;
-      int side = 0;
+      int side = stave/12;  // sector is 0-11 for side 0, 12-23 for side 1
+      int sector = stave - side*12;
       hitSetKey = TpcDefs::genHitSetKey(layer, sector, side);
     }
 
@@ -210,6 +179,13 @@ void populate_stave(int layer, int stave, ofstream& fout, float params[])
   
   return;
 
+}
+
+bool is_in_tpc(int layer)
+{
+  bool ret = false;
+  if(layer > 6 && layer < 55) ret = true;
+  return ret;
 }
 
 void process_millepede_results()
@@ -284,34 +260,72 @@ void process_millepede_results()
 	  par_vec.clear();
 	}      
 
-       if(sensor > sensor_keep) { 
-	 // new sensor, close out par_vec
-	 sensor_vec.push_back(par_vec);
-	 par_vec.clear();
-	 sensor_keep = sensor; 
-       }
+       if(stave > stave_keep) 
+	 { 
+	   // new stave, close out sensor_vec and par_vec
+	   sensor_vec.push_back(par_vec);
+	   stave_vec.push_back(sensor_vec);
+	   sensor_vec.clear();
+	   par_vec.clear();
+	   stave_keep = stave;  
+	   sensor_keep = sensor;
+	 }	
+       else if (sensor > sensor_keep) 
+	 { 
+	   // new sensor, close out par_vec
+	   sensor_vec.push_back(par_vec);
+	   par_vec.clear();
+	   sensor_keep = sensor; 
+	 }
 
-       if(stave > stave_keep) { 
-	 // new stave, close out sensor_vec and par_vec
-	 sensor_vec.push_back(par_vec);
-	 stave_vec.push_back(sensor_vec);
-	 sensor_vec.clear();
-	 par_vec.clear();
-	 stave_keep = stave;  
-       }	
- 
-          par_vec.push_back(std::make_pair(ipar, align));
+       par_vec.push_back(std::make_pair(ipar, align));
        
     }  // end loop over file lines
 
   // output the parameters
   ofstream fout("new_alignment_corrections.txt");	
 
-  for(int layer=0; layer < 57; ++layer)
+  // The TPC needs special treatment if the layers in each sector are grouped
+  // this is just to find out if that is true
+  bool tpc_grouped = false;
+  auto it7 = layer_stave_vec_map.find(7);
+  if (it7 != layer_stave_vec_map.end())
+    { 
+      // the TPC is present
+      auto it8 = layer_stave_vec_map.find(8);
+      if(it8 == layer_stave_vec_map.end())
+	{
+	  // layer 7 but no layer 8, the TPC is grouped by sectors or as a whole, everything will be under layer 7
+	  tpc_grouped = true;
+	}
+    }
+
+  for(int layer=0; layer < 56; ++layer)
     {
+      if(tpc_grouped && is_in_tpc(layer))
+	{
+	  // Only layer 7 in the MP result file, with parameters for each sector
+	  std::cout << " layer " << layer << " is in sector grouped tpc " << std::endl;
+	  auto it7 = layer_stave_vec_map.find(7);
+	  auto stave_vec = it7->second;
+	  for(unsigned int isec = 0; isec < stave_vec.size(); ++isec)
+	    {
+	      auto sector_vec = stave_vec[isec];
+	      auto par_vec = sector_vec[0];
+	      float params[6];
+	      getParameters(par_vec, params);
+	      std::cout << " populate layer " << layer << " for sector " << isec << " with params[0] " << params[0] << std::endl;
+	      populate_tpc_sector(layer, isec, fout, params);
+	    }
+	  // done with this layer
+	  continue;
+	}
+
+      // back to our normal program
       auto it = layer_stave_vec_map.find(layer);
       if (it == layer_stave_vec_map.end())
 	{
+	  // all alignment corrections are zero for missing layers
 	  float params[6] = {0,0,0,0,0,0};
 	  populate_entire_layer(layer, fout, params);
 	  continue;
@@ -321,9 +335,14 @@ void process_millepede_results()
 	{
 	  std::cout << " All staves are grouped together in layer " << layer << std::endl;
 	  // fill in all stave and sensor lines for this layer using the single parameter set for the only sensor entry
-	  // using  populate_entire_layer(layer, fout, params);
+	  auto sensor_vec = stave_vec[0];
+	  auto par_vec = sensor_vec[0];
+	  float params[6];
+	  getParameters(par_vec, params);
+	  populate_entire_layer(layer, fout, params);
 	}
 
+      std::cout << " layer "  << layer << " stave_vec size " << stave_vec.size() << std::endl;
       for(unsigned int ivec=0;ivec<stave_vec.size(); ++ivec)
 	{
 	  int stave = ivec;
@@ -337,11 +356,11 @@ void process_millepede_results()
 	      float parameters[6];
 	      getParameters(par_vec, parameters);
 
-	      // need a populate_stave method
 	      populate_stave(layer, stave, fout, parameters);
 	      continue;
 	    }
 
+	  // if we got to here, the sensors are ungrouped
 	  for(unsigned int is = 0; is < sensor_vec.size(); ++is)
 	    {
 	      int sensor = is;	      
@@ -350,7 +369,7 @@ void process_millepede_results()
 	      getParameters(par_vec, parameters);
 	      // generate a hitsetkey for this entry
 	      TrkrDefs::hitsetkey hitSetKey = getHitSetKey(layer, stave, sensor);
-	      fout << hitSetKey
+	      fout << hitSetKey << " "
 		   << parameters[0] << " " << parameters[1] << " "  << parameters[2] << " "
 		   << parameters[3] << " " << parameters[4] << " "  << parameters[5]  << std::endl;
 	    }
