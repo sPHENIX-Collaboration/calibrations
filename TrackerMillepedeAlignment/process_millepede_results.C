@@ -1,3 +1,4 @@
+#include <trackbase/TrkrDefs.h>
 #include <trackbase/MvtxDefs.h>
 #include <trackbase/InttDefs.h>
 #include <trackbase/TpcDefs.h>
@@ -11,6 +12,38 @@
 #include <fstream>
 #include <sstream>
 #include <string>
+
+TrkrDefs::hitsetkey getHitSetKey(int layer, int stave, int sensor)
+{
+ TrkrDefs::hitsetkey hitSetKey = 0;
+
+  if(layer < 3)
+    hitSetKey = MvtxDefs::genHitSetKey(layer,stave,sensor,0);
+
+  if(layer >2 && layer < 7)
+    hitSetKey = InttDefs::genHitSetKey(layer,sensor,stave,0);
+
+  if(layer > 6 && layer < 55)
+    {
+      int side = stave/12;  // sector is 0-11 for side 0, 12-23 for side 1
+      int sector = stave - side*12;
+      hitSetKey = TpcDefs::genHitSetKey(layer, sector, side);
+    }
+
+  if(layer > 54)
+    {
+      int tile = stave;  
+      unsigned short segmentation = 0;  
+      if(tile < 8){segmentation=1; layer = 55;}
+      else {segmentation=0; layer = 56; tile -=8;}
+      //if(layer == 55){segmentation=1;}
+      //else if(layer == 56){segmentation=0;}
+      MicromegasDefs::SegmentationType mmDefsSeg =  (MicromegasDefs::SegmentationType) segmentation;
+      hitSetKey = MicromegasDefs::genHitSetKey(layer, mmDefsSeg, tile);
+    }
+
+    return hitSetKey;
+}
 
 void populate_mvtx_stave(int layer, int stave, ofstream& fout, float params[])
 { 
@@ -63,9 +96,12 @@ void populate_entire_intt_layer(int layer, ofstream& fout, float params[])
 
 void populate_tpc_sector(int layer, int sector, ofstream& fout, float params[])
 { 
+  /*
   int side = sector/12;
-
+  sector = sector - side*12;
   TrkrDefs::hitsetkey hitSetKey = TpcDefs::genHitSetKey(layer,sector,side);
+  */
+  TrkrDefs::hitsetkey hitSetKey = getHitSetKey(layer, sector, 0);
   fout << hitSetKey <<" " << params[0] << " " << params[1]  << " " << params[2]  << " " << params[3]  << " " << params[4]  << " " << params[5]  << std::endl;
 }
 
@@ -79,18 +115,20 @@ void populate_tpc_sector(int layer, int sector, ofstream& fout, float params[])
  }
 
 void populate_mms_tile(int layer, int tile, ofstream& fout, float params[])
-{ 
+{
+  /* 
   unsigned short segmentation = 0;
   if(tile < 8){segmentation=1; layer = 55;}
-  else {segmentation=0; layer = 56;}
+  else {segmentation=0; layer = 56; tile -=8;}
   MicromegasDefs::SegmentationType mmDefsSeg =  (MicromegasDefs::SegmentationType) segmentation;
-  
   TrkrDefs::hitsetkey hitSetKey = MicromegasDefs::genHitSetKey(layer, mmDefsSeg, tile);
-  fout << hitSetKey <<"  " << params[0] << " " << params[1]  << " " << params[2]  << " " << params[3]  << " " << params[4]  << " " << params[5]  << std::endl;
+  */
+  TrkrDefs::hitsetkey hitSetKey = getHitSetKey(layer, tile, 0);
+    fout << hitSetKey <<"  " << params[0] << " " << params[1]  << " " << params[2]  << " " << params[3]  << " " << params[4]  << " " << params[5]  << std::endl;
   
 }
 
- void populate_entire_mms_layer(int layer, ofstream& fout, float params[])
+void populate_entire_mms_layer(int layer, ofstream& fout, float params[])
 {
   for(unsigned int tile = 0; tile < 8; tile++)        // loops over tiles with each tile having corresponding segmentation values
     {
@@ -98,36 +136,6 @@ void populate_mms_tile(int layer, int tile, ofstream& fout, float params[])
     }
 }
       
-TrkrDefs::hitsetkey getHitSetKey(int layer, int stave, int sensor)
-{
- TrkrDefs::hitsetkey hitSetKey = 0;
-
-  if(layer < 3)
-    hitSetKey = MvtxDefs::genHitSetKey(layer,stave,sensor,0);
-
-  if(layer >2 && layer < 7)
-    hitSetKey = InttDefs::genHitSetKey(layer,sensor,stave,0);
-
-  if(layer > 6 && layer < 55)
-    {
-      int side = stave/12;  // sector is 0-11 for side 0, 12-23 for side 1
-      int sector = stave - side*12;
-      hitSetKey = TpcDefs::genHitSetKey(layer, sector, side);
-    }
-
-  if(layer > 54)
-    {
-      unsigned short segmentation = 0;  
-      if(layer == 55){segmentation=1;}
-      else if(layer == 56){segmentation=0;}
-      MicromegasDefs::SegmentationType mmDefsSeg =  (MicromegasDefs::SegmentationType) segmentation;
-      int tile = stave;  
-      hitSetKey = MicromegasDefs::genHitSetKey(layer, mmDefsSeg, tile);
-    }
-
-    return hitSetKey;
-}
-
 void populate_entire_layer(int layer, ofstream& fout, float params[])
 {
   // fill this layer with the same alignment parameters
@@ -201,7 +209,6 @@ void process_millepede_results()
   int nladders_layer[7] = {12, 16, 20, 12, 12, 16, 16};
 
   ifstream fin("millepede.res");
-  //ifstream fin("millepede_allsensors_silicon.res");
 
   if(!fin.is_open()) std::cout << "Unable to open file" << std::endl;
 
@@ -300,7 +307,7 @@ void process_millepede_results()
 	}
     }
 
-  for(int layer=0; layer < 56; ++layer)
+  for(int layer=0; layer < 56; ++layer)   // layer 56 is included in layer 55 in the geometry id
     {
       if(tpc_grouped && is_in_tpc(layer))
 	{
@@ -376,5 +383,90 @@ void process_millepede_results()
 	}
     }
   fout.close(); 
+  
+  // if requested, add the pede results file to an existing correction file
+  // used during iterative running of tracking/millepede 
+  bool update_existing_corrections_file = true;
+  if(update_existing_corrections_file)
+    {
+      std::cout << " Add new parameters to existing ones" << std::endl;
+
+      ifstream fexisting("localAlignmentParamsFile.txt");
+      if(!fexisting.is_open()) std::cout << "Unable to open existing params file" << std::endl;
+      
+      ifstream fnew("new_alignment_corrections.txt");
+      if(!fnew.is_open()) std::cout << "Unable to open new params file" << std::endl;
+      
+      ofstream fupdated("updatedLocalAlignmentParamsFile.txt");
+      
+      TrkrDefs::hitsetkey key_exist, key_new;
+      float pars_exist[6], pars_new[6], pars_update[6];
+
+      std::string line1, line2;
+      
+      while( getline(fexisting, line1) )
+	{
+	  stringstream line_exist(line1);
+	  std::cout << "exist in: " << line_exist.str() << std::endl;
+	  line_exist >> key_exist;
+	  unsigned short layer_exist = TrkrDefs::getLayer(key_exist);
+	  std::cout << "     layer_exist " << layer_exist << std::endl; 	  
+	  if(layer_exist > 6 && layer_exist < 55)
+	    {
+	      unsigned short sector = TpcDefs::getSectorId(key_exist);
+	      unsigned short side = TpcDefs::getSide(key_exist);
+	      std::cout << "       sector " << sector << " side " << side << std::endl;
+	    }
+	  if(layer_exist > 54)
+	    {
+	      unsigned short tile = MicromegasDefs::getTileId(key_exist);	      
+	      MicromegasDefs::SegmentationType seg = MicromegasDefs::getSegmentationType(key_exist);
+	      int type = 0;
+	      if(seg == MicromegasDefs::SegmentationType::SEGMENTATION_Z) type = 1;
+	      std::cout << "       tile " << tile << " segmentation " << type << std::endl;
+	    }
+
+	  getline(fnew, line2);
+	  stringstream line_new(line2);
+	  std::cout << "new in: " << line_new.str() << std::endl;
+	  line_new >> key_new;
+	  unsigned short layer_new = TrkrDefs::getLayer(key_new);
+	  std::cout << "     layer _new " << layer_new << std::endl; 	  
+	  if(layer_new > 6 && layer_new < 55)
+	    {
+	      unsigned short sector = TpcDefs::getSectorId(key_new);
+	      unsigned short side = TpcDefs::getSide(key_new);
+	      std::cout << "       sector " << sector << " side " << side << std::endl;
+	    }
+	  if(layer_new > 54)
+	    {
+	      unsigned short tile = MicromegasDefs::getTileId(key_new);	      
+	      MicromegasDefs::SegmentationType seg = MicromegasDefs::getSegmentationType(key_new);
+	      int type = 0;
+	      if(seg == MicromegasDefs::SegmentationType::SEGMENTATION_Z) type = 1;
+	      std::cout << "       tile " << tile << " segmentation " << type << std::endl;
+	    }
+
+	  if(key_new != key_exist)
+	    std::cout << "Mismatched keys: " << key_exist << "   " << key_new << std::endl;
+	  
+	  line_exist >> pars_exist[0] >> pars_exist[1] >> pars_exist[2] >> pars_exist[3] >> pars_exist[4] >> pars_exist[5];
+	  line_new >> pars_new[0] >> pars_new[1] >> pars_new[2] >> pars_new[3] >> pars_new[4] >> pars_new[5];
+	  fupdated << key_exist << " "
+		   << pars_exist[0] + pars_new[0]<< " " 
+		   << pars_exist[1] + pars_new[1] << " " 
+		   << pars_exist[2] + pars_new[2] << " " 
+		   << pars_exist[3] + pars_new[3] << " " 
+		   << pars_exist[4] + pars_new[4] << " "
+		   << pars_exist[5] + pars_new[5]
+		   << std::endl;
+	}
+      
+      
+    }
+  
+  
+  
+  
   
 }

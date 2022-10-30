@@ -66,9 +66,9 @@ void makeAlignmentParams()
   // Create TPC hitsetkeys
   for (unsigned int layer = 7; layer<=54; layer++)          // loop over layers in TPC
   {    
-    for(unsigned int sector = 0; sector < 12; sector++)     // loop over sectors
+    for(unsigned int side = 0; side < 2; side++)        // loops over sides
       {    
-	for(unsigned int side = 0; side < 2; side++)        // loops over sides
+	for(unsigned int sector = 0; sector < 12; sector++)     // loop over sectors
 	  {
 	    TrkrDefs::hitsetkey hitSetKey = TpcDefs::genHitSetKey(layer,sector,side);
   	    fw << hitSetKey <<" " << alpha << " " << beta  << " " << gamma  << " " << dx  << " " << dy  << " " << dz  << std::endl;
