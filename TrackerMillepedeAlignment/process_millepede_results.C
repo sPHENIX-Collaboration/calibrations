@@ -36,8 +36,6 @@ TrkrDefs::hitsetkey getHitSetKey(int layer, int stave, int sensor)
       unsigned short segmentation = 0;  
       if(tile < 8){segmentation=1; layer = 55;}
       else {segmentation=0; layer = 56; tile -=8;}
-      //if(layer == 55){segmentation=1;}
-      //else if(layer == 56){segmentation=0;}
       MicromegasDefs::SegmentationType mmDefsSeg =  (MicromegasDefs::SegmentationType) segmentation;
       hitSetKey = MicromegasDefs::genHitSetKey(layer, mmDefsSeg, tile);
     }
@@ -96,12 +94,8 @@ void populate_entire_intt_layer(int layer, ofstream& fout, float params[])
 
 void populate_tpc_sector(int layer, int sector, ofstream& fout, float params[])
 { 
-  /*
-  int side = sector/12;
-  sector = sector - side*12;
-  TrkrDefs::hitsetkey hitSetKey = TpcDefs::genHitSetKey(layer,sector,side);
-  */
-  TrkrDefs::hitsetkey hitSetKey = getHitSetKey(layer, sector, 0);
+  TrkrDefs::hitsetkey hitSetKey = getHitSetKey(layer, sector, 0);  // side is determined from sector
+  std::cout << "    layer " << layer << " sector " << sector << " hitsetkey " << hitSetKey << std::endl;
   fout << hitSetKey <<" " << params[0] << " " << params[1]  << " " << params[2]  << " " << params[3]  << " " << params[4]  << " " << params[5]  << std::endl;
 }
 
@@ -116,15 +110,8 @@ void populate_tpc_sector(int layer, int sector, ofstream& fout, float params[])
 
 void populate_mms_tile(int layer, int tile, ofstream& fout, float params[])
 {
-  /* 
-  unsigned short segmentation = 0;
-  if(tile < 8){segmentation=1; layer = 55;}
-  else {segmentation=0; layer = 56; tile -=8;}
-  MicromegasDefs::SegmentationType mmDefsSeg =  (MicromegasDefs::SegmentationType) segmentation;
-  TrkrDefs::hitsetkey hitSetKey = MicromegasDefs::genHitSetKey(layer, mmDefsSeg, tile);
-  */
   TrkrDefs::hitsetkey hitSetKey = getHitSetKey(layer, tile, 0);
-    fout << hitSetKey <<"  " << params[0] << " " << params[1]  << " " << params[2]  << " " << params[3]  << " " << params[4]  << " " << params[5]  << std::endl;
+    fout << hitSetKey <<" " << params[0] << " " << params[1]  << " " << params[2]  << " " << params[3]  << " " << params[4]  << " " << params[5]  << std::endl;
   
 }
 
@@ -203,13 +190,15 @@ void process_millepede_results()
   // The millepede.res file contains entries only for parameters given non zero alignment derivatives
   // For sensors where the alignment parameter derivatives were zero, set the parameters to zero
 
+  int verbosity = 0;
+
   gStyle->SetStatW(0.3);
   gStyle->SetStatH(0.3);
 
   int nladders_layer[7] = {12, 16, 20, 12, 12, 16, 16};
 
-  ifstream fin("millepede.res");
-
+  //ifstream fin("millepede.res");
+  ifstream fin("millepede_allsensors_hitsets_free_mille.res");
   if(!fin.is_open()) std::cout << "Unable to open file" << std::endl;
 
   int label = 0;
@@ -246,12 +235,14 @@ void process_millepede_results()
       int sensor = (label - layer *1000000 -stave*10000) / 10;
       int ipar = label - layer *1000000 -stave*10000 - sensor*10;
 
-      std::cout << " Input: layer " << layer << " stave " << stave << " sensor " << sensor << " ipar " << ipar << " label " << label << " align " << align << std::endl;
+      if(verbosity > 0) 
+	std::cout << " Input: layer " << layer << " stave " << stave << " sensor " << sensor << " ipar " << ipar << " label " << label << " align " << align << std::endl;
 
       if(layer > layer_keep || fin.eof())
 	{
 	  // layer layer_keep is done.
-	  std::cout << "   fitted staves in layer " << layer_keep << " = " << stave_keep+1 << " sensors = " << sensor_keep+1 << std::endl; 
+	  if(verbosity > 0) 
+	    std::cout << "   fitted staves in layer " << layer_keep << " = " << stave_keep+1 << " sensors = " << sensor_keep+1 << std::endl; 
 
 	  //flush everything
 	  sensor_vec.push_back(par_vec);
@@ -312,7 +303,7 @@ void process_millepede_results()
       if(tpc_grouped && is_in_tpc(layer))
 	{
 	  // Only layer 7 in the MP result file, with parameters for each sector
-	  std::cout << " layer " << layer << " is in sector grouped tpc " << std::endl;
+	  if(verbosity > 0) std::cout << " layer " << layer << " is in sector grouped tpc " << std::endl;
 	  auto it7 = layer_stave_vec_map.find(7);
 	  auto stave_vec = it7->second;
 	  for(unsigned int isec = 0; isec < stave_vec.size(); ++isec)
@@ -321,7 +312,7 @@ void process_millepede_results()
 	      auto par_vec = sector_vec[0];
 	      float params[6];
 	      getParameters(par_vec, params);
-	      std::cout << " populate layer " << layer << " for sector " << isec << " with params[0] " << params[0] << std::endl;
+	      if(verbosity > 0) std::cout << " populate layer " << layer << " for sector " << isec << " with params[0] " << params[0] << std::endl;
 	      populate_tpc_sector(layer, isec, fout, params);
 	    }
 	  // done with this layer
@@ -338,9 +329,9 @@ void process_millepede_results()
 	  continue;
 	}
       auto stave_vec = it->second;
-      if(stave_vec.size() == 1) 
+      if( (stave_vec.size() == 1) &&( !is_in_tpc(layer)) ) 
 	{
-	  std::cout << " All staves are grouped together in layer " << layer << std::endl;
+	  if(verbosity > 0) std::cout << " All staves are grouped together in layer " << layer << std::endl;
 	  // fill in all stave and sensor lines for this layer using the single parameter set for the only sensor entry
 	  auto sensor_vec = stave_vec[0];
 	  auto par_vec = sensor_vec[0];
@@ -349,15 +340,15 @@ void process_millepede_results()
 	  populate_entire_layer(layer, fout, params);
 	}
 
-      std::cout << " layer "  << layer << " stave_vec size " << stave_vec.size() << std::endl;
+      if(verbosity > 0) std::cout << " layer "  << layer << " stave_vec size " << stave_vec.size() << std::endl;
       for(unsigned int ivec=0;ivec<stave_vec.size(); ++ivec)
 	{
 	  int stave = ivec;
 	  auto sensor_vec = stave_vec[ivec];
 
-	  if(sensor_vec.size() == 1) 
+	  if( (sensor_vec.size() == 1) &&( !is_in_tpc(layer)) ) 
 	    {
-	      std::cout << " All sensors are grouped together for layer " << layer << " stave " << stave << std::endl;
+	      if(verbosity > 0) std::cout << " All sensors are grouped together for layer " << layer << " stave " << stave << std::endl;
 	      // fill in all sensor lines for this stave, using the single parameter set for this stave's only sensor entry
 	      auto par_vec = sensor_vec[0];
 	      float parameters[6];
@@ -376,6 +367,13 @@ void process_millepede_results()
 	      getParameters(par_vec, parameters);
 	      // generate a hitsetkey for this entry
 	      TrkrDefs::hitsetkey hitSetKey = getHitSetKey(layer, stave, sensor);
+	      if(verbosity > 0)
+		{
+		  std::cout  << " To file: layer " << layer << " stave " << stave << " sensor " << sensor << " " 
+			     << hitSetKey << " "
+			     << parameters[0] << " " << parameters[1] << " "  << parameters[2] << " "
+			     << parameters[3] << " " << parameters[4] << " "  << parameters[5]  << std::endl;
+		}
 	      fout << hitSetKey << " "
 		   << parameters[0] << " " << parameters[1] << " "  << parameters[2] << " "
 		   << parameters[3] << " " << parameters[4] << " "  << parameters[5]  << std::endl;
@@ -407,44 +405,50 @@ void process_millepede_results()
       while( getline(fexisting, line1) )
 	{
 	  stringstream line_exist(line1);
-	  std::cout << "exist in: " << line_exist.str() << std::endl;
+	  if(verbosity > 0) std::cout << "exist in: " << line_exist.str() << std::endl;
 	  line_exist >> key_exist;
 	  unsigned short layer_exist = TrkrDefs::getLayer(key_exist);
-	  std::cout << "     layer_exist " << layer_exist << std::endl; 	  
-	  if(layer_exist > 6 && layer_exist < 55)
+	  if(verbosity > 0) 
 	    {
-	      unsigned short sector = TpcDefs::getSectorId(key_exist);
-	      unsigned short side = TpcDefs::getSide(key_exist);
-	      std::cout << "       sector " << sector << " side " << side << std::endl;
-	    }
-	  if(layer_exist > 54)
-	    {
-	      unsigned short tile = MicromegasDefs::getTileId(key_exist);	      
-	      MicromegasDefs::SegmentationType seg = MicromegasDefs::getSegmentationType(key_exist);
-	      int type = 0;
-	      if(seg == MicromegasDefs::SegmentationType::SEGMENTATION_Z) type = 1;
-	      std::cout << "       tile " << tile << " segmentation " << type << std::endl;
+	      std::cout << "     layer_exist " << layer_exist << std::endl; 	  
+	      if(layer_exist > 6 && layer_exist < 55)
+		{
+		  unsigned short sector = TpcDefs::getSectorId(key_exist);
+		  unsigned short side = TpcDefs::getSide(key_exist);
+		  std::cout << "       sector " << sector << " side " << side << std::endl;
+		}	    
+	      if(layer_exist > 54)
+		{
+		  unsigned short tile = MicromegasDefs::getTileId(key_exist);	      
+		  MicromegasDefs::SegmentationType seg = MicromegasDefs::getSegmentationType(key_exist);
+		  int type = 0;
+		  if(seg == MicromegasDefs::SegmentationType::SEGMENTATION_Z) type = 1;
+		  std::cout << "       tile " << tile << " segmentation " << type << std::endl;
+		}
 	    }
 
 	  getline(fnew, line2);
 	  stringstream line_new(line2);
-	  std::cout << "new in: " << line_new.str() << std::endl;
+	  if(verbosity > 0) std::cout << "new in: " << line_new.str() << std::endl;
 	  line_new >> key_new;
 	  unsigned short layer_new = TrkrDefs::getLayer(key_new);
-	  std::cout << "     layer _new " << layer_new << std::endl; 	  
-	  if(layer_new > 6 && layer_new < 55)
+	  if(verbosity > 0) 
 	    {
-	      unsigned short sector = TpcDefs::getSectorId(key_new);
-	      unsigned short side = TpcDefs::getSide(key_new);
-	      std::cout << "       sector " << sector << " side " << side << std::endl;
-	    }
-	  if(layer_new > 54)
-	    {
-	      unsigned short tile = MicromegasDefs::getTileId(key_new);	      
-	      MicromegasDefs::SegmentationType seg = MicromegasDefs::getSegmentationType(key_new);
-	      int type = 0;
-	      if(seg == MicromegasDefs::SegmentationType::SEGMENTATION_Z) type = 1;
-	      std::cout << "       tile " << tile << " segmentation " << type << std::endl;
+	      std::cout << "     layer _new " << layer_new << std::endl; 	  
+	      if(layer_new > 6 && layer_new < 55)
+		{
+		  unsigned short sector = TpcDefs::getSectorId(key_new);
+		  unsigned short side = TpcDefs::getSide(key_new);
+		  std::cout << "       sector " << sector << " side " << side << std::endl;
+		}
+	      if(layer_new > 54)
+		{
+		  unsigned short tile = MicromegasDefs::getTileId(key_new);	      
+		  MicromegasDefs::SegmentationType seg = MicromegasDefs::getSegmentationType(key_new);
+		  int type = 0;
+		  if(seg == MicromegasDefs::SegmentationType::SEGMENTATION_Z) type = 1;
+		  std::cout << "       tile " << tile << " segmentation " << type << std::endl;
+		}
 	    }
 
 	  if(key_new != key_exist)
