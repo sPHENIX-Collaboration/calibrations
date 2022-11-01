@@ -1,3 +1,4 @@
+#include <trackbase/TrkrDefs.h>
 #include <trackbase/MvtxDefs.h>
 #include <trackbase/InttDefs.h>
 #include <trackbase/TpcDefs.h>
@@ -12,6 +13,39 @@
 #include <sstream>
 #include <string>
 
+TrkrDefs::hitsetkey getHitSetKey(int layer, int stave, int sensor)
+{
+  // all hitsetkeys should be obtained from here
+
+ TrkrDefs::hitsetkey hitSetKey = 0;
+
+  if(layer < 3)
+    hitSetKey = MvtxDefs::genHitSetKey(layer,stave,sensor,0);
+
+  if(layer >2 && layer < 7)
+    hitSetKey = InttDefs::genHitSetKey(layer,sensor,stave,0);
+
+  if(layer > 6 && layer < 55)
+    {
+      // for the tpc, "stave" = 0-11 means sector 0-11 for side 0, and "stave" = 12-23 means sector 0-11 for side 1
+      int side = stave/12;  
+      int sector = stave - side*12;
+      hitSetKey = TpcDefs::genHitSetKey(layer, sector, side);
+    }
+
+  if(layer > 54)
+    {
+      int tile = stave;  
+      unsigned short segmentation = 0;  
+      if(tile < 8){segmentation=1; layer = 55;}
+      else {segmentation=0; layer = 56; tile -=8;}
+      MicromegasDefs::SegmentationType mmDefsSeg =  (MicromegasDefs::SegmentationType) segmentation;
+      hitSetKey = MicromegasDefs::genHitSetKey(layer, mmDefsSeg, tile);
+    }
+
+    return hitSetKey;
+}
+
 void populate_mvtx_stave(int layer, int stave, ofstream& fout, float params[])
 { 
   // mvtxdat for each layer: rMin, rMid, rMax, NChip/Stave, phi0, nStaves
@@ -20,7 +54,7 @@ void populate_mvtx_stave(int layer, int stave, ofstream& fout, float params[])
   
   for(int chip = 0; chip <= 8; chip++)      // loops over chips 
     {
-      TrkrDefs::hitsetkey hitSetKey = MvtxDefs::genHitSetKey(layer,stave,chip,0);	  
+      TrkrDefs::hitsetkey hitSetKey = getHitSetKey(layer,stave,chip);
       fout << hitSetKey << " " <<params[0] << " " << params[1]  << " " << params[2]  << " " << params[3]  << " " << params[4]  << " " << params[5]  << std::endl;
     }  
  }
@@ -42,7 +76,7 @@ void populate_intt_stave(int layer, int stave, ofstream& fout, float params[])
 { 
   for(int chip = 0; chip <= 3; chip++)       // loops over chips 
     {
-      TrkrDefs::hitsetkey hitSetKey = InttDefs::genHitSetKey(layer,chip,stave,0);
+      TrkrDefs::hitsetkey hitSetKey = getHitSetKey(layer,stave,chip);
       fout << hitSetKey <<" " << params[0] << " " << params[1]  << " " << params[2]  << " " << params[3]  << " " << params[4]  << " " << params[5]  << std::endl;
     }
    }
@@ -63,9 +97,8 @@ void populate_entire_intt_layer(int layer, ofstream& fout, float params[])
 
 void populate_tpc_sector(int layer, int sector, ofstream& fout, float params[])
 { 
-  int side = sector/12;
-
-  TrkrDefs::hitsetkey hitSetKey = TpcDefs::genHitSetKey(layer,sector,side);
+  TrkrDefs::hitsetkey hitSetKey = getHitSetKey(layer, sector, 0);  // side is determined from sector
+  //std::cout << "    layer " << layer << " sector " << sector << " hitsetkey " << hitSetKey << std::endl;
   fout << hitSetKey <<" " << params[0] << " " << params[1]  << " " << params[2]  << " " << params[3]  << " " << params[4]  << " " << params[5]  << std::endl;
 }
 
@@ -79,18 +112,13 @@ void populate_tpc_sector(int layer, int sector, ofstream& fout, float params[])
  }
 
 void populate_mms_tile(int layer, int tile, ofstream& fout, float params[])
-{ 
-  unsigned short segmentation = 0;
-  if(tile < 8){segmentation=1; layer = 55;}
-  else {segmentation=0; layer = 56;}
-  MicromegasDefs::SegmentationType mmDefsSeg =  (MicromegasDefs::SegmentationType) segmentation;
-  
-  TrkrDefs::hitsetkey hitSetKey = MicromegasDefs::genHitSetKey(layer, mmDefsSeg, tile);
-  fout << hitSetKey <<"  " << params[0] << " " << params[1]  << " " << params[2]  << " " << params[3]  << " " << params[4]  << " " << params[5]  << std::endl;
+{
+  TrkrDefs::hitsetkey hitSetKey = getHitSetKey(layer, tile, 0);
+    fout << hitSetKey <<" " << params[0] << " " << params[1]  << " " << params[2]  << " " << params[3]  << " " << params[4]  << " " << params[5]  << std::endl;
   
 }
 
- void populate_entire_mms_layer(int layer, ofstream& fout, float params[])
+void populate_entire_mms_layer(int layer, ofstream& fout, float params[])
 {
   for(unsigned int tile = 0; tile < 8; tile++)        // loops over tiles with each tile having corresponding segmentation values
     {
@@ -98,36 +126,6 @@ void populate_mms_tile(int layer, int tile, ofstream& fout, float params[])
     }
 }
       
-TrkrDefs::hitsetkey getHitSetKey(int layer, int stave, int sensor)
-{
- TrkrDefs::hitsetkey hitSetKey = 0;
-
-  if(layer < 3)
-    hitSetKey = MvtxDefs::genHitSetKey(layer,stave,sensor,0);
-
-  if(layer >2 && layer < 7)
-    hitSetKey = InttDefs::genHitSetKey(layer,sensor,stave,0);
-
-  if(layer > 6 && layer < 55)
-    {
-      int side = stave/12;  // sector is 0-11 for side 0, 12-23 for side 1
-      int sector = stave - side*12;
-      hitSetKey = TpcDefs::genHitSetKey(layer, sector, side);
-    }
-
-  if(layer > 54)
-    {
-      unsigned short segmentation = 0;  
-      if(layer == 55){segmentation=1;}
-      else if(layer == 56){segmentation=0;}
-      MicromegasDefs::SegmentationType mmDefsSeg =  (MicromegasDefs::SegmentationType) segmentation;
-      int tile = stave;  
-      hitSetKey = MicromegasDefs::genHitSetKey(layer, mmDefsSeg, tile);
-    }
-
-    return hitSetKey;
-}
-
 void populate_entire_layer(int layer, ofstream& fout, float params[])
 {
   // fill this layer with the same alignment parameters
@@ -147,18 +145,29 @@ void populate_entire_layer(int layer, ofstream& fout, float params[])
   return;
  }
 
-void getParameters(std::vector<std::pair<int, float>> par_vec, float parameters[])
+bool getParameters(std::vector<std::pair<int, float>> par_vec, float parameters[])
 { 
+  bool ret = true;
   for(unsigned int ip = 0; ip < par_vec.size(); ++ip)
     {
       int ipar = par_vec[ip].first;
       if((unsigned int) ipar != ip+1)
 	{
-	  std::cout << " Error: ipar " << ipar << " ip " << ip << std::endl;
+	  std::cout << " Error: ipar " << ipar << " ip " << ip << " par_vec size " << par_vec.size() << std::endl;
+	  ret = false;
 	}
       float align = par_vec[ip].second;
       parameters[ip] = align;
     }	
+
+  if(!ret)
+    {
+      // Pede screwup. Return parameters all set to zero for safety.
+      for(int ip = 0; ip < 6; ++ip)
+	parameters[ip] = 0.0;
+    }
+
+  return ret;
   }
 
 void populate_stave(int layer, int stave, ofstream& fout, float params[])
@@ -195,14 +204,23 @@ void process_millepede_results()
   // The millepede.res file contains entries only for parameters given non zero alignment derivatives
   // For sensors where the alignment parameter derivatives were zero, set the parameters to zero
 
+  // macro tested for cases:
+  //   all sensors, hitsets and tiles free (using MakeMilleFiles with zero original misalignments)
+  //   all sensors grouped in their staves,  all hitsets grouped in their sectors, mms tiles free (MakeMilleFiles, zero misalignments)
+  //   silicon detectors only (using HelicalFitter with small net misalignments)
+  //   all tpc hitsets grouped in the tpc as a whole, all silicon sensors grouped in their staves, all mms tiles free (MakeMilleFiles, zero misalignments)
+
+  int verbosity = 0;
+
   gStyle->SetStatW(0.3);
   gStyle->SetStatH(0.3);
 
   int nladders_layer[7] = {12, 16, 20, 12, 12, 16, 16};
 
-  ifstream fin("millepede.res");
-  //ifstream fin("millepede_allsensors_silicon.res");
-
+  //ifstream fin("millepede.res");
+  ifstream fin("millepede_staves_tpc_free_mille.res");
+  //ifstream fin("millepede_allsensors_hitsets_free_mille.res");
+  //ifstream fin("millepede_staves_sectors_free_mille.res");
   if(!fin.is_open()) std::cout << "Unable to open file" << std::endl;
 
   int label = 0;
@@ -210,10 +228,10 @@ void process_millepede_results()
 
   std::string line;
   getline(fin,line);
-  std::cout << line << std::endl;  // no data in first line
+  std::cout << "Discarding line: " << line << std::endl;  // no data in first line
 
   // Depending on the surface grouping settings, we may have:
-  //    a line for every sensor in part or all of the tracker
+  //    a line for every sensor, tpc hitset or mms tile in part or all of the tracker
   //    a line for every stave or sector in part or all of the tracker
   //    a line for an entire subdetector
   // or a mixture of these. We have to figure out what we have in the file.
@@ -239,12 +257,15 @@ void process_millepede_results()
       int sensor = (label - layer *1000000 -stave*10000) / 10;
       int ipar = label - layer *1000000 -stave*10000 - sensor*10;
 
-      std::cout << " Input: layer " << layer << " stave " << stave << " sensor " << sensor << " ipar " << ipar << " label " << label << " align " << align << std::endl;
+      if(verbosity > 0) 
+	std::cout << " Input: layer " << layer << " stave " << stave << " sensor " << sensor << " ipar " << ipar << " label " << label << " align " << align << std::endl;
 
       if(layer > layer_keep || fin.eof())
 	{
-	  // layer layer_keep is done.
-	  std::cout << "   fitted staves in layer " << layer_keep << " = " << stave_keep+1 << " sensors = " << sensor_keep+1 << std::endl; 
+	  // layer layer_keep is done, close out this layer.
+	  if(verbosity > 0) 
+	    std::cout << "   fitted staves in layer " << layer_keep << " = " << stave_keep+1 
+		      << " sensors = " << sensor_keep+1 << std::endl; 
 
 	  //flush everything
 	  sensor_vec.push_back(par_vec);
@@ -282,11 +303,11 @@ void process_millepede_results()
        
     }  // end loop over file lines
 
-  // output the parameters
+  // process the information and output the new parameters
   ofstream fout("new_alignment_corrections.txt");	
 
   // The TPC needs special treatment if the layers in each sector are grouped
-  // this is just to find out if that is true
+  // this block is just to find out if that is true
   bool tpc_grouped = false;
   auto it7 = layer_stave_vec_map.find(7);
   if (it7 != layer_stave_vec_map.end())
@@ -300,75 +321,123 @@ void process_millepede_results()
 	}
     }
 
-  for(int layer=0; layer < 56; ++layer)
+  for(int layer=0; layer < 56; ++layer)   // layer 56 is included in layer 55 in the geometry id as an additional set of tiles
     {
+      // this block handles the case where the tpc readout is grouped by sector
       if(tpc_grouped && is_in_tpc(layer))
 	{
 	  // Only layer 7 in the MP result file, with parameters for each sector
-	  std::cout << " layer " << layer << " is in sector grouped tpc " << std::endl;
+	  if(verbosity > 0) std::cout << " layer " << layer << " is in sector grouped tpc " << std::endl;
 	  auto it7 = layer_stave_vec_map.find(7);
 	  auto stave_vec = it7->second;
+	  if(stave_vec.size() == 1)
+	    {
+	      auto sensor_vec = stave_vec[0];
+	      auto par_vec = sensor_vec[0];
+	      float params[6];
+	      bool ret = getParameters(par_vec, params);
+	      populate_entire_tpc_layer(layer, fout, params);
+
+	      // done with this layer, skip to the next
+	      continue;
+	    }
+
 	  for(unsigned int isec = 0; isec < stave_vec.size(); ++isec)
 	    {
 	      auto sector_vec = stave_vec[isec];
 	      auto par_vec = sector_vec[0];
 	      float params[6];
-	      getParameters(par_vec, params);
-	      std::cout << " populate layer " << layer << " for sector " << isec << " with params[0] " << params[0] << std::endl;
+	      bool ret = getParameters(par_vec, params);
+	      if(!ret)
+		{
+		  std::cout << " getParameters returned error for layer " << layer << " isec " << isec 
+			    << " sensor " << 0 << " parameters set to zero " << std::endl;
+		}
+	      if(verbosity > 0) std::cout << " populate layer " << layer << " for sector " << isec << " with params[0] " << params[0] << std::endl;
 	      populate_tpc_sector(layer, isec, fout, params);
 	    }
-	  // done with this layer
+	  // done with this layer, skip to the next
 	  continue;
 	}
 
       // back to our normal program
+      // find this layer in the vector of staves and get its vector of sensors
       auto it = layer_stave_vec_map.find(layer);
       if (it == layer_stave_vec_map.end())
 	{
-	  // all alignment corrections are zero for missing layers
+	  // layer is missing, all alignment corrections are zero for missing layers
 	  float params[6] = {0,0,0,0,0,0};
 	  populate_entire_layer(layer, fout, params);
+	  // done with this layer
 	  continue;
 	}
+
       auto stave_vec = it->second;
-      if(stave_vec.size() == 1) 
+
+      if( (stave_vec.size() == 1) &&( !is_in_tpc(layer)) ) 
 	{
-	  std::cout << " All staves are grouped together in layer " << layer << std::endl;
+	  // layer exists, but all silicon staves or mms tiles are grouped together, all sensors in all staves share the same alignment parameters
+	  if(verbosity > 0) std::cout << " All staves are grouped together in layer " << layer << std::endl;
 	  // fill in all stave and sensor lines for this layer using the single parameter set for the only sensor entry
 	  auto sensor_vec = stave_vec[0];
 	  auto par_vec = sensor_vec[0];
 	  float params[6];
-	  getParameters(par_vec, params);
+	  bool ret = getParameters(par_vec, params);
+	  if(!ret)
+	    {
+	      std::cout << " getParameters returned error for layer " << layer << " stave " << 0 
+			<< " sensor " << 0 << " parameters set to zero "<< std::endl;
+	    }
 	  populate_entire_layer(layer, fout, params);
+	  // done with this layer
+	  continue;
 	}
 
-      std::cout << " layer "  << layer << " stave_vec size " << stave_vec.size() << std::endl;
+      if(verbosity > 0) std::cout << " layer "  << layer << " stave_vec size " << stave_vec.size() << std::endl;
       for(unsigned int ivec=0;ivec<stave_vec.size(); ++ivec)
 	{
 	  int stave = ivec;
 	  auto sensor_vec = stave_vec[ivec];
 
-	  if(sensor_vec.size() == 1) 
+	  if( (sensor_vec.size() == 1) &&( !is_in_tpc(layer)) ) 
 	    {
-	      std::cout << " All sensors are grouped together for layer " << layer << " stave " << stave << std::endl;
+	      // final special case, all sensors in this stave are grouped together
+	      if(verbosity > 0) std::cout << " All sensors are grouped together for layer " << layer << " and stave " << stave << std::endl;
 	      // fill in all sensor lines for this stave, using the single parameter set for this stave's only sensor entry
 	      auto par_vec = sensor_vec[0];
 	      float parameters[6];
-	      getParameters(par_vec, parameters);
-
+	      bool ret = getParameters(par_vec, parameters);
+	      if(!ret)
+		{
+		  std::cout << " getParameters returned error for layer " << layer << " stave " << stave 
+			    << " sensor " << 0 << " parameters set to zero " << std::endl;
+		}
 	      populate_stave(layer, stave, fout, parameters);
 	      continue;
 	    }
 
-	  // if we got to here, the sensors are ungrouped
+	  // if we got to here, the sensors or hitsets or tiles are ungrouped
+	  //   -- we have individual results for each silicon sensor, tpc hitset, and mms tile
 	  for(unsigned int is = 0; is < sensor_vec.size(); ++is)
 	    {
 	      int sensor = is;	      
 	      auto par_vec = sensor_vec[is];
 	      float parameters[6];
-	      getParameters(par_vec, parameters);
+	      bool ret = getParameters(par_vec, parameters);
+	      if(!ret)
+		{
+		  std::cout << " getParameters returned error for layer " << layer << " stave " << stave 
+			    << " sensor " << sensor << " parameters set to zero "<< std::endl;
+		}
 	      // generate a hitsetkey for this entry
 	      TrkrDefs::hitsetkey hitSetKey = getHitSetKey(layer, stave, sensor);
+	      if(verbosity > 0)
+		{
+		  std::cout  << " To file: layer " << layer << " stave " << stave << " sensor " << sensor << " " 
+			     << hitSetKey << " "
+			     << parameters[0] << " " << parameters[1] << " "  << parameters[2] << " "
+			     << parameters[3] << " " << parameters[4] << " "  << parameters[5]  << std::endl;
+		}
 	      fout << hitSetKey << " "
 		   << parameters[0] << " " << parameters[1] << " "  << parameters[2] << " "
 		   << parameters[3] << " " << parameters[4] << " "  << parameters[5]  << std::endl;
@@ -376,5 +445,141 @@ void process_millepede_results()
 	}
     }
   fout.close(); 
+  
+  // if requested, add the pede results file to an existing alignment correction file
+  // used during iterative running of tracking/millepede 
+  // This is how we would iterate on real data
+  bool update_existing_corrections_file = true;
+  if(update_existing_corrections_file)
+    {
+      std::cout << " Add new parameters to existing ones" << std::endl;
+
+      ifstream fexisting("localAlignmentParamsFile.txt");
+      if(!fexisting.is_open()) std::cout << "Unable to open existing params file" << std::endl;
+      
+      ifstream fnew("new_alignment_corrections.txt");
+      if(!fnew.is_open()) std::cout << "Unable to open new params file" << std::endl;
+      
+      ofstream fupdated("updatedLocalAlignmentParamsFile.txt");
+      
+      TrkrDefs::hitsetkey key_exist, key_new;
+      float pars_exist[6], pars_new[6], pars_update[6];
+
+      std::string line1, line2;
+      
+      while( getline(fexisting, line1) )
+	{
+	  stringstream line_exist(line1);
+	  if(verbosity > 0) std::cout << "exist in: " << line_exist.str() << std::endl;
+	  line_exist >> key_exist;
+	  unsigned short layer_exist = TrkrDefs::getLayer(key_exist);
+	  if(verbosity > 0) 
+	    {
+	      std::cout << "     layer_exist " << layer_exist << std::endl; 	  
+	      if(layer_exist > 6 && layer_exist < 55)
+		{
+		  unsigned short sector = TpcDefs::getSectorId(key_exist);
+		  unsigned short side = TpcDefs::getSide(key_exist);
+		  std::cout << "       sector " << sector << " side " << side << std::endl;
+		}	    
+	      if(layer_exist > 54)
+		{
+		  unsigned short tile = MicromegasDefs::getTileId(key_exist);	      
+		  MicromegasDefs::SegmentationType seg = MicromegasDefs::getSegmentationType(key_exist);
+		  int type = 0;
+		  if(seg == MicromegasDefs::SegmentationType::SEGMENTATION_Z) type = 1;
+		  std::cout << "       tile " << tile << " segmentation " << type << std::endl;
+		}
+	    }
+
+	  getline(fnew, line2);
+	  stringstream line_new(line2);
+	  if(verbosity > 0) std::cout << "new in: " << line_new.str() << std::endl;
+	  line_new >> key_new;
+	  unsigned short layer_new = TrkrDefs::getLayer(key_new);
+	  if(verbosity > 0) 
+	    {
+	      std::cout << "     layer _new " << layer_new << std::endl; 	  
+	      if(layer_new > 6 && layer_new < 55)
+		{
+		  unsigned short sector = TpcDefs::getSectorId(key_new);
+		  unsigned short side = TpcDefs::getSide(key_new);
+		  std::cout << "       sector " << sector << " side " << side << std::endl;
+		}
+	      if(layer_new > 54)
+		{
+		  unsigned short tile = MicromegasDefs::getTileId(key_new);	      
+		  MicromegasDefs::SegmentationType seg = MicromegasDefs::getSegmentationType(key_new);
+		  int type = 0;
+		  if(seg == MicromegasDefs::SegmentationType::SEGMENTATION_Z) type = 1;
+		  std::cout << "       tile " << tile << " segmentation " << type << std::endl;
+		}
+	    }
+
+	  if(key_new != key_exist)
+	    std::cout << "ERROR: Mismatched keys: " << key_exist << "   " << key_new << std::endl;
+	  
+	  line_exist >> pars_exist[0] >> pars_exist[1] >> pars_exist[2] >> pars_exist[3] >> pars_exist[4] >> pars_exist[5];
+	  line_new >> pars_new[0] >> pars_new[1] >> pars_new[2] >> pars_new[3] >> pars_new[4] >> pars_new[5];
+	  fupdated << key_exist << " "
+		   << pars_exist[0] + pars_new[0]<< " " 
+		   << pars_exist[1] + pars_new[1] << " " 
+		   << pars_exist[2] + pars_new[2] << " " 
+		   << pars_exist[3] + pars_new[3] << " " 
+		   << pars_exist[4] + pars_new[4] << " "
+		   << pars_exist[5] + pars_new[5]
+		   << std::endl;
+	}
+    }
+  std::cout << "Done updating alignment file" << std::endl;  
+
+
+
+  // This would be used for corrected simulated misalignments only
+  // if requested, subtract the updated alignment corrections file from the original misalignments file
+  bool subtract_from_misalignment_file = true;
+  if(subtract_from_misalignment_file)
+    {  
+      std::cout << " Add new parameters to existing ones" << std::endl;
+      
+      ifstream foriginal("originalMisalignmentParamsFile.txt");
+      if(!foriginal.is_open()) std::cout << "Unable to open original misalignment params file" << std::endl;
+      
+      ifstream fupdated("updatedLocalAlignmentParamsFile.txt");
+      if(!fupdated.is_open()) std::cout << "Unable to open updated params file" << std::endl;
+      
+      ofstream fdifference("differenceLocalAlignmentParamsFile.txt");
+      
+      TrkrDefs::hitsetkey key_original, key_updated;
+      float pars_original[6], pars_updated[6];
+      
+      std::string line1, line2;
+      
+      while( getline(foriginal, line1) )
+	{
+	  stringstream line_original(line1);
+	  if(verbosity > 0) std::cout << "original in: " << line_original.str() << std::endl;
+	  line_original >> key_original;
+	  getline(fupdated, line2);
+	  stringstream line_updated(line2);
+	  if(verbosity > 0) std::cout << "updated  in: " << line_updated.str() << std::endl;
+	  line_updated >> key_updated;
+	  if(key_updated != key_original)
+	    std::cout << "ERROR: Mismatched keys: " << key_original << "   " << key_updated << std::endl;
+	  
+	  line_original >> pars_original[0] >> pars_original[1] >> pars_original[2] >> pars_original[3] >> pars_original[4] >> pars_original[5];
+	  line_updated >> pars_updated[0] >> pars_updated[1] >> pars_updated[2] >> pars_updated[3] >> pars_updated[4] >> pars_updated[5];
+	  fdifference << key_original << " "
+		      << pars_original[0] - pars_updated[0]<< " " 
+		      << pars_original[1] - pars_updated[1] << " " 
+		      << pars_original[2] - pars_updated[2] << " " 
+		      << pars_original[3] - pars_updated[3] << " " 
+		      << pars_original[4] - pars_updated[4] << " "
+		      << pars_original[5] - pars_updated[5]
+		      << std::endl;
+	}
+    }
+  std::cout << "Done making difference file " << std::endl;  
+  
   
 }
