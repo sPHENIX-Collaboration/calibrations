@@ -13,6 +13,17 @@
 #include <sstream>
 #include <string>
 
+int get_tpc_region(int layer)
+{
+  int region = 0;
+  if(layer > 23 && layer < 39)
+    region = 1;
+  if(layer > 38 && layer < 55)
+    region = 2;
+
+  return region;  
+}
+
 TrkrDefs::hitsetkey getHitSetKey(int layer, int stave, int sensor)
 {
   // all hitsetkeys should be obtained from here
@@ -27,9 +38,12 @@ TrkrDefs::hitsetkey getHitSetKey(int layer, int stave, int sensor)
 
   if(layer > 6 && layer < 55)
     {
-      // for the tpc, "stave" = 0-11 means sector 0-11 for side 0, and "stave" = 12-23 means sector 0-11 for side 1
-      int side = stave/12;  
-      int sector = stave - side*12;
+      // "stave" = region(0-2) *24 + sector (0-23) = 0-71
+      // for the tpc, "sector" = 0-11 means sector 0-11 for side 0, and "sector" = 12-23 means sector 0-11 for side 1
+      int region = get_tpc_region(layer);
+      int sector = stave - region * 24;
+      int side = sector/12;  
+      sector = sector - side*12;
       hitSetKey = TpcDefs::genHitSetKey(layer, sector, side);
     }
 
@@ -197,6 +211,15 @@ bool is_in_tpc(int layer)
   return ret;
 }
 
+bool is_layer_in_region(int layer, int isec)
+{
+  bool ret = false;
+  int region = isec / 24;
+  if(get_tpc_region(layer) == region) ret = true;
+
+  return ret;
+}
+
 void process_millepede_results()
 {
   // macro to read in millepede.res files (pede output files) and process them
@@ -217,15 +240,15 @@ void process_millepede_results()
 
   int nladders_layer[7] = {12, 16, 20, 12, 12, 16, 16};
 
-  //ifstream fin("millepede.res");
-  ifstream fin("millepede_staves_tpc_free_mille.res");
+  ifstream fin("millepede.res");
+  //ifstream fin("millepede_staves_tpc_free_mille.res");
   //ifstream fin("millepede_allsensors_hitsets_free_mille.res");
   //ifstream fin("millepede_staves_sectors_free_mille.res");
   if(!fin.is_open()) std::cout << "Unable to open file" << std::endl;
 
   int label = 0;
   float align = 0.0;
-
+  
   std::string line;
   getline(fin,line);
   std::cout << "Discarding line: " << line << std::endl;  // no data in first line
@@ -330,6 +353,8 @@ void process_millepede_results()
 	  if(verbosity > 0) std::cout << " layer " << layer << " is in sector grouped tpc " << std::endl;
 	  auto it7 = layer_stave_vec_map.find(7);
 	  auto stave_vec = it7->second;
+
+	  // handle case where the entire tpc is grouped, there is only one parameter set
 	  if(stave_vec.size() == 1)
 	    {
 	      auto sensor_vec = stave_vec[0];
@@ -342,24 +367,30 @@ void process_millepede_results()
 	      continue;
 	    }
 
+	  // if we are here, we have multiple staves, grouped by sector
+	  // "stave" = region * (side*12 + sector). This layer is in only one region.
 	  for(unsigned int isec = 0; isec < stave_vec.size(); ++isec)
 	    {
-	      auto sector_vec = stave_vec[isec];
-	      auto par_vec = sector_vec[0];
-	      float params[6];
-	      bool ret = getParameters(par_vec, params);
-	      if(!ret)
+	      // is this layer in the stave region?
+	      if(is_layer_in_region(layer, isec))
 		{
-		  std::cout << " getParameters returned error for layer " << layer << " isec " << isec 
-			    << " sensor " << 0 << " parameters set to zero " << std::endl;
+		  auto sector_vec = stave_vec[isec];
+		  auto par_vec = sector_vec[0];
+		  float params[6];
+		  bool ret = getParameters(par_vec, params);
+		  if(!ret)
+		    {
+		      std::cout << " getParameters returned error for layer " << layer << " isec " << isec 
+				<< " sensor " << 0 << " parameters set to zero " << std::endl;
+		    }
+		  if(verbosity > 0) std::cout << " populate layer " << layer << " for sector " << isec << " with params[0] " << params[0] << std::endl;
+		  populate_tpc_sector(layer, isec, fout, params);
 		}
-	      if(verbosity > 0) std::cout << " populate layer " << layer << " for sector " << isec << " with params[0] " << params[0] << std::endl;
-	      populate_tpc_sector(layer, isec, fout, params);
 	    }
 	  // done with this layer, skip to the next
 	  continue;
 	}
-
+      
       // back to our normal program
       // find this layer in the vector of staves and get its vector of sensors
       auto it = layer_stave_vec_map.find(layer);
