@@ -214,7 +214,7 @@ bool is_in_tpc(int layer)
 bool is_layer_in_region(int layer, int isec)
 {
   bool ret = false;
-  int region = isec / 24;
+  int region = isec / 24; // 72 sectors, 24 each region (sides 0 and 1)
   if(get_tpc_region(layer) == region) ret = true;
 
   return ret;
@@ -227,13 +227,13 @@ void process_millepede_results()
   // The millepede.res file contains entries only for parameters given non zero alignment derivatives
   // For sensors where the alignment parameter derivatives were zero, set the parameters to zero
 
-  // macro tested for cases:
-  //   all sensors, hitsets and tiles free (using MakeMilleFiles with zero original misalignments)
-  //   all sensors grouped in their staves,  all hitsets grouped in their sectors, mms tiles free (MakeMilleFiles, zero misalignments)
-  //   silicon detectors only (using HelicalFitter with small net misalignments)
-  //   all tpc hitsets grouped in the tpc as a whole, all silicon sensors grouped in their staves, all mms tiles free (MakeMilleFiles, zero misalignments)
+  // macro figures out grouping from the input file. Tested for cases:
+  //     all sensors, hitsets and tiles free (using MakeMilleFiles with zero original misalignments)
+  //     all sensors grouped in their staves,  all hitsets grouped in their regions/sectors, mms tiles free (MakeMilleFiles, HelicalFitter, zero misalignments)
+  //     silicon detectors only (using HelicalFitter with small net misalignments)
+  //     all tpc hitsets grouped in the tpc as a whole, all silicon sensors grouped in their staves, all mms tiles free (MakeMilleFiles, zero misalignments)
 
-  int verbosity = 0;
+  int verbosity = 1;
 
   gStyle->SetStatW(0.3);
   gStyle->SetStatH(0.3);
@@ -285,7 +285,7 @@ void process_millepede_results()
 
       if(layer > layer_keep || fin.eof())
 	{
-	  // layer layer_keep is done, close out this layer.
+	  // layer number layer_keep is done, close out this layer.
 	  if(verbosity > 0) 
 	    std::cout << "   fitted staves in layer " << layer_keep << " = " << stave_keep+1 
 		      << " sensors = " << sensor_keep+1 << std::endl; 
@@ -361,6 +361,7 @@ void process_millepede_results()
 	      auto par_vec = sensor_vec[0];
 	      float params[6];
 	      bool ret = getParameters(par_vec, params);
+	      if(verbosity > 0) std::cout << " populate layer " << layer << " for all sectors with params[0] " << params[0] << std::endl;
 	      populate_entire_tpc_layer(layer, fout, params);
 
 	      // done with this layer, skip to the next
@@ -368,14 +369,14 @@ void process_millepede_results()
 	    }
 
 	  // if we are here, we have multiple staves, grouped by sector
-	  // "stave" = region * (side*12 + sector). This layer is in only one region.
+	  // here isec = region * 24 + sector (0-23). This layer is in only one region.
 	  for(unsigned int isec = 0; isec < stave_vec.size(); ++isec)
 	    {
-	      // is this layer in the stave region?
+	      // is this layer in the region of this sector?
 	      if(is_layer_in_region(layer, isec))
 		{
 		  auto sector_vec = stave_vec[isec];
-		  auto par_vec = sector_vec[0];
+		  auto par_vec = sector_vec[0]; // only one parameter set per sector
 		  float params[6];
 		  bool ret = getParameters(par_vec, params);
 		  if(!ret)
@@ -390,6 +391,7 @@ void process_millepede_results()
 	  // done with this layer, skip to the next
 	  continue;
 	}
+
       
       // back to our normal program
       // find this layer in the vector of staves and get its vector of sensors
@@ -398,6 +400,7 @@ void process_millepede_results()
 	{
 	  // layer is missing, all alignment corrections are zero for missing layers
 	  float params[6] = {0,0,0,0,0,0};
+	  if(verbosity > 0) std::cout << " missing layer " << layer << " set all params to  " << params[0] << std::endl;
 	  populate_entire_layer(layer, fout, params);
 	  // done with this layer
 	  continue;
@@ -501,10 +504,10 @@ void process_millepede_results()
       while( getline(fexisting, line1) )
 	{
 	  stringstream line_exist(line1);
-	  if(verbosity > 0) std::cout << "exist in: " << line_exist.str() << std::endl;
+	  if(verbosity > 1) std::cout << "exist in: " << line_exist.str() << std::endl;
 	  line_exist >> key_exist;
 	  unsigned short layer_exist = TrkrDefs::getLayer(key_exist);
-	  if(verbosity > 0) 
+	  if(verbosity > 1) 
 	    {
 	      std::cout << "     layer_exist " << layer_exist << std::endl; 	  
 	      if(layer_exist > 6 && layer_exist < 55)
@@ -525,10 +528,10 @@ void process_millepede_results()
 
 	  getline(fnew, line2);
 	  stringstream line_new(line2);
-	  if(verbosity > 0) std::cout << "new in: " << line_new.str() << std::endl;
+	  if(verbosity > 1) std::cout << "new in: " << line_new.str() << std::endl;
 	  line_new >> key_new;
 	  unsigned short layer_new = TrkrDefs::getLayer(key_new);
-	  if(verbosity > 0) 
+	  if(verbosity > 1) 
 	    {
 	      std::cout << "     layer _new " << layer_new << std::endl; 	  
 	      if(layer_new > 6 && layer_new < 55)
@@ -548,7 +551,7 @@ void process_millepede_results()
 	    }
 
 	  if(key_new != key_exist)
-	    std::cout << "ERROR: Mismatched keys: " << key_exist << "   " << key_new << std::endl;
+	    std::cout << "ERROR: Mismatched keys: layer " << layer " exiasting key " << key_exist << " new key " << key_new << std::endl;
 	  
 	  line_exist >> pars_exist[0] >> pars_exist[1] >> pars_exist[2] >> pars_exist[3] >> pars_exist[4] >> pars_exist[5];
 	  line_new >> pars_new[0] >> pars_new[1] >> pars_new[2] >> pars_new[3] >> pars_new[4] >> pars_new[5];
@@ -589,11 +592,11 @@ void process_millepede_results()
       while( getline(foriginal, line1) )
 	{
 	  stringstream line_original(line1);
-	  if(verbosity > 0) std::cout << "original in: " << line_original.str() << std::endl;
+	  if(verbosity > 1) std::cout << "original in: " << line_original.str() << std::endl;
 	  line_original >> key_original;
 	  getline(fupdated, line2);
 	  stringstream line_updated(line2);
-	  if(verbosity > 0) std::cout << "updated  in: " << line_updated.str() << std::endl;
+	  if(verbosity > 1) std::cout << "updated  in: " << line_updated.str() << std::endl;
 	  line_updated >> key_updated;
 	  if(key_updated != key_original)
 	    std::cout << "ERROR: Mismatched keys: " << key_original << "   " << key_updated << std::endl;
