@@ -128,15 +128,16 @@ void populate_tpc_sector(int layer, int sector, ofstream& fout, float params[])
 void populate_mms_tile(int layer, int tile, ofstream& fout, float params[])
 {
   TrkrDefs::hitsetkey hitSetKey = getHitSetKey(layer, tile, 0);
-    fout << hitSetKey <<" " << params[0] << " " << params[1]  << " " << params[2]  << " " << params[3]  << " " << params[4]  << " " << params[5]  << std::endl;
+  //std::cout << " layer " << layer << " tile " << tile << " hitsetkey " << hitSetKey <<" " << params[0] << " " << params[1]  << " " << params[2]  << " " << params[3]  << " " << params[4]  << " " << params[5]  << std::endl;
+  fout << hitSetKey <<" " << params[0] << " " << params[1]  << " " << params[2]  << " " << params[3]  << " " << params[4]  << " " << params[5]  << std::endl;
   
 }
 
 void populate_entire_mms_layer(int layer, ofstream& fout, float params[])
 {
-  for(unsigned int tile = 0; tile < 8; tile++)        // loops over tiles with each tile having corresponding segmentation values
+  for(unsigned int ntile = 0; ntile < 16; ntile++)        // loops over tiles with each tile having corresponding segmentation values
     {
-      populate_mms_tile(layer, tile, fout, params);
+      populate_mms_tile(layer, ntile, fout, params);
     }
 }
       
@@ -227,6 +228,8 @@ void process_millepede_results()
   // The millepede.res file contains entries only for parameters given non zero alignment derivatives
   // For sensors where the alignment parameter derivatives were zero, set the parameters to zero
 
+  // NOTE: the macro assumes there is an entry for every surface group - input files should be from many events!
+ 
   // macro figures out grouping from the input file. Tested for cases:
   //     all sensors, hitsets and tiles free (using MakeMilleFiles with zero original misalignments)
   //     all sensors grouped in their staves,  all hitsets grouped in their regions/sectors, mms tiles free (MakeMilleFiles, HelicalFitter, zero misalignments)
@@ -241,9 +244,6 @@ void process_millepede_results()
   int nladders_layer[7] = {12, 16, 20, 12, 12, 16, 16};
 
   ifstream fin("millepede.res");
-  //ifstream fin("millepede_staves_tpc_free_mille.res");
-  //ifstream fin("millepede_allsensors_hitsets_free_mille.res");
-  //ifstream fin("millepede_staves_sectors_free_mille.res");
   if(!fin.is_open()) std::cout << "Unable to open file" << std::endl;
 
   int label = 0;
@@ -368,7 +368,7 @@ void process_millepede_results()
 	      continue;
 	    }
 
-	  // if we are here, we have multiple staves, grouped by sector
+	  // if we are here, we have multiple tpc "staves", grouped by sector
 	  // here isec = region * 24 + sector (0-23). This layer is in only one region.
 	  for(unsigned int isec = 0; isec < stave_vec.size(); ++isec)
 	    {
@@ -391,7 +391,6 @@ void process_millepede_results()
 	  // done with this layer, skip to the next
 	  continue;
 	}
-
       
       // back to our normal program
       // find this layer in the vector of staves and get its vector of sensors
@@ -551,7 +550,7 @@ void process_millepede_results()
 	    }
 
 	  if(key_new != key_exist)
-	    std::cout << "ERROR: Mismatched keys: layer " << layer " exiasting key " << key_exist << " new key " << key_new << std::endl;
+	    std::cout << "ERROR: Mismatched keys: in layer " << layer_new << " existing key " << key_exist << " new key " << key_new << std::endl;
 	  
 	  line_exist >> pars_exist[0] >> pars_exist[1] >> pars_exist[2] >> pars_exist[3] >> pars_exist[4] >> pars_exist[5];
 	  line_new >> pars_new[0] >> pars_new[1] >> pars_new[2] >> pars_new[3] >> pars_new[4] >> pars_new[5];
