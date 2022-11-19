@@ -244,9 +244,6 @@ void process_millepede_results()
   int nladders_layer[7] = {12, 16, 20, 12, 12, 16, 16};
 
   ifstream fin("millepede.res");
-  //ifstream fin("millepede_staves_tpc_free_mille.res");
-  //ifstream fin("millepede_allsensors_hitsets_free_mille.res");
-  //ifstream fin("millepede_staves_sectors_free_mille.res");
   if(!fin.is_open()) std::cout << "Unable to open file" << std::endl;
 
   int label = 0;

@@ -57,12 +57,11 @@ void plot_alignment_residuals()
   // read in the alignment parameters file and make histograms for each layer
   // There is one entry in the file for every surface in the detector
 
-  //ifstream fin("differenceLocalAlignmentParamsFile.txt");
-  ifstream fin("differenceLocalAlignmentParamsFile_helical.txt");
-    if(!fin.is_open()) std::cout << "Unable to open input alignment params file" << std::endl;
-
-    TH2D *hpar[57][6];
-    for(int ilayer=0;ilayer<57;++ilayer)
+  ifstream fin("differenceLocalAlignmentParamsFile.txt");
+  if(!fin.is_open()) std::cout << "Unable to open input alignment params file" << std::endl;
+  
+  TH2D *hpar[57][6];
+  for(int ilayer=0;ilayer<57;++ilayer)
       {
 	for(int ipar = 0; ipar < 6; ++ipar)
 	  {
