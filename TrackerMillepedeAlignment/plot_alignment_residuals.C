@@ -57,7 +57,8 @@ void plot_alignment_residuals()
   // read in the alignment parameters file and make histograms for each layer
   // There is one entry in the file for every surface in the detector
 
-    ifstream fin("differenceLocalAlignmentParamsFile.txt");
+  //ifstream fin("differenceLocalAlignmentParamsFile.txt");
+  ifstream fin("differenceLocalAlignmentParamsFile_helical.txt");
     if(!fin.is_open()) std::cout << "Unable to open input alignment params file" << std::endl;
 
     TH2D *hpar[57][6];
@@ -71,8 +72,14 @@ void plot_alignment_residuals()
 	    if( (ilayer > 2 && ilayer < 7) && (ipar == 5) ) range = 0.4;
 
 	    char name[500];
+	    char title[500];
 	    sprintf(name,"hpar_%i_%i", ilayer, ipar);
-	    hpar[ilayer][ipar] = new TH2D(name,name, 600, 0, 200, 200, -range, +range);  // sensor number, parameter range
+	    if(ilayer < 3)  sprintf(title,"MVTX parameter %i", ipar);
+	    else if (ilayer > 2 && ilayer < 7) sprintf(title,"INTT parameter %i", ipar);
+	    else if (ilayer > 6 && ilayer < 55) sprintf(title,"TPC parameter %i", ipar);
+	    else  sprintf(title,"MMS parameters %i", ipar);
+
+	    hpar[ilayer][ipar] = new TH2D(name, title, 600, 0, 200, 200, -range, +range);  // sensor number, parameter range
 
 	    hpar[ilayer][ipar]->GetXaxis()->SetNdivisions(504);
 	    hpar[ilayer][ipar]->GetXaxis()->SetLabelSize(0.05);
