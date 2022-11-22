@@ -58,6 +58,8 @@ void plot_alignment_residuals()
   // There is one entry in the file for every surface in the detector
 
   ifstream fin("differenceLocalAlignmentParamsFile.txt");
+  //ifstream fin("localAlignmentParamsFile.txt");
+  //ifstream fin("new_alignment_corrections.txt");
   if(!fin.is_open()) std::cout << "Unable to open input alignment params file" << std::endl;
   
   TH2D *hpar[57][6];
@@ -65,10 +67,12 @@ void plot_alignment_residuals()
       {
 	for(int ipar = 0; ipar < 6; ++ipar)
 	  {
-	    double range = 0.003;  // cm or rad
-	    if(ilayer > 6 && (ipar > 2 && ipar < 5)) range = 0.01;
-	    if(ilayer > 6 && (ipar == 5)) range = 0.1;
-	    if( (ilayer > 2 && ilayer < 7) && (ipar == 5) ) range = 0.4;
+	    double range = 0.5;  // mm
+	    double range_angles = 0.003;  // rad
+	    if(ipar < 3) range = range_angles;
+	    //if(ilayer > 6 && (ipar > 2 && ipar < 5)) range = 0.01;
+	    //if(ilayer > 6 && (ipar == 5)) range = 0.1;
+	    //if( (ilayer > 2 && ilayer < 7) && (ipar == 5) ) range = 0.4;
 
 	    char name[500];
 	    char title[500];
@@ -86,7 +90,7 @@ void plot_alignment_residuals()
 	    if(ipar < 3)
 	      hpar[ilayer][ipar]->GetXaxis()->SetTitle("radians");
 	    else
-	      hpar[ilayer][ipar]->GetXaxis()->SetTitle("cm");	    	    
+	      hpar[ilayer][ipar]->GetXaxis()->SetTitle("mm");	    	    
 	  }
       }
 
@@ -125,7 +129,7 @@ void plot_alignment_residuals()
 	  if(ipar < 3) 
 	    hpar_combined->GetXaxis()->SetTitle("rad");
 	  else
-	    hpar_combined->GetXaxis()->SetTitle("cm");
+	    hpar_combined->GetXaxis()->SetTitle("mm");
 
 	  hpar_combined->DrawCopy();
 	}
@@ -143,7 +147,7 @@ void plot_alignment_residuals()
 	  if(ipar < 3) 
 	    hpar_combined->GetXaxis()->SetTitle("rad");
 	  else
-	    hpar_combined->GetXaxis()->SetTitle("cm");
+	    hpar_combined->GetXaxis()->SetTitle("mm");
 
 	  hpar_combined->DrawCopy();
 	}
@@ -162,7 +166,7 @@ void plot_alignment_residuals()
 	  if(ipar < 3) 
 	    hpar_combined->GetXaxis()->SetTitle("rad");
 	  else
-	    hpar_combined->GetXaxis()->SetTitle("cm");
+	    hpar_combined->GetXaxis()->SetTitle("mm");
 
 	  hpar_combined->DrawCopy();
 	}

@@ -11,11 +11,17 @@
 
 #include <cmath>
 
-// Creates an alignment corrections file containing all zero alignment corrections
+// This macro makes a file named "data.txt" in the local directory
+// Copy that to where you want it
 
+// Creates an alignment corrections file containing all zero alignment corrections if true
+static bool make_zero_corrections = false;
+ 
+// otherwise it adds misalignments
+
+// these are used for bookkeeping when using heirarchical offsets
 static std::array<unsigned int, 6> stave_now = {999,999,999,999,999,999};
 static std::array<double, 6> stave_perturbation_now = {0,0,0,0,0,0};
-
 static std::array<unsigned int, 6> physical_sector_now = {999,999,999,999,999,999};
 static std::array<double,6> physical_sector_perturbation_now = {0,0,0,0,0,0};
 
@@ -23,10 +29,11 @@ std::default_random_engine generator;
 
 void getMvtxInputs( std::array<double, 6>& staveMean, std::array<double, 6>& staveDev, std::array<double, 6>& sensorDev)
 {
-  double stmean[6] = {0, 0, 0, 0.010, 0.010, 0.025};  // mean offset
-  double stdev[6] = {0, 0, 0, 0.005, 0.005, 0.005};  // sigma around mean offset
-  double sendev[6] = {0, 0, 0, 0.002, 0.002, 0.002}; // sigma, centered on zero
-
+  // translations are in mm !!!
+  double stmean[6] = {0, 0, 0, 0.10, -0.10, 0.25};  // mean offset
+  double stdev[6] = {0, 0, 0, 0.05, 0.05, 0.05};  // sigma around mean offset
+  double sendev[6] = {0, 0, 0, 0.02, 0.02, 0.02}; // sigma, centered on zero
+  
   for(int i=0; i<6; ++i)
     {  staveMean.at(i) = stmean[i]; }
   for(int i=0; i<6; ++i)
@@ -37,10 +44,11 @@ void getMvtxInputs( std::array<double, 6>& staveMean, std::array<double, 6>& sta
 
 void getInttInputs( std::array<double, 6>& staveMean, std::array<double, 6>& staveDev, std::array<double, 6>& sensorDev)
 {
-  double stmean[6] = {0, 0, 0, 0.010, 0.010, 0.025};  // mean stave offset
-  double stdev[6] = {0, 0, 0, 0.005, 0.005, 0.005};  // sigma around mean stave offset
-  double sendev[6] = {0, 0, 0, 0.002, 0.002, 0.002}; // sigma of sensor within stave, centered on zero
-
+  // translations are in mm !!!
+  double stmean[6] = {0, 0, 0, -0.10, 0.10, -0.25};  // mean stave offset
+  double stdev[6] = {0, 0, 0, 0.05, 0.05, 0.05};  // sigma around mean stave offset
+  double sendev[6] = {0, 0, 0, 0.02, 0.02, 0.02}; // sigma of sensor within stave, centered on zero
+  
   for(int i=0; i<6; ++i)
     {  staveMean.at(i) = stmean[i];  }
   for(int i=0; i<6; ++i)
@@ -51,10 +59,11 @@ void getInttInputs( std::array<double, 6>& staveMean, std::array<double, 6>& sta
 
 void getTpcInputs( std::array<double, 6>& staveMean, std::array<double, 6>& staveDev, std::array<double, 6>& sensorDev)
 {
-  double secmean[6] = {0, 0, 0, 0.020, 0.020, 0.0300};  // mean sector offset (i.e. TPC offset)
-  double secdev[6] = {0, 0, 0, 0.010, 0.010, 0.01};  // sigma around mean sector offset
-  double surfdev[6] = {0, 0, 0, 0, 0, 0}; // surfaces sigma, centered on zero
-
+  // translations are in mm !!!
+  double secmean[6] = {0, 0, 0, 0.20, -0.20, 0.300};  // mean sector offset (i.e. TPC offset)
+  double secdev[6] = {0, 0, 0, 0.10, 0.10, 0.1};  // sigma around mean sector offset
+  double surfdev[6] = {0, 0, 0, 0, 0, 0}; // surfaces added sigma, centered on zero
+  
   for(int i=0; i<6; ++i)
     {  staveMean.at(i) = secmean[i];  }
   for(int i=0; i<6; ++i)
@@ -65,9 +74,10 @@ void getTpcInputs( std::array<double, 6>& staveMean, std::array<double, 6>& stav
 
 void getMmsInputs( std::array<double, 6>& staveMean, std::array<double, 6>& staveDev, std::array<double, 6>& sensorDev)
 {
-  double tilemean[6] = {0, 0, 0, 0.010, 0.010, 0.025};  // mean offset
-  double tiledev[6] = {0, 0, 0, 0.005, 0.005, 0.005};  // sigma around mean offset
-
+  // translations are in mm !!!
+  double tilemean[6] = {0, 0, 0, -0.10, 0.10, -0.25};  // mean offset
+  double tiledev[6] = {0, 0, 0, 0.05, 0.05, 0.05};  // sigma around mean offset
+  
   for(int i=0; i<6; ++i)
     {  staveMean.at(i) = tilemean[i];  }
   for(int i=0; i<6; ++i)
@@ -100,16 +110,18 @@ void getInputs(unsigned int layer, std::array<double, 6>& staveMean, std::array<
 
 std::array<double, 6> getOffset(unsigned int layer, unsigned int stave)
 {
+  std::array<double, 6> offset={0,0,0,0,0,0};
+
+  if(make_zero_corrections) return offset;
+
   std::array<double, 6> staveMean = {0,0,0,0,0,0};
   std::array<double, 6> staveDev = {0,0,0,0,0,0};
   std::array<double, 6> sensorDev = {0,0,0,0,0,0};
   getInputs(layer, staveMean, staveDev, sensorDev);
 
-  std::array<double, 6> offset={0,0,0,0,0,0};
-
   for(int i=0;i<6;++i)
     {
-      if(staveDev.at(i) != 0 && stave != stave_now.at(i))
+      if(staveMean.at(i) != 0 && stave != stave_now.at(i))
 	{
 	  // new stave or sector, need new perturbation value
 	  std::normal_distribution<double> distribution(staveMean.at(i), staveDev.at(i));
@@ -136,16 +148,17 @@ std::array<double, 6> getOffset(unsigned int layer, unsigned int stave)
 
 std::array<double, 6> getOffsetTpc(unsigned int layer, unsigned int physical_sector)
 {
+  std::array<double, 6> offset={0,0,0,0,0,0};
+  if(make_zero_corrections) return offset;
+
   std::array<double, 6> staveMean = {0,0,0,0,0,0};
   std::array<double, 6> staveDev = {0,0,0,0,0,0};
   std::array<double, 6> sensorDev = {0,0,0,0,0,0};
   getInputs(layer, staveMean, staveDev, sensorDev);
 
-  std::array<double, 6> offset={0,0,0,0,0,0};
-
   for(int i=0;i<6;++i)
     {
-      if(staveDev.at(i) != 0 && physical_sector != physical_sector_now.at(i))
+      if(staveMean.at(i) != 0 && physical_sector != physical_sector_now.at(i))
 	{
 	  // new sector, need new perturbation value
 	  std::normal_distribution<double> distribution(staveMean.at(i), staveDev.at(i));
@@ -175,6 +188,8 @@ void makeAlignmentParams()
   // mvtxdat for each layer: rMin, rMid, rMax, NChip/Stave, phi0, nStaves
   double mvtxdat[3][6] = {{24.61, 25.23, 27.93, 9., 0.285, 12.}, {31.98, 33.36, 36.25, 9., 0.199, 16.},{39.93, 41.48, 44.26, 9., 0.166, 20.}};
 
+  std::map<TrkrDefs::hitsetkey, std::array<double, 6>> outmap;
+
   ofstream fw("data.txt", std::ofstream::out); // open file for writing alignment params and hitsetkey
 
   // alignment params for development purposes 
@@ -196,8 +211,7 @@ void makeAlignmentParams()
 	  {
 	    TrkrDefs::hitsetkey hitSetKey = MvtxDefs::genHitSetKey(layer,stave,chip,0);
 	    std::array<double, 6> offset = getOffset(layer, stave);
-	    alpha = offset.at(0); beta = offset.at(1); gamma = offset.at(2); dx = offset.at(3); dy = offset.at(4); dz = offset.at(5);
-	    fw << hitSetKey << " " << alpha << " " << beta  << " " << gamma  << " " << dx  << " " << dy  << " " << dz  << std::endl;	
+	    outmap.insert(std::make_pair(hitSetKey, offset));
 	  }
       }
     }
@@ -216,8 +230,7 @@ void makeAlignmentParams()
 	  {
 	    TrkrDefs::hitsetkey hitSetKey = InttDefs::genHitSetKey(layer,chip,stave,0);
 	    std::array<double, 6> offset = getOffset(layer, stave);
-	    alpha = offset.at(0); beta = offset.at(1); gamma = offset.at(2); dx = offset.at(3); dy = offset.at(4); dz = offset.at(5);
-	    fw << hitSetKey << " " << alpha << " " << beta  << " " << gamma  << " " << dx  << " " << dy  << " " << dz  << std::endl;	
+	    outmap.insert(std::make_pair(hitSetKey, offset));
 	  }
       }
     }
@@ -241,9 +254,7 @@ void makeAlignmentParams()
 		  TrkrDefs::hitsetkey hitSetKey = TpcDefs::genHitSetKey(sphenix_layer,sector,side);
 
 		  std::array<double, 6> offset = getOffsetTpc(sphenix_layer, physical_sector);
-		  alpha = offset.at(0); beta = offset.at(1); gamma = offset.at(2); dx = offset.at(3); dy = offset.at(4); dz = offset.at(5);
-		  //fw << side << "  " << sector << "  " << region << "  " << physical_sector << "  " << layer << "  " << sphenix_layer << "  " << alpha << " " << beta  << " " << gamma  << " " << dx  << " " << dy  << " " << dz  << std::endl;
-		  fw << hitSetKey <<" " << alpha << " " << beta  << " " << gamma  << " " << dx  << " " << dy  << " " << dz  << std::endl;
+		  outmap.insert(std::make_pair(hitSetKey, offset));
 		}
 	    }
 	}
@@ -263,11 +274,23 @@ void makeAlignmentParams()
       {
 	TrkrDefs::hitsetkey hitSetKey = MicromegasDefs::genHitSetKey(layer, mmDefsSeg, tile);
 	std::array<double, 6> offset = getOffset(layer, tile);
-	alpha = offset.at(0); beta = offset.at(1); gamma = offset.at(2); dx = offset.at(3); dy = offset.at(4); dz = offset.at(5);
-	fw << hitSetKey <<" " << alpha << " " << beta  << " " << gamma  << " " << dx  << " " << dy  << " " << dz  << std::endl;
+	outmap.insert(std::make_pair(hitSetKey, offset));
       }
   }
 
+  // copy the map to the file - ensures it is sorted by hitsetkey
+
+  for(auto it = outmap.begin(); it != outmap.end(); ++it)
+    {
+      fw << it->first 
+	 << " " << it->second.at(0)
+	 << " " << it->second.at(1)
+	 << " " << it->second.at(2)
+	 << " " << it->second.at(3)
+	 << " " << it->second.at(4)
+	 << " " << it->second.at(5)
+	 << std::endl;
+    }
   
   fw.close();
 
