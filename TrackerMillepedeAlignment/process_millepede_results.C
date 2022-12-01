@@ -535,7 +535,7 @@ void process_millepede_results(bool helical_fitter = false)
   // 2) Run pede on Mille output file to produce millepede.res file
   // 3) Run process_millepede_output.C on millepede.res file to produce new_allignment_corrections.txt file
   // 4) Add new_alignment_corrections.txt to existing currentAlignmentParams.txt 
-  // 5) Replace differenceAlignmentParams.txt = originalMisalignmentsParams.txt - currentAlignmentParams.txt
+  // 5) Replace differenceAlignmentParams.txt = (originalMisalignmentsParams.txt - currentAlignmentParams.txt)
   // Ready to rerun tracking with newest differenceAlignmentParams.txt
   // 
 
@@ -546,7 +546,7 @@ void process_millepede_results(bool helical_fitter = false)
     {
       std::cout << " Add new parameters to existing ones" << std::endl;
 
-      ifstream fexisting("localAlignmentParamsFile.txt");
+      ifstream fexisting("currentAlignmentParams.txt");
       if(!fexisting.is_open()) std::cout << "Unable to open existing params file" << std::endl;
       
       ifstream fnew("new_alignment_corrections.txt");
@@ -640,7 +640,7 @@ void process_millepede_results(bool helical_fitter = false)
     {  
       std::cout << " Add new parameters to existing ones" << std::endl;
       
-      ifstream foriginal("originalMisalignmentParamsFile.txt");
+      ifstream foriginal("originalMisalignmentParams.txt");
       if(!foriginal.is_open()) std::cout << "Unable to open original misalignment params file" << std::endl;
       
       ifstream fupdated("currentAlignmentParams.txt");
