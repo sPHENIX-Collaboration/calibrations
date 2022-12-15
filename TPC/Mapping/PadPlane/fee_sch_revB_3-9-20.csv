@@ -1,0 +1,60 @@
+﻿J1,A1 ,,B1 ,,C1,,D1,,E1,,F1,
+J1,A2 ,,B2 ,,C2,,D2,,E2,pad30 ,F2,pad31 
+J1,A3 ,,B3 ,pad28 ,C3,pad29 ,D3,pad26 ,E3,pad27 ,F3,pad24 
+J1,A4 ,,B4 ,pad25 ,C4,pad22 ,D4,pad23 ,E4,pad20 ,F4,pad21 
+J1,A5 ,,B5 ,pad18 ,C5,pad19 ,D5,pad16 ,E5,pad17 ,F5,pad14 
+J1,A6 ,,B6 ,pad15 ,C6,pad12 ,D6,pad13 ,E6,pad10 ,F6,pad11 
+J1,A7 ,,B7 ,pad8 ,C7,pad9 ,D7,pad6 ,E7,pad7 ,F7,pad4 
+J1,A8 ,,B8 ,pad5 ,C8,pad2 ,D8,pad3 ,E8,pad0 ,F8,pad1 
+J1,A9 ,,B9 ,,C9,,D9,,E9,pad62 ,F9,pad63 
+J1,A10 ,,B10 ,pad60 ,C10,pad61 ,D10,pad58 ,E10,pad59 ,F10,pad56 
+J1,A11 ,,B11 ,pad57 ,C11,pad54 ,D11,pad55 ,E11,pad52 ,F11,pad53 
+J1,A12 ,,B12 ,pad50 ,C12,pad51 ,D12,pad48 ,E12,pad49 ,F12,pad46 
+J1,A13 ,,B13 ,pad47 ,C13,pad44 ,D13,pad45 ,E13,pad42 ,F13,pad43 
+J1,A14 ,,B14 ,pad40 ,C14,pad41 ,D14,pad38 ,E14,pad39 ,F14,pad36 
+J1,A15 ,,B15 ,pad37 ,C15,pad34 ,D15,pad35 ,E15,pad32 ,F15,pad33 
+J1,A16 ,,B16 ,,C16,,D16,,E16,pad94 ,F16,pad95 
+J1,A17 ,,B17 ,pad92 ,C17,pad93 ,D17,pad90 ,E17,pad91 ,F17,pad88 
+J1,A18 ,,B18 ,pad89 ,C18,pad86 ,D18,pad87 ,E18,pad84 ,F18,pad85 
+J1,A19 ,,B19 ,pad82 ,C19,pad83 ,D19,pad80 ,E19,pad81 ,F19,pad78 
+J1,A20 ,,B20 ,pad79 ,C20,pad76 ,D20,pad77 ,E20,pad74 ,F20,pad75 
+J1,A21 ,,B21 ,pad72 ,C21,pad73 ,D21,pad70 ,E21,pad71 ,F21,pad68 
+J1,A22 ,,B22 ,pad69 ,C22,pad66 ,D22,pad67 ,E22,pad64 ,F22,pad65 
+J1,A23 ,,B23 ,,C23,,D23,,E23,pad126 ,F23,pad127 
+J1,A24 ,,B24 ,pad124 ,C24,pad125 ,D24,pad122 ,E24,pad123 ,F24,pad120 
+J1,A25 ,,B25 ,pad121 ,C25,pad118 ,D25,pad119 ,E25,pad116 ,F25,pad117 
+J1,A26 ,,B26 ,pad114 ,C26,pad115 ,D26,pad112 ,E26,pad113 ,F26,pad110 
+J1,A27 ,,B27 ,pad111 ,C27,pad108 ,D27,pad109 ,E27,pad106 ,F27,pad107 
+J1,A28 ,,B28 ,pad104 ,C28,pad105 ,D28,pad102 ,E28,pad103 ,F28,pad100 
+J1,A29 ,,B29 ,pad101 ,C29,pad98 ,D29,pad99 ,E29,pad96 ,F29,pad97 
+J1,A30 ,,B30 ,,C30,,D30,,E30,,F30,
+J2,A1 ,,B1 ,,C1,,D1,,E1,,F1,
+J2,A2 ,,B2 ,,C2,,D2,,E2,pad158 ,F2,pad159
+J2,A3 ,,B3 ,pad156 ,C3,pad157 ,D3,pad154 ,E3,pad155 ,F3,pad152
+J2,A4 ,,B4 ,pad153 ,C4,pad150 ,D4,pad151 ,E4,pad148 ,F4,pad149
+J2,A5 ,,B5 ,pad146 ,C5,pad147 ,D5,pad144 ,E5,pad145 ,F5,pad142
+J2,A6 ,,B6 ,pad143 ,C6,pad140 ,D6,pad141 ,E6,pad138 ,F6,pad139
+J2,A7 ,,B7 ,pad136 ,C7,pad137 ,D7,pad134 ,E7,pad135 ,F7,pad132
+J2,A8 ,,B8 ,pad133 ,C8,pad130 ,D8,pad131 ,E8,pad128 ,F8,pad129
+J2,A9 ,,B9 ,,C9,,D9,,E9,pad190 ,F9,pad191
+J2,A10 ,,B10 ,pad188 ,C10,pad189 ,D10,pad186 ,E10,pad187 ,F10,pad184
+J2,A11 ,,B11 ,pad185 ,C11,pad182 ,D11,pad183 ,E11,pad180 ,F11,pad181
+J2,A12 ,,B12 ,pad178 ,C12,pad179 ,D12,pad176 ,E12,pad177 ,F12,pad174
+J2,A13 ,,B13 ,pad175 ,C13,pad172 ,D13,pad173 ,E13,pad170 ,F13,pad171
+J2,A14 ,,B14 ,pad168 ,C14,pad169 ,D14,pad166 ,E14,pad167 ,F14,pad164
+J2,A15 ,,B15 ,pad165 ,C15,pad162 ,D15,pad163 ,E15,pad160 ,F15,pad161
+J2,A16 ,,B16 ,,C16,,D16,,E16,pad222 ,F16,pad223
+J2,A17 ,,B17 ,pad220 ,C17,pad221 ,D17,pad218 ,E17,pad219 ,F17,pad216
+J2,A18 ,,B18 ,pad217 ,C18,pad214 ,D18,pad215 ,E18,pad212 ,F18,pad213
+J2,A19 ,,B19 ,pad210 ,C19,pad211 ,D19,pad208 ,E19,pad209 ,F19,pad206
+J2,A20 ,,B20 ,pad207 ,C20,pad204 ,D20,pad205 ,E20,pad202 ,F20,pad203
+J2,A21 ,,B21 ,pad200 ,C21,pad201 ,D21,pad198 ,E21,pad199 ,F21,pad196
+J2,A22 ,,B22 ,pad197 ,C22,pad194 ,D22,pad195 ,E22,pad192 ,F22,pad193
+J2,A23 ,,B23 ,,C23,,D23,,E23,pad254 ,F23,pad255
+J2,A24 ,,B24 ,pad252 ,C24,pad253 ,D24,pad250 ,E24,pad251 ,F24,pad248
+J2,A25 ,,B25 ,pad249 ,C25,pad246 ,D25,pad247 ,E25,pad244 ,F25,pad245
+J2,A26 ,,B26 ,pad242 ,C26,pad243 ,D26,pad240 ,E26,pad241 ,F26,pad238
+J2,A27 ,,B27 ,pad239 ,C27,pad236 ,D27,pad237 ,E27,pad234 ,F27,pad235
+J2,A28 ,,B28 ,pad232 ,C28,pad233 ,D28,pad230 ,E28,pad231 ,F28,pad228
+J2,A29 ,,B29 ,pad229 ,C29,pad226 ,D29,pad227 ,E29,pad224 ,F29,pad225
+J2,A30 ,,B30 ,,C30,,D30,,E30,,F30,
