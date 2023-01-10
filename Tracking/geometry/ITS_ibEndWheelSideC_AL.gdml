@@ -1,0 +1,1322 @@
+<?xml version="1.0"?>
+<gdml xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://service-spi.web.cern.ch/service-spi/app/releases/GDML/schema/gdml.xsd">
+  <define>
+    <position name="EndWheelCBasis0_1inEndWheelsSideCpos" x="0" y="0" z="-14.5" unit="cm"/>
+    <rotation name="EndWheelCBasis0_1inEndWheelsSideCrot" x="-180" y="-0" z="0" unit="deg"/>
+    <position name="EndWheelCStep0_1inEndWheelsSideCpos" x="0" y="0" z="-15.199999999999999" unit="cm"/>
+    <rotation name="EndWheelCStep0_1inEndWheelsSideCrot" x="180" y="-8.5929905829982056e-31" z="-80.5" unit="deg"/>
+    <position name="EndWheelCStep0_2inEndWheelsSideCpos" x="0" y="0" z="-15.199999999999999" unit="cm"/>
+    <rotation name="EndWheelCStep0_2inEndWheelsSideCrot" x="180" y="-8.5929905829982056e-31" z="-50.500000000000014" unit="deg"/>
+    <position name="EndWheelCStep0_3inEndWheelsSideCpos" x="0" y="0" z="-15.199999999999999" unit="cm"/>
+    <rotation name="EndWheelCStep0_3inEndWheelsSideCrot" x="180" y="-8.5929905829982056e-31" z="-20.500000000000011" unit="deg"/>
+    <position name="EndWheelCStep0_4inEndWheelsSideCpos" x="0" y="0" z="-15.199999999999999" unit="cm"/>
+    <rotation name="EndWheelCStep0_4inEndWheelsSideCrot" x="180" y="-8.5929905829982056e-31" z="9.4999999999999822" unit="deg"/>
+    <position name="EndWheelCStep0_5inEndWheelsSideCpos" x="0" y="0" z="-15.199999999999999" unit="cm"/>
+    <rotation name="EndWheelCStep0_5inEndWheelsSideCrot" x="180" y="-8.5929905829982056e-31" z="39.499999999999993" unit="deg"/>
+    <position name="EndWheelCStep0_6inEndWheelsSideCpos" x="0" y="0" z="-15.199999999999999" unit="cm"/>
+    <rotation name="EndWheelCStep0_6inEndWheelsSideCrot" x="180" y="-8.5929905829982056e-31" z="69.499999999999986" unit="deg"/>
+    <position name="EndWheelCStep0_7inEndWheelsSideCpos" x="0" y="0" z="-15.199999999999999" unit="cm"/>
+    <rotation name="EndWheelCStep0_7inEndWheelsSideCrot" x="180" y="-8.5929905829982056e-31" z="99.5" unit="deg"/>
+    <position name="EndWheelCStep0_8inEndWheelsSideCpos" x="0" y="0" z="-15.199999999999999" unit="cm"/>
+    <rotation name="EndWheelCStep0_8inEndWheelsSideCrot" x="180" y="-8.5929905829982056e-31" z="129.49999999999997" unit="deg"/>
+    <position name="EndWheelCStep0_9inEndWheelsSideCpos" x="0" y="0" z="-15.199999999999999" unit="cm"/>
+    <rotation name="EndWheelCStep0_9inEndWheelsSideCrot" x="180" y="-8.5929905829982056e-31" z="159.5" unit="deg"/>
+    <position name="EndWheelCStep0_10inEndWheelsSideCpos" x="0" y="0" z="-15.199999999999999" unit="cm"/>
+    <rotation name="EndWheelCStep0_10inEndWheelsSideCrot" x="180" y="-8.5929905829982056e-31" z="-170.5" unit="deg"/>
+    <position name="EndWheelCStep0_11inEndWheelsSideCpos" x="0" y="0" z="-15.199999999999999" unit="cm"/>
+    <rotation name="EndWheelCStep0_11inEndWheelsSideCrot" x="180" y="-8.5929905829982056e-31" z="-140.50000000000003" unit="deg"/>
+    <position name="EndWheelCStep0_12inEndWheelsSideCpos" x="0" y="0" z="-15.199999999999999" unit="cm"/>
+    <rotation name="EndWheelCStep0_12inEndWheelsSideCrot" x="180" y="-8.5929905829982056e-31" z="-110.50000000000003" unit="deg"/>
+    <position name="EndWheelCBasis1_1inEndWheelsSideCpos" x="0" y="0" z="-14.5" unit="cm"/>
+    <rotation name="EndWheelCBasis1_1inEndWheelsSideCrot" x="-180" y="-0" z="0" unit="deg"/>
+    <position name="EndWheelCStep1_1inEndWheelsSideCpos" x="0" y="0" z="-15.199999999999999" unit="cm"/>
+    <rotation name="EndWheelCStep1_1inEndWheelsSideCrot" x="180" y="-8.5929905829982056e-31" z="-79.5" unit="deg"/>
+    <position name="EndWheelCStep1_2inEndWheelsSideCpos" x="0" y="0" z="-15.199999999999999" unit="cm"/>
+    <rotation name="EndWheelCStep1_2inEndWheelsSideCrot" x="180" y="-8.5929905829982056e-31" z="-57.000000000000007" unit="deg"/>
+    <position name="EndWheelCStep1_3inEndWheelsSideCpos" x="0" y="0" z="-15.199999999999999" unit="cm"/>
+    <rotation name="EndWheelCStep1_3inEndWheelsSideCrot" x="180" y="-8.5929905829982056e-31" z="-34.500000000000007" unit="deg"/>
+    <position name="EndWheelCStep1_4inEndWheelsSideCpos" x="0" y="0" z="-15.199999999999999" unit="cm"/>
+    <rotation name="EndWheelCStep1_4inEndWheelsSideCrot" x="180" y="-8.5929905829982056e-31" z="-12.000000000000002" unit="deg"/>
+    <position name="EndWheelCStep1_5inEndWheelsSideCpos" x="0" y="0" z="-15.199999999999999" unit="cm"/>
+    <rotation name="EndWheelCStep1_5inEndWheelsSideCrot" x="180" y="-8.5929905829982056e-31" z="10.499999999999996" unit="deg"/>
+    <position name="EndWheelCStep1_6inEndWheelsSideCpos" x="0" y="0" z="-15.199999999999999" unit="cm"/>
+    <rotation name="EndWheelCStep1_6inEndWheelsSideCrot" x="180" y="-8.5929905829982056e-31" z="32.999999999999986" unit="deg"/>
+    <position name="EndWheelCStep1_7inEndWheelsSideCpos" x="0" y="0" z="-15.199999999999999" unit="cm"/>
+    <rotation name="EndWheelCStep1_7inEndWheelsSideCrot" x="180" y="-8.5929905829982056e-31" z="55.499999999999993" unit="deg"/>
+    <position name="EndWheelCStep1_8inEndWheelsSideCpos" x="0" y="0" z="-15.199999999999999" unit="cm"/>
+    <rotation name="EndWheelCStep1_8inEndWheelsSideCrot" x="180" y="-8.5929905829982056e-31" z="77.999999999999972" unit="deg"/>
+    <position name="EndWheelCStep1_9inEndWheelsSideCpos" x="0" y="0" z="-15.199999999999999" unit="cm"/>
+    <rotation name="EndWheelCStep1_9inEndWheelsSideCrot" x="180" y="-8.5929905829982056e-31" z="100.5" unit="deg"/>
+    <position name="EndWheelCStep1_10inEndWheelsSideCpos" x="0" y="0" z="-15.199999999999999" unit="cm"/>
+    <rotation name="EndWheelCStep1_10inEndWheelsSideCrot" x="180" y="-8.5929905829982056e-31" z="122.99999999999996" unit="deg"/>
+    <position name="EndWheelCStep1_11inEndWheelsSideCpos" x="0" y="0" z="-15.199999999999999" unit="cm"/>
+    <rotation name="EndWheelCStep1_11inEndWheelsSideCrot" x="180" y="-8.5929905829982056e-31" z="145.5" unit="deg"/>
+    <position name="EndWheelCStep1_12inEndWheelsSideCpos" x="0" y="0" z="-15.199999999999999" unit="cm"/>
+    <rotation name="EndWheelCStep1_12inEndWheelsSideCrot" x="180" y="-8.5929905829982056e-31" z="167.99999999999994" unit="deg"/>
+    <position name="EndWheelCStep1_13inEndWheelsSideCpos" x="0" y="0" z="-15.199999999999999" unit="cm"/>
+    <rotation name="EndWheelCStep1_13inEndWheelsSideCrot" x="180" y="-8.5929905829982056e-31" z="-169.50000000000003" unit="deg"/>
+    <position name="EndWheelCStep1_14inEndWheelsSideCpos" x="0" y="0" z="-15.199999999999999" unit="cm"/>
+    <rotation name="EndWheelCStep1_14inEndWheelsSideCrot" x="180" y="-8.5929905829982056e-31" z="-147" unit="deg"/>
+    <position name="EndWheelCStep1_15inEndWheelsSideCpos" x="0" y="0" z="-15.199999999999999" unit="cm"/>
+    <rotation name="EndWheelCStep1_15inEndWheelsSideCrot" x="180" y="-8.5929905829982074e-31" z="-124.50000000000001" unit="deg"/>
+    <position name="EndWheelCStep1_16inEndWheelsSideCpos" x="0" y="0" z="-15.199999999999999" unit="cm"/>
+    <rotation name="EndWheelCStep1_16inEndWheelsSideCrot" x="180" y="-8.5929905829982056e-31" z="-101.99999999999999" unit="deg"/>
+    <position name="EndWheelCBasis2_1inEndWheelsSideCpos" x="0" y="0" z="-14.5" unit="cm"/>
+    <rotation name="EndWheelCBasis2_1inEndWheelsSideCrot" x="-180" y="-0" z="0" unit="deg"/>
+    <position name="EndWheelCStep2_1inEndWheelsSideCpos" x="0" y="0" z="-15.199999999999999" unit="cm"/>
+    <rotation name="EndWheelCStep2_1inEndWheelsSideCrot" x="180" y="-8.5929905829982056e-31" z="-70.000000000000014" unit="deg"/>
+    <position name="EndWheelCStep2_2inEndWheelsSideCpos" x="0" y="0" z="-15.199999999999999" unit="cm"/>
+    <rotation name="EndWheelCStep2_2inEndWheelsSideCrot" x="180" y="-8.5929905829982056e-31" z="-52.000000000000014" unit="deg"/>
+    <position name="EndWheelCStep2_3inEndWheelsSideCpos" x="0" y="0" z="-15.199999999999999" unit="cm"/>
+    <rotation name="EndWheelCStep2_3inEndWheelsSideCrot" x="180" y="-8.5929905829982056e-31" z="-34.000000000000014" unit="deg"/>
+    <position name="EndWheelCStep2_4inEndWheelsSideCpos" x="0" y="0" z="-15.199999999999999" unit="cm"/>
+    <rotation name="EndWheelCStep2_4inEndWheelsSideCrot" x="180" y="-8.5929905829982056e-31" z="-16.000000000000007" unit="deg"/>
+    <position name="EndWheelCStep2_5inEndWheelsSideCpos" x="0" y="0" z="-15.199999999999999" unit="cm"/>
+    <rotation name="EndWheelCStep2_5inEndWheelsSideCrot" x="180" y="-8.5929905829982056e-31" z="1.9999999999999885" unit="deg"/>
+    <position name="EndWheelCStep2_6inEndWheelsSideCpos" x="0" y="0" z="-15.199999999999999" unit="cm"/>
+    <rotation name="EndWheelCStep2_6inEndWheelsSideCrot" x="180" y="-8.5929905829982074e-31" z="19.999999999999989" unit="deg"/>
+    <position name="EndWheelCStep2_7inEndWheelsSideCpos" x="0" y="0" z="-15.199999999999999" unit="cm"/>
+    <rotation name="EndWheelCStep2_7inEndWheelsSideCrot" x="180" y="-8.5929905829982056e-31" z="37.999999999999986" unit="deg"/>
+    <position name="EndWheelCStep2_8inEndWheelsSideCpos" x="0" y="0" z="-15.199999999999999" unit="cm"/>
+    <rotation name="EndWheelCStep2_8inEndWheelsSideCrot" x="180" y="-8.5929905829982074e-31" z="56.000000000000007" unit="deg"/>
+    <position name="EndWheelCStep2_9inEndWheelsSideCpos" x="0" y="0" z="-15.199999999999999" unit="cm"/>
+    <rotation name="EndWheelCStep2_9inEndWheelsSideCrot" x="180" y="-8.5929905829982056e-31" z="74.000000000000014" unit="deg"/>
+    <position name="EndWheelCStep2_10inEndWheelsSideCpos" x="0" y="0" z="-15.199999999999999" unit="cm"/>
+    <rotation name="EndWheelCStep2_10inEndWheelsSideCrot" x="180" y="-8.5929905829982056e-31" z="92.000000000000014" unit="deg"/>
+    <position name="EndWheelCStep2_11inEndWheelsSideCpos" x="0" y="0" z="-15.199999999999999" unit="cm"/>
+    <rotation name="EndWheelCStep2_11inEndWheelsSideCrot" x="180" y="-8.5929905829982056e-31" z="110.00000000000001" unit="deg"/>
+    <position name="EndWheelCStep2_12inEndWheelsSideCpos" x="0" y="0" z="-15.199999999999999" unit="cm"/>
+    <rotation name="EndWheelCStep2_12inEndWheelsSideCrot" x="180" y="-8.5929905829982056e-31" z="128" unit="deg"/>
+    <position name="EndWheelCStep2_13inEndWheelsSideCpos" x="0" y="0" z="-15.199999999999999" unit="cm"/>
+    <rotation name="EndWheelCStep2_13inEndWheelsSideCrot" x="180" y="-8.5929905829982074e-31" z="146" unit="deg"/>
+    <position name="EndWheelCStep2_14inEndWheelsSideCpos" x="0" y="0" z="-15.199999999999999" unit="cm"/>
+    <rotation name="EndWheelCStep2_14inEndWheelsSideCrot" x="180" y="-8.5929905829982056e-31" z="164" unit="deg"/>
+    <position name="EndWheelCStep2_15inEndWheelsSideCpos" x="0" y="0" z="-15.199999999999999" unit="cm"/>
+    <rotation name="EndWheelCStep2_15inEndWheelsSideCrot" x="180" y="-8.5929905829982056e-31" z="-178" unit="deg"/>
+    <position name="EndWheelCStep2_16inEndWheelsSideCpos" x="0" y="0" z="-15.199999999999999" unit="cm"/>
+    <rotation name="EndWheelCStep2_16inEndWheelsSideCrot" x="180" y="-8.5929905829982074e-31" z="-160" unit="deg"/>
+    <position name="EndWheelCStep2_17inEndWheelsSideCpos" x="0" y="0" z="-15.199999999999999" unit="cm"/>
+    <rotation name="EndWheelCStep2_17inEndWheelsSideCrot" x="180" y="-8.5929905829982056e-31" z="-142" unit="deg"/>
+    <position name="EndWheelCStep2_18inEndWheelsSideCpos" x="0" y="0" z="-15.199999999999999" unit="cm"/>
+    <rotation name="EndWheelCStep2_18inEndWheelsSideCrot" x="180" y="-8.5929905829982056e-31" z="-124" unit="deg"/>
+    <position name="EndWheelCStep2_19inEndWheelsSideCpos" x="0" y="0" z="-15.199999999999999" unit="cm"/>
+    <rotation name="EndWheelCStep2_19inEndWheelsSideCrot" x="180" y="-8.5929905829982056e-31" z="-106" unit="deg"/>
+    <position name="EndWheelCStep2_20inEndWheelsSideCpos" x="0" y="0" z="-15.199999999999999" unit="cm"/>
+    <rotation name="EndWheelCStep2_20inEndWheelsSideCrot" x="180" y="-8.5929905829982056e-31" z="-88" unit="deg"/>
+  </define>
+<materials>
+    <element name="CARBON_elm" formula="C" Z="6">
+      <atom unit="g/mole" value="12.0107"/>
+    </element>
+    <element name="NITROGEN_elm" formula="N" Z="7">
+      <atom unit="g/mole" value="14.006740000000001"/>
+    </element>
+    <element name="OXYGEN_elm" formula="O" Z="8">
+      <atom unit="g/mole" value="15.9994"/>
+    </element>
+    <element name="HYDROGEN_elm" formula="H" Z="1">
+      <atom unit="g/mole" value="1.0079400000000001"/>
+    </element>
+    <material name="ITS_ALUMINUM" Z="13">
+      <D unit="g/cm3" value="2.6988999843597412"/>
+      <atom unit="g/mole" value="26.982000350952148"/>
+    </material>
+    <material name="ITS_PEEKCF30">
+      <D unit="g/cm3" value="1.3200000524520874"/>
+      <fraction n="0.79155689477920532" ref="CARBON_elm"/>
+      <fraction n="0.041954267770051956" ref="HYDROGEN_elm"/>
+      <fraction n="0.16648884117603302" ref="OXYGEN_elm"/>
+    </material>
+  </materials>
+  <solids>
+    <polycone name="endwcbasis0" startphi="0" deltaphi="360" aunit="deg" lunit="cm">
+      <zplane z="0" rmin="2.79" rmax="2.8500000000000001"/>
+      <zplane z="1.4199999999999999" rmin="2.79" rmax="2.8500000000000001"/>
+      <zplane z="1.4199999999999999" rmin="2.2000000000000002" rmax="2.8500000000000001"/>
+      <zplane z="1.48" rmin="2.2000000000000002" rmax="2.8500000000000001"/>
+      <zplane z="1.48" rmin="2.75" rmax="2.8500000000000001"/>
+      <zplane z="1.8199999999999998" rmin="2.75" rmax="2.8500000000000001"/>
+      <zplane z="1.8199999999999998" rmin="2.79" rmax="2.8500000000000001"/>
+      <zplane z="2.4399999999999999" rmin="2.79" rmax="2.8500000000000001"/>
+      <zplane z="2.4399999999999999" rmin="2.2250000000000001" rmax="2.8500000000000001"/>
+      <zplane z="2.5" rmin="2.2250000000000001" rmax="2.8500000000000001"/>
+    </polycone>
+    <tube name="endwcwalhol0" rmin="0" rmax="0.22500000000000001" z="0.47999999999999998" startphi="0" deltaphi="360" aunit="deg" lunit="cm"/>
+    <subtraction name="TGeoCompositeShape0x43">
+      <first ref="endwcbasis0"/>
+      <second ref="endwcwalhol0"/>
+      <position name="TGeoCompositeShape0x43endwcwalhol0pos" x="0.7298697071891086" y="2.7239108301351731" z="0.40000000000000002" unit="cm"/>
+      <rotation name="TGeoCompositeShape0x43endwcwalhol0rot" x="90" y="-0" z="-14.999999999999998" unit="deg"/>
+    </subtraction>
+    <subtraction name="TGeoCompositeShape0x42">
+      <first ref="TGeoCompositeShape0x43"/>
+      <second ref="endwcwalhol0"/>
+      <position name="TGeoCompositeShape0x42endwcwalhol0pos" x="1.9940411229460639" y="1.9940411229460644" z="0.40000000000000002" unit="cm"/>
+      <rotation name="TGeoCompositeShape0x42endwcwalhol0rot" x="90" y="-0" z="-44.999999999999993" unit="deg"/>
+    </subtraction>
+    <subtraction name="TGeoCompositeShape0x41">
+      <first ref="TGeoCompositeShape0x42"/>
+      <second ref="endwcwalhol0"/>
+      <position name="TGeoCompositeShape0x41endwcwalhol0pos" x="2.7239108301351731" y="0.7298697071891086" z="0.40000000000000002" unit="cm"/>
+      <rotation name="TGeoCompositeShape0x41endwcwalhol0rot" x="90" y="-0" z="-75" unit="deg"/>
+    </subtraction>
+    <subtraction name="TGeoCompositeShape0x40">
+      <first ref="TGeoCompositeShape0x41"/>
+      <second ref="endwcwalhol0"/>
+      <position name="TGeoCompositeShape0x40endwcwalhol0pos" x="2.7239108301351731" y="-0.72986970718910882" z="0.40000000000000002" unit="cm"/>
+      <rotation name="TGeoCompositeShape0x40endwcwalhol0rot" x="90" y="-0" z="-105.00000000000001" unit="deg"/>
+    </subtraction>
+    <subtraction name="TGeoCompositeShape0x39">
+      <first ref="TGeoCompositeShape0x40"/>
+      <second ref="endwcwalhol0"/>
+      <position name="TGeoCompositeShape0x39endwcwalhol0pos" x="1.9940411229460644" y="-1.9940411229460639" z="0.40000000000000002" unit="cm"/>
+      <rotation name="TGeoCompositeShape0x39endwcwalhol0rot" x="90" y="-0" z="-135" unit="deg"/>
+    </subtraction>
+    <subtraction name="TGeoCompositeShape0x38">
+      <first ref="TGeoCompositeShape0x39"/>
+      <second ref="endwcwalhol0"/>
+      <position name="TGeoCompositeShape0x38endwcwalhol0pos" x="0.72986970718910937" y="-2.7239108301351727" z="0.40000000000000002" unit="cm"/>
+      <rotation name="TGeoCompositeShape0x38endwcwalhol0rot" x="90" y="-0" z="-165" unit="deg"/>
+    </subtraction>
+    <subtraction name="TGeoCompositeShape0x37">
+      <first ref="TGeoCompositeShape0x38"/>
+      <second ref="endwcwalhol0"/>
+      <position name="TGeoCompositeShape0x37endwcwalhol0pos" x="-0.72986970718910871" y="-2.7239108301351731" z="0.40000000000000002" unit="cm"/>
+      <rotation name="TGeoCompositeShape0x37endwcwalhol0rot" x="90" y="-0" z="165.00000000000003" unit="deg"/>
+    </subtraction>
+    <subtraction name="TGeoCompositeShape0x36">
+      <first ref="TGeoCompositeShape0x37"/>
+      <second ref="endwcwalhol0"/>
+      <position name="TGeoCompositeShape0x36endwcwalhol0pos" x="-1.9940411229460639" y="-1.9940411229460646" z="0.40000000000000002" unit="cm"/>
+      <rotation name="TGeoCompositeShape0x36endwcwalhol0rot" x="90" y="-0" z="135.00000000000003" unit="deg"/>
+    </subtraction>
+    <subtraction name="TGeoCompositeShape0x35">
+      <first ref="TGeoCompositeShape0x36"/>
+      <second ref="endwcwalhol0"/>
+      <position name="TGeoCompositeShape0x35endwcwalhol0pos" x="-2.7239108301351731" y="-0.72986970718910826" z="0.40000000000000002" unit="cm"/>
+      <rotation name="TGeoCompositeShape0x35endwcwalhol0rot" x="90" y="-0" z="105" unit="deg"/>
+    </subtraction>
+    <subtraction name="TGeoCompositeShape0x34">
+      <first ref="TGeoCompositeShape0x35"/>
+      <second ref="endwcwalhol0"/>
+      <position name="TGeoCompositeShape0x34endwcwalhol0pos" x="-2.7239108301351731" y="0.72986970718910726" z="0.40000000000000002" unit="cm"/>
+      <rotation name="TGeoCompositeShape0x34endwcwalhol0rot" x="90" y="-0" z="75.000000000000028" unit="deg"/>
+    </subtraction>
+    <subtraction name="TGeoCompositeShape0x33">
+      <first ref="TGeoCompositeShape0x34"/>
+      <second ref="endwcwalhol0"/>
+      <position name="TGeoCompositeShape0x33endwcwalhol0pos" x="-1.9940411229460646" y="1.9940411229460639" z="0.40000000000000002" unit="cm"/>
+      <rotation name="TGeoCompositeShape0x33endwcwalhol0rot" x="90" y="-0" z="45.000000000000014" unit="deg"/>
+    </subtraction>
+    <subtraction name="TGeoCompositeShape0x32">
+      <first ref="TGeoCompositeShape0x33"/>
+      <second ref="endwcwalhol0"/>
+      <position name="TGeoCompositeShape0x32endwcwalhol0pos" x="-0.72986970718910837" y="2.7239108301351731" z="0.40000000000000002" unit="cm"/>
+      <rotation name="TGeoCompositeShape0x32endwcwalhol0rot" x="90" y="-0" z="14.999999999999996" unit="deg"/>
+    </subtraction>
+    <tube name="endwcbasBhol0" rmin="0" rmax="0.18000000000000002" z="0.17999999999999999" startphi="0" deltaphi="360" aunit="deg" lunit="cm"/>
+    <subtraction name="TGeoCompositeShape0x31">
+      <first ref="TGeoCompositeShape0x32"/>
+      <second ref="endwcbasBhol0"/>
+      <position name="TGeoCompositeShape0x31endwcbasBhol0pos" x="2.4148145657226707" y="0.64704761275630185" z="2.4699999999999998" unit="cm"/>
+    </subtraction>
+    <subtraction name="TGeoCompositeShape0x30">
+      <first ref="TGeoCompositeShape0x31"/>
+      <second ref="endwcbasBhol0"/>
+      <position name="TGeoCompositeShape0x30endwcbasBhol0pos" x="-2.4148145657226707" y="-0.64704761275630185" z="2.4699999999999998" unit="cm"/>
+    </subtraction>
+    <subtraction name="TGeoCompositeShape0x29">
+      <first ref="TGeoCompositeShape0x30"/>
+      <second ref="endwcbasBhol0"/>
+      <position name="TGeoCompositeShape0x29endwcbasBhol0pos" x="2.1650635094610968" y="1.2499999999999998" z="2.4699999999999998" unit="cm"/>
+    </subtraction>
+    <subtraction name="TGeoCompositeShape0x28">
+      <first ref="TGeoCompositeShape0x29"/>
+      <second ref="endwcbasBhol0"/>
+      <position name="TGeoCompositeShape0x28endwcbasBhol0pos" x="-2.1650635094610968" y="-1.2499999999999998" z="2.4699999999999998" unit="cm"/>
+    </subtraction>
+    <tube name="endwcbasShol0" rmin="0" rmax="0.125" z="0.17999999999999999" startphi="0" deltaphi="360" aunit="deg" lunit="cm"/>
+    <subtraction name="TGeoCompositeShape0x27">
+      <first ref="TGeoCompositeShape0x28"/>
+      <second ref="endwcbasShol0"/>
+      <position name="TGeoCompositeShape0x27endwcbasShol0pos" x="1.7677669529663689" y="1.7677669529663687" z="2.4699999999999998" unit="cm"/>
+    </subtraction>
+    <subtraction name="TGeoCompositeShape0x26">
+      <first ref="TGeoCompositeShape0x27"/>
+      <second ref="endwcbasShol0"/>
+      <position name="TGeoCompositeShape0x26endwcbasShol0pos" x="-1.7677669529663689" y="-1.7677669529663687" z="2.4699999999999998" unit="cm"/>
+    </subtraction>
+    <subtraction name="TGeoCompositeShape0x25">
+      <first ref="TGeoCompositeShape0x26"/>
+      <second ref="endwcbasShol0"/>
+      <position name="TGeoCompositeShape0x25endwcbasShol0pos" x="1.2500000000000002" y="2.1650635094610964" z="2.4699999999999998" unit="cm"/>
+    </subtraction>
+    <subtraction name="TGeoCompositeShape0x24">
+      <first ref="TGeoCompositeShape0x25"/>
+      <second ref="endwcbasShol0"/>
+      <position name="TGeoCompositeShape0x24endwcbasShol0pos" x="-1.2500000000000002" y="-2.1650635094610964" z="2.4699999999999998" unit="cm"/>
+    </subtraction>
+    <subtraction name="TGeoCompositeShape0x23">
+      <first ref="TGeoCompositeShape0x24"/>
+      <second ref="endwcbasShol0"/>
+      <position name="TGeoCompositeShape0x23endwcbasShol0pos" x="0.64704761275630185" y="2.4148145657226707" z="2.4699999999999998" unit="cm"/>
+    </subtraction>
+    <subtraction name="TGeoCompositeShape0x22">
+      <first ref="TGeoCompositeShape0x23"/>
+      <second ref="endwcbasShol0"/>
+      <position name="TGeoCompositeShape0x22endwcbasShol0pos" x="-0.64704761275630185" y="-2.4148145657226707" z="2.4699999999999998" unit="cm"/>
+    </subtraction>
+    <subtraction name="TGeoCompositeShape0x21">
+      <first ref="TGeoCompositeShape0x22"/>
+      <second ref="endwcbasBhol0"/>
+      <position name="TGeoCompositeShape0x21endwcbasBhol0pos" x="1.5308084989341916e-16" y="2.5" z="2.4699999999999998" unit="cm"/>
+    </subtraction>
+    <subtraction name="TGeoCompositeShape0x20">
+      <first ref="TGeoCompositeShape0x21"/>
+      <second ref="endwcbasBhol0"/>
+      <position name="TGeoCompositeShape0x20endwcbasBhol0pos" x="-1.5308084989341916e-16" y="-2.5" z="2.4699999999999998" unit="cm"/>
+    </subtraction>
+    <subtraction name="TGeoCompositeShape0x19">
+      <first ref="TGeoCompositeShape0x20"/>
+      <second ref="endwcbasShol0"/>
+      <position name="TGeoCompositeShape0x19endwcbasShol0pos" x="-0.64704761275630207" y="2.4148145657226707" z="2.4699999999999998" unit="cm"/>
+    </subtraction>
+    <subtraction name="TGeoCompositeShape0x18">
+      <first ref="TGeoCompositeShape0x19"/>
+      <second ref="endwcbasShol0"/>
+      <position name="TGeoCompositeShape0x18endwcbasShol0pos" x="0.64704761275630207" y="-2.4148145657226707" z="2.4699999999999998" unit="cm"/>
+    </subtraction>
+    <subtraction name="TGeoCompositeShape0x17">
+      <first ref="TGeoCompositeShape0x18"/>
+      <second ref="endwcbasShol0"/>
+      <position name="TGeoCompositeShape0x17endwcbasShol0pos" x="-1.2499999999999996" y="2.1650635094610973" z="2.4699999999999998" unit="cm"/>
+    </subtraction>
+    <subtraction name="TGeoCompositeShape0x16">
+      <first ref="TGeoCompositeShape0x17"/>
+      <second ref="endwcbasShol0"/>
+      <position name="TGeoCompositeShape0x16endwcbasShol0pos" x="1.2499999999999996" y="-2.1650635094610973" z="2.4699999999999998" unit="cm"/>
+    </subtraction>
+    <subtraction name="TGeoCompositeShape0x15">
+      <first ref="TGeoCompositeShape0x16"/>
+      <second ref="endwcbasShol0"/>
+      <position name="TGeoCompositeShape0x15endwcbasShol0pos" x="-1.7677669529663687" y="1.7677669529663689" z="2.4699999999999998" unit="cm"/>
+    </subtraction>
+    <subtraction name="TGeoCompositeShape0x14">
+      <first ref="TGeoCompositeShape0x15"/>
+      <second ref="endwcbasShol0"/>
+      <position name="TGeoCompositeShape0x14endwcbasShol0pos" x="1.7677669529663687" y="-1.7677669529663689" z="2.4699999999999998" unit="cm"/>
+    </subtraction>
+    <subtraction name="TGeoCompositeShape0x13">
+      <first ref="TGeoCompositeShape0x14"/>
+      <second ref="endwcbasBhol0"/>
+      <position name="TGeoCompositeShape0x13endwcbasBhol0pos" x="-2.1650635094610968" y="1.2499999999999998" z="2.4699999999999998" unit="cm"/>
+    </subtraction>
+    <subtraction name="TGeoCompositeShape0x12">
+      <first ref="TGeoCompositeShape0x13"/>
+      <second ref="endwcbasBhol0"/>
+      <position name="TGeoCompositeShape0x12endwcbasBhol0pos" x="2.1650635094610968" y="-1.2499999999999998" z="2.4699999999999998" unit="cm"/>
+    </subtraction>
+    <subtraction name="TGeoCompositeShape0x11">
+      <first ref="TGeoCompositeShape0x12"/>
+      <second ref="endwcbasBhol0"/>
+      <position name="TGeoCompositeShape0x11endwcbasBhol0pos" x="-2.4148145657226703" y="0.64704761275630251" z="2.4699999999999998" unit="cm"/>
+    </subtraction>
+    <subtraction name="TGeoCompositeShape0x10">
+      <first ref="TGeoCompositeShape0x11"/>
+      <second ref="endwcbasBhol0"/>
+      <position name="TGeoCompositeShape0x10endwcbasBhol0pos" x="2.4148145657226703" y="-0.64704761275630251" z="2.4699999999999998" unit="cm"/>
+    </subtraction>
+    <subtraction name="TGeoCompositeShape0x9">
+      <first ref="TGeoCompositeShape0x10"/>
+      <second ref="endwcbasShol0"/>
+      <position name="TGeoCompositeShape0x9endwcbasShol0pos" x="2.1650635094610968" y="1.2499999999999998" z="1.45" unit="cm"/>
+    </subtraction>
+    <subtraction name="TGeoCompositeShape0x8">
+      <first ref="TGeoCompositeShape0x9"/>
+      <second ref="endwcbasShol0"/>
+      <position name="TGeoCompositeShape0x8endwcbasShol0pos" x="-2.1650635094610968" y="-1.2499999999999998" z="1.45" unit="cm"/>
+    </subtraction>
+    <subtraction name="TGeoCompositeShape0x7">
+      <first ref="TGeoCompositeShape0x8"/>
+      <second ref="endwcbasShol0"/>
+      <position name="TGeoCompositeShape0x7endwcbasShol0pos" x="1.2500000000000002" y="2.1650635094610964" z="1.45" unit="cm"/>
+    </subtraction>
+    <subtraction name="TGeoCompositeShape0x6">
+      <first ref="TGeoCompositeShape0x7"/>
+      <second ref="endwcbasShol0"/>
+      <position name="TGeoCompositeShape0x6endwcbasShol0pos" x="-1.2500000000000002" y="-2.1650635094610964" z="1.45" unit="cm"/>
+    </subtraction>
+    <subtraction name="TGeoCompositeShape0x5">
+      <first ref="TGeoCompositeShape0x6"/>
+      <second ref="endwcbasShol0"/>
+      <position name="TGeoCompositeShape0x5endwcbasShol0pos" x="1.5308084989341916e-16" y="2.5" z="1.45" unit="cm"/>
+    </subtraction>
+    <subtraction name="TGeoCompositeShape0x4">
+      <first ref="TGeoCompositeShape0x5"/>
+      <second ref="endwcbasShol0"/>
+      <position name="TGeoCompositeShape0x4endwcbasShol0pos" x="-1.5308084989341916e-16" y="-2.5" z="1.45" unit="cm"/>
+    </subtraction>
+    <subtraction name="TGeoCompositeShape0x3">
+      <first ref="TGeoCompositeShape0x4"/>
+      <second ref="endwcbasShol0"/>
+      <position name="TGeoCompositeShape0x3endwcbasShol0pos" x="-1.2499999999999996" y="2.1650635094610973" z="1.45" unit="cm"/>
+    </subtraction>
+    <subtraction name="TGeoCompositeShape0x2">
+      <first ref="TGeoCompositeShape0x3"/>
+      <second ref="endwcbasShol0"/>
+      <position name="TGeoCompositeShape0x2endwcbasShol0pos" x="1.2499999999999996" y="-2.1650635094610973" z="1.45" unit="cm"/>
+    </subtraction>
+    <subtraction name="TGeoCompositeShape0x1">
+      <first ref="TGeoCompositeShape0x2"/>
+      <second ref="endwcbasShol0"/>
+      <position name="TGeoCompositeShape0x1endwcbasShol0pos" x="-2.1650635094610968" y="1.2499999999999998" z="1.45" unit="cm"/>
+    </subtraction>
+    <subtraction name="TGeoCompositeShapeEWsideC">
+      <first ref="TGeoCompositeShape0x1"/>
+      <second ref="endwcbasShol0"/>
+      <position name="TGeoCompositeShapeendwcbasShol0pos" x="2.1650635094610968" y="-1.2499999999999998" z="1.45" unit="cm"/>
+    </subtraction>
+    <box name="stepBoxCSh0" x="0.93221619867047167" y="0.3110725181281575" z="1.4000000000000001" lunit="cm"/>
+    <polycone name="stepPconCSh0" startphi="56.365890281967452" deltaphi="35.361398622336438" aunit="deg" lunit="cm">
+      <zplane z="-0.7350000000000001" rmin="2.7800000000000002" rmax="3.0910725181281578"/>
+      <zplane z="0.7350000000000001" rmin="2.7800000000000002" rmax="3.0910725181281578"/>
+    </polycone>
+    <subtraction name="TGeoCompositeShape0x44">
+      <first ref="stepBoxCSh0"/>
+      <second ref="stepPconCSh0"/>
+      <firstposition name="TGeoCompositeShape0x44stepBoxCSh0pos" x="0.86610809933523591" y="2.5955362590640787" z="0" unit="cm"/>
+    </subtraction>
+    <polycone name="endwcbasis1" startphi="0" deltaphi="360" aunit="deg" lunit="cm">
+      <zplane z="0" rmin="3.5900000000000003" rmax="3.6500000000000004"/>
+      <zplane z="1.4199999999999999" rmin="3.5900000000000003" rmax="3.6500000000000004"/>
+      <zplane z="1.4199999999999999" rmin="2.9000000000000004" rmax="3.6500000000000004"/>
+      <zplane z="1.48" rmin="2.9000000000000004" rmax="3.6500000000000004"/>
+      <zplane z="1.48" rmin="3.5500000000000003" rmax="3.6500000000000004"/>
+      <zplane z="1.72" rmin="3.5500000000000003" rmax="3.6500000000000004"/>
+      <zplane z="1.72" rmin="3.5900000000000003" rmax="3.6500000000000004"/>
+      <zplane z="2.1899999999999999" rmin="3.5900000000000003" rmax="3.6500000000000004"/>
+      <zplane z="2.1899999999999999" rmin="2.9000000000000004" rmax="3.6500000000000004"/>
+      <zplane z="2.25" rmin="2.9000000000000004" rmax="3.6500000000000004"/>
+    </polycone>
+    <tube name="endwcwalhol1" rmin="0" rmax="0.22500000000000001" z="0.47999999999999998" startphi="0" deltaphi="360" aunit="deg" lunit="cm"/>
+    <subtraction name="TGeoCompositeShape0x96">
+      <first ref="endwcbasis1"/>
+      <second ref="endwcwalhol1"/>
+      <position name="TGeoCompositeShape0x96endwcwalhol1pos" x="0.70622696569838439" y="3.5504427150596949" z="0.40000000000000002" unit="cm"/>
+      <rotation name="TGeoCompositeShape0x96endwcwalhol1rot" x="90" y="-0" z="-11.25" unit="deg"/>
+    </subtraction>
+    <subtraction name="TGeoCompositeShape0x95">
+      <first ref="TGeoCompositeShape0x96"/>
+      <second ref="endwcwalhol1"/>
+      <position name="TGeoCompositeShape0x95endwcwalhol1pos" x="2.0111642435309602" y="3.0099199965352144" z="0.40000000000000002" unit="cm"/>
+      <rotation name="TGeoCompositeShape0x95endwcwalhol1rot" x="90" y="-0" z="-33.75" unit="deg"/>
+    </subtraction>
+    <subtraction name="TGeoCompositeShape0x94">
+      <first ref="TGeoCompositeShape0x95"/>
+      <second ref="endwcwalhol1"/>
+      <position name="TGeoCompositeShape0x94endwcwalhol1pos" x="3.0099199965352139" y="2.0111642435309607" z="0.40000000000000002" unit="cm"/>
+      <rotation name="TGeoCompositeShape0x94endwcwalhol1rot" x="90" y="-0" z="-56.249999999999993" unit="deg"/>
+    </subtraction>
+    <subtraction name="TGeoCompositeShape0x93">
+      <first ref="TGeoCompositeShape0x94"/>
+      <second ref="endwcwalhol1"/>
+      <position name="TGeoCompositeShape0x93endwcwalhol1pos" x="3.5504427150596949" y="0.70622696569838461" z="0.40000000000000002" unit="cm"/>
+      <rotation name="TGeoCompositeShape0x93endwcwalhol1rot" x="90" y="-0" z="-78.75" unit="deg"/>
+    </subtraction>
+    <subtraction name="TGeoCompositeShape0x92">
+      <first ref="TGeoCompositeShape0x93"/>
+      <second ref="endwcwalhol1"/>
+      <position name="TGeoCompositeShape0x92endwcwalhol1pos" x="3.5504427150596949" y="-0.70622696569838417" z="0.40000000000000002" unit="cm"/>
+      <rotation name="TGeoCompositeShape0x92endwcwalhol1rot" x="90" y="-0" z="-101.25" unit="deg"/>
+    </subtraction>
+    <subtraction name="TGeoCompositeShape0x91">
+      <first ref="TGeoCompositeShape0x92"/>
+      <second ref="endwcwalhol1"/>
+      <position name="TGeoCompositeShape0x91endwcwalhol1pos" x="3.0099199965352139" y="-2.0111642435309607" z="0.40000000000000002" unit="cm"/>
+      <rotation name="TGeoCompositeShape0x91endwcwalhol1rot" x="90" y="-0" z="-123.75000000000001" unit="deg"/>
+    </subtraction>
+    <subtraction name="TGeoCompositeShape0x90">
+      <first ref="TGeoCompositeShape0x91"/>
+      <second ref="endwcwalhol1"/>
+      <position name="TGeoCompositeShape0x90endwcwalhol1pos" x="2.0111642435309602" y="-3.0099199965352148" z="0.40000000000000002" unit="cm"/>
+      <rotation name="TGeoCompositeShape0x90endwcwalhol1rot" x="90" y="-0" z="-146.25" unit="deg"/>
+    </subtraction>
+    <subtraction name="TGeoCompositeShape0x89">
+      <first ref="TGeoCompositeShape0x90"/>
+      <second ref="endwcwalhol1"/>
+      <position name="TGeoCompositeShape0x89endwcwalhol1pos" x="0.70622696569838406" y="-3.5504427150596949" z="0.40000000000000002" unit="cm"/>
+      <rotation name="TGeoCompositeShape0x89endwcwalhol1rot" x="90" y="-0" z="-168.75" unit="deg"/>
+    </subtraction>
+    <subtraction name="TGeoCompositeShape0x88">
+      <first ref="TGeoCompositeShape0x89"/>
+      <second ref="endwcwalhol1"/>
+      <position name="TGeoCompositeShape0x88endwcwalhol1pos" x="-0.70622696569838472" y="-3.5504427150596949" z="0.40000000000000002" unit="cm"/>
+      <rotation name="TGeoCompositeShape0x88endwcwalhol1rot" x="90" y="-0" z="168.75" unit="deg"/>
+    </subtraction>
+    <subtraction name="TGeoCompositeShape0x87">
+      <first ref="TGeoCompositeShape0x88"/>
+      <second ref="endwcwalhol1"/>
+      <position name="TGeoCompositeShape0x87endwcwalhol1pos" x="-2.0111642435309607" y="-3.0099199965352139" z="0.40000000000000002" unit="cm"/>
+      <rotation name="TGeoCompositeShape0x87endwcwalhol1rot" x="90" y="-0" z="146.25" unit="deg"/>
+    </subtraction>
+    <subtraction name="TGeoCompositeShape0x86">
+      <first ref="TGeoCompositeShape0x87"/>
+      <second ref="endwcwalhol1"/>
+      <position name="TGeoCompositeShape0x86endwcwalhol1pos" x="-3.0099199965352144" y="-2.0111642435309602" z="0.40000000000000002" unit="cm"/>
+      <rotation name="TGeoCompositeShape0x86endwcwalhol1rot" x="90" y="-0" z="123.75000000000001" unit="deg"/>
+    </subtraction>
+    <subtraction name="TGeoCompositeShape0x85">
+      <first ref="TGeoCompositeShape0x86"/>
+      <second ref="endwcwalhol1"/>
+      <position name="TGeoCompositeShape0x85endwcwalhol1pos" x="-3.5504427150596944" y="-0.70622696569838583" z="0.40000000000000002" unit="cm"/>
+      <rotation name="TGeoCompositeShape0x85endwcwalhol1rot" x="90" y="-0" z="101.25000000000003" unit="deg"/>
+    </subtraction>
+    <subtraction name="TGeoCompositeShape0x84">
+      <first ref="TGeoCompositeShape0x85"/>
+      <second ref="endwcwalhol1"/>
+      <position name="TGeoCompositeShape0x84endwcwalhol1pos" x="-3.5504427150596949" y="0.7062269656983845" z="0.40000000000000002" unit="cm"/>
+      <rotation name="TGeoCompositeShape0x84endwcwalhol1rot" x="90" y="-0" z="78.75" unit="deg"/>
+    </subtraction>
+    <subtraction name="TGeoCompositeShape0x83">
+      <first ref="TGeoCompositeShape0x84"/>
+      <second ref="endwcwalhol1"/>
+      <position name="TGeoCompositeShape0x83endwcwalhol1pos" x="-3.0099199965352152" y="2.0111642435309589" z="0.40000000000000002" unit="cm"/>
+      <rotation name="TGeoCompositeShape0x83endwcwalhol1rot" x="90" y="-0" z="56.250000000000028" unit="deg"/>
+    </subtraction>
+    <subtraction name="TGeoCompositeShape0x82">
+      <first ref="TGeoCompositeShape0x83"/>
+      <second ref="endwcwalhol1"/>
+      <position name="TGeoCompositeShape0x82endwcwalhol1pos" x="-2.0111642435309602" y="3.0099199965352144" z="0.40000000000000002" unit="cm"/>
+      <rotation name="TGeoCompositeShape0x82endwcwalhol1rot" x="90" y="-0" z="33.75" unit="deg"/>
+    </subtraction>
+    <subtraction name="TGeoCompositeShape0x81">
+      <first ref="TGeoCompositeShape0x82"/>
+      <second ref="endwcwalhol1"/>
+      <position name="TGeoCompositeShape0x81endwcwalhol1pos" x="-0.70622696569838606" y="3.5504427150596944" z="0.40000000000000002" unit="cm"/>
+      <rotation name="TGeoCompositeShape0x81endwcwalhol1rot" x="90" y="-0" z="11.250000000000027" unit="deg"/>
+    </subtraction>
+    <tube name="endwcbasBhol1" rmin="0" rmax="0.18000000000000002" z="0.17999999999999999" startphi="0" deltaphi="360" aunit="deg" lunit="cm"/>
+    <subtraction name="TGeoCompositeShape0x80">
+      <first ref="TGeoCompositeShape0x81"/>
+      <second ref="endwcbasBhol1"/>
+      <position name="TGeoCompositeShape0x80endwcbasBhol1pos" x="3.0909626441250189" y="0.82822094432806637" z="2.2199999999999998" unit="cm"/>
+    </subtraction>
+    <subtraction name="TGeoCompositeShape0x79">
+      <first ref="TGeoCompositeShape0x80"/>
+      <second ref="endwcbasBhol1"/>
+      <position name="TGeoCompositeShape0x79endwcbasBhol1pos" x="-3.0909626441250189" y="-0.82822094432806637" z="2.2199999999999998" unit="cm"/>
+    </subtraction>
+    <subtraction name="TGeoCompositeShape0x78">
+      <first ref="TGeoCompositeShape0x79"/>
+      <second ref="endwcbasBhol1"/>
+      <position name="TGeoCompositeShape0x78endwcbasBhol1pos" x="2.7712812921102041" y="1.5999999999999999" z="2.2199999999999998" unit="cm"/>
+    </subtraction>
+    <subtraction name="TGeoCompositeShape0x77">
+      <first ref="TGeoCompositeShape0x78"/>
+      <second ref="endwcbasBhol1"/>
+      <position name="TGeoCompositeShape0x77endwcbasBhol1pos" x="-2.7712812921102041" y="-1.5999999999999999" z="2.2199999999999998" unit="cm"/>
+    </subtraction>
+    <tube name="endwcbasShol1" rmin="0" rmax="0.125" z="0.17999999999999999" startphi="0" deltaphi="360" aunit="deg" lunit="cm"/>
+    <subtraction name="TGeoCompositeShape0x76">
+      <first ref="TGeoCompositeShape0x77"/>
+      <second ref="endwcbasShol1"/>
+      <position name="TGeoCompositeShape0x76endwcbasShol1pos" x="2.2627416997969525" y="2.2627416997969521" z="2.2199999999999998" unit="cm"/>
+    </subtraction>
+    <subtraction name="TGeoCompositeShape0x75">
+      <first ref="TGeoCompositeShape0x76"/>
+      <second ref="endwcbasShol1"/>
+      <position name="TGeoCompositeShape0x75endwcbasShol1pos" x="-2.2627416997969525" y="-2.2627416997969521" z="2.2199999999999998" unit="cm"/>
+    </subtraction>
+    <subtraction name="TGeoCompositeShape0x74">
+      <first ref="TGeoCompositeShape0x75"/>
+      <second ref="endwcbasShol1"/>
+      <position name="TGeoCompositeShape0x74endwcbasShol1pos" x="1.6000000000000005" y="2.7712812921102037" z="2.2199999999999998" unit="cm"/>
+    </subtraction>
+    <subtraction name="TGeoCompositeShape0x73">
+      <first ref="TGeoCompositeShape0x74"/>
+      <second ref="endwcbasShol1"/>
+      <position name="TGeoCompositeShape0x73endwcbasShol1pos" x="-1.6000000000000005" y="-2.7712812921102037" z="2.2199999999999998" unit="cm"/>
+    </subtraction>
+    <subtraction name="TGeoCompositeShape0x72">
+      <first ref="TGeoCompositeShape0x73"/>
+      <second ref="endwcbasShol1"/>
+      <position name="TGeoCompositeShape0x72endwcbasShol1pos" x="0.82822094432806637" y="3.0909626441250189" z="2.2199999999999998" unit="cm"/>
+    </subtraction>
+    <subtraction name="TGeoCompositeShape0x71">
+      <first ref="TGeoCompositeShape0x72"/>
+      <second ref="endwcbasShol1"/>
+      <position name="TGeoCompositeShape0x71endwcbasShol1pos" x="-0.82822094432806637" y="-3.0909626441250189" z="2.2199999999999998" unit="cm"/>
+    </subtraction>
+    <subtraction name="TGeoCompositeShape0x70">
+      <first ref="TGeoCompositeShape0x71"/>
+      <second ref="endwcbasBhol1"/>
+      <position name="TGeoCompositeShape0x70endwcbasBhol1pos" x="1.9594348786357652e-16" y="3.2000000000000002" z="2.2199999999999998" unit="cm"/>
+    </subtraction>
+    <subtraction name="TGeoCompositeShape0x69">
+      <first ref="TGeoCompositeShape0x70"/>
+      <second ref="endwcbasBhol1"/>
+      <position name="TGeoCompositeShape0x69endwcbasBhol1pos" x="-1.9594348786357652e-16" y="-3.2000000000000002" z="2.2199999999999998" unit="cm"/>
+    </subtraction>
+    <subtraction name="TGeoCompositeShape0x68">
+      <first ref="TGeoCompositeShape0x69"/>
+      <second ref="endwcbasShol1"/>
+      <position name="TGeoCompositeShape0x68endwcbasShol1pos" x="-0.82822094432806681" y="3.0909626441250189" z="2.2199999999999998" unit="cm"/>
+    </subtraction>
+    <subtraction name="TGeoCompositeShape0x67">
+      <first ref="TGeoCompositeShape0x68"/>
+      <second ref="endwcbasShol1"/>
+      <position name="TGeoCompositeShape0x67endwcbasShol1pos" x="0.82822094432806681" y="-3.0909626441250189" z="2.2199999999999998" unit="cm"/>
+    </subtraction>
+    <subtraction name="TGeoCompositeShape0x66">
+      <first ref="TGeoCompositeShape0x67"/>
+      <second ref="endwcbasShol1"/>
+      <position name="TGeoCompositeShape0x66endwcbasShol1pos" x="-1.5999999999999994" y="2.7712812921102046" z="2.2199999999999998" unit="cm"/>
+    </subtraction>
+    <subtraction name="TGeoCompositeShape0x65">
+      <first ref="TGeoCompositeShape0x66"/>
+      <second ref="endwcbasShol1"/>
+      <position name="TGeoCompositeShape0x65endwcbasShol1pos" x="1.5999999999999994" y="-2.7712812921102046" z="2.2199999999999998" unit="cm"/>
+    </subtraction>
+    <subtraction name="TGeoCompositeShape0x64">
+      <first ref="TGeoCompositeShape0x65"/>
+      <second ref="endwcbasShol1"/>
+      <position name="TGeoCompositeShape0x64endwcbasShol1pos" x="-2.2627416997969521" y="2.2627416997969525" z="2.2199999999999998" unit="cm"/>
+    </subtraction>
+    <subtraction name="TGeoCompositeShape0x63">
+      <first ref="TGeoCompositeShape0x64"/>
+      <second ref="endwcbasShol1"/>
+      <position name="TGeoCompositeShape0x63endwcbasShol1pos" x="2.2627416997969521" y="-2.2627416997969525" z="2.2199999999999998" unit="cm"/>
+    </subtraction>
+    <subtraction name="TGeoCompositeShape0x62">
+      <first ref="TGeoCompositeShape0x63"/>
+      <second ref="endwcbasBhol1"/>
+      <position name="TGeoCompositeShape0x62endwcbasBhol1pos" x="-2.7712812921102041" y="1.5999999999999999" z="2.2199999999999998" unit="cm"/>
+    </subtraction>
+    <subtraction name="TGeoCompositeShape0x61">
+      <first ref="TGeoCompositeShape0x62"/>
+      <second ref="endwcbasBhol1"/>
+      <position name="TGeoCompositeShape0x61endwcbasBhol1pos" x="2.7712812921102041" y="-1.5999999999999999" z="2.2199999999999998" unit="cm"/>
+    </subtraction>
+    <subtraction name="TGeoCompositeShape0x60">
+      <first ref="TGeoCompositeShape0x61"/>
+      <second ref="endwcbasBhol1"/>
+      <position name="TGeoCompositeShape0x60endwcbasBhol1pos" x="-3.0909626441250184" y="0.82822094432806725" z="2.2199999999999998" unit="cm"/>
+    </subtraction>
+    <subtraction name="TGeoCompositeShape0x59">
+      <first ref="TGeoCompositeShape0x60"/>
+      <second ref="endwcbasBhol1"/>
+      <position name="TGeoCompositeShape0x59endwcbasBhol1pos" x="3.0909626441250184" y="-0.82822094432806725" z="2.2199999999999998" unit="cm"/>
+    </subtraction>
+    <subtraction name="TGeoCompositeShape0x58">
+      <first ref="TGeoCompositeShape0x59"/>
+      <second ref="endwcbasShol1"/>
+      <position name="TGeoCompositeShape0x58endwcbasShol1pos" x="2.9564145040361178" y="1.2245869835682874" z="1.45" unit="cm"/>
+    </subtraction>
+    <subtraction name="TGeoCompositeShape0x57">
+      <first ref="TGeoCompositeShape0x58"/>
+      <second ref="endwcbasShol1"/>
+      <position name="TGeoCompositeShape0x57endwcbasShol1pos" x="-2.9564145040361178" y="-1.2245869835682874" z="1.45" unit="cm"/>
+    </subtraction>
+    <subtraction name="TGeoCompositeShape0x56">
+      <first ref="TGeoCompositeShape0x57"/>
+      <second ref="endwcbasShol1"/>
+      <position name="TGeoCompositeShape0x56endwcbasShol1pos" x="2.2627416997969525" y="2.2627416997969521" z="1.45" unit="cm"/>
+    </subtraction>
+    <subtraction name="TGeoCompositeShape0x55">
+      <first ref="TGeoCompositeShape0x56"/>
+      <second ref="endwcbasShol1"/>
+      <position name="TGeoCompositeShape0x55endwcbasShol1pos" x="-2.2627416997969525" y="-2.2627416997969521" z="1.45" unit="cm"/>
+    </subtraction>
+    <subtraction name="TGeoCompositeShape0x54">
+      <first ref="TGeoCompositeShape0x55"/>
+      <second ref="endwcbasShol1"/>
+      <position name="TGeoCompositeShape0x54endwcbasShol1pos" x="1.2245869835682877" y="2.9564145040361178" z="1.45" unit="cm"/>
+    </subtraction>
+    <subtraction name="TGeoCompositeShape0x53">
+      <first ref="TGeoCompositeShape0x54"/>
+      <second ref="endwcbasShol1"/>
+      <position name="TGeoCompositeShape0x53endwcbasShol1pos" x="-1.2245869835682877" y="-2.9564145040361178" z="1.45" unit="cm"/>
+    </subtraction>
+    <subtraction name="TGeoCompositeShape0x52">
+      <first ref="TGeoCompositeShape0x53"/>
+      <second ref="endwcbasShol1"/>
+      <position name="TGeoCompositeShape0x52endwcbasShol1pos" x="1.9594348786357652e-16" y="3.2000000000000002" z="1.45" unit="cm"/>
+    </subtraction>
+    <subtraction name="TGeoCompositeShape0x51">
+      <first ref="TGeoCompositeShape0x52"/>
+      <second ref="endwcbasShol1"/>
+      <position name="TGeoCompositeShape0x51endwcbasShol1pos" x="-1.9594348786357652e-16" y="-3.2000000000000002" z="1.45" unit="cm"/>
+    </subtraction>
+    <subtraction name="TGeoCompositeShape0x50">
+      <first ref="TGeoCompositeShape0x51"/>
+      <second ref="endwcbasShol1"/>
+      <position name="TGeoCompositeShape0x50endwcbasShol1pos" x="-1.2245869835682872" y="2.9564145040361178" z="1.45" unit="cm"/>
+    </subtraction>
+    <subtraction name="TGeoCompositeShape0x49">
+      <first ref="TGeoCompositeShape0x50"/>
+      <second ref="endwcbasShol1"/>
+      <position name="TGeoCompositeShape0x49endwcbasShol1pos" x="1.2245869835682872" y="-2.9564145040361178" z="1.45" unit="cm"/>
+    </subtraction>
+    <subtraction name="TGeoCompositeShape0x48">
+      <first ref="TGeoCompositeShape0x49"/>
+      <second ref="endwcbasShol1"/>
+      <position name="TGeoCompositeShape0x48endwcbasShol1pos" x="-2.2627416997969521" y="2.2627416997969525" z="1.45" unit="cm"/>
+    </subtraction>
+    <subtraction name="TGeoCompositeShape0x47">
+      <first ref="TGeoCompositeShape0x48"/>
+      <second ref="endwcbasShol1"/>
+      <position name="TGeoCompositeShape0x47endwcbasShol1pos" x="2.2627416997969521" y="-2.2627416997969525" z="1.45" unit="cm"/>
+    </subtraction>
+    <subtraction name="TGeoCompositeShape0x46">
+      <first ref="TGeoCompositeShape0x47"/>
+      <second ref="endwcbasShol1"/>
+      <position name="TGeoCompositeShape0x46endwcbasShol1pos" x="-2.9564145040361178" y="1.2245869835682877" z="1.45" unit="cm"/>
+    </subtraction>
+    <subtraction name="TGeoCompositeShape0x45">
+      <first ref="TGeoCompositeShape0x46"/>
+      <second ref="endwcbasShol1"/>
+      <position name="TGeoCompositeShape0x45endwcbasShol1pos" x="2.9564145040361178" y="-1.2245869835682877" z="1.45" unit="cm"/>
+    </subtraction>
+    <box name="stepBoxCSh1" x="0.93502365912941443" y="0.31049712398689477" z="1.4000000000000001" lunit="cm"/>
+    <polycone name="stepPconCSh1" startphi="58.720906883102849" deltaphi="30.818207147581212" aunit="deg" lunit="cm">
+      <zplane z="-0.7350000000000001" rmin="3.5800000000000001" rmax="3.8904971239868948"/>
+      <zplane z="0.7350000000000001" rmin="3.5800000000000001" rmax="3.8904971239868948"/>
+    </polycone>
+    <subtraction name="TGeoCompositeShape0x97">
+      <first ref="stepBoxCSh1"/>
+      <second ref="stepPconCSh1"/>
+      <firstposition name="TGeoCompositeShape0x97stepBoxCSh1pos" x="1.1175118295647073" y="3.3652485619934476" z="0" unit="cm"/>
+    </subtraction>
+    <polycone name="endwcbasis2" startphi="0" deltaphi="360" aunit="deg" lunit="cm">
+      <zplane z="0" rmin="4.3900000000000006" rmax="4.4500000000000002"/>
+      <zplane z="1.4199999999999999" rmin="4.3900000000000006" rmax="4.4500000000000002"/>
+      <zplane z="1.4199999999999999" rmin="3.7000000000000002" rmax="4.4500000000000002"/>
+      <zplane z="1.48" rmin="3.7000000000000002" rmax="4.4500000000000002"/>
+      <zplane z="1.48" rmin="4.3500000000000005" rmax="4.4500000000000002"/>
+      <zplane z="1.72" rmin="4.3500000000000005" rmax="4.4500000000000002"/>
+      <zplane z="1.72" rmin="4.3900000000000006" rmax="4.4500000000000002"/>
+      <zplane z="1.9399999999999999" rmin="4.3900000000000006" rmax="4.4500000000000002"/>
+      <zplane z="1.9399999999999999" rmin="3.7000000000000002" rmax="4.4500000000000002"/>
+      <zplane z="2" rmin="3.7000000000000002" rmax="4.4500000000000002"/>
+    </polycone>
+    <tube name="endwcwalhol2" rmin="0" rmax="0.22500000000000001" z="0.47999999999999998" startphi="0" deltaphi="360" aunit="deg" lunit="cm"/>
+    <subtraction name="TGeoCompositeShape0x157">
+      <first ref="endwcbasis2"/>
+      <second ref="endwcwalhol2"/>
+      <position name="TGeoCompositeShape0x157endwcwalhol2pos" x="0.69144033547782047" y="4.3655824654305091" z="0.40000000000000002" unit="cm"/>
+      <rotation name="TGeoCompositeShape0x157endwcwalhol2rot" x="90" y="-0" z="-9" unit="deg"/>
+    </subtraction>
+    <subtraction name="TGeoCompositeShape0x156">
+      <first ref="TGeoCompositeShape0x157"/>
+      <second ref="endwcwalhol2"/>
+      <position name="TGeoCompositeShape0x156endwcwalhol2pos" x="2.0066380088487965" y="3.9382488369125861" z="0.40000000000000002" unit="cm"/>
+      <rotation name="TGeoCompositeShape0x156endwcwalhol2rot" x="90" y="-0" z="-26.999999999999996" unit="deg"/>
+    </subtraction>
+    <subtraction name="TGeoCompositeShape0x155">
+      <first ref="TGeoCompositeShape0x156"/>
+      <second ref="endwcwalhol2"/>
+      <position name="TGeoCompositeShape0x155endwcwalhol2pos" x="3.1254119728445398" y="3.1254119728445402" z="0.40000000000000002" unit="cm"/>
+      <rotation name="TGeoCompositeShape0x155endwcwalhol2rot" x="90" y="-0" z="-44.999999999999993" unit="deg"/>
+    </subtraction>
+    <subtraction name="TGeoCompositeShape0x154">
+      <first ref="TGeoCompositeShape0x155"/>
+      <second ref="endwcwalhol2"/>
+      <position name="TGeoCompositeShape0x154endwcwalhol2pos" x="3.9382488369125856" y="2.006638008848797" z="0.40000000000000002" unit="cm"/>
+      <rotation name="TGeoCompositeShape0x154endwcwalhol2rot" x="90" y="-0" z="-63" unit="deg"/>
+    </subtraction>
+    <subtraction name="TGeoCompositeShape0x153">
+      <first ref="TGeoCompositeShape0x154"/>
+      <second ref="endwcwalhol2"/>
+      <position name="TGeoCompositeShape0x153endwcwalhol2pos" x="4.3655824654305091" y="0.69144033547782069" z="0.40000000000000002" unit="cm"/>
+      <rotation name="TGeoCompositeShape0x153endwcwalhol2rot" x="90" y="-0" z="-81" unit="deg"/>
+    </subtraction>
+    <subtraction name="TGeoCompositeShape0x152">
+      <first ref="TGeoCompositeShape0x153"/>
+      <second ref="endwcwalhol2"/>
+      <position name="TGeoCompositeShape0x152endwcwalhol2pos" x="4.3655824654305091" y="-0.69144033547782013" z="0.40000000000000002" unit="cm"/>
+      <rotation name="TGeoCompositeShape0x152endwcwalhol2rot" x="90" y="-0" z="-99" unit="deg"/>
+    </subtraction>
+    <subtraction name="TGeoCompositeShape0x151">
+      <first ref="TGeoCompositeShape0x152"/>
+      <second ref="endwcwalhol2"/>
+      <position name="TGeoCompositeShape0x151endwcwalhol2pos" x="3.9382488369125861" y="-2.0066380088487965" z="0.40000000000000002" unit="cm"/>
+      <rotation name="TGeoCompositeShape0x151endwcwalhol2rot" x="90" y="-0" z="-117" unit="deg"/>
+    </subtraction>
+    <subtraction name="TGeoCompositeShape0x150">
+      <first ref="TGeoCompositeShape0x151"/>
+      <second ref="endwcwalhol2"/>
+      <position name="TGeoCompositeShape0x150endwcwalhol2pos" x="3.1254119728445402" y="-3.1254119728445398" z="0.40000000000000002" unit="cm"/>
+      <rotation name="TGeoCompositeShape0x150endwcwalhol2rot" x="90" y="-0" z="-135" unit="deg"/>
+    </subtraction>
+    <subtraction name="TGeoCompositeShape0x149">
+      <first ref="TGeoCompositeShape0x150"/>
+      <second ref="endwcwalhol2"/>
+      <position name="TGeoCompositeShape0x149endwcwalhol2pos" x="2.006638008848797" y="-3.9382488369125856" z="0.40000000000000002" unit="cm"/>
+      <rotation name="TGeoCompositeShape0x149endwcwalhol2rot" x="90" y="-0" z="-153" unit="deg"/>
+    </subtraction>
+    <subtraction name="TGeoCompositeShape0x148">
+      <first ref="TGeoCompositeShape0x149"/>
+      <second ref="endwcwalhol2"/>
+      <position name="TGeoCompositeShape0x148endwcwalhol2pos" x="0.69144033547782091" y="-4.3655824654305082" z="0.40000000000000002" unit="cm"/>
+      <rotation name="TGeoCompositeShape0x148endwcwalhol2rot" x="90" y="-0" z="-171" unit="deg"/>
+    </subtraction>
+    <subtraction name="TGeoCompositeShape0x147">
+      <first ref="TGeoCompositeShape0x148"/>
+      <second ref="endwcwalhol2"/>
+      <position name="TGeoCompositeShape0x147endwcwalhol2pos" x="-0.69144033547781991" y="-4.3655824654305091" z="0.40000000000000002" unit="cm"/>
+      <rotation name="TGeoCompositeShape0x147endwcwalhol2rot" x="90" y="-0" z="171.00000000000003" unit="deg"/>
+    </subtraction>
+    <subtraction name="TGeoCompositeShape0x146">
+      <first ref="TGeoCompositeShape0x147"/>
+      <second ref="endwcwalhol2"/>
+      <position name="TGeoCompositeShape0x146endwcwalhol2pos" x="-2.0066380088487965" y="-3.9382488369125861" z="0.40000000000000002" unit="cm"/>
+      <rotation name="TGeoCompositeShape0x146endwcwalhol2rot" x="90" y="-0" z="153" unit="deg"/>
+    </subtraction>
+    <subtraction name="TGeoCompositeShape0x145">
+      <first ref="TGeoCompositeShape0x146"/>
+      <second ref="endwcwalhol2"/>
+      <position name="TGeoCompositeShape0x145endwcwalhol2pos" x="-3.1254119728445398" y="-3.1254119728445406" z="0.40000000000000002" unit="cm"/>
+      <rotation name="TGeoCompositeShape0x145endwcwalhol2rot" x="90" y="-0" z="135.00000000000003" unit="deg"/>
+    </subtraction>
+    <subtraction name="TGeoCompositeShape0x144">
+      <first ref="TGeoCompositeShape0x145"/>
+      <second ref="endwcwalhol2"/>
+      <position name="TGeoCompositeShape0x144endwcwalhol2pos" x="-3.9382488369125856" y="-2.0066380088487974" z="0.40000000000000002" unit="cm"/>
+      <rotation name="TGeoCompositeShape0x144endwcwalhol2rot" x="90" y="-0" z="117.00000000000003" unit="deg"/>
+    </subtraction>
+    <subtraction name="TGeoCompositeShape0x143">
+      <first ref="TGeoCompositeShape0x144"/>
+      <second ref="endwcwalhol2"/>
+      <position name="TGeoCompositeShape0x143endwcwalhol2pos" x="-4.3655824654305082" y="-0.69144033547782124" z="0.40000000000000002" unit="cm"/>
+      <rotation name="TGeoCompositeShape0x143endwcwalhol2rot" x="90" y="-0" z="99.000000000000014" unit="deg"/>
+    </subtraction>
+    <subtraction name="TGeoCompositeShape0x142">
+      <first ref="TGeoCompositeShape0x143"/>
+      <second ref="endwcwalhol2"/>
+      <position name="TGeoCompositeShape0x142endwcwalhol2pos" x="-4.3655824654305091" y="0.69144033547781958" z="0.40000000000000002" unit="cm"/>
+      <rotation name="TGeoCompositeShape0x142endwcwalhol2rot" x="90" y="-0" z="81.000000000000014" unit="deg"/>
+    </subtraction>
+    <subtraction name="TGeoCompositeShape0x141">
+      <first ref="TGeoCompositeShape0x142"/>
+      <second ref="endwcwalhol2"/>
+      <position name="TGeoCompositeShape0x141endwcwalhol2pos" x="-3.9382488369125865" y="2.0066380088487961" z="0.40000000000000002" unit="cm"/>
+      <rotation name="TGeoCompositeShape0x141endwcwalhol2rot" x="90" y="-0" z="63.000000000000014" unit="deg"/>
+    </subtraction>
+    <subtraction name="TGeoCompositeShape0x140">
+      <first ref="TGeoCompositeShape0x141"/>
+      <second ref="endwcwalhol2"/>
+      <position name="TGeoCompositeShape0x140endwcwalhol2pos" x="-3.1254119728445406" y="3.1254119728445398" z="0.40000000000000002" unit="cm"/>
+      <rotation name="TGeoCompositeShape0x140endwcwalhol2rot" x="90" y="-0" z="45.000000000000014" unit="deg"/>
+    </subtraction>
+    <subtraction name="TGeoCompositeShape0x139">
+      <first ref="TGeoCompositeShape0x140"/>
+      <second ref="endwcwalhol2"/>
+      <position name="TGeoCompositeShape0x139endwcwalhol2pos" x="-2.0066380088487974" y="3.9382488369125856" z="0.40000000000000002" unit="cm"/>
+      <rotation name="TGeoCompositeShape0x139endwcwalhol2rot" x="90" y="-0" z="27.000000000000014" unit="deg"/>
+    </subtraction>
+    <subtraction name="TGeoCompositeShape0x138">
+      <first ref="TGeoCompositeShape0x139"/>
+      <second ref="endwcwalhol2"/>
+      <position name="TGeoCompositeShape0x138endwcwalhol2pos" x="-0.69144033547782158" y="4.3655824654305082" z="0.40000000000000002" unit="cm"/>
+      <rotation name="TGeoCompositeShape0x138endwcwalhol2rot" x="90" y="-0" z="9.0000000000000142" unit="deg"/>
+    </subtraction>
+    <tube name="endwcbasBhol2" rmin="0" rmax="0.18000000000000002" z="0.17999999999999999" startphi="0" deltaphi="360" aunit="deg" lunit="cm"/>
+    <subtraction name="TGeoCompositeShape0x137">
+      <first ref="TGeoCompositeShape0x138"/>
+      <second ref="endwcbasBhol2"/>
+      <position name="TGeoCompositeShape0x137endwcbasBhol2pos" x="3.8637033051562732" y="1.035276180410083" z="1.97" unit="cm"/>
+    </subtraction>
+    <subtraction name="TGeoCompositeShape0x136">
+      <first ref="TGeoCompositeShape0x137"/>
+      <second ref="endwcbasBhol2"/>
+      <position name="TGeoCompositeShape0x136endwcbasBhol2pos" x="-3.8637033051562732" y="-1.035276180410083" z="1.97" unit="cm"/>
+    </subtraction>
+    <subtraction name="TGeoCompositeShape0x135">
+      <first ref="TGeoCompositeShape0x136"/>
+      <second ref="endwcbasBhol2"/>
+      <position name="TGeoCompositeShape0x135endwcbasBhol2pos" x="3.4641016151377548" y="1.9999999999999998" z="1.97" unit="cm"/>
+    </subtraction>
+    <subtraction name="TGeoCompositeShape0x134">
+      <first ref="TGeoCompositeShape0x135"/>
+      <second ref="endwcbasBhol2"/>
+      <position name="TGeoCompositeShape0x134endwcbasBhol2pos" x="-3.4641016151377548" y="-1.9999999999999998" z="1.97" unit="cm"/>
+    </subtraction>
+    <tube name="endwcbasShol2" rmin="0" rmax="0.125" z="0.17999999999999999" startphi="0" deltaphi="360" aunit="deg" lunit="cm"/>
+    <subtraction name="TGeoCompositeShape0x133">
+      <first ref="TGeoCompositeShape0x134"/>
+      <second ref="endwcbasShol2"/>
+      <position name="TGeoCompositeShape0x133endwcbasShol2pos" x="2.8284271247461903" y="2.8284271247461898" z="1.97" unit="cm"/>
+    </subtraction>
+    <subtraction name="TGeoCompositeShape0x132">
+      <first ref="TGeoCompositeShape0x133"/>
+      <second ref="endwcbasShol2"/>
+      <position name="TGeoCompositeShape0x132endwcbasShol2pos" x="-2.8284271247461903" y="-2.8284271247461898" z="1.97" unit="cm"/>
+    </subtraction>
+    <subtraction name="TGeoCompositeShape0x131">
+      <first ref="TGeoCompositeShape0x132"/>
+      <second ref="endwcbasShol2"/>
+      <position name="TGeoCompositeShape0x131endwcbasShol2pos" x="2.0000000000000004" y="3.4641016151377544" z="1.97" unit="cm"/>
+    </subtraction>
+    <subtraction name="TGeoCompositeShape0x130">
+      <first ref="TGeoCompositeShape0x131"/>
+      <second ref="endwcbasShol2"/>
+      <position name="TGeoCompositeShape0x130endwcbasShol2pos" x="-2.0000000000000004" y="-3.4641016151377544" z="1.97" unit="cm"/>
+    </subtraction>
+    <subtraction name="TGeoCompositeShape0x129">
+      <first ref="TGeoCompositeShape0x130"/>
+      <second ref="endwcbasShol2"/>
+      <position name="TGeoCompositeShape0x129endwcbasShol2pos" x="1.035276180410083" y="3.8637033051562732" z="1.97" unit="cm"/>
+    </subtraction>
+    <subtraction name="TGeoCompositeShape0x128">
+      <first ref="TGeoCompositeShape0x129"/>
+      <second ref="endwcbasShol2"/>
+      <position name="TGeoCompositeShape0x128endwcbasShol2pos" x="-1.035276180410083" y="-3.8637033051562732" z="1.97" unit="cm"/>
+    </subtraction>
+    <subtraction name="TGeoCompositeShape0x127">
+      <first ref="TGeoCompositeShape0x128"/>
+      <second ref="endwcbasBhol2"/>
+      <position name="TGeoCompositeShape0x127endwcbasBhol2pos" x="2.4492935982947064e-16" y="4" z="1.97" unit="cm"/>
+    </subtraction>
+    <subtraction name="TGeoCompositeShape0x126">
+      <first ref="TGeoCompositeShape0x127"/>
+      <second ref="endwcbasBhol2"/>
+      <position name="TGeoCompositeShape0x126endwcbasBhol2pos" x="-2.4492935982947064e-16" y="-4" z="1.97" unit="cm"/>
+    </subtraction>
+    <subtraction name="TGeoCompositeShape0x125">
+      <first ref="TGeoCompositeShape0x126"/>
+      <second ref="endwcbasShol2"/>
+      <position name="TGeoCompositeShape0x125endwcbasShol2pos" x="-1.0352761804100834" y="3.8637033051562732" z="1.97" unit="cm"/>
+    </subtraction>
+    <subtraction name="TGeoCompositeShape0x124">
+      <first ref="TGeoCompositeShape0x125"/>
+      <second ref="endwcbasShol2"/>
+      <position name="TGeoCompositeShape0x124endwcbasShol2pos" x="1.0352761804100834" y="-3.8637033051562732" z="1.97" unit="cm"/>
+    </subtraction>
+    <subtraction name="TGeoCompositeShape0x123">
+      <first ref="TGeoCompositeShape0x124"/>
+      <second ref="endwcbasShol2"/>
+      <position name="TGeoCompositeShape0x123endwcbasShol2pos" x="-1.9999999999999991" y="3.4641016151377553" z="1.97" unit="cm"/>
+    </subtraction>
+    <subtraction name="TGeoCompositeShape0x122">
+      <first ref="TGeoCompositeShape0x123"/>
+      <second ref="endwcbasShol2"/>
+      <position name="TGeoCompositeShape0x122endwcbasShol2pos" x="1.9999999999999991" y="-3.4641016151377553" z="1.97" unit="cm"/>
+    </subtraction>
+    <subtraction name="TGeoCompositeShape0x121">
+      <first ref="TGeoCompositeShape0x122"/>
+      <second ref="endwcbasShol2"/>
+      <position name="TGeoCompositeShape0x121endwcbasShol2pos" x="-2.8284271247461898" y="2.8284271247461903" z="1.97" unit="cm"/>
+    </subtraction>
+    <subtraction name="TGeoCompositeShape0x120">
+      <first ref="TGeoCompositeShape0x121"/>
+      <second ref="endwcbasShol2"/>
+      <position name="TGeoCompositeShape0x120endwcbasShol2pos" x="2.8284271247461898" y="-2.8284271247461903" z="1.97" unit="cm"/>
+    </subtraction>
+    <subtraction name="TGeoCompositeShape0x119">
+      <first ref="TGeoCompositeShape0x120"/>
+      <second ref="endwcbasBhol2"/>
+      <position name="TGeoCompositeShape0x119endwcbasBhol2pos" x="-3.4641016151377548" y="1.9999999999999998" z="1.97" unit="cm"/>
+    </subtraction>
+    <subtraction name="TGeoCompositeShape0x118">
+      <first ref="TGeoCompositeShape0x119"/>
+      <second ref="endwcbasBhol2"/>
+      <position name="TGeoCompositeShape0x118endwcbasBhol2pos" x="3.4641016151377548" y="-1.9999999999999998" z="1.97" unit="cm"/>
+    </subtraction>
+    <subtraction name="TGeoCompositeShape0x117">
+      <first ref="TGeoCompositeShape0x118"/>
+      <second ref="endwcbasBhol2"/>
+      <position name="TGeoCompositeShape0x117endwcbasBhol2pos" x="-3.8637033051562728" y="1.0352761804100841" z="1.97" unit="cm"/>
+    </subtraction>
+    <subtraction name="TGeoCompositeShape0x116">
+      <first ref="TGeoCompositeShape0x117"/>
+      <second ref="endwcbasBhol2"/>
+      <position name="TGeoCompositeShape0x116endwcbasBhol2pos" x="3.8637033051562728" y="-1.0352761804100841" z="1.97" unit="cm"/>
+    </subtraction>
+    <subtraction name="TGeoCompositeShape0x115">
+      <first ref="TGeoCompositeShape0x116"/>
+      <second ref="endwcbasShol2"/>
+      <position name="TGeoCompositeShape0x115endwcbasShol2pos" x="3.8042260651806141" y="1.2360679774997896" z="1.45" unit="cm"/>
+    </subtraction>
+    <subtraction name="TGeoCompositeShape0x114">
+      <first ref="TGeoCompositeShape0x115"/>
+      <second ref="endwcbasShol2"/>
+      <position name="TGeoCompositeShape0x114endwcbasShol2pos" x="-3.8042260651806141" y="-1.2360679774997896" z="1.45" unit="cm"/>
+    </subtraction>
+    <subtraction name="TGeoCompositeShape0x113">
+      <first ref="TGeoCompositeShape0x114"/>
+      <second ref="endwcbasShol2"/>
+      <position name="TGeoCompositeShape0x113endwcbasShol2pos" x="3.2360679774997898" y="2.3511410091698925" z="1.45" unit="cm"/>
+    </subtraction>
+    <subtraction name="TGeoCompositeShape0x112">
+      <first ref="TGeoCompositeShape0x113"/>
+      <second ref="endwcbasShol2"/>
+      <position name="TGeoCompositeShape0x112endwcbasShol2pos" x="-3.2360679774997898" y="-2.3511410091698925" z="1.45" unit="cm"/>
+    </subtraction>
+    <subtraction name="TGeoCompositeShape0x111">
+      <first ref="TGeoCompositeShape0x112"/>
+      <second ref="endwcbasShol2"/>
+      <position name="TGeoCompositeShape0x111endwcbasShol2pos" x="2.351141009169893" y="3.2360679774997894" z="1.45" unit="cm"/>
+    </subtraction>
+    <subtraction name="TGeoCompositeShape0x110">
+      <first ref="TGeoCompositeShape0x111"/>
+      <second ref="endwcbasShol2"/>
+      <position name="TGeoCompositeShape0x110endwcbasShol2pos" x="-2.351141009169893" y="-3.2360679774997894" z="1.45" unit="cm"/>
+    </subtraction>
+    <subtraction name="TGeoCompositeShape0x109">
+      <first ref="TGeoCompositeShape0x110"/>
+      <second ref="endwcbasShol2"/>
+      <position name="TGeoCompositeShape0x109endwcbasShol2pos" x="1.2360679774997898" y="3.8042260651806141" z="1.45" unit="cm"/>
+    </subtraction>
+    <subtraction name="TGeoCompositeShape0x108">
+      <first ref="TGeoCompositeShape0x109"/>
+      <second ref="endwcbasShol2"/>
+      <position name="TGeoCompositeShape0x108endwcbasShol2pos" x="-1.2360679774997898" y="-3.8042260651806141" z="1.45" unit="cm"/>
+    </subtraction>
+    <subtraction name="TGeoCompositeShape0x107">
+      <first ref="TGeoCompositeShape0x108"/>
+      <second ref="endwcbasShol2"/>
+      <position name="TGeoCompositeShape0x107endwcbasShol2pos" x="2.4492935982947064e-16" y="4" z="1.45" unit="cm"/>
+    </subtraction>
+    <subtraction name="TGeoCompositeShape0x106">
+      <first ref="TGeoCompositeShape0x107"/>
+      <second ref="endwcbasShol2"/>
+      <position name="TGeoCompositeShape0x106endwcbasShol2pos" x="-2.4492935982947064e-16" y="-4" z="1.45" unit="cm"/>
+    </subtraction>
+    <subtraction name="TGeoCompositeShape0x105">
+      <first ref="TGeoCompositeShape0x106"/>
+      <second ref="endwcbasShol2"/>
+      <position name="TGeoCompositeShape0x105endwcbasShol2pos" x="-1.2360679774997894" y="3.8042260651806146" z="1.45" unit="cm"/>
+    </subtraction>
+    <subtraction name="TGeoCompositeShape0x104">
+      <first ref="TGeoCompositeShape0x105"/>
+      <second ref="endwcbasShol2"/>
+      <position name="TGeoCompositeShape0x104endwcbasShol2pos" x="1.2360679774997894" y="-3.8042260651806146" z="1.45" unit="cm"/>
+    </subtraction>
+    <subtraction name="TGeoCompositeShape0x103">
+      <first ref="TGeoCompositeShape0x104"/>
+      <second ref="endwcbasShol2"/>
+      <position name="TGeoCompositeShape0x103endwcbasShol2pos" x="-2.3511410091698921" y="3.2360679774997898" z="1.45" unit="cm"/>
+    </subtraction>
+    <subtraction name="TGeoCompositeShape0x102">
+      <first ref="TGeoCompositeShape0x103"/>
+      <second ref="endwcbasShol2"/>
+      <position name="TGeoCompositeShape0x102endwcbasShol2pos" x="2.3511410091698921" y="-3.2360679774997898" z="1.45" unit="cm"/>
+    </subtraction>
+    <subtraction name="TGeoCompositeShape0x101">
+      <first ref="TGeoCompositeShape0x102"/>
+      <second ref="endwcbasShol2"/>
+      <position name="TGeoCompositeShape0x101endwcbasShol2pos" x="-3.2360679774997894" y="2.351141009169893" z="1.45" unit="cm"/>
+    </subtraction>
+    <subtraction name="TGeoCompositeShape0x100">
+      <first ref="TGeoCompositeShape0x101"/>
+      <second ref="endwcbasShol2"/>
+      <position name="TGeoCompositeShape0x100endwcbasShol2pos" x="3.2360679774997894" y="-2.351141009169893" z="1.45" unit="cm"/>
+    </subtraction>
+    <subtraction name="TGeoCompositeShape0x99">
+      <first ref="TGeoCompositeShape0x100"/>
+      <second ref="endwcbasShol2"/>
+      <position name="TGeoCompositeShape0x99endwcbasShol2pos" x="-3.8042260651806141" y="1.23606797749979" z="1.45" unit="cm"/>
+    </subtraction>
+    <subtraction name="TGeoCompositeShape0x98">
+      <first ref="TGeoCompositeShape0x99"/>
+      <second ref="endwcbasShol2"/>
+      <position name="TGeoCompositeShape0x98endwcbasShol2pos" x="3.8042260651806141" y="-1.23606797749979" z="1.45" unit="cm"/>
+    </subtraction>
+    <box name="stepBoxCSh2" x="1.0215768752578658" y="0.33673131577947268" z="1.4000000000000001" lunit="cm"/>
+    <polycone name="stepPconCSh2" startphi="59.703625406724129" deltaphi="29.10632858962596" aunit="deg" lunit="cm">
+      <zplane z="-0.7350000000000001" rmin="4.3799999999999999" rmax="4.716731315779473"/>
+      <zplane z="0.7350000000000001" rmin="4.3799999999999999" rmax="4.716731315779473"/>
+    </polycone>
+    <subtraction name="TGeoCompositeShape0x158">
+      <first ref="stepBoxCSh2"/>
+      <second ref="stepPconCSh2"/>
+      <firstposition name="TGeoCompositeShape0x158stepBoxCSh2pos" x="1.360788437628933" y="4.128365657889737" z="0" unit="cm"/>
+    </subtraction>
+  </solids>
+  <structure>
+    <volume name="EndWheelCBasis0">
+      <materialref ref="ITS_ALUMINUM"/>
+      <solidref ref="TGeoCompositeShapeEWsideC"/>
+    </volume>
+    <volume name="EndWheelCStep0">
+      <materialref ref="ITS_ALUMINUM"/>
+      <solidref ref="TGeoCompositeShape0x44"/>
+    </volume>
+    <volume name="EndWheelCBasis1">
+      <materialref ref="ITS_ALUMINUM"/>
+      <solidref ref="TGeoCompositeShape0x45"/>
+    </volume>
+    <volume name="EndWheelCStep1">
+      <materialref ref="ITS_ALUMINUM"/>
+      <solidref ref="TGeoCompositeShape0x97"/>
+    </volume>
+    <volume name="EndWheelCBasis2">
+      <materialref ref="ITS_ALUMINUM"/>
+      <solidref ref="TGeoCompositeShape0x98"/>
+    </volume>
+    <volume name="EndWheelCStep2">
+      <materialref ref="ITS_ALUMINUM"/>
+      <solidref ref="TGeoCompositeShape0x158"/>
+    </volume>
+    <assembly name="EndWheelsSideC">
+      <physvol name="EndWheelCBasis0_1" copynumber="1">
+        <volumeref ref="EndWheelCBasis0"/>
+        <positionref ref="EndWheelCBasis0_1inEndWheelsSideCpos"/>
+        <rotationref ref="EndWheelCBasis0_1inEndWheelsSideCrot"/>
+      </physvol>
+      <physvol name="EndWheelCStep0_1" copynumber="1">
+        <volumeref ref="EndWheelCStep0"/>
+        <positionref ref="EndWheelCStep0_1inEndWheelsSideCpos"/>
+        <rotationref ref="EndWheelCStep0_1inEndWheelsSideCrot"/>
+      </physvol>
+      <physvol name="EndWheelCStep0_2" copynumber="2">
+        <volumeref ref="EndWheelCStep0"/>
+        <positionref ref="EndWheelCStep0_2inEndWheelsSideCpos"/>
+        <rotationref ref="EndWheelCStep0_2inEndWheelsSideCrot"/>
+      </physvol>
+      <physvol name="EndWheelCStep0_3" copynumber="3">
+        <volumeref ref="EndWheelCStep0"/>
+        <positionref ref="EndWheelCStep0_3inEndWheelsSideCpos"/>
+        <rotationref ref="EndWheelCStep0_3inEndWheelsSideCrot"/>
+      </physvol>
+      <physvol name="EndWheelCStep0_4" copynumber="4">
+        <volumeref ref="EndWheelCStep0"/>
+        <positionref ref="EndWheelCStep0_4inEndWheelsSideCpos"/>
+        <rotationref ref="EndWheelCStep0_4inEndWheelsSideCrot"/>
+      </physvol>
+      <physvol name="EndWheelCStep0_5" copynumber="5">
+        <volumeref ref="EndWheelCStep0"/>
+        <positionref ref="EndWheelCStep0_5inEndWheelsSideCpos"/>
+        <rotationref ref="EndWheelCStep0_5inEndWheelsSideCrot"/>
+      </physvol>
+      <physvol name="EndWheelCStep0_6" copynumber="6">
+        <volumeref ref="EndWheelCStep0"/>
+        <positionref ref="EndWheelCStep0_6inEndWheelsSideCpos"/>
+        <rotationref ref="EndWheelCStep0_6inEndWheelsSideCrot"/>
+      </physvol>
+      <physvol name="EndWheelCStep0_7" copynumber="7">
+        <volumeref ref="EndWheelCStep0"/>
+        <positionref ref="EndWheelCStep0_7inEndWheelsSideCpos"/>
+        <rotationref ref="EndWheelCStep0_7inEndWheelsSideCrot"/>
+      </physvol>
+      <physvol name="EndWheelCStep0_8" copynumber="8">
+        <volumeref ref="EndWheelCStep0"/>
+        <positionref ref="EndWheelCStep0_8inEndWheelsSideCpos"/>
+        <rotationref ref="EndWheelCStep0_8inEndWheelsSideCrot"/>
+      </physvol>
+      <physvol name="EndWheelCStep0_9" copynumber="9">
+        <volumeref ref="EndWheelCStep0"/>
+        <positionref ref="EndWheelCStep0_9inEndWheelsSideCpos"/>
+        <rotationref ref="EndWheelCStep0_9inEndWheelsSideCrot"/>
+      </physvol>
+      <physvol name="EndWheelCStep0_10" copynumber="10">
+        <volumeref ref="EndWheelCStep0"/>
+        <positionref ref="EndWheelCStep0_10inEndWheelsSideCpos"/>
+        <rotationref ref="EndWheelCStep0_10inEndWheelsSideCrot"/>
+      </physvol>
+      <physvol name="EndWheelCStep0_11" copynumber="11">
+        <volumeref ref="EndWheelCStep0"/>
+        <positionref ref="EndWheelCStep0_11inEndWheelsSideCpos"/>
+        <rotationref ref="EndWheelCStep0_11inEndWheelsSideCrot"/>
+      </physvol>
+      <physvol name="EndWheelCStep0_12" copynumber="12">
+        <volumeref ref="EndWheelCStep0"/>
+        <positionref ref="EndWheelCStep0_12inEndWheelsSideCpos"/>
+        <rotationref ref="EndWheelCStep0_12inEndWheelsSideCrot"/>
+      </physvol>
+      <physvol name="EndWheelCBasis1_1" copynumber="1">
+        <volumeref ref="EndWheelCBasis1"/>
+        <positionref ref="EndWheelCBasis1_1inEndWheelsSideCpos"/>
+        <rotationref ref="EndWheelCBasis1_1inEndWheelsSideCrot"/>
+      </physvol>
+      <physvol name="EndWheelCStep1_1" copynumber="1">
+        <volumeref ref="EndWheelCStep1"/>
+        <positionref ref="EndWheelCStep1_1inEndWheelsSideCpos"/>
+        <rotationref ref="EndWheelCStep1_1inEndWheelsSideCrot"/>
+      </physvol>
+      <physvol name="EndWheelCStep1_2" copynumber="2">
+        <volumeref ref="EndWheelCStep1"/>
+        <positionref ref="EndWheelCStep1_2inEndWheelsSideCpos"/>
+        <rotationref ref="EndWheelCStep1_2inEndWheelsSideCrot"/>
+      </physvol>
+      <physvol name="EndWheelCStep1_3" copynumber="3">
+        <volumeref ref="EndWheelCStep1"/>
+        <positionref ref="EndWheelCStep1_3inEndWheelsSideCpos"/>
+        <rotationref ref="EndWheelCStep1_3inEndWheelsSideCrot"/>
+      </physvol>
+      <physvol name="EndWheelCStep1_4" copynumber="4">
+        <volumeref ref="EndWheelCStep1"/>
+        <positionref ref="EndWheelCStep1_4inEndWheelsSideCpos"/>
+        <rotationref ref="EndWheelCStep1_4inEndWheelsSideCrot"/>
+      </physvol>
+      <physvol name="EndWheelCStep1_5" copynumber="5">
+        <volumeref ref="EndWheelCStep1"/>
+        <positionref ref="EndWheelCStep1_5inEndWheelsSideCpos"/>
+        <rotationref ref="EndWheelCStep1_5inEndWheelsSideCrot"/>
+      </physvol>
+      <physvol name="EndWheelCStep1_6" copynumber="6">
+        <volumeref ref="EndWheelCStep1"/>
+        <positionref ref="EndWheelCStep1_6inEndWheelsSideCpos"/>
+        <rotationref ref="EndWheelCStep1_6inEndWheelsSideCrot"/>
+      </physvol>
+      <physvol name="EndWheelCStep1_7" copynumber="7">
+        <volumeref ref="EndWheelCStep1"/>
+        <positionref ref="EndWheelCStep1_7inEndWheelsSideCpos"/>
+        <rotationref ref="EndWheelCStep1_7inEndWheelsSideCrot"/>
+      </physvol>
+      <physvol name="EndWheelCStep1_8" copynumber="8">
+        <volumeref ref="EndWheelCStep1"/>
+        <positionref ref="EndWheelCStep1_8inEndWheelsSideCpos"/>
+        <rotationref ref="EndWheelCStep1_8inEndWheelsSideCrot"/>
+      </physvol>
+      <physvol name="EndWheelCStep1_9" copynumber="9">
+        <volumeref ref="EndWheelCStep1"/>
+        <positionref ref="EndWheelCStep1_9inEndWheelsSideCpos"/>
+        <rotationref ref="EndWheelCStep1_9inEndWheelsSideCrot"/>
+      </physvol>
+      <physvol name="EndWheelCStep1_10" copynumber="10">
+        <volumeref ref="EndWheelCStep1"/>
+        <positionref ref="EndWheelCStep1_10inEndWheelsSideCpos"/>
+        <rotationref ref="EndWheelCStep1_10inEndWheelsSideCrot"/>
+      </physvol>
+      <physvol name="EndWheelCStep1_11" copynumber="11">
+        <volumeref ref="EndWheelCStep1"/>
+        <positionref ref="EndWheelCStep1_11inEndWheelsSideCpos"/>
+        <rotationref ref="EndWheelCStep1_11inEndWheelsSideCrot"/>
+      </physvol>
+      <physvol name="EndWheelCStep1_12" copynumber="12">
+        <volumeref ref="EndWheelCStep1"/>
+        <positionref ref="EndWheelCStep1_12inEndWheelsSideCpos"/>
+        <rotationref ref="EndWheelCStep1_12inEndWheelsSideCrot"/>
+      </physvol>
+      <physvol name="EndWheelCStep1_13" copynumber="13">
+        <volumeref ref="EndWheelCStep1"/>
+        <positionref ref="EndWheelCStep1_13inEndWheelsSideCpos"/>
+        <rotationref ref="EndWheelCStep1_13inEndWheelsSideCrot"/>
+      </physvol>
+      <physvol name="EndWheelCStep1_14" copynumber="14">
+        <volumeref ref="EndWheelCStep1"/>
+        <positionref ref="EndWheelCStep1_14inEndWheelsSideCpos"/>
+        <rotationref ref="EndWheelCStep1_14inEndWheelsSideCrot"/>
+      </physvol>
+      <physvol name="EndWheelCStep1_15" copynumber="15">
+        <volumeref ref="EndWheelCStep1"/>
+        <positionref ref="EndWheelCStep1_15inEndWheelsSideCpos"/>
+        <rotationref ref="EndWheelCStep1_15inEndWheelsSideCrot"/>
+      </physvol>
+      <physvol name="EndWheelCStep1_16" copynumber="16">
+        <volumeref ref="EndWheelCStep1"/>
+        <positionref ref="EndWheelCStep1_16inEndWheelsSideCpos"/>
+        <rotationref ref="EndWheelCStep1_16inEndWheelsSideCrot"/>
+      </physvol>
+      <physvol name="EndWheelCBasis2_1" copynumber="1">
+        <volumeref ref="EndWheelCBasis2"/>
+        <positionref ref="EndWheelCBasis2_1inEndWheelsSideCpos"/>
+        <rotationref ref="EndWheelCBasis2_1inEndWheelsSideCrot"/>
+      </physvol>
+      <physvol name="EndWheelCStep2_1" copynumber="1">
+        <volumeref ref="EndWheelCStep2"/>
+        <positionref ref="EndWheelCStep2_1inEndWheelsSideCpos"/>
+        <rotationref ref="EndWheelCStep2_1inEndWheelsSideCrot"/>
+      </physvol>
+      <physvol name="EndWheelCStep2_2" copynumber="2">
+        <volumeref ref="EndWheelCStep2"/>
+        <positionref ref="EndWheelCStep2_2inEndWheelsSideCpos"/>
+        <rotationref ref="EndWheelCStep2_2inEndWheelsSideCrot"/>
+      </physvol>
+      <physvol name="EndWheelCStep2_3" copynumber="3">
+        <volumeref ref="EndWheelCStep2"/>
+        <positionref ref="EndWheelCStep2_3inEndWheelsSideCpos"/>
+        <rotationref ref="EndWheelCStep2_3inEndWheelsSideCrot"/>
+      </physvol>
+      <physvol name="EndWheelCStep2_4" copynumber="4">
+        <volumeref ref="EndWheelCStep2"/>
+        <positionref ref="EndWheelCStep2_4inEndWheelsSideCpos"/>
+        <rotationref ref="EndWheelCStep2_4inEndWheelsSideCrot"/>
+      </physvol>
+      <physvol name="EndWheelCStep2_5" copynumber="5">
+        <volumeref ref="EndWheelCStep2"/>
+        <positionref ref="EndWheelCStep2_5inEndWheelsSideCpos"/>
+        <rotationref ref="EndWheelCStep2_5inEndWheelsSideCrot"/>
+      </physvol>
+      <physvol name="EndWheelCStep2_6" copynumber="6">
+        <volumeref ref="EndWheelCStep2"/>
+        <positionref ref="EndWheelCStep2_6inEndWheelsSideCpos"/>
+        <rotationref ref="EndWheelCStep2_6inEndWheelsSideCrot"/>
+      </physvol>
+      <physvol name="EndWheelCStep2_7" copynumber="7">
+        <volumeref ref="EndWheelCStep2"/>
+        <positionref ref="EndWheelCStep2_7inEndWheelsSideCpos"/>
+        <rotationref ref="EndWheelCStep2_7inEndWheelsSideCrot"/>
+      </physvol>
+      <physvol name="EndWheelCStep2_8" copynumber="8">
+        <volumeref ref="EndWheelCStep2"/>
+        <positionref ref="EndWheelCStep2_8inEndWheelsSideCpos"/>
+        <rotationref ref="EndWheelCStep2_8inEndWheelsSideCrot"/>
+      </physvol>
+      <physvol name="EndWheelCStep2_9" copynumber="9">
+        <volumeref ref="EndWheelCStep2"/>
+        <positionref ref="EndWheelCStep2_9inEndWheelsSideCpos"/>
+        <rotationref ref="EndWheelCStep2_9inEndWheelsSideCrot"/>
+      </physvol>
+      <physvol name="EndWheelCStep2_10" copynumber="10">
+        <volumeref ref="EndWheelCStep2"/>
+        <positionref ref="EndWheelCStep2_10inEndWheelsSideCpos"/>
+        <rotationref ref="EndWheelCStep2_10inEndWheelsSideCrot"/>
+      </physvol>
+      <physvol name="EndWheelCStep2_11" copynumber="11">
+        <volumeref ref="EndWheelCStep2"/>
+        <positionref ref="EndWheelCStep2_11inEndWheelsSideCpos"/>
+        <rotationref ref="EndWheelCStep2_11inEndWheelsSideCrot"/>
+      </physvol>
+      <physvol name="EndWheelCStep2_12" copynumber="12">
+        <volumeref ref="EndWheelCStep2"/>
+        <positionref ref="EndWheelCStep2_12inEndWheelsSideCpos"/>
+        <rotationref ref="EndWheelCStep2_12inEndWheelsSideCrot"/>
+      </physvol>
+      <physvol name="EndWheelCStep2_13" copynumber="13">
+        <volumeref ref="EndWheelCStep2"/>
+        <positionref ref="EndWheelCStep2_13inEndWheelsSideCpos"/>
+        <rotationref ref="EndWheelCStep2_13inEndWheelsSideCrot"/>
+      </physvol>
+      <physvol name="EndWheelCStep2_14" copynumber="14">
+        <volumeref ref="EndWheelCStep2"/>
+        <positionref ref="EndWheelCStep2_14inEndWheelsSideCpos"/>
+        <rotationref ref="EndWheelCStep2_14inEndWheelsSideCrot"/>
+      </physvol>
+      <physvol name="EndWheelCStep2_15" copynumber="15">
+        <volumeref ref="EndWheelCStep2"/>
+        <positionref ref="EndWheelCStep2_15inEndWheelsSideCpos"/>
+        <rotationref ref="EndWheelCStep2_15inEndWheelsSideCrot"/>
+      </physvol>
+      <physvol name="EndWheelCStep2_16" copynumber="16">
+        <volumeref ref="EndWheelCStep2"/>
+        <positionref ref="EndWheelCStep2_16inEndWheelsSideCpos"/>
+        <rotationref ref="EndWheelCStep2_16inEndWheelsSideCrot"/>
+      </physvol>
+      <physvol name="EndWheelCStep2_17" copynumber="17">
+        <volumeref ref="EndWheelCStep2"/>
+        <positionref ref="EndWheelCStep2_17inEndWheelsSideCpos"/>
+        <rotationref ref="EndWheelCStep2_17inEndWheelsSideCrot"/>
+      </physvol>
+      <physvol name="EndWheelCStep2_18" copynumber="18">
+        <volumeref ref="EndWheelCStep2"/>
+        <positionref ref="EndWheelCStep2_18inEndWheelsSideCpos"/>
+        <rotationref ref="EndWheelCStep2_18inEndWheelsSideCrot"/>
+      </physvol>
+      <physvol name="EndWheelCStep2_19" copynumber="19">
+        <volumeref ref="EndWheelCStep2"/>
+        <positionref ref="EndWheelCStep2_19inEndWheelsSideCpos"/>
+        <rotationref ref="EndWheelCStep2_19inEndWheelsSideCrot"/>
+      </physvol>
+      <physvol name="EndWheelCStep2_20" copynumber="20">
+        <volumeref ref="EndWheelCStep2"/>
+        <positionref ref="EndWheelCStep2_20inEndWheelsSideCpos"/>
+        <rotationref ref="EndWheelCStep2_20inEndWheelsSideCrot"/>
+      </physvol>
+    </assembly>
+  </structure>
+  <setup name="default" version="1.0">
+    <world ref="EndWheelsSideC"/>
+  </setup>
+</gdml>
