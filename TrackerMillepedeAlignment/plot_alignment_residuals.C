@@ -13,6 +13,9 @@
 #include <fstream>
 #include <string>
 
+R__LOAD_LIBRARY(libtrack_io.so)
+R__LOAD_LIBRARY(libmicromegas.so)
+
 unsigned int getSensor(TrkrDefs::hitsetkey hitsetkey)
 {
   unsigned int sensor = 0;
@@ -49,7 +52,8 @@ unsigned int getSensor(TrkrDefs::hitsetkey hitsetkey)
 
 }
 
-void plot_alignment_residuals()
+void plot_alignment_residuals(std::string inputfilename,
+			      std::string outfilename)
 {
   gStyle->SetStatW(0.3);
   gStyle->SetStatH(0.3);
@@ -57,123 +61,128 @@ void plot_alignment_residuals()
   // read in the alignment parameters file and make histograms for each layer
   // There is one entry in the file for every surface in the detector
 
-  ifstream fin("differenceLocalAlignmentParamsFile.txt");
+  //ifstream fin("differenceLocalAlignmentParamsFile.txt");
   //ifstream fin("localAlignmentParamsFile.txt");
   //ifstream fin("new_alignment_corrections.txt");
+  ifstream fin(inputfilename);
   if(!fin.is_open()) std::cout << "Unable to open input alignment params file" << std::endl;
   
   TH2D *hpar[57][6];
   for(int ilayer=0;ilayer<57;++ilayer)
-      {
-	for(int ipar = 0; ipar < 6; ++ipar)
-	  {
-	    double range = 0.5;  // mm
-	    double range_angles = 0.003;  // rad
-	    if(ipar < 3) range = range_angles;
-	    //if(ilayer > 6 && (ipar > 2 && ipar < 5)) range = 0.01;
-	    //if(ilayer > 6 && (ipar == 5)) range = 0.1;
-	    //if( (ilayer > 2 && ilayer < 7) && (ipar == 5) ) range = 0.4;
-
-	    char name[500];
-	    char title[500];
-	    sprintf(name,"hpar_%i_%i", ilayer, ipar);
-	    if(ilayer < 3)  sprintf(title,"MVTX parameter %i", ipar);
-	    else if (ilayer > 2 && ilayer < 7) sprintf(title,"INTT parameter %i", ipar);
-	    else if (ilayer > 6 && ilayer < 55) sprintf(title,"TPC parameter %i", ipar);
-	    else  sprintf(title,"MMS parameters %i", ipar);
-
-	    hpar[ilayer][ipar] = new TH2D(name, title, 600, 0, 200, 200, -range, +range);  // sensor number, parameter range
-
-	    hpar[ilayer][ipar]->GetXaxis()->SetNdivisions(504);
-	    hpar[ilayer][ipar]->GetXaxis()->SetLabelSize(0.05);
-	    hpar[ilayer][ipar]->GetXaxis()->SetTitleSize(0.05);
-	    if(ipar < 3)
-	      hpar[ilayer][ipar]->GetXaxis()->SetTitle("radians");
-	    else
-	      hpar[ilayer][ipar]->GetXaxis()->SetTitle("mm");	    	    
-	  }
-      }
-
-     std::string line;
-     float pars[6];      
-     TrkrDefs::hitsetkey hitsetkey;
-      while( getline(fin, line) )
+    {
+      for(int ipar = 0; ipar < 6; ++ipar)
 	{
-	  stringstream line_in(line);
-	  std::cout << "line in: " << line_in.str() << std::endl;
-	  line_in >> hitsetkey;
-	  line_in >> pars[0] >> pars[1] >> pars[2] >> pars[3] >> pars[4] >> pars[5];
-
-	  // extract sensor # from hitsetkey
-	  unsigned int trkrid = TrkrDefs::getTrkrId(hitsetkey);
-	  unsigned int layer = TrkrDefs::getLayer(hitsetkey);
-	  unsigned int sensor = getSensor(hitsetkey);
-	  std::cout << "      layer " << layer << " trkrid " << trkrid << " sensor " << sensor << std::endl;
-	  for(int ipar=0;ipar<6;++ipar)
-	    {
-	      hpar[layer][ipar]->Fill(sensor, pars[ipar]);
-	    }
+	  double range = 0.5;  // mm
+	  double range_angles = 0.003;  // rad
+	  if(ipar < 3) range = range_angles;
+	  //if(ilayer > 6 && (ipar > 2 && ipar < 5)) range = 0.01;
+	  //if(ilayer > 6 && (ipar == 5)) range = 0.1;
+	  //if( (ilayer > 2 && ilayer < 7) && (ipar == 5) ) range = 0.4;
+	  
+	  char name[500];
+	  char title[500];
+	  sprintf(name,"hpar_%i_%i", ilayer, ipar);
+	  if(ilayer < 3)  sprintf(title,"MVTX parameter %i", ipar);
+	  else if (ilayer > 2 && ilayer < 7) sprintf(title,"INTT parameter %i", ipar);
+	  else if (ilayer > 6 && ilayer < 55) sprintf(title,"TPC parameter %i", ipar);
+	  else  sprintf(title,"MMS parameters %i", ipar);
+	  
+	  hpar[ilayer][ipar] = new TH2D(name, title, 600, 0, 200, 200, -range, +range);  // sensor number, parameter range
+	  
+	  hpar[ilayer][ipar]->GetXaxis()->SetNdivisions(504);
+	  hpar[ilayer][ipar]->GetXaxis()->SetLabelSize(0.05);
+	  hpar[ilayer][ipar]->GetXaxis()->SetTitleSize(0.05);
+	  if(ipar < 3)
+	    hpar[ilayer][ipar]->GetXaxis()->SetTitle("radians");
+	  else
+	    hpar[ilayer][ipar]->GetXaxis()->SetTitle("mm");	    	    
 	}
-
-      // make plots
-
-      TCanvas *cmvtx = new TCanvas("mvtx","mvtx",100,100,1600,800);
-      cmvtx->Divide(3,2);
+    }
+  
+  std::string line;
+  float pars[6];      
+  TrkrDefs::hitsetkey hitsetkey;
+  while( getline(fin, line) )
+    {
+      stringstream line_in(line);
+      std::cout << "line in: " << line_in.str() << std::endl;
+      line_in >> hitsetkey;
+      line_in >> pars[0] >> pars[1] >> pars[2] >> pars[3] >> pars[4] >> pars[5];
+      
+      // extract sensor # from hitsetkey
+      unsigned int trkrid = TrkrDefs::getTrkrId(hitsetkey);
+      unsigned int layer = TrkrDefs::getLayer(hitsetkey);
+      unsigned int sensor = getSensor(hitsetkey);
+      std::cout << "      layer " << layer << " trkrid " << trkrid << " sensor " << sensor << std::endl;
       for(int ipar=0;ipar<6;++ipar)
 	{
-	  cmvtx->cd(ipar+1);
-	  hpar[0][ipar]->Add(hpar[1][ipar]);
-	  hpar[0][ipar]->Add(hpar[2][ipar]);
-
-	  TH1D *hpar_combined = hpar[0][ipar]->ProjectionY();
-	  if(ipar < 3) 
-	    hpar_combined->GetXaxis()->SetTitle("rad");
-	  else
-	    hpar_combined->GetXaxis()->SetTitle("mm");
-
-	  hpar_combined->DrawCopy();
+	  hpar[layer][ipar]->Fill(sensor, pars[ipar]);
 	}
-
-      TCanvas *cintt = new TCanvas("intt","intt",150,150,1600,800);
-      cintt->Divide(3,2);
-      for(int ipar=0;ipar<6;++ipar)
+    }
+  
+  // make plots
+  
+  TCanvas *cmvtx = new TCanvas("mvtx","mvtx",100,100,1600,800);
+  cmvtx->Divide(3,2);
+  for(int ipar=0;ipar<6;++ipar)
+    {
+      cmvtx->cd(ipar+1);
+      hpar[0][ipar]->Add(hpar[1][ipar]);
+      hpar[0][ipar]->Add(hpar[2][ipar]);
+      
+      TH1D *hpar_combined = hpar[0][ipar]->ProjectionY();
+      if(ipar < 3) 
+	hpar_combined->GetXaxis()->SetTitle("rad");
+      else
+	hpar_combined->GetXaxis()->SetTitle("mm");
+      
+      hpar_combined->DrawCopy();
+    }
+  
+  TCanvas *cintt = new TCanvas("intt","intt",150,150,1600,800);
+  cintt->Divide(3,2);
+  for(int ipar=0;ipar<6;++ipar)
+    {
+      cintt->cd(ipar+1);
+      hpar[3][ipar]->Add(hpar[4][ipar]);
+      hpar[3][ipar]->Add(hpar[5][ipar]);
+      hpar[3][ipar]->Add(hpar[6][ipar]);
+      
+      TH1D *hpar_combined = hpar[3][ipar]->ProjectionY();
+      if(ipar < 3) 
+	hpar_combined->GetXaxis()->SetTitle("rad");
+      else
+	hpar_combined->GetXaxis()->SetTitle("mm");
+      
+      hpar_combined->DrawCopy();
+    }
+  
+  TCanvas *ctpc = new TCanvas("tpc","tpc",200,200,1600,800);
+  ctpc->Divide(3,2);
+  for(int ipar=0;ipar<6;++ipar)
+    {
+      ctpc->cd(ipar+1);
+      for(int i=8; i< 55; ++i)
 	{
-	  cintt->cd(ipar+1);
-	  hpar[3][ipar]->Add(hpar[4][ipar]);
-	  hpar[3][ipar]->Add(hpar[5][ipar]);
-	  hpar[3][ipar]->Add(hpar[6][ipar]);
-
-	  TH1D *hpar_combined = hpar[3][ipar]->ProjectionY();
-	  if(ipar < 3) 
-	    hpar_combined->GetXaxis()->SetTitle("rad");
-	  else
-	    hpar_combined->GetXaxis()->SetTitle("mm");
-
-	  hpar_combined->DrawCopy();
+	  hpar[7][ipar]->Add(hpar[i][ipar]);
 	}
-
-      TCanvas *ctpc = new TCanvas("tpc","tpc",200,200,1600,800);
-      ctpc->Divide(3,2);
-      for(int ipar=0;ipar<6;++ipar)
-	{
-	  ctpc->cd(ipar+1);
-	  for(int i=8; i< 55; ++i)
-	    {
-	      hpar[7][ipar]->Add(hpar[i][ipar]);
-	    }
-
-	  TH1D *hpar_combined = hpar[7][ipar]->ProjectionY();
-	  if(ipar < 3) 
-	    hpar_combined->GetXaxis()->SetTitle("rad");
-	  else
-	    hpar_combined->GetXaxis()->SetTitle("mm");
-
-	  hpar_combined->DrawCopy();
-	}
-
-
-
-
+      
+      TH1D *hpar_combined = hpar[7][ipar]->ProjectionY();
+      if(ipar < 3) 
+	hpar_combined->GetXaxis()->SetTitle("rad");
+      else
+	hpar_combined->GetXaxis()->SetTitle("mm");
+      
+      hpar_combined->DrawCopy();
+    }
+  
+  
+  TFile *file = new TFile(outfilename,"RECREATE");
+  cmvtx->Write();
+  cintt->Write();
+  ctpc->Write();
+  file->Write();
+  file->Close();
 }
 
       /*
