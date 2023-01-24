@@ -1,9 +1,11 @@
+#include <trackbase/TrkrDefs.h>
 
 #include <iostream>
 #include <fstream>
 #include <sstream>
 #include <string>
 
+R__LOAD_LIBRARY(libtrack_io.so)
 int verbosity = 2;
 void subtract_updated_from_new_alignment(
   std::string originalmisalignmentfile = "originalMisalignmentParamsFile.txt",
