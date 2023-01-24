@@ -177,7 +177,7 @@ void plot_alignment_residuals(std::string inputfilename,
     }
   
   
-  TFile *file = new TFile(outfilename,"RECREATE");
+  TFile *file = new TFile(outfilename.c_str(),"RECREATE");
   cmvtx->Write();
   cintt->Write();
   ctpc->Write();
