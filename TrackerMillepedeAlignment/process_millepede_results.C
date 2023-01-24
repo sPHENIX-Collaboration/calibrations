@@ -14,6 +14,9 @@
 #include <sstream>
 #include <string>
 
+R__LOAD_LIBRARY(libtrack_io.so)
+R__LOAD_LIBRARY(libmicromegas.so)
+
 int get_tpc_region(int layer)
 {
   int region = 0;
@@ -227,7 +230,9 @@ bool is_layer_in_region(int layer, int isec)
   return ret;
 }
 
-void process_millepede_results(bool helical_fitter = false)
+void process_millepede_results(std::string pedefilename = "millepede.res",
+			       std::string newalignmentfilename = "new_alignment_corrections.txt",
+			       bool helical_fitter = false)
 {
   // macro to read in millepede.res files (pede output files) and process them
   // into a new alignment parameters file with one line for every surface
@@ -249,7 +254,7 @@ void process_millepede_results(bool helical_fitter = false)
 
   int nladders_layer[7] = {12, 16, 20, 12, 12, 16, 16};
 
-  ifstream fin("millepede.res");
+  ifstream fin(pedefilename);
   if(!fin.is_open()) std::cout << "Unable to open file" << std::endl;
 
   int label = 0;
@@ -494,7 +499,7 @@ void process_millepede_results(bool helical_fitter = false)
   // The translation alignment parameters in the file should be in mm, so we change them here
   double factor = 1.0;
   if(helical_fitter) factor = 10.0;
-  ofstream fout("new_alignment_corrections.txt");	
+  ofstream fout(newalignmentfilename);	
   for(auto it = outmap.begin(); it != outmap.end(); ++it)
     {
       fout << it->first 
@@ -541,7 +546,7 @@ void process_millepede_results(bool helical_fitter = false)
 
   // steps 1, 2, 3 are done, this is step  4
 //===========================
-  bool update_existing_corrections_file = true;
+  bool update_existing_corrections_file = false;
   if(update_existing_corrections_file)
     {
       std::cout << " Add new parameters to existing ones" << std::endl;
@@ -635,7 +640,7 @@ void process_millepede_results(bool helical_fitter = false)
   // steps 1, 2, 3, 4 are done, this is step 5 - used when using simulated misalignments
   //==============================================================
   // if requested, subtract the updated alignment corrections file from the original misalignments file
-  bool subtract_from_misalignment_file = true;
+  bool subtract_from_misalignment_file =false;
   if(subtract_from_misalignment_file)
     {  
       std::cout << " Add new parameters to existing ones" << std::endl;

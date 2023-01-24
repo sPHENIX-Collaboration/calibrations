@@ -11,13 +11,16 @@
 
 #include <cmath>
 
+R__LOAD_LIBRARY(libtrack_io.so)
+R__LOAD_LIBRARY(libmicromegas.so)
+
 // This macro makes a file named "data.txt" in the local directory
 // Copy that to where you want it
 
-// Creates an alignment corrections file containing all zero alignment corrections if true
-static bool make_zero_corrections = false;
- 
+// make_zero_corrections Creates an alignment corrections file containing all zero alignment corrections if true 
 // otherwise it adds misalignments
+bool make_zero_corrections = false;
+
 
 // these are used for bookkeeping when using heirarchical offsets
 static std::array<unsigned int, 6> stave_now = {999,999,999,999,999,999};
@@ -183,8 +186,10 @@ std::array<double, 6> getOffsetTpc(unsigned int layer, unsigned int physical_sec
   return offset; 
 }
 
-void makeAlignmentParams()
+void makeAlignmentParams(bool _make_zero_corrections=false)
 {
+  make_zero_corrections = _make_zero_corrections;
+
   // mvtxdat for each layer: rMin, rMid, rMax, NChip/Stave, phi0, nStaves
   double mvtxdat[3][6] = {{24.61, 25.23, 27.93, 9., 0.285, 12.}, {31.98, 33.36, 36.25, 9., 0.199, 16.},{39.93, 41.48, 44.26, 9., 0.166, 20.}};
 
