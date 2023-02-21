@@ -34,7 +34,8 @@ void add_new_current_alignment(
   float pars_exist[6], pars_new[6], pars_update[6];
   
   std::string line1, line2;
-  
+  std::streampos fnewpos = 0;
+
   while( getline(fexisting, line1) )
     {
       stringstream line_exist(line1);
@@ -85,8 +86,21 @@ void add_new_current_alignment(
 	}
       
       if(key_new != key_exist)
-	std::cout << "ERROR: Mismatched keys: in layer " << layer_new << " existing key " << key_exist << " new key " << key_new << std::endl;
-      
+	{
+	  std::cout << "ERROR: Mismatched keys: in layer " << layer_new << " existing key " << key_exist << " new key " << key_new << std::endl;
+	  /// If the keys mismatch, then there may not have been a result
+	  /// for this particular key. Skip it by going back one in fnew stream
+	  fnew.seekg(fnewpos);
+
+	  /// Then just use the existing parameters for this key
+	  fupdated << key_exist << " " << pars_exist[0] << " "
+		   << pars_exist[1] << " " << pars_exist[2] << " "
+		   << pars_exist[3] << " " << pars_exist[4] << " "
+		   << pars_exist[5] << std::endl;
+	}
+
+      fnewpos = fnew.tellg();
+
       line_exist >> pars_exist[0] >> pars_exist[1] >> pars_exist[2] >> pars_exist[3] >> pars_exist[4] >> pars_exist[5];
       line_new >> pars_new[0] >> pars_new[1] >> pars_new[2] >> pars_new[3] >> pars_new[4] >> pars_new[5];
       fupdated << key_exist << " "
