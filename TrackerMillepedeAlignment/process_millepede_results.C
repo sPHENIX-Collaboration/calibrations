@@ -288,8 +288,10 @@ void process_millepede_results(std::string pedefilename = "millepede.res",
       int sensor = (label - layer *1000000 -stave*10000) / 10;
       int ipar = label - layer *1000000 -stave*10000 - sensor*10;
 
+      TrkrDefs::hitsetkey hsk = getHitSetKey(layer, stave, sensor);
+
       if(verbosity > 0) 
-	std::cout << " Input: layer " << layer << " stave " << stave << " sensor " << sensor << " ipar " << ipar << " label " << label << " align " << align << std::endl;
+	std::cout << " Input: layer " << layer << " stave " << stave << " sensor " << sensor << " hitsetkey " << hsk << " ipar " << ipar << " label " << label << " align " << align << std::endl;
 
       if(layer > layer_keep || fin.eof())
 	{
