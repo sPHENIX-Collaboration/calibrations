@@ -14,9 +14,6 @@
 #include <sstream>
 #include <string>
 
-R__LOAD_LIBRARY(libtrack_io.so)
-R__LOAD_LIBRARY(libmicromegas.so)
-
 int verbosity = 2;
 void add_new_current_alignment(
   std::string existingfile = "localAlignmentParamsFile.txt",

@@ -13,9 +13,6 @@
 #include <fstream>
 #include <string>
 
-R__LOAD_LIBRARY(libtrack_io.so)
-R__LOAD_LIBRARY(libmicromegas.so)
-
 unsigned int getSensor(TrkrDefs::hitsetkey hitsetkey)
 {
   unsigned int sensor = 0;

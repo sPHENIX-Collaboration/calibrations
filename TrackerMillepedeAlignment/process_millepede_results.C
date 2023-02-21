@@ -14,9 +14,6 @@
 #include <sstream>
 #include <string>
 
-R__LOAD_LIBRARY(libtrack_io.so)
-R__LOAD_LIBRARY(libmicromegas.so)
-
 int get_tpc_region(int layer)
 {
   int region = 0;
