@@ -49,11 +49,11 @@ void subtract_updated_from_new_alignment(
 		   << pars_original[1] << " " << pars_original[2] << " "
 		   << pars_original[3] << " " << pars_original[4] << " "
 		   << pars_original[5] << std::endl;
-	  fdifference.seekg(fnewpos);
+	  fupdated.seekg(fnewpos);
 
 	}
       
-      fnewpos = fdifference.tellg();
+      fnewpos = fupdated.tellg();
 
       fdifference << key_original << " "
 		  << pars_original[0] - pars_updated[0] << " " 
