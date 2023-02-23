@@ -45,7 +45,7 @@ void subtract_updated_from_new_alignment(
       if(key_updated != key_original)
 	{
 	  std::cout << "ERROR: Mismatched keys: " << key_original << "   " << key_updated << std::endl;
-	  fupdated << key_original << " " << pars_original[0] << " " 
+	  fdifference << key_original << " " << pars_original[0] << " " 
 		   << pars_original[1] << " " << pars_original[2] << " "
 		   << pars_original[3] << " " << pars_original[4] << " "
 		   << pars_original[5] << std::endl;
@@ -56,7 +56,7 @@ void subtract_updated_from_new_alignment(
       fnewpos = fdifference.tellg();
 
       fdifference << key_original << " "
-		  << pars_original[0] - pars_updated[0]<< " " 
+		  << pars_original[0] - pars_updated[0] << " " 
 		  << pars_original[1] - pars_updated[1] << " " 
 		  << pars_original[2] - pars_updated[2] << " " 
 		  << pars_original[3] - pars_updated[3] << " " 
