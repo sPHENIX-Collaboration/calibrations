@@ -7,6 +7,7 @@
 
 #include <TH1D.h>
 #include <TH2D.h>
+#include <TFile.h>
 #include <TCanvas.h>
 #include <TStyle.h>
 #include <iostream>
