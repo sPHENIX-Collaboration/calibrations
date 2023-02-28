@@ -5,6 +5,7 @@
 #include <sstream>
 #include <string>
 
+R__LOAD_LIBRARY(libtrack_io.so)
 int verbosity = 2;
 void subtract_updated_from_new_alignment(
   std::string originalmisalignmentfile = "originalMisalignmentParamsFile.txt",
@@ -26,8 +27,6 @@ void subtract_updated_from_new_alignment(
   float pars_original[6], pars_updated[6];
   
   std::string line1, line2;
-
-  std::streampos fnewpos = 0;
   
   while( getline(foriginal, line1) )
     {
@@ -38,25 +37,13 @@ void subtract_updated_from_new_alignment(
       stringstream line_updated(line2);
       if(verbosity > 1) std::cout << "updated  in: " << line_updated.str() << std::endl;
       line_updated >> key_updated;
-
+      if(key_updated != key_original)
+	std::cout << "ERROR: Mismatched keys: " << key_original << "   " << key_updated << std::endl;
+      
       line_original >> pars_original[0] >> pars_original[1] >> pars_original[2] >> pars_original[3] >> pars_original[4] >> pars_original[5];
       line_updated >> pars_updated[0] >> pars_updated[1] >> pars_updated[2] >> pars_updated[3] >> pars_updated[4] >> pars_updated[5];
-
-      if(key_updated != key_original)
-	{
-	  std::cout << "ERROR: Mismatched keys: " << key_original << "   " << key_updated << std::endl;
-	  fdifference << key_original << " " << pars_original[0] << " " 
-		   << pars_original[1] << " " << pars_original[2] << " "
-		   << pars_original[3] << " " << pars_original[4] << " "
-		   << pars_original[5] << std::endl;
-	  fupdated.seekg(fnewpos);
-
-	}
-      
-      fnewpos = fupdated.tellg();
-
       fdifference << key_original << " "
-		  << pars_original[0] - pars_updated[0] << " " 
+		  << pars_original[0] - pars_updated[0]<< " " 
 		  << pars_original[1] - pars_updated[1] << " " 
 		  << pars_original[2] - pars_updated[2] << " " 
 		  << pars_original[3] - pars_updated[3] << " " 
