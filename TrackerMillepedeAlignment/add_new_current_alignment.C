@@ -114,12 +114,6 @@ void add_new_current_alignment(
     }
   fupdated.close();
   
-  // copy updatedAlignmentParams.txt to currentAlignmentParams.txt
-  ostringstream command;
-  command.str("");
-  command << "mv " << updatedfile << " currentAlignmentParams.txt";
-  gSystem->Exec(command.str().c_str());
-  
-  std::cout << "Done updating currentAlignmentParams.txt file" << std::endl;        
+  std::cout << "Done updating " << updatedfile << " file" << std::endl;        
   
 }
