@@ -92,11 +92,16 @@ void add_new_current_alignment(
 	  /// for this particular key. Skip it by going back one in fnew stream
 	  fnew.seekg(fnewpos);
 
+	  line_exist >> pars_exist[0] >> pars_exist[1] >> pars_exist[2] >> pars_exist[3] >> pars_exist[4] >> pars_exist[5];
 	  /// Then just use the existing parameters for this key
 	  fupdated << key_exist << " " << pars_exist[0] << " "
 		   << pars_exist[1] << " " << pars_exist[2] << " "
 		   << pars_exist[3] << " " << pars_exist[4] << " "
 		   << pars_exist[5] << std::endl;
+	  
+	  // Get the new file position and try the next line
+	  fnewpos = fnew.tellg();
+	  continue;
 	}
 
       fnewpos = fnew.tellg();
