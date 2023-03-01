@@ -13,6 +13,11 @@ WORKDIR=$1
 NITER=1
 echo "Working in "$WORKDIR
 echo "Running alignment NITER: "$NITER
+if [ ! -d $WORKDIR ] 
+then
+  echo "Making "$WORKDIR
+  mkdir $WORKDIR
+fi
 cd $WORKDIR
 
 source /opt/sphenix/core/bin/sphenix_setup.sh -n
