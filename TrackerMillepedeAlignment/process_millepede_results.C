@@ -252,7 +252,7 @@ void process_millepede_results(std::string pedefilename = "millepede.res",
   int nladders_layer[7] = {12, 16, 20, 12, 12, 16, 16};
 
   ifstream fin(pedefilename);
-  if(!fin.is_open()) std::cout << "Unable to open file" << std::endl;
+  if(!fin.is_open()) std::cout << "Unable to open file name " << pedefilename << std::endl;
 
   int label = 0;
   float align = 0.0;
