@@ -14,6 +14,8 @@
 #include <sstream>
 #include <string>
 
+static int verbosity = 2;
+
 int get_tpc_region(int layer)
 {
   int region = 0;
@@ -30,21 +32,19 @@ TrkrDefs::hitsetkey getHitSetKey(int layer, int stave, int sensor)
   // all hitsetkeys should be obtained from here
 
  TrkrDefs::hitsetkey hitSetKey = 0;
+ int zero = 0;
 
   if(layer < 3)
-    hitSetKey = MvtxDefs::genHitSetKey(layer,stave,sensor,0);
-
+    hitSetKey = MvtxDefs::genHitSetKey(layer,stave,sensor,zero);
+    
   if(layer >2 && layer < 7)
-    hitSetKey = InttDefs::genHitSetKey(layer,sensor,stave,0);
+    hitSetKey = InttDefs::genHitSetKey(layer,sensor,stave,zero);
 
   if(layer > 6 && layer < 55)
     {
-      // "stave" = region(0-2) *24 + sector (0-23) = 0-71
-      // for the tpc, "sector" = 0-11 means sector 0-11 for side 0, and "sector" = 12-23 means sector 0-11 for side 1
-      int region = get_tpc_region(layer);
-      int sector = stave - region * 24;
-      int side = sector/12;  
-      sector = sector - side*12;
+      // for the tpc, "stave" = 0-11 means sector 0-11 for side 0, and "stave" = 12-23 means sector 0-11 for side 1
+      int side = stave/12;  
+      int sector = stave - side*12;
       hitSetKey = TpcDefs::genHitSetKey(layer, sector, side);
     }
 
@@ -165,7 +165,6 @@ void populate_entire_layer(int layer, std::map<TrkrDefs::hitsetkey, std::array<d
   return;
  }
 
-//bool getParameters(std::vector<std::pair<int, float>> par_vec, float parameters[])
 bool getParameters(std::vector<std::pair<int, float>> par_vec, std::array<double, 6>& parameters)
 { 
   bool ret = true;
@@ -227,7 +226,7 @@ bool is_layer_in_region(int layer, int isec)
   return ret;
 }
 
-void process_millepede_results(bool helical_fitter = false)
+void process_millepede_results(bool helical_fitter = true)
 {
   // macro to read in millepede.res files (pede output files) and process them
   // into a new alignment parameters file with one line for every surface
@@ -242,14 +241,12 @@ void process_millepede_results(bool helical_fitter = false)
   //     silicon detectors only (using HelicalFitter with small net misalignments)
   //     all tpc hitsets grouped in the tpc as a whole, all silicon sensors grouped in their staves, all mms tiles free (MakeMilleFiles, zero misalignments)
 
-  int verbosity = 2;
-
   gStyle->SetStatW(0.3);
   gStyle->SetStatH(0.3);
 
   int nladders_layer[7] = {12, 16, 20, 12, 12, 16, 16};
 
-  ifstream fin("millepede.res");
+  ifstream fin("/sphenix/user/frawley/new_macros_april27/macros/detectors/sPHENIX/millepede.res");
   if(!fin.is_open()) std::cout << "Unable to open file" << std::endl;
 
   int label = 0;
@@ -366,7 +363,6 @@ void process_millepede_results(bool helical_fitter = false)
 	    {
 	      auto sensor_vec = stave_vec[0];
 	      auto par_vec = sensor_vec[0];
-	      //	      float params[6];
 	      std::array<double, 6> params;
 	      bool ret = getParameters(par_vec, params);
 	      if(verbosity > 0) std::cout << " populate layer " << layer << " for all sectors with params[0] " << params[0] << std::endl;
@@ -377,7 +373,7 @@ void process_millepede_results(bool helical_fitter = false)
 	    }
 
 	  // if we are here, we have multiple tpc "staves", grouped by sector
-	  // here isec = region * 24 + sector (0-23). This layer is in only one region.
+	  // here isec = region * 24(0-47) + sector (0-23). This layer is in only one region.
 	  for(unsigned int isec = 0; isec < stave_vec.size(); ++isec)
 	    {
 	      // is this layer in the region of this sector?
@@ -385,7 +381,6 @@ void process_millepede_results(bool helical_fitter = false)
 		{
 		  auto sector_vec = stave_vec[isec];
 		  auto par_vec = sector_vec[0]; // only one parameter set per sector
-		  //		  float params[6];
 		  std::array<double, 6> params;
 		  bool ret = getParameters(par_vec, params);
 		  if(!ret)
@@ -394,7 +389,10 @@ void process_millepede_results(bool helical_fitter = false)
 				<< " sensor " << 0 << " parameters set to zero " << std::endl;
 		    }
 		  if(verbosity > 0) std::cout << " populate layer " << layer << " for sector " << isec << " with params[0] " << params[0] << std::endl;
-		  populate_tpc_sector(layer, isec, outmap, params);
+		  // convert isec to the physical sector (0-23, including side)
+		  int region = get_tpc_region(layer);
+		  int sector = isec - region * 24;
+		  populate_tpc_sector(layer, sector, outmap, params);
 		}
 	    }
 	  // done with this layer, skip to the next
@@ -407,7 +405,6 @@ void process_millepede_results(bool helical_fitter = false)
       if (it == layer_stave_vec_map.end())
 	{
 	  // layer is missing, all alignment corrections are zero for missing layers
-	  //float params[6] = {0,0,0,0,0,0};
 	  std::array<double, 6> params = {0,0,0,0,0,0};
 	  if(verbosity > 0) std::cout << " missing layer " << layer << " set all params to  " << params[0] << std::endl;
 	  populate_entire_layer(layer, outmap, params);
@@ -424,7 +421,6 @@ void process_millepede_results(bool helical_fitter = false)
 	  // fill in all stave and sensor lines for this layer using the single parameter set for the only sensor entry
 	  auto sensor_vec = stave_vec[0];
 	  auto par_vec = sensor_vec[0];
-	  //	  float params[6];
 	  std::array<double, 6> params;
 	  bool ret = getParameters(par_vec, params);
 	  if(!ret)
@@ -449,7 +445,6 @@ void process_millepede_results(bool helical_fitter = false)
 	      if(verbosity > 0) std::cout << " All sensors are grouped together for layer " << layer << " and stave " << stave << std::endl;
 	      // fill in all sensor lines for this stave, using the single parameter set for this stave's only sensor entry
 	      auto par_vec = sensor_vec[0];
-	      //float parameters[6];
 	      std::array<double, 6> parameters;
 	      bool ret = getParameters(par_vec, parameters);
 	      if(!ret)
@@ -467,7 +462,6 @@ void process_millepede_results(bool helical_fitter = false)
 	    {
 	      int sensor = is;	      
 	      auto par_vec = sensor_vec[is];
-	      //float parameters[6];
 	      std::array<double, 6> parameters;
 	      bool ret = getParameters(par_vec, parameters);
 	      if(!ret)
@@ -546,13 +540,13 @@ void process_millepede_results(bool helical_fitter = false)
     {
       std::cout << " Add new parameters to existing ones" << std::endl;
 
-      ifstream fexisting("currentAlignmentParams.txt");
+      ifstream fexisting("/sphenix/user/frawley/new_macros_april27/macros/detectors/sPHENIX/currentAlignmentParams.txt");
       if(!fexisting.is_open()) std::cout << "Unable to open existing params file" << std::endl;
       
-      ifstream fnew("new_alignment_corrections.txt");
+      ifstream fnew("/sphenix/user/frawley/new_macros_april27/macros/detectors/sPHENIX/new_alignment_corrections.txt");
       if(!fnew.is_open()) std::cout << "Unable to open new params file" << std::endl;
       
-      ofstream fupdated("updatedAlignmentParams.txt");
+      ofstream fupdated("/sphenix/user/frawley/new_macros_april27/macros/detectors/sPHENIX/updatedAlignmentParams.txt");
       
       TrkrDefs::hitsetkey key_exist, key_new;
       float pars_exist[6], pars_new[6], pars_update[6];
@@ -640,10 +634,11 @@ void process_millepede_results(bool helical_fitter = false)
     {  
       std::cout << " Add new parameters to existing ones" << std::endl;
       
-      ifstream foriginal("originalMisalignmentParams.txt");
+      //ifstream foriginal("originalMisalignmentParams.txt");
+      ifstream foriginal("/sphenix/user/frawley/new_macros_april27/macros/detectors/sPHENIX/localAlignmentParamsFile.txt");
       if(!foriginal.is_open()) std::cout << "Unable to open original misalignment params file" << std::endl;
       
-      ifstream fupdated("currentAlignmentParams.txt");
+      ifstream fupdated("/sphenix/user/frawley/new_macros_april27/macros/detectors/sPHENIX/currentAlignmentParams.txt");
       if(!fupdated.is_open()) std::cout << "Unable to open updated params file" << std::endl;
       
       ofstream fdifference("differenceAlignmentParams.txt");

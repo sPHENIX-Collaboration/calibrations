@@ -54,56 +54,77 @@ void plot_alignment_residuals()
   gStyle->SetStatW(0.3);
   gStyle->SetStatH(0.3);
 
+  TCanvas *cmvtx = new TCanvas("mvtx","mvtx",100,100,1600,800);
+  cmvtx->Divide(3,2);
+  TCanvas *cintt = new TCanvas("intt","intt",150,150,1600,800);
+  cintt->Divide(3,2);
+  TCanvas *ctpc = new TCanvas("tpc","tpc",200,200,1600,800);
+  ctpc->Divide(3,2);
+
+
   // read in the alignment parameters file and make histograms for each layer
   // There is one entry in the file for every surface in the detector
 
-  ifstream fin("differenceAlignmentParams.txt");
-  //ifstream fin("localAlignmentParamsFile.txt");
-  //ifstream fin("new_alignment_corrections.txt");
-  if(!fin.is_open()) std::cout << "Unable to open input alignment params file" << std::endl;
-  
-  TH2D *hpar[57][6];
-  for(int ilayer=0;ilayer<57;++ilayer)
-      {
-	for(int ipar = 0; ipar < 6; ++ipar)
-	  {
-	    double range = 0.5;  // mm
-	    double range_angles = 0.003;  // rad
-	    if(ipar < 3) range = range_angles;
-	    //if(ilayer > 6 && (ipar > 2 && ipar < 5)) range = 0.01;
-	    //if(ilayer > 6 && (ipar == 5)) range = 0.1;
-	    //if( (ilayer > 2 && ilayer < 7) && (ipar == 5) ) range = 0.4;
+  //  const static int nfiles = 2;
+  const static int nfiles = 1;
+  ifstream fin[nfiles];
+  //fin[0].open("currentAlignmentParams_test1.txt");
+  //fin[1].open("localAlignmentParamsFile_test1.txt");
+  fin[0].open("/sphenix/user/frawley/new_macros_april27/macros/detectors/sPHENIX/currentAlignmentParams_test2.txt");
+  fin[1].open("/sphenix/user/frawley/new_macros_april27/macros/detectors/sPHENIX/localAlignmentParamsFile_test2.txt");
+  //fin[0].open("currentAlignmentParams_test3.txt");
+  //fin[1].open("localAlignmentParamsFile_test3.txt");
+  //fin[0].open("currentAlignmentParams_test4.txt"); // all zero input
+  //fin[1].open("localAlignmentParamsFile_test4.txt");
+  //fin[0].open("currentAlignmentParams_test5.txt");
+  //fin[1].open("localAlignmentParamsFile_test5.txt");
+  int color[2] = {kBlack, kRed};
 
-	    char name[500];
-	    char title[500];
-	    sprintf(name,"hpar_%i_%i", ilayer, ipar);
-	    if(ilayer < 3)  sprintf(title,"MVTX parameter %i", ipar);
-	    else if (ilayer > 2 && ilayer < 7) sprintf(title,"INTT parameter %i", ipar);
-	    else if (ilayer > 6 && ilayer < 55) sprintf(title,"TPC parameter %i", ipar);
-	    else  sprintf(title,"MMS parameters %i", ipar);
-
-	    hpar[ilayer][ipar] = new TH2D(name, title, 600, 0, 200, 200, -range, +range);  // sensor number, parameter range
-
-	    hpar[ilayer][ipar]->GetXaxis()->SetNdivisions(504);
-	    hpar[ilayer][ipar]->GetXaxis()->SetLabelSize(0.05);
-	    hpar[ilayer][ipar]->GetXaxis()->SetTitleSize(0.05);
-	    if(ipar < 3)
-	      hpar[ilayer][ipar]->GetXaxis()->SetTitle("radians");
-	    else
-	      hpar[ilayer][ipar]->GetXaxis()->SetTitle("mm");	    	    
-	  }
-      }
-
-     std::string line;
-     float pars[6];      
-     TrkrDefs::hitsetkey hitsetkey;
-      while( getline(fin, line) )
+  for(int ifile=0; ifile < nfiles; ++ifile)
+    {
+      if(!fin[ifile].is_open()) 
+	{
+	  std::cout << "Unable to open input alignment params file for ifile = " << ifile << std::endl;
+	  exit(1);
+	}
+      TH2D *hpar[57][6];
+      for(int ilayer=0;ilayer<57;++ilayer)
+	{
+	  for(int ipar = 0; ipar < 6; ++ipar)
+	    {
+	      double range = 0.4;  // mm
+	      double range_angles = 0.003;  // rad
+	      if(ipar < 3) range = range_angles;
+	      char name[500];
+	      char title[500];
+	      sprintf(name,"hpar_%i_%i", ilayer, ipar);
+	      if(ilayer < 3)  sprintf(title,"MVTX parameter %i", ipar);
+	      else if (ilayer > 2 && ilayer < 7) sprintf(title,"INTT parameter %i", ipar);
+	      else if (ilayer > 6 && ilayer < 55) sprintf(title,"TPC parameter %i", ipar);
+	      else  sprintf(title,"MMS parameters %i", ipar);
+	      
+	      hpar[ilayer][ipar] = new TH2D(name, title, 600, 0, 200, 200, -range, +range);  // sensor number, parameter range
+	      hpar[ilayer][ipar]->SetLineColor(color[ifile]);	      
+	      hpar[ilayer][ipar]->GetXaxis()->SetNdivisions(504);
+	      hpar[ilayer][ipar]->GetXaxis()->SetLabelSize(0.05);
+	      hpar[ilayer][ipar]->GetXaxis()->SetTitleSize(0.05);
+	      if(ipar < 3)
+		hpar[ilayer][ipar]->GetXaxis()->SetTitle("radians");
+	      else
+		hpar[ilayer][ipar]->GetXaxis()->SetTitle("mm");	    	    
+	    }
+	}
+      
+      std::string line;
+      float pars[6];      
+      TrkrDefs::hitsetkey hitsetkey;
+      while( getline(fin[ifile], line) )
 	{
 	  stringstream line_in(line);
 	  std::cout << "line in: " << line_in.str() << std::endl;
 	  line_in >> hitsetkey;
 	  line_in >> pars[0] >> pars[1] >> pars[2] >> pars[3] >> pars[4] >> pars[5];
-
+	  
 	  // extract sensor # from hitsetkey
 	  unsigned int trkrid = TrkrDefs::getTrkrId(hitsetkey);
 	  unsigned int layer = TrkrDefs::getLayer(hitsetkey);
@@ -114,28 +135,27 @@ void plot_alignment_residuals()
 	      hpar[layer][ipar]->Fill(sensor, pars[ipar]);
 	    }
 	}
-
+      
       // make plots
-
-      TCanvas *cmvtx = new TCanvas("mvtx","mvtx",100,100,1600,800);
-      cmvtx->Divide(3,2);
+      
       for(int ipar=0;ipar<6;++ipar)
 	{
 	  cmvtx->cd(ipar+1);
 	  hpar[0][ipar]->Add(hpar[1][ipar]);
 	  hpar[0][ipar]->Add(hpar[2][ipar]);
-
+	  
 	  TH1D *hpar_combined = hpar[0][ipar]->ProjectionY();
 	  if(ipar < 3) 
 	    hpar_combined->GetXaxis()->SetTitle("rad");
 	  else
 	    hpar_combined->GetXaxis()->SetTitle("mm");
 
-	  hpar_combined->DrawCopy();
+	  if(ifile == 0)
+	    hpar_combined->DrawCopy();
+	  else
+	    hpar_combined->DrawCopy("same");
 	}
 
-      TCanvas *cintt = new TCanvas("intt","intt",150,150,1600,800);
-      cintt->Divide(3,2);
       for(int ipar=0;ipar<6;++ipar)
 	{
 	  cintt->cd(ipar+1);
@@ -149,11 +169,12 @@ void plot_alignment_residuals()
 	  else
 	    hpar_combined->GetXaxis()->SetTitle("mm");
 
-	  hpar_combined->DrawCopy();
+	  if(ifile == 0)
+	    hpar_combined->DrawCopy();
+	  else
+	    hpar_combined->DrawCopy("same");
 	}
 
-      TCanvas *ctpc = new TCanvas("tpc","tpc",200,200,1600,800);
-      ctpc->Divide(3,2);
       for(int ipar=0;ipar<6;++ipar)
 	{
 	  ctpc->cd(ipar+1);
@@ -168,12 +189,16 @@ void plot_alignment_residuals()
 	  else
 	    hpar_combined->GetXaxis()->SetTitle("mm");
 
-	  hpar_combined->DrawCopy();
+	  if(ifile == 0)
+	    hpar_combined->DrawCopy();
+	  else
+	    hpar_combined->DrawCopy("same");
+	  
 	}
-
-
-
-
+      
+      
+    }
+  
 }
 
       /*

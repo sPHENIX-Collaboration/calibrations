@@ -15,9 +15,13 @@
 // Copy that to where you want it
 
 // Creates an alignment corrections file containing all zero alignment corrections if true
-static bool make_zero_corrections = false;
- 
-// otherwise it adds misalignments
+static bool make_zero_corrections_all = false;
+ // otherwise it adds misalignments as specified in the get*Inputs() methods
+
+static bool make_zero_corrections_mvtx = false;
+static bool make_zero_corrections_intt = true;
+static bool make_zero_corrections_tpc = true;
+static bool make_zero_corrections_mms = true;
 
 // these are used for bookkeeping when using heirarchical offsets
 static std::array<unsigned int, 6> stave_now = {999,999,999,999,999,999};
@@ -27,12 +31,39 @@ static std::array<double,6> physical_sector_perturbation_now = {0,0,0,0,0,0};
 
 std::default_random_engine generator;
 
+bool is_in_mvtx(int layer)
+{
+  bool ret = false;
+  if(layer < 3) ret = true;
+  return ret;
+}
+
+bool is_in_intt(int layer)
+{
+  bool ret = false;
+  if(layer > 2 && layer < 7) ret = true;
+  return ret;
+}
+
+bool is_in_tpc(int layer)
+{
+  bool ret = false;
+  if(layer > 6 && layer < 55) ret = true;
+  return ret;
+}
+
+bool is_in_mms(int layer)
+{
+  bool ret = false;
+  if(layer > 54) ret = true;
+  return ret;
+}
 void getMvtxInputs( std::array<double, 6>& staveMean, std::array<double, 6>& staveDev, std::array<double, 6>& sensorDev)
 {
   // translations are in mm !!!
-  double stmean[6] = {0, 0, 0, 0.10, -0.10, 0.25};  // mean offset
-  double stdev[6] = {0, 0, 0, 0.05, 0.05, 0.05};  // sigma around mean offset
-  double sendev[6] = {0, 0, 0, 0.02, 0.02, 0.02}; // sigma, centered on zero
+  double stmean[6] = {0, 0, 0, 0.0, 0.0, 0.0};  // mean offset
+  double stdev[6] = {0, 0, 0, 0.1, 0.1, 0.0};  // sigma around mean offset
+  double sendev[6] = {0, 0, 0, 0.0, 0.0, 0.0}; // sigma, centered on zero
   
   for(int i=0; i<6; ++i)
     {  staveMean.at(i) = stmean[i]; }
@@ -60,8 +91,8 @@ void getInttInputs( std::array<double, 6>& staveMean, std::array<double, 6>& sta
 void getTpcInputs( std::array<double, 6>& staveMean, std::array<double, 6>& staveDev, std::array<double, 6>& sensorDev)
 {
   // translations are in mm !!!
-  double secmean[6] = {0, 0, 0, 0.20, -0.20, 0.300};  // mean sector offset (i.e. TPC offset)
-  double secdev[6] = {0, 0, 0, 0.10, 0.10, 0.1};  // sigma around mean sector offset
+  double secmean[6] = {0, 0, 0, 0.20, 0, 0.300};  // mean sector offset (i.e. TPC offset)
+  double secdev[6] = {0, 0, 0, 0.02, 0.02, 0.05};  // sigma around mean sector offset
   double surfdev[6] = {0, 0, 0, 0, 0, 0}; // surfaces added sigma, centered on zero
   
   for(int i=0; i<6; ++i)
@@ -112,7 +143,12 @@ std::array<double, 6> getOffset(unsigned int layer, unsigned int stave)
 {
   std::array<double, 6> offset={0,0,0,0,0,0};
 
-  if(make_zero_corrections) return offset;
+  // use ideal geometry for parts of the detector
+  if(make_zero_corrections_all) return offset;
+  if(is_in_mvtx(layer) && make_zero_corrections_mvtx) return offset;
+  if(is_in_intt(layer) && make_zero_corrections_intt) return offset;
+  if(is_in_tpc(layer) && make_zero_corrections_tpc) return offset;
+  if(is_in_mms(layer) && make_zero_corrections_mms) return offset;
 
   std::array<double, 6> staveMean = {0,0,0,0,0,0};
   std::array<double, 6> staveDev = {0,0,0,0,0,0};
@@ -121,7 +157,8 @@ std::array<double, 6> getOffset(unsigned int layer, unsigned int stave)
 
   for(int i=0;i<6;++i)
     {
-      if(staveMean.at(i) != 0 && stave != stave_now.at(i))
+      //if(staveMean.at(i) != 0 && stave != stave_now.at(i))
+      if(stave != stave_now.at(i))
 	{
 	  // new stave or sector, need new perturbation value
 	  std::normal_distribution<double> distribution(staveMean.at(i), staveDev.at(i));
@@ -149,7 +186,7 @@ std::array<double, 6> getOffset(unsigned int layer, unsigned int stave)
 std::array<double, 6> getOffsetTpc(unsigned int layer, unsigned int physical_sector)
 {
   std::array<double, 6> offset={0,0,0,0,0,0};
-  if(make_zero_corrections) return offset;
+  if(make_zero_corrections_tpc) return offset;
 
   std::array<double, 6> staveMean = {0,0,0,0,0,0};
   std::array<double, 6> staveDev = {0,0,0,0,0,0};
