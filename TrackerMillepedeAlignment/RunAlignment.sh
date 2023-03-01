@@ -22,7 +22,7 @@ cd $WORKDIR
 
 source /opt/sphenix/core/bin/sphenix_setup.sh -n
 
-git clone https://github.com/osbornjd/calibrations.git
+git clone https://github.com/sPHENIX-Collaboration/calibrations.git
 #this is just a branch with the alignment workflow set to be the default
 git clone -b alignment https://github.com/osbornjd/macros.git
 
