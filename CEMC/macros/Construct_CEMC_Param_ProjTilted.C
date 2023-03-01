@@ -2,8 +2,10 @@
 #include <TVector2.h>
 #include <TVector3.h>
 #include <iostream>
-
+#include <phparameter/PHParameters.h>
+#include <pdbcalbase/PdbParameterMapContainer.h>
 using namespace std;
+R__LOAD_LIBRARY(libg4detectors.so)
 
 // to load tower map from Richie/Dan
 class four_corner
@@ -14,9 +16,183 @@ class four_corner
 
 double coplanary_adjustment_sum = 0;
 
+
+
+
+four_corner *
+get_block(const int block_id, const int z_sign)
+{
+  //  From: Dan Cacace [mailto:dannycacace@gmail.com]
+  //  Sent: Wednesday, March 15, 2017 4:27 PM
+  //  To: Huang, Jin <jhuang@bnl.gov>
+  //  Cc: Woody, Craig <woody@bnl.gov>; Lynch, Don <dlynch@bnl.gov>
+  //  Subject: EMCal Layout Coordinates
+  //
+  //  Hi Jin,
+  //
+  //  Attached are the coordinates of the sheet metal box and blocks.
+  //
+  //  The gap between sheet metal boxes is 0.125" (3.175 mm), the gap between blocks is 0.015" (0.381 mm), and the gap between the box and blocks is also 0.015" (0.381 mm). Additionally, the sheet metal box is 0.030" (0.762 mm) thick and the distance between the tangent of a row of fibers and the edge of a block_id is 0.020" (0.5 mm). The fiber step pattern faces the blocks within a modal and the sheet metal box.
+  //
+  //  Let me know if I'm forgetting anything.
+  //
+  //  -Dan
+
+  //  const double radial_shift = 97 - 93.87578546;
+  const double radial_shift = 0;
+  const double data[] =
+      {
+          107.9138855, -0.27305,
+          107.9138855, -5.362621276,
+          93.87578546, -0.27305,
+          93.87578546, -5.362621276,
+          107.9138855, -5.362621276,
+          107.9138855, -10.45219255,
+          93.87578546, -5.362621276,
+          93.87578546, -10.45219255,
+          107.9138855, -10.45219255,
+          107.9138855, -15.54176383,
+          93.87578546, -10.45219255,
+          93.87578546, -15.54176383,
+          107.9138855, -15.54176383,
+          107.7619676, -21.35577554,
+          94.00872863, -15.54176383,
+          93.87578546, -20.62959852,
+          107.9138855, -21.36372007,
+          107.4639033, -27.13439494,
+          94.27145581, -20.65029008,
+          93.87578546, -25.72445806,
+          107.9138855, -27.1810862,
+          107.1763014, -32.89540798,
+          94.52732384, -25.7920633,
+          93.87578546, -30.83975917,
+          107.9138855, -33.00940459,
+          106.89999, -38.65565532,
+          94.77533018, -30.97878746,
+          93.87578546, -35.98823404,
+          107.9138855, -38.8633061,
+          106.6356031, -44.43110212,
+          95.01464578, -36.22147825,
+          93.87578546, -41.18199566,
+          107.9138855, -44.75659859,
+          106.3835878, -50.2368955,
+          95.24461422, -41.53054847,
+          93.87578546, -46.43259331,
+          107.9138855, -50.70234217,
+          106.1442164, -56.08741278,
+          95.46474583, -46.91588248,
+          93.87578546, -51.75105991,
+          107.9138855, -56.71291325,
+          105.9176023, -61.99630291,
+          95.67470777, -52.38690013,
+          93.87578546, -57.14795194,
+          107.9138855, -62.80005881,
+          105.7037169, -67.97652281,
+          95.87431111, -57.95261073,
+          93.87578546, -62.63338321,
+          107.9138855, -68.97494244,
+          105.502409, -74.04036989,
+          96.0634958, -63.6216576,
+          93.87578546, -68.21705304,
+          107.9138855, -75.24818329,
+          105.3134233, -80.19951155,
+          96.24231468, -69.40235412,
+          93.87578546, -73.9082697,
+          107.9138855, -81.62988875,
+          105.1364193, -86.46501223,
+          96.410917, -75.30271197,
+          93.87578546, -79.71596971,
+          107.9138855, -88.12968203,
+          104.9709886, -92.8473584,
+          96.56953235, -81.3304625,
+          93.87578546, -85.6487334,
+          107.9138855, -94.75672509,
+          104.8166707, -99.35648168,
+          96.71845534, -87.49307228,
+          93.87578546, -91.71479749,
+          107.9138855, -101.5197378,
+          104.6729681, -106.0017801,
+          96.85803143, -93.79775342,
+          93.87578546, -97.92206485,
+          107.9138855, -108.4270137,
+          104.539358, -112.7921379,
+          96.98864406, -100.2514698,
+          93.87578546, -104.278112,
+          107.9138855, -115.4864333,
+          104.4153043, -119.7359435,
+          97.11070332, -106.8609401,
+          93.87578546, -110.7901947,
+          107.9138855, -122.7054746,
+          104.3002657, -126.8411061,
+          97.22463606, -113.6326372,
+          93.87578546, -117.4652519,
+          107.9138855, -130.0912223,
+          104.1937043, -134.1150709,
+          97.33087753, -120.5727871,
+          93.87578546, -124.3099083,
+          107.9138855, -137.6503751,
+          104.0950911, -141.5648331,
+          97.42986432, -127.6873647,
+          93.87578546, -131.3304759,
+          107.9138855, -145.3892519,
+          104.0039111, -149.19695,
+          97.52202869, -134.9820895,
+          93.87578546, -138.532955,
+
+          0, 0, 0, 0, 0};
+
+  assert(block_id >= 0);
+  assert(block_id < 24);
+
+  const int offset = block_id * 8;
+
+  four_corner *b = new four_corner;
+
+  b->p1.Set(-z_sign * data[offset + 1], data[offset + 0] + radial_shift);
+  b->p2.Set(-z_sign * data[offset + 1 + 2], data[offset + 0 + 2] + radial_shift);
+  b->p3.Set(-z_sign * data[offset + 1 + 4], data[offset + 0 + 4] + radial_shift);
+  b->p4.Set(-z_sign * data[offset + 1 + 6], data[offset + 0 + 6] + radial_shift);
+
+  return b;
+}
+
+
+
+
+
+
+
+double CoplanaryFix(TVector3 p, TVector3 AveragePlaneNorm, TVector3 AveragePlaneCenter)
+{
+  TVector3 p_orig(p);
+  p_orig.SetX(0);
+
+  TVector3 p_vec(1, 0, 0);
+
+  const double x_new = (AveragePlaneCenter - p_orig).Dot(AveragePlaneNorm) / p_vec.Dot(AveragePlaneNorm);
+  assert(x_new > 0);
+
+  const double adjustment = x_new - p.X();
+  coplanary_adjustment_sum += fabs(adjustment);
+
+  cout << "CoplanaryFix - adjustment = " << adjustment << ", total adjustment so far = " << coplanary_adjustment_sum << endl;
+
+  return x_new;
+}
+
+
+
+
+
+
+
+
+
+
+ 
 void Construct_CEMC_Param_ProjTilted()
 {
-  const TString outputFolder = "../Geometry_2018ProjTilted/";
+  const TString outputFolder = "../Geometry_2023ProjTilted/";
 
   cout << "Construct_CEMC_Param_ProjTilted() - Entry -> " << outputFolder << endl;
 
@@ -25,7 +201,7 @@ void Construct_CEMC_Param_ProjTilted()
   PHParameters *param = new PHParameters("CEMC_0");
 
   param->set_string_param("description",
-                          "sPHENIX 2018 SPACAL design, 9-degree-tilted approximate projective design");
+                          "sPHENIX 2023 SPACAL design, 9-degree-tilted approximate projective design"); 
 
   const double inch_to_cm = 2.54;
   const double twopi = 2 * TMath::Pi();
@@ -94,7 +270,8 @@ void Construct_CEMC_Param_ProjTilted()
     //      const double rot = 2 * TMath::Pi() / (double) (azimuthal_n_sec)
     //          * ((double) (sec) - (nx - 1.) / 2) - TMath::Pi() / 2.;
 
-    const double rot = twopi / (double) (n_sector) * ((double) (sec));
+    // const double rot = twopi / (double) (n_sector) * ((double) (sec));
+    const double rot = twopi / (double) (n_sector) * ((double) (sec)) - TMath::Pi()/2;
 
     stringstream prefix;
     prefix << "sector_map";
@@ -248,7 +425,8 @@ void Construct_CEMC_Param_ProjTilted()
           TVector3 Cross2((p3 - p1).Cross(p4 - p1));
 
           TVector3 AveragePlaneNorm = Cross1 - Cross2;
-          AveragePlaneNorm = AveragePlaneNorm / AveragePlaneNorm.Mag();
+	  double vectornorm =  AveragePlaneNorm.Mag();
+	  AveragePlaneNorm = AveragePlaneNorm * ( 1 / vectornorm );
 
           TVector3 AveragePlaneCenter((p1 + p2 + p3 + p4));
           AveragePlaneCenter *= 1. / 4.;
@@ -315,159 +493,4 @@ void Construct_CEMC_Param_ProjTilted()
   paramcontainer->WriteToFile("CEMC", "root", outputFolder.Data());
 
   paramcontainer->WriteToFile("CEMC", "xml", outputFolder.Data());
-}
-
-double CoplanaryFix(TVector3 p, TVector3 AveragePlaneNorm, TVector3 AveragePlaneCenter)
-{
-  TVector3 p_orig(p);
-  p_orig.SetX(0);
-
-  TVector3 p_vec(1, 0, 0);
-
-  const double x_new = (AveragePlaneCenter - p_orig).Dot(AveragePlaneNorm) / p_vec.Dot(AveragePlaneNorm);
-  assert(x_new > 0);
-
-  const double adjustment = x_new - p.X();
-  coplanary_adjustment_sum += fabs(adjustment);
-
-  cout << "CoplanaryFix - adjustment = " << adjustment << ", total adjustment so far = " << coplanary_adjustment_sum << endl;
-
-  return x_new;
-}
-
-four_corner *
-get_block(const int block_id, const int z_sign)
-{
-  //  From: Dan Cacace [mailto:dannycacace@gmail.com]
-  //  Sent: Wednesday, March 15, 2017 4:27 PM
-  //  To: Huang, Jin <jhuang@bnl.gov>
-  //  Cc: Woody, Craig <woody@bnl.gov>; Lynch, Don <dlynch@bnl.gov>
-  //  Subject: EMCal Layout Coordinates
-  //
-  //  Hi Jin,
-  //
-  //  Attached are the coordinates of the sheet metal box and blocks.
-  //
-  //  The gap between sheet metal boxes is 0.125" (3.175 mm), the gap between blocks is 0.015" (0.381 mm), and the gap between the box and blocks is also 0.015" (0.381 mm). Additionally, the sheet metal box is 0.030" (0.762 mm) thick and the distance between the tangent of a row of fibers and the edge of a block_id is 0.020" (0.5 mm). The fiber step pattern faces the blocks within a modal and the sheet metal box.
-  //
-  //  Let me know if I'm forgetting anything.
-  //
-  //  -Dan
-
-  //  const double radial_shift = 97 - 93.87578546;
-  const double radial_shift = 0;
-  const double data[] =
-      {
-          107.9138855, -0.27305,
-          107.9138855, -5.362621276,
-          93.87578546, -0.27305,
-          93.87578546, -5.362621276,
-          107.9138855, -5.362621276,
-          107.9138855, -10.45219255,
-          93.87578546, -5.362621276,
-          93.87578546, -10.45219255,
-          107.9138855, -10.45219255,
-          107.9138855, -15.54176383,
-          93.87578546, -10.45219255,
-          93.87578546, -15.54176383,
-          107.9138855, -15.54176383,
-          107.7619676, -21.35577554,
-          94.00872863, -15.54176383,
-          93.87578546, -20.62959852,
-          107.9138855, -21.36372007,
-          107.4639033, -27.13439494,
-          94.27145581, -20.65029008,
-          93.87578546, -25.72445806,
-          107.9138855, -27.1810862,
-          107.1763014, -32.89540798,
-          94.52732384, -25.7920633,
-          93.87578546, -30.83975917,
-          107.9138855, -33.00940459,
-          106.89999, -38.65565532,
-          94.77533018, -30.97878746,
-          93.87578546, -35.98823404,
-          107.9138855, -38.8633061,
-          106.6356031, -44.43110212,
-          95.01464578, -36.22147825,
-          93.87578546, -41.18199566,
-          107.9138855, -44.75659859,
-          106.3835878, -50.2368955,
-          95.24461422, -41.53054847,
-          93.87578546, -46.43259331,
-          107.9138855, -50.70234217,
-          106.1442164, -56.08741278,
-          95.46474583, -46.91588248,
-          93.87578546, -51.75105991,
-          107.9138855, -56.71291325,
-          105.9176023, -61.99630291,
-          95.67470777, -52.38690013,
-          93.87578546, -57.14795194,
-          107.9138855, -62.80005881,
-          105.7037169, -67.97652281,
-          95.87431111, -57.95261073,
-          93.87578546, -62.63338321,
-          107.9138855, -68.97494244,
-          105.502409, -74.04036989,
-          96.0634958, -63.6216576,
-          93.87578546, -68.21705304,
-          107.9138855, -75.24818329,
-          105.3134233, -80.19951155,
-          96.24231468, -69.40235412,
-          93.87578546, -73.9082697,
-          107.9138855, -81.62988875,
-          105.1364193, -86.46501223,
-          96.410917, -75.30271197,
-          93.87578546, -79.71596971,
-          107.9138855, -88.12968203,
-          104.9709886, -92.8473584,
-          96.56953235, -81.3304625,
-          93.87578546, -85.6487334,
-          107.9138855, -94.75672509,
-          104.8166707, -99.35648168,
-          96.71845534, -87.49307228,
-          93.87578546, -91.71479749,
-          107.9138855, -101.5197378,
-          104.6729681, -106.0017801,
-          96.85803143, -93.79775342,
-          93.87578546, -97.92206485,
-          107.9138855, -108.4270137,
-          104.539358, -112.7921379,
-          96.98864406, -100.2514698,
-          93.87578546, -104.278112,
-          107.9138855, -115.4864333,
-          104.4153043, -119.7359435,
-          97.11070332, -106.8609401,
-          93.87578546, -110.7901947,
-          107.9138855, -122.7054746,
-          104.3002657, -126.8411061,
-          97.22463606, -113.6326372,
-          93.87578546, -117.4652519,
-          107.9138855, -130.0912223,
-          104.1937043, -134.1150709,
-          97.33087753, -120.5727871,
-          93.87578546, -124.3099083,
-          107.9138855, -137.6503751,
-          104.0950911, -141.5648331,
-          97.42986432, -127.6873647,
-          93.87578546, -131.3304759,
-          107.9138855, -145.3892519,
-          104.0039111, -149.19695,
-          97.52202869, -134.9820895,
-          93.87578546, -138.532955,
-
-          0, 0, 0, 0, 0};
-
-  assert(block_id >= 0);
-  assert(block_id < 24);
-
-  const int offset = block_id * 8;
-
-  four_corner *b = new four_corner;
-
-  b->p1.Set(-z_sign * data[offset + 1], data[offset + 0] + radial_shift);
-  b->p2.Set(-z_sign * data[offset + 1 + 2], data[offset + 0 + 2] + radial_shift);
-  b->p3.Set(-z_sign * data[offset + 1 + 4], data[offset + 0 + 4] + radial_shift);
-  b->p4.Set(-z_sign * data[offset + 1 + 6], data[offset + 0 + 6] + radial_shift);
-
-  return b;
 }

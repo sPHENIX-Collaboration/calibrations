@@ -11,17 +11,20 @@
 
 #include <cmath>
 
+R__LOAD_LIBRARY(libtrack_io.so)
+R__LOAD_LIBRARY(libmicromegas.so)
+
 // This macro makes a file named "data.txt" in the local directory
 // Copy that to where you want it
 
 // Creates an alignment corrections file containing all zero alignment corrections if true
-static bool make_zero_corrections_all = false;
+bool make_zero_corrections_all = false;
  // otherwise it adds misalignments as specified in the get*Inputs() methods
 
-static bool make_zero_corrections_mvtx = false;
-static bool make_zero_corrections_intt = true;
-static bool make_zero_corrections_tpc = true;
-static bool make_zero_corrections_mms = true;
+bool make_zero_corrections_mvtx = false;
+bool make_zero_corrections_intt = true;
+bool make_zero_corrections_tpc = true;
+bool make_zero_corrections_mms = true;
 
 // these are used for bookkeeping when using heirarchical offsets
 static std::array<unsigned int, 6> stave_now = {999,999,999,999,999,999};
@@ -220,8 +223,20 @@ std::array<double, 6> getOffsetTpc(unsigned int layer, unsigned int physical_sec
   return offset; 
 }
 
-void makeAlignmentParams()
+void makeAlignmentParams(
+			 bool _make_zero_corrections_all = false,
+			 bool _make_zero_corrections_mvtx = false,
+			 bool _make_zero_corrections_intt = false,
+			 bool _make_zero_corrections_tpc = false,
+			 bool _make_zero_corrections_mms = false
+)
 {
+  make_zero_corrections_all = _make_zero_corrections_all;
+  make_zero_corrections_mvtx = _make_zero_corrections_mvtx;
+  make_zero_corrections_intt = _make_zero_corrections_intt;
+  make_zero_corrections_tpc = _make_zero_corrections_tpc;
+  make_zero_corrections_mms = _make_zero_corrections_mms;
+
   // mvtxdat for each layer: rMin, rMid, rMax, NChip/Stave, phi0, nStaves
   double mvtxdat[3][6] = {{24.61, 25.23, 27.93, 9., 0.285, 12.}, {31.98, 33.36, 36.25, 9., 0.199, 16.},{39.93, 41.48, 44.26, 9., 0.166, 20.}};
 
