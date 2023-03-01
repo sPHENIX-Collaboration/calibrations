@@ -7,14 +7,12 @@
 
 #include <TH1D.h>
 #include <TH2D.h>
+#include <TFile.h>
 #include <TCanvas.h>
 #include <TStyle.h>
 #include <iostream>
 #include <fstream>
 #include <string>
-
-R__LOAD_LIBRARY(libtrack_io.so)
-R__LOAD_LIBRARY(libmicromegas.so)
 
 unsigned int getSensor(TrkrDefs::hitsetkey hitsetkey)
 {

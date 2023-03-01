@@ -11,9 +11,6 @@
 
 #include <cmath>
 
-R__LOAD_LIBRARY(libtrack_io.so)
-R__LOAD_LIBRARY(libmicromegas.so)
-
 // This macro makes a file named "data.txt" in the local directory
 // Copy that to where you want it
 
