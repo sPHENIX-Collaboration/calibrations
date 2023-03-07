@@ -14,9 +14,6 @@
 #include <sstream>
 #include <string>
 
-R__LOAD_LIBRARY(libtrack_io.so)
-R__LOAD_LIBRARY(libmicromegas.so)
-
 int get_tpc_region(int layer)
 {
   int region = 0;
@@ -250,8 +247,7 @@ void process_millepede_results(std::string pedefilename = "millepede.res",
   int nladders_layer[7] = {12, 16, 20, 12, 12, 16, 16};
 
   ifstream fin(pedefilename);
-
-  if(!fin.is_open()) std::cout << "Unable to open file" << std::endl;
+  if(!fin.is_open()) std::cout << "Unable to open file name " << pedefilename << std::endl;
 
   int label = 0;
   float align = 0.0;
@@ -287,8 +283,10 @@ void process_millepede_results(std::string pedefilename = "millepede.res",
       int sensor = (label - layer *1000000 -stave*10000) / 10;
       int ipar = label - layer *1000000 -stave*10000 - sensor*10;
 
+      TrkrDefs::hitsetkey hsk = getHitSetKey(layer, stave, sensor);
+
       if(verbosity > 0) 
-	std::cout << " Input: layer " << layer << " stave " << stave << " sensor " << sensor << " ipar " << ipar << " label " << label << " align " << align << std::endl;
+	std::cout << " Input: layer " << layer << " stave " << stave << " sensor " << sensor << " hitsetkey " << hsk << " ipar " << ipar << " label " << label << " align " << align << std::endl;
 
       if(layer > layer_keep || fin.eof())
 	{
