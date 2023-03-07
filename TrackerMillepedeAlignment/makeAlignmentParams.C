@@ -17,14 +17,24 @@ R__LOAD_LIBRARY(libmicromegas.so)
 // This macro makes a file named "data.txt" in the local directory
 // Copy that to where you want it
 
+/*
+  Usage:
+      The values of surface offsets are set at different levels by setting arrays in: 
+          getMvtxInputs()   - set stave global mean, random dev wrt mean, sensor dev wrt to stave
+          getInttInputs()      - set stave global mean, random dev wrt mean, sensor dev wrt to stave
+          getTpcInputs()     - set TPC global mean, sector dev wrt to TPC, surface dev wrt sector
+          getMmsInputs()  - set tile global mean, tile random dev wrt mean
+ */
+
 // Creates an alignment corrections file containing all zero alignment corrections if true
 bool make_zero_corrections_all = false;
  // otherwise it adds misalignments as specified in the get*Inputs() methods
 
+// Set all alignment corrections to zero for specified subsystems only
 bool make_zero_corrections_mvtx = false;
-bool make_zero_corrections_intt = true;
-bool make_zero_corrections_tpc = true;
-bool make_zero_corrections_mms = true;
+bool make_zero_corrections_intt = false;
+bool make_zero_corrections_tpc = false;
+bool make_zero_corrections_mms = false;
 
 // these are used for bookkeeping when using heirarchical offsets
 static std::array<unsigned int, 6> stave_now = {999,999,999,999,999,999};
@@ -66,7 +76,7 @@ void getMvtxInputs( std::array<double, 6>& staveMean, std::array<double, 6>& sta
   // translations are in mm !!!
   double stmean[6] = {0, 0, 0, 0.0, 0.0, 0.0};  // mean offset
   double stdev[6] = {0, 0, 0, 0.1, 0.1, 0.0};  // sigma around mean offset
-  double sendev[6] = {0, 0, 0, 0.0, 0.0, 0.0}; // sigma, centered on zero
+  double sendev[6] = {0, 0, 0, 0.005, 0.005, 0.005}; // sigma, centered on zero
   
   for(int i=0; i<6; ++i)
     {  staveMean.at(i) = stmean[i]; }
@@ -79,9 +89,9 @@ void getMvtxInputs( std::array<double, 6>& staveMean, std::array<double, 6>& sta
 void getInttInputs( std::array<double, 6>& staveMean, std::array<double, 6>& staveDev, std::array<double, 6>& sensorDev)
 {
   // translations are in mm !!!
-  double stmean[6] = {0, 0, 0, -0.10, 0.10, -0.25};  // mean stave offset
+  double stmean[6] = {0, 0, 0, 0., 0., 0.};  // mean stave offset
   double stdev[6] = {0, 0, 0, 0.05, 0.05, 0.05};  // sigma around mean stave offset
-  double sendev[6] = {0, 0, 0, 0.02, 0.02, 0.02}; // sigma of sensor within stave, centered on zero
+  double sendev[6] = {0, 0, 0, 0.01, 0.01, 0.01}; // sigma of sensor within stave, centered on zero
   
   for(int i=0; i<6; ++i)
     {  staveMean.at(i) = stmean[i];  }
@@ -94,7 +104,7 @@ void getInttInputs( std::array<double, 6>& staveMean, std::array<double, 6>& sta
 void getTpcInputs( std::array<double, 6>& staveMean, std::array<double, 6>& staveDev, std::array<double, 6>& sensorDev)
 {
   // translations are in mm !!!
-  double secmean[6] = {0, 0, 0, 0.20, 0, 0.300};  // mean sector offset (i.e. TPC offset)
+  double secmean[6] = {0, 0, 0, 0., 0., 0.};  // mean sector offset (i.e. TPC offset)
   double secdev[6] = {0, 0, 0, 0.02, 0.02, 0.05};  // sigma around mean sector offset
   double surfdev[6] = {0, 0, 0, 0, 0, 0}; // surfaces added sigma, centered on zero
   
