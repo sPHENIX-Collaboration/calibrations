@@ -24,7 +24,7 @@ unsigned int getSensor(TrkrDefs::hitsetkey hitsetkey)
       unsigned int staveid = MvtxDefs::getStaveId(hitsetkey);
       unsigned int chipid = MvtxDefs::getChipId(hitsetkey);
       sensor = staveid*9 + chipid;
-      std::cout << " staveid " << staveid << " chipid " << chipid << std::endl;
+      //      std::cout << " staveid " << staveid << " chipid " << chipid << std::endl;
     }
   else if(trkrid == TrkrDefs::inttId)
     {
@@ -50,19 +50,11 @@ unsigned int getSensor(TrkrDefs::hitsetkey hitsetkey)
 
 }
 
-void plot_alignment_residuals(std::string inputfilename,
-			      std::string outfilename)
+void plot_alignment_residuals(std::string inputfilename = "data.txt",
+			      std::string outfilename = "tmp.root")
 {
   gStyle->SetStatW(0.3);
   gStyle->SetStatH(0.3);
-
-  TCanvas *cmvtx = new TCanvas("mvtx","mvtx",100,100,1600,800);
-  cmvtx->Divide(3,2);
-  TCanvas *cintt = new TCanvas("intt","intt",150,150,1600,800);
-  cintt->Divide(3,2);
-  TCanvas *ctpc = new TCanvas("tpc","tpc",200,200,1600,800);
-  ctpc->Divide(3,2);
-
 
   // read in the alignment parameters file and make histograms for each layer
   // There is one entry in the file for every surface in the detector
@@ -78,7 +70,7 @@ void plot_alignment_residuals(std::string inputfilename,
     {
       for(int ipar = 0; ipar < 6; ++ipar)
 	{
-	  double range = 0.5;  // mm
+	  double range = 2.5;  // mm
 	  double range_angles = 0.003;  // rad
 	  if(ipar < 3) range = range_angles;
 	  //if(ilayer > 6 && (ipar > 2 && ipar < 5)) range = 0.01;
@@ -111,7 +103,7 @@ void plot_alignment_residuals(std::string inputfilename,
   while( getline(fin, line) )
     {
       stringstream line_in(line);
-      std::cout << "line in: " << line_in.str() << std::endl;
+      //      std::cout << "line in: " << line_in.str() << std::endl;
       line_in >> hitsetkey;
       line_in >> pars[0] >> pars[1] >> pars[2] >> pars[3] >> pars[4] >> pars[5];
       
@@ -119,7 +111,7 @@ void plot_alignment_residuals(std::string inputfilename,
       unsigned int trkrid = TrkrDefs::getTrkrId(hitsetkey);
       unsigned int layer = TrkrDefs::getLayer(hitsetkey);
       unsigned int sensor = getSensor(hitsetkey);
-      std::cout << "      layer " << layer << " trkrid " << trkrid << " sensor " << sensor << std::endl;
+      //      std::cout << "      layer " << layer << " trkrid " << trkrid << " sensor " << sensor << std::endl;
       for(int ipar=0;ipar<6;++ipar)
 	{
 	  hpar[layer][ipar]->Fill(sensor, pars[ipar]);
