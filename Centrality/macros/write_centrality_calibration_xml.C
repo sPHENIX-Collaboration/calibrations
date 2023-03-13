@@ -1,8 +1,10 @@
 #include <PHParameters.h>
 
-void write_centrality_calibration_xml() {
+// run interactively with:
+//    .L $OFFLINE_MAIN/lib/libphparameter.so
+//    .x write_centrality_calibration_xml.C
 
-  gSystem->Load("libg4detectors.so");
+void write_centrality_calibration_xml() {
 
   PHParameters* param = new PHParameters("centrality");
 
