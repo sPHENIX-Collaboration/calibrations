@@ -1,0 +1,28 @@
+Decay B_s0
+1.0000 J/psi   phi                                     SVV_HELAMP  1.0 0.0 1.0 0.0 1.0 0.0; #[Reconstructed PDG2011]
+Enddecay
+#
+Decay J/psi
+1.0000 e+      e-                                      PHOTOS   VLL; #[Reconstructed PDG2011]
+Enddecay
+#
+Decay phi
+1.0000 K+      K-                                      VSS; #[Reconstructed PDG2011]
+Enddecay
+#
+
+
+Decay anti-B_s0
+1.0000 J/psi   phi                                     SVV_HELAMP  1.0 0.0 1.0 0.0 1.0 0.0; #[Reconstructed PDG2011]
+Enddecay
+#
+Decay J/psi
+1.0000 e+      e-                                      PHOTOS   VLL; #[Reconstructed PDG2011]
+Enddecay
+#
+Decay phi
+1.0000 K+      K-                                      VSS; #[Reconstructed PDG2011]
+Enddecay
+#
+
+End
