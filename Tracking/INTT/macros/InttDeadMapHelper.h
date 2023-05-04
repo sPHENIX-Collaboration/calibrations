@@ -43,6 +43,9 @@ struct InttDeadMap_Param_s
 	InttDeadMap_Double_t	p;
 	InttDeadMap_Double_t	q;
 
+	InttDeadMap_Double_t	mu;
+	InttDeadMap_Double_t	sg;
+
 	InttDeadMap_Long_t	n_g;
 	InttDeadMap_Long_t	n_l;
 	InttDeadMap_Long_t	n_u;
@@ -57,9 +60,9 @@ struct InttDeadMap_Point_s* get_point(struct InttDeadMap_Point_s*, InttDeadMap_L
 
 void init_params(struct InttDeadMap_Param_s*, struct InttDeadMap_Point_s*, InttDeadMap_Long_t, InttDeadMap_Double_t, InttDeadMap_Double_t);
 
-void count_type_i(struct InttDeadMap_Param_s*);
-void check_type_i(struct InttDeadMap_Param_s*);
+int count_type_i(struct InttDeadMap_Param_s*);
+int check_type_i(struct InttDeadMap_Param_s*);
 
-void gen_points(struct InttDeadMap_Param_s*);
+void gen_points(struct InttDeadMap_Param_s*, InttDeadMap_Double_t);
 
 #endif

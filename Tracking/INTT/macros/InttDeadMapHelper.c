@@ -95,6 +95,9 @@ void init_params(struct InttDeadMap_Param_s* params, struct InttDeadMap_Point_s*
 	params->p = 1.0 - erfl(n_z / sqrtl(2.0));
 	params->q = sqrtl(params->p * (1.0 - params->p));
 
+	params->mu = 0;
+	params->sg = 0;
+
 	params->n_g = 0;
 	params->n_l = 0;
 	params->n_u = 0;
@@ -102,8 +105,11 @@ void init_params(struct InttDeadMap_Param_s* params, struct InttDeadMap_Point_s*
 	params->D = 0;
 }
 
-void count_type_i(struct InttDeadMap_Param_s* params)
+int count_type_i(struct InttDeadMap_Param_s* params)
 {
+	//Alternatively, instead of a two-pass and then classify,
+	//I can fit to a Gaussian and use a goodness-of-fit parameter
+
 	struct InttDeadMap_Point_s* points = params->points;
 
 	InttDeadMap_Long_t i_lower = params->i_lower;
@@ -127,6 +133,9 @@ void count_type_i(struct InttDeadMap_Param_s* params)
 	for(i = i_lower; i < i_upper; ++i)sg += (points[i].counts - mu) * (points[i].counts - mu);
 	sg /= (i_upper - i_lower);
 	sg = sqrtl(sg);
+
+	params->mu = mu;
+	params->sg = sg;
 
 	lower = mu - params->n_z * sg;
 	upper = mu + params->n_z * sg;
@@ -154,27 +163,109 @@ void count_type_i(struct InttDeadMap_Param_s* params)
 	params->n_g = n_g;
 	params->n_l = n_l;
 	params->n_u = n_u;
+
+	return EXIT_SUCCESS;
 }
 
-void check_type_i(struct InttDeadMap_Param_s* params)
+int check_type_i(struct InttDeadMap_Param_s* params)
 {
-	InttDeadMap_Double_t lower = params->p * (params->i_upper - params->i_lower) - params->q * params->n_t * sqrtl(params->i_upper - params->i_lower);
-	InttDeadMap_Double_t upper = params->p * (params->i_upper - params->i_lower) + params->q * params->n_t * sqrtl(params->i_upper - params->i_lower);
+	printf("check_type_i\n");
 
-	std::cout << "p: " << params->p << std::endl;
-	std::cout << lower << "\tto\t" << upper << std::endl;
-	std::cout << params->p * (params->i_upper - params->i_lower) << std::endl;
-	std::cout << params->n_l << std::endl;
-	std::cout << params->n_u << std::endl;
+	if(params->i_upper - params->i_lower <= 1)return EXIT_FAILURE;
+
+	count_type_i(params);
+
+	{
+		int flag = 0;
+
+		struct InttDeadMap_Point_s* points = params->points;
+
+		InttDeadMap_Long_t i_lower = params->i_lower;
+		InttDeadMap_Long_t i_upper = params->i_upper;
+
+		InttDeadMap_Long_t n_g = params->n_g;
+		InttDeadMap_Long_t n_l = params->n_l;
+		InttDeadMap_Long_t n_u = params->n_u;
+
+		InttDeadMap_Double_t mu = params->p * (i_upper - i_lower);
+		InttDeadMap_Double_t sg = params->q * sqrtl(i_upper - i_lower);
+
+		InttDeadMap_Double_t lower = mu - params->n_t * sg;
+		InttDeadMap_Double_t upper = mu + params->n_t * sg;
+
+		InttDeadMap_Long_t D;
+
+		D = 0;
+		if(n_l + n_u < floor(lower))
+		{
+			D = floor(lower) - n_l - n_u;
+		}
+		if(ceil(upper) < n_l + n_u)
+		{
+			D = n_l + n_u - ceil(upper);
+		}
+		if(n_l - n_u > ceil((upper - lower) / 2.0))
+		{
+			D = n_l - n_u - ceil((upper - lower) / 2.0);
+		}
+		if(n_u - n_l > ceil((upper - lower) / 2.0))
+		{
+			D = n_u - n_l - ceil((upper - lower) / 2.0);
+		}
+
+		if(D == 0)return EXIT_SUCCESS;
+
+		mu = params->mu;
+		sg = params->sg;
+
+		std::cout << "\t" << floor(lower) << " < " << n_l << " + " << n_u << " < " << ceil(upper) << std::endl;
+		std::cout << "\t" << mu << " " << sg << std::endl;
+
+		lower = mu - params->n_z * sg;
+		upper = mu + params->n_z * sg;
+
+		flag = 0;
+		flag = flag || points[i_lower].status != InttDeadMap_Status_GOOD;
+		flag = flag || points[i_upper - 1].status != InttDeadMap_Status_GOOD;
+
+		params->D = 0;
+		while(D)
+		{
+			if(i_upper - i_lower <= 1)break;
+
+			if(points[i_upper - 1].counts - mu < mu - points[i_lower].counts)
+			{
+				if(flag && points[i_lower].status == InttDeadMap_Status_GOOD)break;
+				points[i_lower].status = InttDeadMap_Status_LOWER;
+				++i_lower;
+			}
+			else
+			{
+				if(flag && points[i_upper - 1].status == InttDeadMap_Status_GOOD)break;
+				points[i_upper - 1].status = InttDeadMap_Status_UPPER;
+				--i_upper;
+			}
+
+			--D;
+			++params->D;
+		}
+
+		params->i_lower = i_lower;
+		params->i_upper = i_upper;
+	}
+
+	//return EXIT_SUCCESS;
+	return check_type_i(params);
 }
 
-void gen_points(struct InttDeadMap_Param_s* params)
+void gen_points(struct InttDeadMap_Param_s* params, InttDeadMap_Double_t frac)
 {
 	struct InttDeadMap_Point_s* points = params->points;
 	InttDeadMap_Long_t N = params->N;
 
 	InttDeadMap_Double_t mu = 4121.1324151;
 	InttDeadMap_Double_t sg = 124.14124;
+	InttDeadMap_Long_t n_bad = ceil(frac * N);
 
 	InttDeadMap_Double_t z[2];
 	InttDeadMap_Double_t u[2];
@@ -199,6 +290,20 @@ void gen_points(struct InttDeadMap_Param_s* params)
 		points[i].hitkey = i;
 		points[i].counts = c;
 		points[i].status = InttDeadMap_Status_GOOD;
+	}
+
+	c = 999999.999;
+	for(i = 0; i < n_bad; ++i)
+	{
+		h = rand() % N;
+		points[h].counts = c;
+	}
+
+	c = 0.0;
+	for(i = 0; i < n_bad; ++i)
+	{
+		h = rand() % N;
+		points[h].counts = c;
 	}
 }
 
