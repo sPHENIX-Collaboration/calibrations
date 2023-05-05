@@ -5,12 +5,13 @@ R__LOAD_LIBRARY(libintt.so)
 
 void InttDeadMap()
 {
-	InttDeadMapHelper::InttDeadMap_Long_t N = 34151;
-	InttDeadMapHelper::InttDeadMap_Double_t frac = 0.2;
+	InttDeadMapHelper::InttDeadMap_Long_t N = 156117;
+	InttDeadMapHelper::InttDeadMap_Double_t frac = 0.01;
 
 	InttDeadMapHelper dmh(N, 2.0, 2.0);
 
 	dmh.gen_points(frac);
+
 	dmh.quicksort_counts(0, N);
 	dmh.check_type_i();
 
