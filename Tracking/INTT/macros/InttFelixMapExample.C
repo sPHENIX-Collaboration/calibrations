@@ -5,8 +5,8 @@ R__LOAD_LIBRARY(libintt.so)
 
 void InttFelixMapExample()
 {
-	int felix = 3;
-	int felix_channel = 7;
+	int felix = 0;
+	int felix_channel = 13;
 
 	struct INTT_Felix::Ladder_s ldr_strct;
 
