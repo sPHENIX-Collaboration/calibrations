@@ -1,6 +1,3 @@
-#ifndef DEAD_CHANNEL_CLASSIFIER_H
-#define DEAD_CHANNEL_CLASSIFIER_H
-
 #include <iostream>
 
 #include "TFile.h"
