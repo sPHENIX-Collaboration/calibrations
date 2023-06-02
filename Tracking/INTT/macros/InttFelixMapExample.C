@@ -1,5 +1,5 @@
 R__LOAD_LIBRARY(libintt.so)
-#include <intt/InttFelixMap.h>
+#include <intt/InttFelixMapObsolete.h>
 
 #include <iostream>
 
@@ -34,11 +34,20 @@ void InttFelixMapExample()
 
 	//	I have not implemented the reverse mapping
 
-	std::cout << "Felix: " << felix << std::endl;
-	std::cout << "Felix Channel: " << felix_channel << std::endl;
+	//std::cout << "Felix: " << felix << std::endl;
+	//std::cout << "Felix Channel: " << felix_channel << std::endl;
 
-	std::cout << "\tbarrel: " << ldr_strct.barrel << std::endl;
-	std::cout << "\tlayer: " << ldr_strct.layer << std::endl;
-	std::cout << "\tladder: " << ldr_strct.ladder << std::endl;
+	//std::cout << "\tbarrel: " << ldr_strct.barrel << std::endl;
+	//std::cout << "\tlayer: " << ldr_strct.layer << std::endl;
+	//std::cout << "\tladder: " << ldr_strct.ladder << std::endl;
+	
+	felix = 0;
+	for(felix_channel = 0; felix_channel < 14; ++felix_channel)
+	{
+		INTT_Felix::FelixMap(felix, felix_channel, ldr_strct);
+		std::cout << "lyr: " << ldr_strct.barrel * 2 + ldr_strct.layer << std::endl;
+		std::cout << "ldr: " << ldr_strct.ladder << std::endl;
+		std::cout << std::endl;
+	}
 }
 
