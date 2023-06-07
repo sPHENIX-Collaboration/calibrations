@@ -10,23 +10,47 @@
 
 #include "RooPlot.h"
 
-void DeadChannelClassifier()
+Long64_t num_bins = 20;
+
+void MakeDummyTree();
+
+void DeadChannelClassifier(std::string filename, std::string treename="tree")
 {
-	//v for debugging
-	Double_t num_cold = 0.2;
-	Double_t lambda_cold = 2.2;
+	//TFile* file = TFile::Open(filename.c_str());
+	//if(!file)
+	//{
+	//	std::cout << "Could not open file:" << std::endl;
+	//	std::cout << "\t" << filename << std::endl;
+	//	return;
+	//}
+	//TTree* tree = (TTree*)file->Get(treename.c_str());
+	//if(!file)
+	//{
+	//	std::cout << "Could not get tree \"" << treename << "\"" << std::endl;
+	//	std::cout << "From file:" << std::endl;
+	//	std::cout << "\t" << filename << std::endl;
+	//	return;
+	//}
+	TTree* tree = nullptr;
+	MakeDummyTree(tree);
 
-	Double_t lambda_nom = 12.3;
+	Long64_t min_hits = INT_MAX;
+	Long64_t max_hits = 0;
+	Long64_t avg_hits = 0;
 
-	Double_t num_hot = 0.3;
-	Double_t lambda_hot = 62.0;
-	//^ for debugging
+	int num_hits;
+	tree->SetBranchAddress("num_hits", &num_hits);
+	for(Long64_t n = 0; n < tree->GetEntriesFast(); ++n)
+	{
+		tree->GetEntry(n);
 
-	Long64_t count_min = 0;
-	Long64_t count_max = 100;
-	Long64_t num_bins = 20;
-	Long64_t N = 1000;
-	RooRealVar x("x", "x", count_min, count_max);
+		if(num_hits < min_hits)min_hits = num_hits;
+		if(max_hits < num_hits)max_hits = num_hits;
+
+		avg_hits += num_hits;
+	}
+	avg_hits /= tree->GetEntriesFast();
+	RooRealVar x("num_hits", "num_hits", count_min, count_max);
 
 	RooArgList lambda;
 	RooArgList poiss;
@@ -39,31 +63,9 @@ void DeadChannelClassifier()
 	}
 	RooAddPdf* model = new RooAddPdf("model", "model", poiss, coef);
 
-	//make a TTree* from a PRDF file and RooFit::Import(*tree)
-	RooDataSet* data_set = new RooDataSet("data_set", "data_set", RooArgSet(x));
-
-	//v for debugging
-	((RooRealVar&)lambda[0]).setVal(lambda_nom);
-	((RooRealVar&)coef[0]).setVal(N - num_cold * N - num_hot * N);
-
-	((RooRealVar&)lambda[1]).setVal(lambda_cold);
-	((RooRealVar&)coef[1]).setVal(num_cold * N);
-
-	((RooRealVar&)lambda[2]).setVal(lambda_hot);
-	((RooRealVar&)coef[2]).setVal(num_hot * N);
-
-	RooDataSet* data[3];
-	for(int i = 0; i < 3; ++i)
-	{
-		data[i] = ((RooPoisson&)poiss[i]).generate(x, ((RooRealVar&)coef[i]).getValV());
-		data_set->append(*data[i]);
-	}
-	//^for debugging
-
 	//change initial estimates based on average hit rate
-	//need to get the first value as an average; other defaults should be fine
-	((RooRealVar&)lambda[0]).setVal(lambda_hot * num_hot + lambda_cold * num_cold + (1.0 - num_hot - num_cold) * lambda_nom);
-	((RooRealVar&)coef[0]).setVal(N);
+	((RooRealVar&)lambda[0]).setVal(avg_hits);
+	((RooRealVar&)coef[0]).setVal(tree->GetEntriesFast());
 
 	((RooRealVar&)lambda[1]).setVal(1);
 	((RooRealVar&)coef[1]).setVal(0);
@@ -71,8 +73,34 @@ void DeadChannelClassifier()
 	((RooRealVar&)lambda[2]).setVal(2 * ((RooRealVar&)lambda[0]).getValV());
 	((RooRealVar&)coef[2]).setVal(N);
 	
+	RooDataSet* data_set = new RooDataSet("data_set", "data_set", RooArgSet(x), RooFit::Import(*tree));
 	RooFitResult* result = model->fitTo(*data_set);
 
+	RooPlot* plot = x.frame(RooFit::Title("Hitrates across INTT channels"));
+
+	data_set->plotOn
+	(
+		plot//,
+		//RooFit::RefreshNorm(),
+		//RooFit::Binning(num_bins, count_min, count_max),
+		//RooFit::MarkerColor(kBlack),
+		//RooFit::MarkerStyle(8)
+	);
+
+	model->plotOn
+	(
+		plot//,
+		//RooFit::LineColor(kRed),
+		//RooFit::LineStyle(1),
+		//RooFit::LineWidth(3),
+		//RooFit::Normalization(data_set->sumEntries())
+	);
+
+	TCanvas* canvas = new TCanvas("cnvs", "Hitrates across INTT channels");
+	canvas->cd();
+	plot->Draw();
+
+	//channel classification
 	//given a count
 	Long64_t count;
 
@@ -99,29 +127,36 @@ void DeadChannelClassifier()
 	std::cout << "P cold:\t"	<< ((RooPoisson&)poiss[1]).getValV() * ((RooRealVar&)coef[1]).getValV() << std::endl;
 	std::cout << "P hot:\t"		<< ((RooPoisson&)poiss[2]).getValV() * ((RooRealVar&)coef[2]).getValV() << std::endl;
 
-
-	RooPlot* plot = x.frame(RooFit::Title("Poiss"));
-	//...
-
-	data_set->plotOn
-	(
-		plot//,
-		//RooFit::RefreshNorm(),
-		//RooFit::Binning(num_bins, count_min, count_max),
-		//RooFit::MarkerColor(kBlack),
-		//RooFit::MarkerStyle(8)
-	);
-
-	model->plotOn
-	(
-		plot//,
-		//RooFit::LineColor(kRed),
-		//RooFit::LineStyle(1),
-		//RooFit::LineWidth(3),
-		//RooFit::Normalization(data_set->sumEntries())
-	);
-
-	TCanvas* canvas = new TCanvas("foo", "bar");
-	canvas->cd();
-	plot->Draw();
 };
+
+void MakeDummyTree(TTree*& tree)
+{
+	if(tree)delete tree;
+
+	tree = new TTree("tree", "tree");
+
+	int num_hits = 0;
+	int channel = 0;
+	tree->Branch("num_hits", &num_hits);
+	tree->Branch("channel", &channel);
+
+	RooArgList lambda;
+	RooArgList poiss;
+	for(int i = 0; i < 3; ++i)
+	{
+		lambda.addOwned(*(new RooRealVar(Form("lambda_%d", i), Form("lambda_%d", i), 0, FLT_MAX)));
+		poiss.addOwned(*(new RooPoisson(Form("poiss_%d", i), Form("poiss_%d", i), x, (RooRealVar&)lambda[i])));
+	}
+
+	int N;
+	for(int i = 0; i < 3; ++i)
+	{
+		N = (int)TRandom::Uniform(100);
+		for(int n = 0; n < N; ++n)
+		{
+			num_hits = poiss[i])
+			++channel;
+			tree->Fill();
+		}
+	}
+}
