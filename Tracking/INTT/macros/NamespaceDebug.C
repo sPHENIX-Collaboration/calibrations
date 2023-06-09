@@ -19,9 +19,9 @@ void NamespaceDebug()
 	rawdata_temp = (struct Intt::RawData_s){.felix_server = 0, .felix_channel = 0, .chip = 1, .channel = 0};
 	std::cout << (rawdata < rawdata_temp) << std::endl;
 
-	//std::map<struct Intt::RawData_s, Long64_t> my_map;
-	//my_map[rawdata] = 0;
-	//my_map[rawdata_temp] = 1;
+	std::map<struct Intt::RawData_s, Long64_t> my_map;
+	my_map[rawdata] = 0;
+	my_map[rawdata_temp] = 1;
 
 	online = (struct Intt::Online_s){.lyr = 0, .ldr = 0, .arm = 0, .chp = 0, .chn = 0};
 	b = false;
