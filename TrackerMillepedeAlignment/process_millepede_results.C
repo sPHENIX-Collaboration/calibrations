@@ -14,6 +14,8 @@
 #include <sstream>
 #include <string>
 
+const static int verbosity = 0;
+
 int get_tpc_region(int layer)
 {
   int region = 0;

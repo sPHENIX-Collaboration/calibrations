@@ -1,0 +1,108 @@
+<?xml version="1.0"?>
+<root setup="2xoo" ref="null" created="2023-03-13 15:24:45" modified="2023-03-13 15:24:45" uuid="b67059e0-c1d4-11ed-b583-5330c782beef" version="3" file_version="62606">
+  <XmlKey name="PdbParameterMap" cycle="1" created="2023-03-13 15:24:45">
+    <Object class="PdbParameterMap">
+      <PdbParameterMap version="1">
+        <PdbCalChan version="1">
+          <PHObject version="0">
+            <TObject fUniqueID="0" fBits="0"/>
+          </PHObject>
+        </PdbCalChan>
+        <dparams>
+          <Version v="9"/>
+          <Int_t v="33"/>
+          <string v="bimp_centile_0"/>
+          <Double_t v="0"/>
+          <string v="bimp_centile_10"/>
+          <Double_t v="4.9419097900390625"/>
+          <string v="bimp_centile_100"/>
+          <Double_t v="100"/>
+          <string v="bimp_centile_20"/>
+          <Double_t v="6.9231300354003906"/>
+          <string v="bimp_centile_30"/>
+          <Double_t v="8.4532299041748047"/>
+          <string v="bimp_centile_40"/>
+          <Double_t v="9.7238197326660156"/>
+          <string v="bimp_centile_50"/>
+          <Double_t v="10.852299690246582"/>
+          <string v="bimp_centile_60"/>
+          <Double_t v="11.871500015258789"/>
+          <string v="bimp_centile_70"/>
+          <Double_t v="12.797300338745117"/>
+          <string v="bimp_centile_80"/>
+          <Double_t v="13.689700126647949"/>
+          <string v="bimp_centile_90"/>
+          <Double_t v="14.661100387573242"/>
+          <string v="epd_centile_0"/>
+          <Double_t v="1000"/>
+          <string v="epd_centile_10"/>
+          <Double_t v="18.731399536132812"/>
+          <string v="epd_centile_100"/>
+          <Double_t v="-1"/>
+          <string v="epd_centile_20"/>
+          <Double_t v="12.976300239562988"/>
+          <string v="epd_centile_30"/>
+          <Double_t v="8.7944498062133789"/>
+          <string v="epd_centile_40"/>
+          <Double_t v="5.7473301887512207"/>
+          <string v="epd_centile_50"/>
+          <Double_t v="3.4969899654388428"/>
+          <string v="epd_centile_60"/>
+          <Double_t v="2.0113101005554199"/>
+          <string v="epd_centile_70"/>
+          <Double_t v="1.0483900308609009"/>
+          <string v="epd_centile_80"/>
+          <Double_t v="0.49484500288963318"/>
+          <string v="epd_centile_90"/>
+          <Double_t v="0.19694800674915314"/>
+          <string v="mbd_centile_0"/>
+          <Double_t v="1000"/>
+          <string v="mbd_centile_10"/>
+          <Double_t v="14.471099853515625"/>
+          <string v="mbd_centile_100"/>
+          <Double_t v="-1"/>
+          <string v="mbd_centile_20"/>
+          <Double_t v="10.178099632263184"/>
+          <string v="mbd_centile_30"/>
+          <Double_t v="6.9950399398803711"/>
+          <string v="mbd_centile_40"/>
+          <Double_t v="4.6266098022460938"/>
+          <string v="mbd_centile_50"/>
+          <Double_t v="2.8529999256134033"/>
+          <string v="mbd_centile_60"/>
+          <Double_t v="1.6512800455093384"/>
+          <string v="mbd_centile_70"/>
+          <Double_t v="0.86610502004623413"/>
+          <string v="mbd_centile_80"/>
+          <Double_t v="0.40094798803329468"/>
+          <string v="mbd_centile_90"/>
+          <Double_t v="0.14449700713157654"/>
+        </dparams>
+        <iparams>
+          <Version v="9"/>
+          <Int_t v="0"/>
+        </iparams>
+        <cparams>
+          <Version v="9"/>
+          <Int_t v="1"/>
+          <string v="description"/>
+          <string v="Centrality calibration from MDC-1, MBD and sEPD, based on Sum G4Hits"/>
+        </cparams>
+      </PdbParameterMap>
+    </Object>
+  </XmlKey>
+  <StreamerInfos>
+    <TStreamerInfo name="PdbParameterMap" title="" v="9" classversion="1" canoptimize="true" checksum="916496646">
+      <TStreamerBase name="PdbCalChan" v="3" type="0" typename="BASE" size="16" baseversion="1" basechecksum="-1932344380"/>
+      <TStreamerSTL name="dparams" v="3" type="300" typename="map&lt;const string,double&gt;" size="48" STLtype="4" Ctype="61"/>
+      <TStreamerSTL name="iparams" v="3" type="300" typename="map&lt;const string,int&gt;" size="48" STLtype="4" Ctype="61"/>
+      <TStreamerSTL name="cparams" v="3" type="300" typename="map&lt;const string,string&gt;" size="48" STLtype="4" Ctype="61"/>
+    </TStreamerInfo>
+    <TStreamerInfo name="PdbCalChan" title="" v="9" classversion="1" canoptimize="true" checksum="-1932344380">
+      <TStreamerBase name="PHObject" v="3" type="0" typename="BASE" size="16" baseversion="0" basechecksum="-179181571"/>
+    </TStreamerInfo>
+    <TStreamerInfo name="PHObject" title="" v="9" classversion="0" canoptimize="true" checksum="-179181571">
+      <TStreamerBase name="TObject" title="Basic ROOT object" v="3" type="66" typename="BASE" size="16" baseversion="1" basechecksum="-1877229523"/>
+    </TStreamerInfo>
+  </StreamerInfos>
+</root>
