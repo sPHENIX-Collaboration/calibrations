@@ -39,6 +39,7 @@ void RawDataDecoder(std::string i_filename=default_ifile, std::string o_filename
 	}
 
 	Fun4AllServer* se = Fun4AllServer::instance();
+	se->Verbosity(Fun4AllBase::VERBOSITY_SOME);
 
 	//input
 	Fun4AllInputManager* in = new Fun4AllPrdfInputManager("PRDF");
@@ -51,12 +52,14 @@ void RawDataDecoder(std::string i_filename=default_ifile, std::string o_filename
 	se->registerSubsystem(intt_decoder);
 
 	//output
-	Fun4AllOutputManager* out = new Fun4AllDstOutputManager("DST", o_filename.c_str());
+	Fun4AllOutputManager* out = new Fun4AllDstOutputManager("DST", o_filename.c_str()); //will write e
 	//out->AddEventSelector("INTTRAWDATADECODER");
-	out->AddNode("DST");
+	//out->AddNode("DST"); //PHComposite nodes are not recognized
+	//I don't have an explicit "DST" node
+	//"TRKR_HITSET" should work but I'll comment it out since that's the only node this will write anyway
 	se->registerOutputManager(out);
 
-	se->run(100);
+	se->run(10);
 	se->End();
 
 	delete se;

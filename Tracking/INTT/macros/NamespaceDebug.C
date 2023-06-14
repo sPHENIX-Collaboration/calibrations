@@ -1,12 +1,17 @@
 #include <iostream>
 #include <map>
+#include <vector>
 
 R__LOAD_LIBRARY(libintt.so)
 #include <intt/InttMapping.h>
 
 void NamespaceDebug()
 {
+	bool DO_ONLINE_OFFLINE_CHECK = false;
+	bool DO_ONLINE_RAWDATA_CHECK = true;
+
 	bool b = false;
+	bool v = false;
 	struct Intt::RawData_s rawdata;
 	struct Intt::Online_s online;
 	struct Intt::Offline_s offline;
@@ -19,18 +24,25 @@ void NamespaceDebug()
 	rawdata_temp = (struct Intt::RawData_s){.felix_server = 0, .felix_channel = 0, .chip = 1, .channel = 0};
 	std::cout << (rawdata < rawdata_temp) << std::endl;
 
-	std::map<struct Intt::RawData_s, Long64_t> my_map;
-	my_map[rawdata] = 0;
-	my_map[rawdata_temp] = 1;
+	std::vector<struct Intt::Online_s> my_vec;
+
+	my_vec.push_back((struct Intt::Online_s){.lyr = 3, .ldr = 6, .arm = 1, .chp = 0, .chn = 0});
+	my_vec.push_back((struct Intt::Online_s){.lyr = 3, .ldr = 7, .arm = 1, .chp = 0, .chn = 0});
 
 	online = (struct Intt::Online_s){.lyr = 0, .ldr = 0, .arm = 0, .chp = 0, .chn = 0};
 	b = false;
-	while(true)
+	while(DO_ONLINE_OFFLINE_CHECK)
 	{
 		offline = ToOffline(online);
-
 		b = (online != ToOnline(offline));
-		if(b)
+
+		v = false;
+		for(std::size_t s = 0; s < my_vec.size(); ++s)
+		{
+			if(online == my_vec[s])v = true;
+		}
+
+		if(b || v)
 		{
 			printf("\n");
 			printf("%16s%2d\n", "lyr:", online.lyr);
@@ -70,12 +82,18 @@ void NamespaceDebug()
 
 	rawdata = (struct Intt::RawData_s){.felix_server = 0, .felix_channel = 0, .chip = 0, .channel = 0};
 	b = false;
-	while(true)
+	while(DO_ONLINE_RAWDATA_CHECK)
 	{
 		online = ToOnline(rawdata);
-
 		b = (rawdata != ToRawData(online));
-		if(b)
+
+		v = false;
+		for(std::size_t s = 0; s < my_vec.size(); ++s)
+		{
+			if(online == my_vec[s])v = true;
+		}
+
+		if(b || v)
 		{
 			printf("\n");
 			printf("%16s%2d\n", "felix_server:", rawdata.felix_server);
