@@ -17,7 +17,7 @@
 int get_tpc_region(int layer)
 {
   int region = 0;
-  if(layer > 23 && layer < 39)
+  if(layer > 22 && layer < 39)
     region = 1;
   if(layer > 38 && layer < 55)
     region = 2;
@@ -86,6 +86,36 @@ void populate_entire_mvtx_layer(int layer, std::map<TrkrDefs::hitsetkey, std::ar
     }
  }
 
+bool is_stave_in_clamshell(int layer, int stave, int clamshell)
+{
+  double mvtxdat[3][6] = {{24.61, 25.23, 27.93, 9., 0.285, 12.}, {31.98, 33.36, 36.25, 9., 0.199, 16.},{39.93, 41.48, 44.26, 9., 0.166, 20.}};
+  int staveNum = mvtxdat[layer][5];             // Number of staves per layer
+  int breakat = staveNum / 2;
+  int which_clamshell = stave / breakat;
+  if(which_clamshell == clamshell)
+    {
+      return true;
+    }
+  return false;
+}
+
+void populate_entire_mvtx_clamshell(int clamshell, int layer, std::map<TrkrDefs::hitsetkey, std::array<double, 6>>& outmap, std::array<double, 6>& params)
+{ 
+  // Create MVTX hitsetkeys
+  // mvtxdat for each layer: rMin, rMid, rMax, NChip/Stave, phi0, nStaves
+  double mvtxdat[3][6] = {{24.61, 25.23, 27.93, 9., 0.285, 12.}, {31.98, 33.36, 36.25, 9., 0.199, 16.},{39.93, 41.48, 44.26, 9., 0.166, 20.}};
+  int staveNum = mvtxdat[layer][5];             // Number of staves per layer
+  
+  for(int stave = 0; stave < staveNum; stave++) // loop over staves
+    {    
+      if(is_stave_in_clamshell(layer, stave, clamshell))
+	{
+	  populate_mvtx_stave(layer, stave, outmap, params);
+	  std::cout << "  Populated mvtx stave " << stave << " in layer " << layer << " of clamshell " << clamshell << std::endl;
+	}
+    }
+}
+
 void populate_intt_stave(int layer, int stave, std::map<TrkrDefs::hitsetkey, std::array<double, 6>>& outmap, std::array<double, 6>& params)
 { 
   for(int chip = 0; chip <= 3; chip++)       // loops over chips 
@@ -113,7 +143,9 @@ void populate_entire_intt_layer(int layer, std::map<TrkrDefs::hitsetkey, std::ar
 void populate_tpc_sector(int layer, int sector, std::map<TrkrDefs::hitsetkey, std::array<double, 6>>& outmap, std::array<double, 6>& params)
 { 
   TrkrDefs::hitsetkey hitSetKey = getHitSetKey(layer, sector, 0);  // side is determined from sector
-  //std::cout << "    layer " << layer << " sector " << sector << " hitsetkey " << hitSetKey << std::endl;
+  std::cout << "    layer " << layer << " sector " << sector << " hitsetkey " << hitSetKey << std::endl;
+  std::cout <<  params[0] << " " << params[1]  << " " << params[2]  << " " << params[3]  << " " << params[4]  << " " << params[5]  << std::endl;
+
   outmap.insert(std::make_pair(hitSetKey, params));
   //  fout << hitSetKey <<" " << params[0] << " " << params[1]  << " " << params[2]  << " " << params[3]  << " " << params[4]  << " " << params[5]  << std::endl;
 }
@@ -152,7 +184,7 @@ void populate_entire_layer(int layer, std::map<TrkrDefs::hitsetkey, std::array<d
     populate_entire_mvtx_layer(layer, outmap, params);
 
   if(layer > 2 && layer < 7)
-    populate_entire_mvtx_layer(layer, outmap, params);
+    populate_entire_intt_layer(layer, outmap, params);
 
   if(layer > 6 && layer < 55)
     populate_entire_tpc_layer(layer, outmap, params);
@@ -166,27 +198,24 @@ void populate_entire_layer(int layer, std::map<TrkrDefs::hitsetkey, std::array<d
 bool getParameters(std::vector<std::pair<int, float>> par_vec, std::array<double, 6>& parameters)
 { 
   bool ret = true;
-  for(unsigned int ip = 0; ip < par_vec.size(); ++ip)
-    {
-      int ipar = par_vec[ip].first;
-      if((unsigned int) ipar != ip+1)
-	{
-	  std::cout << " Error: ipar " << ipar << " ip " << ip << " par_vec size " << par_vec.size() << std::endl;
-	  ret = false;
-	}
-      float align = par_vec[ip].second;
-      parameters.at(ip) = align;
-    }	
 
-  if(!ret)
+  for(int ip = 0; ip < 6; ++ip)
+    parameters.at(ip) = 0.0;
+
+  for(unsigned int iparv = 0; iparv < par_vec.size(); ++iparv)
     {
-      // Pede screwup. Return parameters all set to zero for safety.
       for(int ip = 0; ip < 6; ++ip)
-	parameters[ip] = 0.0;
+	{
+	  if(ip+1 == par_vec[iparv].first)
+	    {
+	      float align = par_vec[iparv].second;
+	      parameters.at(ip) = align;	      
+	    }
+	}
     }
-
+  
   return ret;
-  }
+}
 
 void populate_stave(int layer, int stave, std::map<TrkrDefs::hitsetkey, std::array<double, 6>>& outmap, std::array<double, 6>& params)
 {
@@ -208,6 +237,20 @@ void populate_stave(int layer, int stave, std::map<TrkrDefs::hitsetkey, std::arr
 
 }
 
+bool is_in_mvtx(int layer)
+{
+  bool ret = false;
+  if(layer >= 0 && layer < 3) ret = true;
+  return ret;
+}
+
+bool is_in_intt(int layer)
+{
+  bool ret = false;
+  if(layer > 2 && layer < 7) ret = true;
+  return ret;
+}
+
 bool is_in_tpc(int layer)
 {
   bool ret = false;
@@ -226,7 +269,7 @@ bool is_layer_in_region(int layer, int isec)
 
 void process_millepede_results(std::string pedefilename = "millepede.res",
 			       std::string newalignmentfilename = "new_alignment_corrections.txt",
-			       bool helical_fitter = false)
+			       bool helical_fitter = true)
 {
   // macro to read in millepede.res files (pede output files) and process them
   // into a new alignment parameters file with one line for every surface
@@ -243,6 +286,8 @@ void process_millepede_results(std::string pedefilename = "millepede.res",
 
   gStyle->SetStatW(0.3);
   gStyle->SetStatH(0.3);
+
+  int verbosity = 1;
 
   int nladders_layer[7] = {12, 16, 20, 12, 12, 16, 16};
 
@@ -267,8 +312,10 @@ void process_millepede_results(std::string pedefilename = "millepede.res",
   int sensor_keep = 0;
   std::vector<std::pair<int, float>> par_vec;
   std::vector<std::vector<std::pair<int, float>>> sensor_vec;
-  std::vector<std::vector<std::vector<std::pair<int, float>>>> stave_vec;
-  std::map<int, std::vector<std::vector<std::vector<std::pair<int, float>>>>> layer_stave_vec_map;
+  //std::vector<std::vector<std::vector<std::pair<int, float>>>> stave_vec;
+  std::map<int, std::vector<std::vector<std::pair<int, float>>>> stave_map;
+  //  std::map<int, std::pair<int, std::vector<std::vector<std::vector<std::pair<int, float>>>>>> layer_stave_vec_map;
+  std::map<int, std::map<int, std::vector<std::vector<std::pair<int, float>>>>> layer_stave_map;
 
   while(fin.good())
     {
@@ -292,19 +339,20 @@ void process_millepede_results(std::string pedefilename = "millepede.res",
 	{
 	  // layer number layer_keep is done, close out this layer.
 	  if(verbosity > 0) 
-	    std::cout << "   fitted staves in layer " << layer_keep << " = " << stave_keep+1 
-		      << " sensors = " << sensor_keep+1 << std::endl; 
+	    std::cout << "   layer change: new layer " << layer << " layer_keep " << layer_keep << " new stave " 
+		      << stave << " stave keep " << stave_keep << " sensor " << sensor 
+		      << " sensor keep " << sensor_keep << std::endl; 
 
 	  //flush everything
 	  sensor_vec.push_back(par_vec);
-	  stave_vec.push_back(sensor_vec);
-	  layer_stave_vec_map.insert( std::make_pair(layer_keep, stave_vec) );
+	  stave_map.insert(std::make_pair(stave_keep, sensor_vec));
+	  layer_stave_map.insert( std::make_pair(layer_keep, stave_map) );
 
 	  // reset for the new layer
 	  layer_keep = layer;
-	  stave_keep = 0;
+	  stave_keep = stave;
 	  sensor_keep = 0;
-	  stave_vec.clear();
+	  stave_map.clear();
 	  sensor_vec.clear();
 	  par_vec.clear();
 	}      
@@ -313,7 +361,11 @@ void process_millepede_results(std::string pedefilename = "millepede.res",
 	 { 
 	   // new stave, close out sensor_vec and par_vec
 	   sensor_vec.push_back(par_vec);
-	   stave_vec.push_back(sensor_vec);
+	   stave_map.insert(std::pair(stave_keep, sensor_vec));
+	    std::cout << "   stave change:  layer " << layer << " layer_keep " << layer_keep << " new stave " 
+		      << stave << " stave keep " << stave_keep << " sensor " << sensor 
+		      << " sensor keep " << sensor_keep << std::endl; 
+
 	   sensor_vec.clear();
 	   par_vec.clear();
 	   stave_keep = stave;  
@@ -322,6 +374,7 @@ void process_millepede_results(std::string pedefilename = "millepede.res",
        else if (sensor > sensor_keep) 
 	 { 
 	   // new sensor, close out par_vec
+	   std::cout << " new sensor " << sensor << " sensor_keep " << sensor_keep << std::endl;
 	   sensor_vec.push_back(par_vec);
 	   par_vec.clear();
 	   sensor_keep = sensor; 
@@ -331,53 +384,216 @@ void process_millepede_results(std::string pedefilename = "millepede.res",
        
     }  // end loop over file lines
 
+  for(auto lyrit = layer_stave_map.begin(); lyrit != layer_stave_map.end(); ++lyrit)
+    {
+      auto stave_map = lyrit->second;
+      std::cout << " layer " << lyrit->first << " stave map entries " << lyrit->second.size() << std::endl;
+      for(auto it = stave_map.begin(); it != stave_map.end(); ++it)
+	{
+	  auto sensor_vec = it->second;
+	  std::cout << "   stave " <<  it->first << " sensor vec size " << sensor_vec.size()		    << std::endl;	  
+	  if(sensor_vec.size() > 0)
+	    {  
+	      auto par_vec = sensor_vec[0];
+	      if(par_vec.size() > 4)
+		{
+		  auto par3 = par_vec[3].first;
+		  auto val3 = par_vec[3].second;
+		  std::cout << " par3 " << par3 << " val3 " << val3 << std::endl;
+		}
+	    }
+	}
+    }
+  
+
   // process the information and output the new parameters
 
   std::map<TrkrDefs::hitsetkey, std::array<double, 6>> outmap;
 
+  // The MVTX needs special treatment if the staves are grouped by clamshell
+  bool mvtx_clamshell = false;
+  auto it0 = layer_stave_map.find(0);
+  if (it0 != layer_stave_map.end())
+    { 
+      // the MVTX is present
+      auto it1 = layer_stave_map.find(1);
+      if(it1 == layer_stave_map.end())
+	{
+	  // layer 0 but no layer 1, the MVTX is grouped by clamshell everything will be under layer 0
+	  std::cout << "MVTX is grouped by clamshell" << std::endl;
+	  mvtx_clamshell = true;
+	}
+    }
+
+  // TheINTT needs special treatment if the four layers are grouped
+  // this block is just to find out if that is true
+  bool intt_grouped = false;
+  auto it3 = layer_stave_map.find(3);
+  if (it3 != layer_stave_map.end())
+    { 
+      // the TPC is present
+      auto it4 = layer_stave_map.find(8);
+      if(it4 == layer_stave_map.end())
+	{
+	  // layer 3 but no layer 4, the INTT is grouped as a whole, everything will be under layer 3
+	  std::cout << "INTT is grouped as a whole" << std::endl;
+	  intt_grouped = true;
+	}
+    }
+
   // The TPC needs special treatment if the layers in each sector are grouped
   // this block is just to find out if that is true
   bool tpc_grouped = false;
-  auto it7 = layer_stave_vec_map.find(7);
-  if (it7 != layer_stave_vec_map.end())
+  auto it7 = layer_stave_map.find(7);
+  if (it7 != layer_stave_map.end())
     { 
       // the TPC is present
-      auto it8 = layer_stave_vec_map.find(8);
-      if(it8 == layer_stave_vec_map.end())
+      auto it8 = layer_stave_map.find(8);
+      if(it8 == layer_stave_map.end())
 	{
 	  // layer 7 but no layer 8, the TPC is grouped by sectors or as a whole, everything will be under layer 7
+	  std::cout << "TPC is grouped by sectors, or as a whole" << std::endl;
 	  tpc_grouped = true;
 	}
     }
 
   for(int layer=0; layer < 56; ++layer)   // layer 56 is included in layer 55 in the geometry id as an additional set of tiles
     {
+      // this block handles the case where the mvtx readout is grouped by clamshell
+      if(mvtx_clamshell &&  is_in_mvtx(layer))
+	{
+	  // Only layer 0 in the MP result file, with parameters for the two MVTX clamshells
+	  if(verbosity > 0) std::cout << " layer " << layer << " is in clamshell grouped mvtx " << std::endl;
+	  auto it0 = layer_stave_map.find(0);
+	  auto stave_map = it0->second;
+	  std::cout << "    layer " <<  layer << " stave_map size " << stave_map.size() << std::endl;	  
+	  if(stave_map.size() == 2)
+	    {
+	      for(int clamshell = 0; clamshell < 2; ++clamshell)
+		{
+		  auto sensor_vec = stave_map.find(clamshell)->second;
+		  auto par_vec = sensor_vec[0];
+		  std::array<double, 6> params;
+		  bool ret = getParameters(par_vec, params);
+		  if(!ret) {std::cout << "   getParameters failed for MVTX clamshell grouped" << std::endl; }
+		  if(verbosity > 0) { std::cout << " populate layer " << layer << " for MVTX clamshell " << clamshell 
+						<< " with params[3-5] " << params[3] << "  " << params[4] << "  " << params[5] << std::endl; }
+		  populate_entire_mvtx_clamshell(clamshell, layer, outmap, params);
+		}
+	      // done with this layer, skip to the next
+	      continue;
+
+	    }
+	  else
+	    {
+	      std::cout << "Oops: something wrong with populating MVTX clamshells" << std::endl;
+	    }
+	}
+
+      // this block handles the case where the intt readout is grouped as a whole
+      if(intt_grouped &&  is_in_intt(layer))
+	{
+	  // Only layer 3 in the MP result file, with parameters for the whole INTT
+	  if(verbosity > 0) std::cout << " layer " << layer << " is in grouped intt " << std::endl;
+	  auto it3 = layer_stave_map.find(3);
+	  auto stave_map = it3->second;
+	  std::cout << "    layer " <<  layer << " stave_map size " << stave_map.size() << std::endl;	  
+	  // handle case where the entire intt is grouped, there is only one parameter set
+	  if(stave_map.size() == 1)
+	    {
+	      auto sensor_vec = stave_map.find(0)->second;
+	      auto par_vec = sensor_vec[0];
+	      std::array<double, 6> params;
+	      bool ret = getParameters(par_vec, params);
+	      if(!ret) {std::cout << "   getParameters failed for entire INTT grouped" << std::endl; }
+	      if(verbosity > 0) std::cout << " populate layer " << layer << " for INTT with params[3-5] " 
+					  << params[3] << "  " << params[4] << "  " << params[5] << std::endl;
+	      populate_entire_intt_layer(layer, outmap, params);
+	      
+	      // done with this layer, skip to the next
+	      continue;
+	    }
+	  else
+	    {
+	      std::cout << "Oops: something wrong with populating entire INTT" << std::endl;
+	    }
+
+	}
+
       // this block handles the case where the tpc readout is grouped by sector
       if(tpc_grouped && is_in_tpc(layer))
 	{
 	  // Only layer 7 in the MP result file, with parameters for each sector
 	  if(verbosity > 0) std::cout << " layer " << layer << " is in sector grouped tpc " << std::endl;
-	  auto it7 = layer_stave_vec_map.find(7);
-	  auto stave_vec = it7->second;
-
+	  auto it7 = layer_stave_map.find(7);
+	  //auto stave = it7->first;
+	  auto stave_map = it7->second;
+	  std::cout << "    layer " <<  layer << " stave_map size " << stave_map.size() << std::endl;	  
 	  // handle case where the entire tpc is grouped, there is only one parameter set
-	  if(stave_vec.size() == 1)
+	  if(stave_map.size() == 1)
 	    {
-	      auto sensor_vec = stave_vec[0];
+	      auto sensor_vec = stave_map.find(0)->second;
 	      auto par_vec = sensor_vec[0];
 	      std::array<double, 6> params;
 	      bool ret = getParameters(par_vec, params);
+	      if(!ret) {std::cout << "   getParameters failed for entire TPC grouped" << std::endl; }
 	      if(verbosity > 0) std::cout << " populate layer " << layer << " for all sectors with params[0] " << params[0] << std::endl;
 	      populate_entire_tpc_layer(layer, outmap, params);
-
+	      
 	      // done with this layer, skip to the next
 	      continue;
 	    }
-
+	  
 	  // if we are here, we have multiple tpc "staves", grouped by sector
 	  // here isec = region * 24(0-47) + sector (0-23). This layer is in only one region.
-	  for(unsigned int isec = 0; isec < stave_vec.size(); ++isec)
+	  // we need to handle cases where one or more regions is fixed
+	  // in that case, there will be no entry for these sectors in stave_map
+
+	  // loop over all possible TPC sectors
+	  for(int isec = 0; isec < 72; ++isec)
 	    {
+	      if(is_layer_in_region(layer, isec))
+		{
+		  auto secit = stave_map.find(isec);
+		  if(secit == stave_map.end())
+		    {
+		      std::cout << "  Did not find sector " << isec << " for layer " << layer << " in stave_map " << std::endl;
+		      // sector is missing, it must be fixed
+		      // set all params to zero
+		      std::array<double, 6> params = {0,0,0,0,0,0};
+		      
+		      std::cout << "  populate entire sector with zero for layer " << layer << " sector " << isec << std::endl;
+		      // convert isec to the physical sector (0-23, including side)
+		      int region = get_tpc_region(layer);
+		      int sector = isec - region * 24;
+		      populate_tpc_sector(layer, sector, outmap, params);
+		    }
+		  else
+		    {
+		      // is this layer in the region of this sector?
+		      //      if(is_layer_in_region(layer, isec))
+		      //{
+			  std::cout << "  Found sector " << secit->first << " for layer " << layer << " in stave_map " << std::endl;
+			  auto sector_vec = secit->second;
+			  auto par_vec = sector_vec[0]; // only one parameter set per sector
+			  std::array<double, 6> params;
+			  bool ret = getParameters(par_vec, params);
+			  if(!ret)
+			    {
+			      std::cout << " getParameters returned error for layer " << layer << " isec " << isec 
+					<< " sensor " << 0 << " parameters set to zero " << std::endl;
+			    }
+			  
+			  // convert isec to the physical sector (0-23, including side)
+			  int region = get_tpc_region(layer);
+			  int sector = isec - region * 24;
+			  if(verbosity > 0) std::cout << " populate layer " << layer << " for isec " << isec << " sector " 
+						      << sector << " with params[3-5] " << params[3] << "  " << params[4] << "  " << params[5] << std::endl;
+			  populate_tpc_sector(layer, sector, outmap, params);
+			  //}
+		    }
+		}
+	      /*
 	      // is this layer in the region of this sector?
 	      if(is_layer_in_region(layer, isec))
 		{
@@ -390,21 +606,24 @@ void process_millepede_results(std::string pedefilename = "millepede.res",
 		      std::cout << " getParameters returned error for layer " << layer << " isec " << isec 
 				<< " sensor " << 0 << " parameters set to zero " << std::endl;
 		    }
-		  if(verbosity > 0) std::cout << " populate layer " << layer << " for sector " << isec << " with params[0] " << params[0] << std::endl;
+
 		  // convert isec to the physical sector (0-23, including side)
 		  int region = get_tpc_region(layer);
 		  int sector = isec - region * 24;
+		  if(verbosity > 0) std::cout << " populate layer " << layer << " for isec " << isec << " sector " << sector << " with params[3-5] " << params[3] << "  " << params[4] << "  " << params[5] << std::endl;
 		  populate_tpc_sector(layer, sector, outmap, params);
 		}
+	      */
 	    }
+
 	  // done with this layer, skip to the next
 	  continue;
 	}
       
       // back to our normal program
       // find this layer in the vector of staves and get its vector of sensors
-      auto it = layer_stave_vec_map.find(layer);
-      if (it == layer_stave_vec_map.end())
+      auto it = layer_stave_map.find(layer);
+      if (it == layer_stave_map.end())
 	{
 	  // layer is missing, all alignment corrections are zero for missing layers
 	  std::array<double, 6> params = {0,0,0,0,0,0};
@@ -414,14 +633,14 @@ void process_millepede_results(std::string pedefilename = "millepede.res",
 	  continue;
 	}
 
-      auto stave_vec = it->second;
+      auto stave_map = it->second;
 
-      if( (stave_vec.size() == 1) &&( !is_in_tpc(layer)) ) 
+      if( (stave_map.size() == 1) &&( !is_in_tpc(layer)) ) 
 	{
 	  // layer exists, but all silicon staves or mms tiles are grouped together, all sensors in all staves share the same alignment parameters
 	  if(verbosity > 0) std::cout << " All staves are grouped together in layer " << layer << std::endl;
 	  // fill in all stave and sensor lines for this layer using the single parameter set for the only sensor entry
-	  auto sensor_vec = stave_vec[0];
+	  auto sensor_vec = stave_map.find(0)->second;
 	  auto par_vec = sensor_vec[0];
 	  std::array<double, 6> params;
 	  bool ret = getParameters(par_vec, params);
@@ -435,11 +654,11 @@ void process_millepede_results(std::string pedefilename = "millepede.res",
 	  continue;
 	}
 
-      if(verbosity > 0) std::cout << " layer "  << layer << " stave_vec size " << stave_vec.size() << std::endl;
-      for(unsigned int ivec=0;ivec<stave_vec.size(); ++ivec)
+      if(verbosity > 0) std::cout << " layer "  << layer << " stave_map size " << stave_map.size() << std::endl;
+      for(auto it = stave_map.begin(); it != stave_map.end(); ++it)
 	{
-	  int stave = ivec;
-	  auto sensor_vec = stave_vec[ivec];
+	  int stave = it->first;
+	  auto sensor_vec = stave_map.find(stave)->second;
 
 	  if( (sensor_vec.size() == 1) &&( !is_in_tpc(layer)) ) 
 	    {
