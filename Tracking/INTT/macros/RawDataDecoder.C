@@ -52,7 +52,7 @@ void RawDataDecoder(std::string i_filename=default_ifile, std::string o_filename
 	se->registerSubsystem(intt_decoder);
 
 	//output
-	Fun4AllOutputManager* out = new Fun4AllDstOutputManager("DST", o_filename.c_str()); //will write e
+	Fun4AllOutputManager* out = new Fun4AllDstOutputManager("DST", o_filename.c_str());
 	//out->AddEventSelector("INTTRAWDATADECODER");
 	//out->AddNode("DST"); //PHComposite nodes are not recognized
 	//I don't have an explicit "DST" node
