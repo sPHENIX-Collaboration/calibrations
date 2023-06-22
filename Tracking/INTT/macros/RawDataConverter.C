@@ -43,12 +43,13 @@ void RawDataConverter(std::string i_filename=default_ifile, std::string o_filena
 	se->registerInputManager(in);
 
 	//ana
-	SubsysReco* intt_converter = new InttRawDataConverter();
+	InttRawDataConverter* intt_converter = new InttRawDataConverter();
 	se->registerSubsystem(intt_converter);
+	intt_converter->SetOutputFile(o_filename);
 
 	//output
-	se->run();
-	((InttRawDataConverter*)intt_converter)->WriteOutputFile(o_filename);
+	se->run(100);
+	intt_converter->WriteOutputFile();
 	se->End();
 
 	delete se;
