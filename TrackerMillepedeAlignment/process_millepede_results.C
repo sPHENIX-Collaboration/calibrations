@@ -4,6 +4,7 @@
 #include <trackbase/TpcDefs.h>
 #include <MicromegasDefs.h>
 #include <trackbase/ActsGeometry.h>
+#include<trackermillepedealignment/AlignmentDefs.h>
 
 #include <TH1D.h>
 #include <TCanvas.h>
@@ -13,8 +14,6 @@
 #include <fstream>
 #include <sstream>
 #include <string>
-
-const static int verbosity = 0;
 
 int get_tpc_region(int layer)
 {
@@ -87,7 +86,7 @@ void populate_entire_mvtx_layer(int layer, std::map<TrkrDefs::hitsetkey, std::ar
       populate_mvtx_stave(layer, stave, outmap, params);
     }
  }
-
+/*
 bool is_stave_in_clamshell(int layer, int stave, int clamshell)
 {
   double mvtxdat[3][6] = {{24.61, 25.23, 27.93, 9., 0.285, 12.}, {31.98, 33.36, 36.25, 9., 0.199, 16.},{39.93, 41.48, 44.26, 9., 0.166, 20.}};
@@ -100,6 +99,32 @@ bool is_stave_in_clamshell(int layer, int stave, int clamshell)
     }
   return false;
 }
+*/
+
+void populate_mvtx_clamshell_layer(int clamshell, int layer, std::map<TrkrDefs::hitsetkey, std::array<double, 6>>& outmap, std::array<double, 6>& params)
+{ 
+  // Create MVTX hitsetkeys
+  // mvtxdat for each layer: rMin, rMid, rMax, NChip/Stave, phi0, nStaves
+  double mvtxdat[3][6] = {{24.61, 25.23, 27.93, 9., 0.285, 12.}, {31.98, 33.36, 36.25, 9., 0.199, 16.},{39.93, 41.48, 44.26, 9., 0.166, 20.}};
+  int staveNum = mvtxdat[layer][5];             // Number of staves per layer
+  
+  for(int stave = 0; stave < staveNum; stave++) // loop over staves
+    {    
+      int this_clamshell = AlignmentDefs::getMvtxClamshell(layer, stave);
+      if(this_clamshell == clamshell)
+	{
+	  populate_mvtx_stave(layer, stave, outmap, params);
+	  std::cout << "  Populated mvtx stave " << stave << " in layer " << layer << " of clamshell " << clamshell << std::endl;
+	}
+      /*
+      if(is_stave_in_clamshell(layer, stave, clamshell))
+	{
+	  populate_mvtx_stave(layer, stave, outmap, params);
+	  std::cout << "  Populated mvtx stave " << stave << " in layer " << layer << " of clamshell " << clamshell << std::endl;
+	}
+      */
+    }
+}
 
 void populate_entire_mvtx_clamshell(int clamshell, int layer, std::map<TrkrDefs::hitsetkey, std::array<double, 6>>& outmap, std::array<double, 6>& params)
 { 
@@ -110,11 +135,19 @@ void populate_entire_mvtx_clamshell(int clamshell, int layer, std::map<TrkrDefs:
   
   for(int stave = 0; stave < staveNum; stave++) // loop over staves
     {    
+      int this_clamshell = AlignmentDefs::getMvtxClamshell(layer, stave);
+      if(this_clamshell == clamshell)
+	{
+	  populate_mvtx_stave(layer, stave, outmap, params);
+	  std::cout << "  Populated mvtx stave " << stave << " in layer " << layer << " of clamshell " << clamshell << std::endl;
+	}
+      /*
       if(is_stave_in_clamshell(layer, stave, clamshell))
 	{
 	  populate_mvtx_stave(layer, stave, outmap, params);
 	  std::cout << "  Populated mvtx stave " << stave << " in layer " << layer << " of clamshell " << clamshell << std::endl;
 	}
+      */
     }
 }
 
@@ -427,6 +460,11 @@ void process_millepede_results(std::string pedefilename = "millepede.res",
 	}
     }
 
+  // Another MVTX possibility is that the staves are grouped by layer separately within each clamshell
+  // In that case, the layers will be present, but there will be two staves/layer - the two clamshells
+
+
+
   // TheINTT needs special treatment if the four layers are grouped
   // this block is just to find out if that is true
   bool intt_grouped = false;
@@ -484,7 +522,6 @@ void process_millepede_results(std::string pedefilename = "millepede.res",
 		}
 	      // done with this layer, skip to the next
 	      continue;
-
 	    }
 	  else
 	    {
@@ -654,6 +691,27 @@ void process_millepede_results(std::string pedefilename = "millepede.res",
 	  populate_entire_layer(layer, outmap, params);
 	  // done with this layer
 	  continue;
+	}
+
+      if( (stave_map.size() == 2) &&(is_in_mvtx(layer)) ) 
+	{
+	  // layer exists, but all mvtx staves are grouped together within a clamshell
+	      for(int clamshell = 0; clamshell < 2; ++clamshell)
+		{
+		  if(verbosity > 0) std::cout << " All staves are grouped together in clamshell " << clamshell << " in layer " << layer << std::endl;
+		  auto sensor_vec = stave_map.find(clamshell)->second;
+		  auto par_vec = sensor_vec[0];
+		  std::array<double, 6> params;
+		  bool ret = getParameters(par_vec, params);
+		  if(!ret) {std::cout << "   getParameters failed for MVTX clamshell grouped" << std::endl; }
+		  if(verbosity > 0) { std::cout << " populate layer " << layer << " for MVTX clamshell " << clamshell 
+						<< " with params[3-5] " << params[3] << "  " << params[4] << "  " << params[5] << std::endl; }
+
+		  // fill in all stave and sensor lines for this clamshell/layer using the single parameter set for the only sensor entry
+		  populate_mvtx_clamshell_layer(clamshell, layer, outmap, params);
+		}
+	      // done with this layer
+	      continue;
 	}
 
       if(verbosity > 0) std::cout << " layer "  << layer << " stave_map size " << stave_map.size() << std::endl;

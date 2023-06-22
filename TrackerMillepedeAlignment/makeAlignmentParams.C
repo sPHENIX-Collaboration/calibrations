@@ -3,6 +3,7 @@
 #include <trackbase/TpcDefs.h>
 #include <MicromegasDefs.h>
 #include <trackbase/ActsGeometry.h>
+#include <trackermillepedealignment/AlignmentDefs.h>
 
 #include <iostream>
 #include <string>
@@ -29,10 +30,11 @@
 //============================= 
 
 
-// misaligned run 23, fix layers 0, outer tpc region, INTT grouped as a whole, MVTX grouped by clamshell.
+// example test misalignment settings.
+// fix layer 0 and outer tpc region, INTT grouped as a whole, MVTX grouped by clamshell.
 static const std::array<double, 3> mvtx_clamshell_mean[2] ={
    0.0, 0.0, 0.0,
-   0.5, 0.5, 0.2}; 
+   0.2, -0.2, 0.3}; 
 static const std::array<double,3> mvtx_stave_mean[3] = {
   0.0, 0.0, 0.0,                       // fixed
   -0.05, 0.04, -0.03,                 // dx, dy, dz 
@@ -117,20 +119,10 @@ bool is_in_mms(int layer)
   return ret;
 }
 
- int get_mvtx_clamshell(int layer, int stave)
- {
-  double mvtxdat[3][6] = {{24.61, 25.23, 27.93, 9., 0.285, 12.}, {31.98, 33.36, 36.25, 9., 0.199, 16.},{39.93, 41.48, 44.26, 9., 0.166, 20.}};
-  int staveNum = mvtxdat[layer][5];             // Number of staves per layer
-  int breakat = staveNum / 2;
-  int which_clamshell = stave / breakat;
-
-  return which_clamshell;
- }
-
 void getMvtxInputs( int layer, int stave, std::array<double, 6>& staveMean, std::array<double, 6>& staveDev, std::array<double, 6>& sensorDev)
 {
   // translations are in mm !!!
-  int clamshell = get_mvtx_clamshell(layer, stave); 
+  int clamshell = AlignmentDefs::getMvtxClamshell(layer, stave); 
 
   double stmean[6] = {0, 0, 0, 
 		      mvtx_clamshell_mean[clamshell][0] + mvtx_stave_mean[layer][0], 
