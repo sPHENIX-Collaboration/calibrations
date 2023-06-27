@@ -1,6 +1,10 @@
 #include <trackermillepedealignment/AlignmentDefs.h>
 
-void makePedeConstraintsFile(int mvtxgrp = 2, int inttgrp = AlignmentDefs::inttGrp::chp, int tpcgrp = AlignmentDefs::tpcGrp::sctr)
+// This is a params list to skip in the constraint file, i.e. if you don't
+// want alpha to be included in the constraint file one would add 0 to the vector
+std::set<int> params_to_skip = {0,1,5};
+
+void makePedeConstraintsFile(int mvtxgrp = 2, int inttgrp = 2, int tpcgrp = AlignmentDefs::tpcGrp::sctr)
 {
   // MVTX
   // possible procedure for MVTX
@@ -42,7 +46,7 @@ void makePedeConstraintsFile(int mvtxgrp = 2, int inttgrp = AlignmentDefs::inttG
 	  shell_labels[clamshell][layer].push_back(mvtx_glbl_labels[i]);
 	}
 
-      std::vector<int> mvtx_constraint[2][3];
+      std::vector<int> mvtx_constraint[2][6];
       for (unsigned int ishl=0; ishl < 2; ++ishl)
 	{
 	  for(unsigned int ilyr=0; ilyr < 3; ++ilyr)	  
@@ -64,15 +68,20 @@ void makePedeConstraintsFile(int mvtxgrp = 2, int inttgrp = AlignmentDefs::inttG
 
       for (unsigned int ishl=0; ishl < 2; ++ishl)
 	{
-	  for(unsigned int ip=0;ip<3;++ip)
+	  for(unsigned int ip=0;ip<6;++ip)
 	    {
+	      if(params_to_skip.find(ip) != params_to_skip.end())
+		{ continue; }
+	
 	      fconstraint << "Constraint 0.0" << std::endl;
+        
 	      for(unsigned int ilyr = 0; ilyr < 3; ++ilyr)
 		{
 		  fconstraint << mvtx_constraint[ishl][ip][ilyr] << "  " << 1.0 << std::endl;
 		}
 	    }
 	}
+ 
       fconstraint.close();      
     }
 
@@ -80,7 +89,7 @@ void makePedeConstraintsFile(int mvtxgrp = 2, int inttgrp = AlignmentDefs::inttG
     {
       // grouped by stave within each layer
 
-      std::vector<int> layer_labels[2][3][3];
+      std::vector<int> layer_labels[2][3][6];
       for(unsigned int i=0;i<mvtx_glbl_labels.size(); ++i)
 	{
 	  std::cout << " label index " << i << " label " << mvtx_glbl_labels[i] << std::endl; 
@@ -90,7 +99,7 @@ void makePedeConstraintsFile(int mvtxgrp = 2, int inttgrp = AlignmentDefs::inttG
 	  int sensor = (mvtx_glbl_labels[i] - layer *1000000 -stave*10000) / 10;
 	  int ipar =  mvtx_glbl_labels[i] - layer *1000000 -stave*10000 - sensor*10;
 
-	  int ip = ipar-4;
+	  int ip = ipar-1;
 	  layer_labels[clamshell][layer][ip].push_back(mvtx_glbl_labels[i]);   // stave is in this clamshell, layer for parameter ipar
 
 	  std::cout << "ishl " << clamshell << " ilyr " << layer << " stave " << stave << " ip " << ipar <<  " stave vec size " << layer_labels[clamshell][layer][ip].size() << std::endl;
@@ -103,9 +112,11 @@ void makePedeConstraintsFile(int mvtxgrp = 2, int inttgrp = AlignmentDefs::inttG
 	{
 	  for(unsigned int ilyr = 0; ilyr < 3; ++ilyr)
 	    {
-	      for(unsigned int ip=0;ip<3;++ip)
+	      for(unsigned int ip=0;ip<6;++ip)
 		{
 		  std::cout << "ishl " << ishl << " ilyr " << ilyr << " ip " << ip <<  " stave vec size " << layer_labels[ishl][ilyr][ip].size() << std::endl;
+		  if(params_to_skip.find(ip) != params_to_skip.end())
+		    { continue; }
 		  fconstraint << "Constraint 0.0" << std::endl;
 		  for(unsigned int istv = 0; istv <  layer_labels[ishl][ilyr][ip].size(); ++istv)
 		    {
@@ -122,7 +133,7 @@ void makePedeConstraintsFile(int mvtxgrp = 2, int inttgrp = AlignmentDefs::inttG
     {
       // grouped by sensor within each stave 
 
-      std::vector<int> stave_labels[2][3][20][3];
+      std::vector<int> stave_labels[2][3][20][6];
       for(unsigned int i=0;i<mvtx_glbl_labels.size(); ++i)
 	{
 	  std::cout << " label index " << i << " label " << mvtx_glbl_labels[i] << std::endl; 
@@ -132,7 +143,7 @@ void makePedeConstraintsFile(int mvtxgrp = 2, int inttgrp = AlignmentDefs::inttG
 	  int sensor = (mvtx_glbl_labels[i] - layer *1000000 -stave*10000) / 10;
 	  int ipar =  mvtx_glbl_labels[i] - layer *1000000 -stave*10000 - sensor*10;
 
-	  int ip = ipar-4;
+	  int ip = ipar-1;
 	  stave_labels[clamshell][layer][stave][ip].push_back(mvtx_glbl_labels[i]); 
 
 	  std::cout << "ishl " << clamshell << " ilyr " << layer << " stave " << stave << " sensor " << sensor << " ip " << ipar <<  " sensor vec size " << stave_labels[clamshell][layer][stave][ip].size() << std::endl;
@@ -151,10 +162,12 @@ void makePedeConstraintsFile(int mvtxgrp = 2, int inttgrp = AlignmentDefs::inttG
 		  std::cout << "     ishl " << ishl << " clamshell " << clamshell << std::endl;
 		  if(clamshell != ishl) continue;
 
-		  for(unsigned int ip=0;ip<3;++ip)
+		  for(unsigned int ip=0;ip<6;++ip)
 		    {
 		      std::cout << "ishl " << ishl << " ilyr " << ilyr << " istv " << istv << " ip " << ip 
 				<<  " sensor vec size " << stave_labels[ishl][ilyr][istv][ip].size() << std::endl;
+		      if(params_to_skip.find(ip) != params_to_skip.end())
+			{ continue; }
 		      fconstraint << "Constraint 0.0" << std::endl;
 		      for(unsigned int isens = 0; isens <  stave_labels[ishl][ilyr][istv][ip].size(); ++isens)
 			{
@@ -182,35 +195,39 @@ void makePedeConstraintsFile(int mvtxgrp = 2, int inttgrp = AlignmentDefs::inttG
   if(inttgrp ==  AlignmentDefs::inttGrp::inttlyr)
     {
       // constrain all layer parameters to total to the INTT offset.
-      std::vector<int> layer_labels[3];
+      std::vector<int> layer_labels[6];
+    
       for(unsigned int i=0;i<intt_glbl_labels.size(); ++i)
 	{
 	  std::cout << " label index " << i << " label " << intt_glbl_labels[i] << std::endl; 
 	  int layer = intt_glbl_labels[i] / 1000000;
 	  int ipar =  intt_glbl_labels[i] - layer *1000000;
-	  layer_labels[ipar-4].push_back(intt_glbl_labels[i]);
+
+	  layer_labels[ipar-1].push_back(intt_glbl_labels[i]);
 	}
       
       // write the constraints file
       ofstream fconstraint("intt_constraints_layer_barrel.txt");
-
-      for(unsigned int ip=0;ip<3;++ip)
+  
+      for(unsigned int ip=0;ip<6;++ip)
 	{
+	  if(params_to_skip.find(ip) != params_to_skip.end())
+	    { continue; }
 	  fconstraint << "Constraint 0.0" << std::endl;
 	  for(unsigned int ilyr = 0; ilyr < 4; ++ilyr)
 	    {
 	      fconstraint << layer_labels[ip][ilyr] << "  " << 1.0 << std::endl;
 	    }
-	}
-    
-      fconstraint.close();      
 
+	}
+
+      fconstraint.close();      
     }
 
   if(inttgrp ==  AlignmentDefs::inttGrp::lad)
     {
       // constrain all stave parameters to total to the layer offset.
-      std::vector<int> layer_labels[3][4];
+      std::vector<int> layer_labels[6][4];
       for(unsigned int i=0;i<intt_glbl_labels.size(); ++i)
 	{
 	  std::cout << " label index " << i << " label " << intt_glbl_labels[i] << std::endl; 
@@ -219,7 +236,7 @@ void makePedeConstraintsFile(int mvtxgrp = 2, int inttgrp = AlignmentDefs::inttG
 	  int sensor = (intt_glbl_labels[i] - layer *1000000 -stave*10000) / 10;
 	  int ipar =  intt_glbl_labels[i] - layer *1000000 -stave*10000 - sensor*10;
 
-	  int ip = ipar-4;
+	  int ip = ipar-1;
 	  int ilyr = layer -3;
 	  layer_labels[ip][ilyr].push_back(intt_glbl_labels[i]);   // stave is in this layer for parameter ipar
 
@@ -231,9 +248,11 @@ void makePedeConstraintsFile(int mvtxgrp = 2, int inttgrp = AlignmentDefs::inttG
 
       for(unsigned int ilyr = 0; ilyr < 4; ++ilyr)
 	{
-	  for(unsigned int ip=0;ip<3;++ip)
+	  for(unsigned int ip=0;ip<6;++ip)
 	    {
 	      std::cout << " ilyr " << ilyr << " ip " << ip <<  " stave vec size " << layer_labels[ip][ilyr].size() << std::endl;
+	      if(params_to_skip.find(ip) != params_to_skip.end())
+		{ continue; }
 	      fconstraint << "Constraint 0.0" << std::endl;
 	      for(unsigned int istv = 0; istv <  layer_labels[ip][ilyr].size(); ++istv)
 		{
@@ -250,7 +269,7 @@ void makePedeConstraintsFile(int mvtxgrp = 2, int inttgrp = AlignmentDefs::inttG
     {
       // constrain all sensor parameters to total to the stave offset
 
-      std::vector<int> stave_labels[4][20][3];
+      std::vector<int> stave_labels[4][20][6];
       for(unsigned int i=0;i<intt_glbl_labels.size(); ++i)
 	{
 	  std::cout << " label index " << i << " label " << intt_glbl_labels[i] << std::endl; 
@@ -259,7 +278,7 @@ void makePedeConstraintsFile(int mvtxgrp = 2, int inttgrp = AlignmentDefs::inttG
 	  int sensor = (intt_glbl_labels[i] - layer *1000000 -stave*10000) / 10;
 	  int ipar =  intt_glbl_labels[i] - layer *1000000 -stave*10000 - sensor*10;
 
-	  int ip = ipar-4;
+	  int ip = ipar-1;
 	  int ilyr = layer-3;
 	  stave_labels[ilyr][stave][ip].push_back(intt_glbl_labels[i]); 
 
@@ -273,10 +292,12 @@ void makePedeConstraintsFile(int mvtxgrp = 2, int inttgrp = AlignmentDefs::inttG
 	{
 	  for(int istv = 0; istv < AlignmentDefs::nstaves_layer_intt[ilyr]; ++istv)
 	    {
-	      for(unsigned int ip=0;ip<3;++ip)
+	      for(unsigned int ip=0;ip<6;++ip)
 		{
 		  std::cout << " ilyr " << ilyr << " istv " << istv << " ip " << ip 
 			    <<  " sensor vec size " << stave_labels[ilyr][istv][ip].size() << std::endl;
+		  if(params_to_skip.find(ip) != params_to_skip.end())
+		    { continue; }
 		  fconstraint << "Constraint 0.0" << std::endl;
 		  for(unsigned int isens = 0; isens <  stave_labels[ilyr][istv][ip].size(); ++isens)
 		    {
@@ -293,13 +314,11 @@ void makePedeConstraintsFile(int mvtxgrp = 2, int inttgrp = AlignmentDefs::inttG
 
 
   // TPC
-
   std::vector<int> tpc_glbl_labels = AlignmentDefs::getAllTpcGlobalLabels(tpcgrp);
-
   if(tpcgrp ==  AlignmentDefs::tpcGrp::sctr)
     {
       // constrain all sector parameters to total to the TPC offset.
-      std::vector<int> sector_labels[3];
+      std::vector<int> sector_labels[6];
       for(unsigned int i=0;i<tpc_glbl_labels.size(); ++i)
 	{
 	  std::cout << " label index " << i << " label " << tpc_glbl_labels[i] << std::endl; 
@@ -308,7 +327,7 @@ void makePedeConstraintsFile(int mvtxgrp = 2, int inttgrp = AlignmentDefs::inttG
 	  int sensor = (tpc_glbl_labels[i] - layer *1000000 -sector*10000) / 10;
 	  int ipar =  tpc_glbl_labels[i] - layer *1000000 -sector*10000 - sensor*10;
 
-	  int ip = ipar-4;
+	  int ip = ipar-1;
 	  sector_labels[ip].push_back(tpc_glbl_labels[i]); 
 
 	  std::cout << " ilyr " << layer << " sector " << sector << " ip " << ipar <<  " sector vec size " << sector_labels[ip].size() << std::endl;
@@ -317,10 +336,12 @@ void makePedeConstraintsFile(int mvtxgrp = 2, int inttgrp = AlignmentDefs::inttG
       // write the constraints file
       ofstream fconstraint("tpc_constraints_sector_tpc.txt");
 
-      for(unsigned int ip=0;ip<3;++ip)
+      for(unsigned int ip=0;ip<6;++ip)
 	{
 	  std::cout << " ip " << ip 
 		    <<  " sector vec size " << sector_labels[ip].size() << std::endl;
+	  if(params_to_skip.find(ip) != params_to_skip.end())
+	    { continue; }
 	  fconstraint << "Constraint 0.0" << std::endl;
 	  for(unsigned int isec = 0; isec <  sector_labels[ip].size(); ++isec)
 	    {
