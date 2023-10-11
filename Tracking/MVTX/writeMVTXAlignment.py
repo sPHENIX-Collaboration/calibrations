@@ -5,12 +5,14 @@ Cameron Dean, MIT, October 2023
 You may need to install a dependency with pip:
 pip install xlrd
 pip install scikit-spatial
+pip install vg
 
 Note: for the alignment you need to move the tracker hit set object which is a single chip
 You must rotate the chip in local coordinates then translate the position in global coordinates 
 '''
 
 import numpy as np
+import vg
 import os, fnmatch
 from datetime import date
 from skspatial.objects import Line
@@ -480,10 +482,10 @@ mvtxLayerInfo = [{"nStaves" : 12, "phi0": 0.28500, "phistep": 0.52360, "phioffse
 
 coordinate = ["X", "Y", "Z"]
 angle = ["alpha", "beta", "gamma"]
-chipPositions = [{"corner": 0, coordinate[0] : -1.485, coordinate[1] :  0.74, coordinate[2] : 0.},
-    		 {"corner": 1, coordinate[0] : -1.485, coordinate[1] : -0.74, coordinate[2] : 0.},
-    		 {"corner": 2, coordinate[0] :  1.485, coordinate[1] : -0.74, coordinate[2] : 0.},
-    		 {"corner": 3, coordinate[0] :  1.485, coordinate[1] :  0.74, coordinate[2] : 0.}]
+chipPositions = [{"corner": 0, coordinate[0] : -14.85, coordinate[1] :  7.4, coordinate[2] : 0.},
+    		 {"corner": 1, coordinate[0] : -14.85, coordinate[1] : -7.4, coordinate[2] : 0.},
+    		 {"corner": 2, coordinate[0] :  14.85, coordinate[1] : -7.4, coordinate[2] : 0.},
+    		 {"corner": 3, coordinate[0] :  14.85, coordinate[1] :  7.4, coordinate[2] : 0.}]
 
 def getLocalChipCorners( cornerDeltas ):
   localCorners = []
@@ -505,15 +507,27 @@ def calculateCenter( midPoint ):
   intersection = line1.intersect_line(line2)
   return intersection
 
+
 def calculateChipRotations( chip, midPoint, chipCenter ):
-  #Note, I rotate basis from metrology file to local geant here
-  #check nores later 
-  deltaX = midPoint[3]["Y"] - chipCenter[1] 
-  deltaY = midPoint[3]["Z"] - chipCenter[2] 
-  deltaZ = midPoint[2]["X"] - chipCenter[0] 
-  chip["alpha"] = round(np.arctan((deltaY)/(deltaX)), 7)
-  #chip["beta"] = round(np.arctan((deltaX)/(deltaZ)), 7)
-  #chip["gamma"] = round(np.arctan((deltaZ)/(deltaY)), 7)
+  edge = []
+  for i in range(len(midPoint)): edge.append(np.array([midPoint[i]["Y"] - chipCenter[1],
+                                                       midPoint[i]["Z"] - chipCenter[2],
+                                                       midPoint[i]["X"] - chipCenter[0]]))
+  axis = [vg.normalize(edge[3]), vg.perpendicular(edge[2] - edge[0], edge[3] - edge[1]), vg.normalize(edge[2])]
+
+  unit_vector = np.array([1.,1.,1.])
+  gamma = 0.5*np.pi - vg.angle(axis[2], unit_vector, look=vg.basis.z, units='rad', assume_normalized=True)
+  rotate_out_gamma = []
+  for i in range(len(axis)): rotate_out_gamma.append(vg.rotate(axis[i], vg.basis.z, gamma, units='rad'))
+  beta = 0.5*np.pi - vg.angle(rotate_out_gamma[1], unit_vector, look=vg.basis.y, units='rad', assume_normalized=True)
+  rotate_out_beta = []
+  for i in range(len(axis)): rotate_out_beta.append(vg.rotate(rotate_out_gamma[i], vg.basis.y, beta, units='rad'))
+  alpha = 0.5*np.pi - vg.angle(rotate_out_beta[0], unit_vector, look=vg.basis.x, units='rad', assume_normalized=True)
+
+  chip["alpha"] = round(alpha, 7)
+  chip["beta"] = round(beta, 7)
+  chip["gamma"] = round(gamma, 7)
+
 
 def rotateChipLocalToGlobal( chip, chipCenter ):
    layerInfo = mvtxLayerInfo[chip["layer"]]
@@ -558,7 +572,7 @@ def calcualteChipAlignment( staveInformation ):
           if (measurementPoint == 36): break #There are no metrology values for the final corner, need a break or we'll crash
           if (missingInfo and measurementPoint in missingInfo["missing"]): continue
           else:
-            deviation[coord] = 0.1*metrologyData.iloc[metrologyData.where(metrologyData=='{0}-Valeur_P{1}'.format(coord, measurementPoint)).dropna(how='all').dropna(axis=1).index.values[0], 5]
+            deviation[coord] = metrologyData.iloc[metrologyData.where(metrologyData=='{0}-Valeur_P{1}'.format(coord, measurementPoint)).dropna(how='all').dropna(axis=1).index.values[0], 5]
         i+=1
 
       localChipCorners = getLocalChipCorners(cornerDeviations)
