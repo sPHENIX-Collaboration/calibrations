@@ -20,6 +20,7 @@ import pandas as pd
 pd.set_option('io.excel.xlsx.reader', "openpyxl")
 
 verbosity = 0
+precision = 7
 
 mvtxAlignmentList = [
 {"name": "P204", "layer": 0, "stave": 0, "chip": 0, "hitsetkey": 16, "alpha": 0., "beta": 0., "gamma": 0., "dx": 0., "dy": 0., "dz": 0.},
@@ -524,17 +525,17 @@ def calculateChipRotations( chip, midPoint, chipCenter ):
   for i in range(len(axis)): rotate_out_beta.append(vg.rotate(rotate_out_gamma[i], vg.basis.y, beta, units='rad'))
   alpha = 0.5*np.pi - vg.angle(rotate_out_beta[0], unit_vector, look=vg.basis.x, units='rad', assume_normalized=True)
 
-  chip["alpha"] = round(alpha, 7)
-  chip["beta"] = round(beta, 7)
-  chip["gamma"] = round(gamma, 7)
+  chip["alpha"] = round(alpha, precision)
+  chip["beta"] = round(beta, precision)
+  chip["gamma"] = round(gamma, precision)
 
 
-def rotateChipLocalToGlobal( chip, chipCenter ):
+def rotateChipLocalToGlobal( chip ):
    layerInfo = mvtxLayerInfo[chip["layer"]]
    angle = layerInfo["phi0"] + chip["stave"]*layerInfo["phistep"] + layerInfo["phioffset"] + layerInfo["phitilt"]
-   chip["dx"] = round(chipCenter[1]*np.cos(angle) - chipCenter[2]*np.sin(angle), 7)
-   chip["dy"] = round(chipCenter[2]*np.sin(angle) + chipCenter[1]*np.cos(angle), 7)
-   chip["dz"] = round(chipCenter[0], 7)
+   chip["dx"] = round(chip["dx"]*np.cos(angle) - chip["dy"]*np.sin(angle), precision)
+   chip["dy"] = round(chip["dx"]*np.sin(angle) + chip["dy"]*np.cos(angle), precision)
+   chip["dz"] = round(chip["dz"], precision)
 
 def find(pattern, path):
     result = []
@@ -581,8 +582,10 @@ def calcualteChipAlignment( staveInformation ):
         nextPoint = j + 1 if j < 3 else 0
         midPoints.append(calculteMidPoint(localChipCorners[j], localChipCorners[nextPoint]))
       myCenter = calculateCenter(midPoints)
-      calculateChipRotations( getChipDict, midPoints, myCenter)
-      rotateChipLocalToGlobal( getChipDict, myCenter )
+      calculateChipRotations(getChipDict, midPoints, myCenter)
+      getChipDict["dx"] += myCenter[1]
+      getChipDict["dy"] += myCenter[2]
+      getChipDict["dz"] += myCenter[0]
       if (verbosity > 0):
         print(getChipDict)
 
@@ -603,6 +606,7 @@ def writeMVTXAlignment():
      stave = next((item for item in mvtxAlignmentList if item["layer"] == i and item["stave"] == j), None)
      calcualteChipAlignment(stave)
   for entry in mvtxAlignmentList:
+    rotateChipLocalToGlobal(entry)
     alignmentFile.write("{0} {1} {2} {3} {4} {5} {6}\n".format(entry["hitsetkey"], entry["alpha"], entry["beta"], entry["gamma"], entry["dx"], entry["dy"], entry["dz"])) 
 
 writeMVTXAlignment()
