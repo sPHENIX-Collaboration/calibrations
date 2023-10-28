@@ -65,10 +65,10 @@ void plot_alignment_residuals(std::string inputfilename = "data.txt",
 
   //ifstream fin("/sphenix/user/frawley/march17_2023/macros/detectors/sPHENIX/sumAlignmentParams_run20_iter2.txt");
   // ifstream fin("/sphenix/user/frawley/march17_2023/macros/detectors/sPHENIX/new_alignment_corrections.txt");
-  ifstream fin("/sphenix/user/frawley/march17_2023/macros/detectors/sPHENIX/localAlignmentParamsFile.txt");
+  //ifstream fin("/sphenix/user/frawley/march17_2023/macros/detectors/sPHENIX/localAlignmentParamsFile.txt");
   //ifstream fin("/sphenix/user/frawley/march17_2023/macros/detectors/sPHENIX/sumAlignmentParams_run18_iter2.txt");
   //  ifstream fin("/sphenix/user/frawley/march17_2023/macros/detectors/sPHENIX/sumAlignmentParams_run18_iter6_fixed_noconstraints.txt");
-
+  ifstream fin("/sphenix/user/frawley/march17_2023/macros/detectors/sPHENIX/localAlignmentParamsFile.txt");
 
 
   if(!fin.is_open()) std::cout << "Unable to open input alignment params file" << std::endl;

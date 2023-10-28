@@ -56,7 +56,7 @@ static const std::array<double,3> tpc_sector_mean[3] = {
   cmvtx->Divide(6,3);
   TCanvas *cintt = new TCanvas("cintt","INTT layers 3-6",50,50,1200,800);
   cintt->Divide(6,4);
-  TCanvas *ctpc = new TCanvas("ctpc","TPC layers 8, 22, 36, 50",50,50,1200,800);
+  TCanvas *ctpc = new TCanvas("ctpc","TPC layers 8, 18, 28, 36, 50",50,50,1200,800);
   ctpc->Divide(6,5);
   int this_layer[5] = {8,18,28,36,50};
 
@@ -64,13 +64,21 @@ static const std::array<double,3> tpc_sector_mean[3] = {
   std::vector<std::string> legvec;
   std::vector<int> col;
 
+  /*
   finvec.push_back("run24_input.root");
   legvec.push_back( "Input");
   col.push_back(kRed); 
-
-  finvec.push_back("run24_iter0_fits.root");
-  legvec.push_back( "Extracted");
+  */
+  /*
+  finvec.push_back("tmp.root");
+  legvec.push_back( "ideal");
   col.push_back(kBlue); 
+  */
+
+  finvec.push_back("/sphenix/tg/tg01/hf/frawley/residuals1/kshort_proc_25.rootseedresiduals.root");
+  legvec.push_back( "ideal");
+  col.push_back(kBlue); 
+
 
   for(int ifile = 0; ifile < finvec.size(); ++ifile)
     {
@@ -107,6 +115,9 @@ static const std::array<double,3> tpc_sector_mean[3] = {
 	      hpar->SetTitle(hname);
 	      hpar->GetXaxis()->SetRangeUser(0, xmax);
 	      hpar->SetMarkerColor(col[ifile]);
+	      if(ipar > 2 && ipar < 5)
+		hpar->GetYaxis()->SetRangeUser(-0.5, 0.5);
+
 	      if(ifile == 0)
 		{	      
 		  hpar->Draw();
@@ -164,8 +175,10 @@ static const std::array<double,3> tpc_sector_mean[3] = {
 	      sprintf(hname,"layer %i par %i", layer, ipar);
 	      hpar->SetTitle(hname);
 	      hpar->GetXaxis()->SetRangeUser(0, xmax);
-	      if(ipar > 2)
-		hpar->GetYaxis()->SetRangeUser(-1.0, 1.0);
+	      if(ipar > 2 && ipar < 5)
+		hpar->GetYaxis()->SetRangeUser(-0.5, 0.5);
+	      else if(ipar == 5)
+		hpar->GetYaxis()->SetRangeUser(-10.0, 10.0);
 	      hpar->SetMarkerStyle(20);
 	      hpar->SetMarkerSize(0.3);
 	      hpar->SetMarkerColor(col[ifile]);

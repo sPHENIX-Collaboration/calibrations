@@ -29,7 +29,57 @@
 //  - THE TRANSLATIONS ARE IN mm
 //============================= 
 
+// example residual misalignment settings.
+// These are for testing tracking performance versus alignment precision
+// Baseline values: Start at 40% of ideal resolution
+// MVTX:  2, 4 8 16 microns
+// INTT:   10, 20, 40 80 microns
+// TPC:     60, 120, 240 480 microns
+static const double inflation = 8.0;  //  will use 1, 2, 4, 8 as multiplier of the deviations
 
+/*
+// These are sigmas of the random distribution of deviations from the mean in mm
+static const double mvtx_stave_dev = 0.002;   // mm
+static const double mvtx_sensor_dev = 0.002;
+static const double intt_stave_dev = 0.010;
+static const double intt_sensor_dev = 0.010;
+static const double tpc_sector_dev = 0.060;
+static const double tpc_surf_dev = 0.010;
+static const double mms_tile_dev = 0.060;
+*/
+
+// These are sigmas of the random distribution of deviations from the mean in mm
+static const double mvtx_stave_dev = 0.0;
+static const double mvtx_sensor_dev = 0.0;
+static const double intt_stave_dev = 0.0;
+static const double intt_sensor_dev = 0.0;
+static const double tpc_sector_dev = 0.0;
+static const double tpc_surf_dev = 0.0;
+static const double mms_tile_dev = 0.0;
+
+// These are mean offsets, set them all to zero for alignment residual tests
+static const std::array<double, 3> mvtx_clamshell_mean[2] ={
+   0.0, 0.0, 0.0,
+   0.0, 0.0, 0.0}; 
+static const std::array<double,3> mvtx_stave_mean[3] = {
+  0.0, 0.0, 0.0,
+  0.2, -0.15, 1.0,
+  0.0, 0.0, 0.0 };      
+
+static const std::array<double,3> intt_stave_mean[4] = {
+  0.0, 0.0, 0.0,
+  0.0, 0.0, 0.0,
+  0.0, 0.0, 0.0,
+  0.0, 0.0, 0.0 };
+
+// the index here is tpc region (0-2)
+static const std::array<double,3> tpc_sector_mean[3] = {
+  0, 0, 0,
+  0, 0, 0, 
+  0, 0, 0 };
+static const std::array<double,3> mms_tile_mean = {0, 0, 0};
+
+/*
 // example test misalignment settings.
 // fix layer 0 and outer tpc region, INTT grouped as a whole, MVTX grouped by clamshell.
 static const std::array<double, 3> mvtx_clamshell_mean[2] ={
@@ -53,14 +103,7 @@ static const std::array<double,3> tpc_sector_mean[3] = {
   0, 0, 0 };
 static const std::array<double,3> mms_tile_mean = {0, 0, 0};
 
-// These are sigmas of the random distribution of deviations from the mean in mm
-static const double mvtx_stave_dev = 0.0;
-static const double mvtx_sensor_dev = 0.0;
-static const double intt_stave_dev = 0.0;
-static const double intt_sensor_dev = 0.0;
-static const double tpc_sector_dev = 0.0;
-static const double tpc_surf_dev = 0.0;
-static const double mms_tile_dev = 0.0;
+*/
 
 // Creates an alignment corrections file containing all zero alignment corrections if true
 bool make_zero_corrections_all = false;
@@ -137,9 +180,9 @@ void getMvtxInputs( int layer, int stave, std::array<double, 6>& staveMean, std:
   for(int i=0; i<6; ++i)
     {  staveMean.at(i) = stmean[i]; }
   for(int i=0; i<6; ++i)
-    {  staveDev.at(i) = stdev[i]; }
+    {  staveDev.at(i) = stdev[i] * inflation; }
   for(int i=0; i<6; ++i)
-    {  sensorDev.at(i) = sendev[i]; }
+    {  sensorDev.at(i) = sendev[i] * inflation; }
 }
 
 void getInttInputs( int layer, std::array<double, 6>& staveMean, std::array<double, 6>& staveDev, std::array<double, 6>& sensorDev)
@@ -152,9 +195,9 @@ void getInttInputs( int layer, std::array<double, 6>& staveMean, std::array<doub
   for(int i=0; i<6; ++i)
     {  staveMean.at(i) = stmean[i];  }
   for(int i=0; i<6; ++i)
-    {  staveDev.at(i) = stdev[i]; }
+    {  staveDev.at(i) = stdev[i] * inflation; }
   for(int i=0; i<6; ++i)
-    {   sensorDev.at(i) = sendev[i]; }
+    {   sensorDev.at(i) = sendev[i] * inflation; }
 }
 
 void getTpcInputs( int layer, std::array<double, 6>& staveMean, std::array<double, 6>& staveDev, std::array<double, 6>& sensorDev)
@@ -169,9 +212,9 @@ void getTpcInputs( int layer, std::array<double, 6>& staveMean, std::array<doubl
   for(int i=0; i<6; ++i)
     {  staveMean.at(i) = secmean[i];  }
   for(int i=0; i<6; ++i)
-    {  staveDev.at(i) = secdev[i]; }
+    {  staveDev.at(i) = secdev[i] * inflation; }
   for(int i=0; i<6; ++i)
-    {   sensorDev.at(i) = surfdev[i]; }
+    {   sensorDev.at(i) = surfdev[i] * inflation; }
 }
 
 void getMmsInputs( std::array<double, 6>& staveMean, std::array<double, 6>& staveDev, std::array<double, 6>& sensorDev)
@@ -183,7 +226,7 @@ void getMmsInputs( std::array<double, 6>& staveMean, std::array<double, 6>& stav
   for(int i=0; i<6; ++i)
     {  staveMean.at(i) = tilemean[i];  }
   for(int i=0; i<6; ++i)
-    {  staveDev.at(i) = tiledev[i];  }
+    {  staveDev.at(i) = tiledev[i] * inflation;  }
   for(int i=0; i<6; ++i)
     { sensorDev.at(i) = 0.0; }
 }
