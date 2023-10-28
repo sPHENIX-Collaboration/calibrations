@@ -23,8 +23,7 @@ std::map<int, Eigen::Affine3d> getIdealTransforms()
 {
   std::map<int, Eigen::Affine3d> ideal_map;
 
-  //std::ifstream fideal("transform_out_file_current.txt",std::ifstream::in);
-  std::ifstream fideal("transform_out_file_corrected.txt",std::ifstream::in);
+  std::ifstream fideal("ideal_tracking_transforms_october25_2023.txt",std::ifstream::in);
 
   int hitsetkey;
   double t11,t12,t13,t14;
@@ -225,7 +224,7 @@ void INTT_transform_offsets()
   TH2D *hrphi_ideal = new TH2D("hrphi_ideal", "hrphi_ideal", 200, -1, 16, 200, 0, 120);
 
   TChain *tree = new TChain("intt_transforms");
-  tree->Add("intt_transforms.root");
+  tree->Add("intt_survey_transforms_Bertaux_October25_2023.root");
 
   double x,y,z,a,b,c;
   ROOT::Math::Transform3D *transform = new ROOT::Math::Transform3D();
