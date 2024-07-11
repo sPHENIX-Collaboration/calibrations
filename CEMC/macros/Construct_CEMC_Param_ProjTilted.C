@@ -38,6 +38,12 @@ get_block(const int block_id, const int z_sign)
   //
   //  -Dan
 
+  // Following is the block geometry table given by Dan Cacace 
+  // It describes the block corner corrdinate in the titled plane (i.e. not the lab coordinate system). The translation from the 2D coordiante in the tilted plane to the 3D block geometry is processed at 
+  //   https://github.com/sPHENIX-Collaboration/coresoftware/blob/521f45f240535e853f42a69e236c62afc08557bf/simulation/g4simulation/g4detectors/PHG4FullProjTiltedSpacalDetector.cc#L501 
+  // Validating this geometry requires checking the result Gean4 block geometry against 3D mechanical model. 
+  // Further detail please check https://indico.bnl.gov/event/21221/contributions/83436/attachments/50999/87427/EMCal_zy_Nov2023.pdf 
+
   //  const double radial_shift = 97 - 93.87578546;
   const double radial_shift = 0;
   const double data[] =

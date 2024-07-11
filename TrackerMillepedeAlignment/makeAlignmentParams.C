@@ -3,6 +3,7 @@
 #include <trackbase/TpcDefs.h>
 #include <MicromegasDefs.h>
 #include <trackbase/ActsGeometry.h>
+#include <trackermillepedealignment/AlignmentDefs.h>
 
 #include <iostream>
 #include <string>
@@ -27,20 +28,78 @@
 // Set the offsets all in one place
 //  - THE TRANSLATIONS ARE IN mm
 //============================= 
-// These are offsets of the entire detector
-static const std::array<double,3> mvtx_stave_mean = {1, -1, 2};
-static const std::array<double,3> intt_stave_mean = {-1, 1, -1};
-static const std::array<double,3> tpc_sector_mean = {-1, 1, -2};
-static const std::array<double,3> mms_tile_mean = {0.5, -0.5, 1};
-// These are sigmas of the random distribution of deviations from the mean
-static const double mvtx_stave_dev = 0.040;
-static const double mvtx_sensor_dev = 0.015;
-static const double intt_stave_dev = 0.040;
-static const double intt_sensor_dev = 0.015;
-static const double tpc_sector_dev = 0.150;
-static const double tpc_surf_dev = 0.0;
-static const double mms_tile_dev = 0.150;
 
+// example residual misalignment settings.
+// These are for testing tracking performance versus alignment precision
+// Baseline values: Start at 40% of ideal resolution
+// MVTX:  2, 4 8 16 microns
+// INTT:   10, 20, 40 80 microns
+// TPC:     60, 120, 240 480 microns
+static const double inflation = 1.0;  //  will use 1, 2, 4, 8 as multiplier of the deviations
+
+/*
+// These are sigmas of the random distribution of deviations from the mean in mm
+static const double mvtx_stave_dev = 0.002;   // mm
+static const double mvtx_sensor_dev = 0.002;
+static const double intt_stave_dev = 0.010;
+static const double intt_sensor_dev = 0.010;
+static const double tpc_sector_dev = 0.060;
+static const double tpc_surf_dev = 0.010;
+static const double mms_tile_dev = 0.060;
+*/
+
+// These are sigmas of the random distribution of deviations from the mean in mm
+static const double mvtx_stave_dev = 0.0;
+static const double mvtx_sensor_dev = 0.0;
+static const double intt_stave_dev = 0.0;
+static const double intt_sensor_dev = 0.0;
+static const double tpc_sector_dev = 0.0;
+static const double tpc_surf_dev = 0.0;
+static const double mms_tile_dev = 0.0;
+
+// These are mean offsets, set them all to zero for alignment residual tests
+static const std::array<double, 3> mvtx_clamshell_mean[2] ={
+   0.0, 0.0, 0.0,
+   0.0, 0.0, 0.0}; 
+static const std::array<double,3> mvtx_stave_mean[3] = {
+  0.0, 0.0, 0.0,
+  0.0, 0.0, 0.0,
+  0.0, 0.0, 0.0 };
+// rotations around global x,y,z axes 
+/*
+static const std::array<double,3> mvtx_layer_rotation_mean[3] = {
+  0.0, 0.0, -0.0079,
+  0.0, 0.0, 0.0149,
+  0.0, 0.0, -0.0060 };      
+*/
+static const std::array<double,3> mvtx_layer_rotation_mean[3] = {
+  0.0, 0.0, 0.0,
+  0.0, 0.0, 0.0,
+  0.0, 0.0, 0.0 };      
+
+static const std::array<double,3> intt_stave_mean[4] = {
+  0.0, 0.0, 0.0,
+  0.0, 0.0, 0.0,
+  0.0, 0.0, 0.0,
+  0.0, 0.0, 0.0 };
+static const std::array<double,3> intt_layer_rotation_mean[4] = {
+  0.0, 0.0, 0.0,
+  0.0, 0.0, 0.0,
+  0.0, 0.0, 0.0,
+  0.0, 0.0, 0.0  };      
+
+// the index here is tpc region (0-2)
+static const std::array<double,3> tpc_sector_mean[3] = {
+  0, 0, 0,
+  0, 0, 0, 
+  0, 0, 0 };
+static const std::array<double,3> tpc_sector_rotation_mean[3] = {
+  0, 0, 0,
+  0, 0, 0, 
+  0, 0, 0 };
+
+static const std::array<double,3> mms_tile_mean = {0, 0, 0};
+static const std::array<double,3> mms_tile_rotation_mean = {0, 0, 0};
 
 // Creates an alignment corrections file containing all zero alignment corrections if true
 bool make_zero_corrections_all = false;
@@ -53,12 +112,23 @@ bool make_zero_corrections_tpc = false;
 bool make_zero_corrections_mms = false;
 
 // these are used for bookkeeping when using heirarchical offsets
-static std::array<unsigned int, 6> stave_now = {999,999,999,999,999,999};
-static std::array<double, 6> stave_perturbation_now = {0,0,0,0,0,0};
-static std::array<unsigned int, 6> physical_sector_now = {999,999,999,999,999,999};
-static std::array<double,6> physical_sector_perturbation_now = {0,0,0,0,0,0};
+static std::array<unsigned int, 9> stave_now = {999,999,999,999,999,999,999,999,999};
+static std::array<double, 9> stave_perturbation_now = {0,0,0,0,0,0,0,0,0};
+static std::array<unsigned int, 9> physical_sector_now = {999,999,999,999,999,999,999,999,999};
+static std::array<double,9> physical_sector_perturbation_now = {0,0,0,0,0,0,0,0,0};
 
 std::default_random_engine generator;
+
+int get_tpc_region(int layer)
+{
+  int region = 0;
+  if(layer > 22 && layer < 39)
+    region = 1;
+  if(layer > 38 && layer < 55)
+    region = 2;
+
+  return region;  
+}
 
 bool is_in_mvtx(int layer)
 {
@@ -87,79 +157,96 @@ bool is_in_mms(int layer)
   if(layer > 54) ret = true;
   return ret;
 }
-void getMvtxInputs( std::array<double, 6>& staveMean, std::array<double, 6>& staveDev, std::array<double, 6>& sensorDev)
+
+void getMvtxInputs( int layer, int stave, std::array<double, 9>& staveMean, std::array<double, 9>& staveDev, std::array<double, 9>& sensorDev)
 {
   // translations are in mm !!!
-  double stmean[6] = {0, 0, 0, mvtx_stave_mean[0], mvtx_stave_mean[1], mvtx_stave_mean[2]};  // mean offset
-  double stdev[6] = {0, 0, 0, mvtx_stave_dev, mvtx_stave_dev, mvtx_stave_dev};  // sigma around mean offset
-  double sendev[6] = {0, 0, 0, mvtx_sensor_dev, mvtx_sensor_dev, mvtx_sensor_dev}; // sigma, centered on zero
+  int clamshell = AlignmentDefs::getMvtxClamshell(layer, stave); 
+
+  double stmean[9] = {0, 0, 0, 
+		      mvtx_clamshell_mean[clamshell][0] + mvtx_stave_mean[layer][0], 
+		      mvtx_clamshell_mean[clamshell][1] + mvtx_stave_mean[layer][1], 
+		      mvtx_clamshell_mean[clamshell][2] + mvtx_stave_mean[layer][2],
+		      mvtx_layer_rotation_mean[layer][0],
+		      mvtx_layer_rotation_mean[layer][1],
+		      mvtx_layer_rotation_mean[layer][2] };  // mean offset
+  double stdev[9] = {0, 0, 0, mvtx_stave_dev, mvtx_stave_dev, mvtx_stave_dev,0,0,0};  // sigma around mean offset
+  double sendev[9] = {0, 0, 0, mvtx_sensor_dev, mvtx_sensor_dev, mvtx_sensor_dev,0,0,0}; // sigma, centered on zero
+
+  std::cout << " MVTX layer " << layer << " stave " << stave 
+	    << " stave mean [3-8]: " << stmean[3] << "  " << stmean[4] << "  " << stmean[5] 
+	    << stmean[6] << "  " << stmean[7] << "  " << stmean[8] 
+	    << std::endl;
   
-  for(int i=0; i<6; ++i)
+  for(int i=0; i<9; ++i)
     {  staveMean.at(i) = stmean[i]; }
-  for(int i=0; i<6; ++i)
-    {  staveDev.at(i) = stdev[i]; }
-  for(int i=0; i<6; ++i)
-    {  sensorDev.at(i) = sendev[i]; }
+  for(int i=0; i<9; ++i)
+    {  staveDev.at(i) = stdev[i] * inflation; }
+  for(int i=0; i<9; ++i)
+    {  sensorDev.at(i) = sendev[i] * inflation; }
 }
 
-void getInttInputs( std::array<double, 6>& staveMean, std::array<double, 6>& staveDev, std::array<double, 6>& sensorDev)
+void getInttInputs( int layer, std::array<double, 9>& staveMean, std::array<double, 9>& staveDev, std::array<double, 9>& sensorDev)
 {
   // translations are in mm !!!
-  double stmean[6] = {0, 0, 0, intt_stave_mean[0], intt_stave_mean[1], intt_stave_mean[2]};  // mean stave offset
-  double stdev[6] = {0, 0, 0, intt_stave_dev, intt_stave_dev, intt_stave_dev};  // sigma around mean stave offset
-  double sendev[6] = {0, 0, 0, intt_sensor_dev, intt_sensor_dev, intt_sensor_dev}; // sigma of sensor within stave
+  double stmean[9] = {0, 0, 0, intt_stave_mean[layer-3][0], intt_stave_mean[layer-3][1], intt_stave_mean[layer-3][2], 
+		      intt_layer_rotation_mean[layer-3][0],  intt_layer_rotation_mean[layer-3][1],  intt_layer_rotation_mean[layer-3][2] };  // mean stave offset
+  double stdev[9] = {0, 0, 0, intt_stave_dev, intt_stave_dev, intt_stave_dev,0,0,0};  // sigma around mean stave offset
+  double sendev[9] = {0, 0, 0, intt_sensor_dev, intt_sensor_dev, intt_sensor_dev,0,0,0}; // sigma of sensor within stave
   
-  for(int i=0; i<6; ++i)
+  for(int i=0; i<9; ++i)
     {  staveMean.at(i) = stmean[i];  }
-  for(int i=0; i<6; ++i)
-    {  staveDev.at(i) = stdev[i]; }
-  for(int i=0; i<6; ++i)
-    {   sensorDev.at(i) = sendev[i]; }
+  for(int i=0; i<9; ++i)
+    {  staveDev.at(i) = stdev[i] * inflation; }
+  for(int i=0; i<9; ++i)
+    {   sensorDev.at(i) = sendev[i] * inflation; }
 }
 
-void getTpcInputs( std::array<double, 6>& staveMean, std::array<double, 6>& staveDev, std::array<double, 6>& sensorDev)
+void getTpcInputs( int layer, std::array<double, 9>& staveMean, std::array<double, 9>& staveDev, std::array<double, 9>& sensorDev)
 {
+  int region = get_tpc_region(layer);
+
   // translations are in mm !!!
-  double secmean[6] = {0, 0, 0, tpc_sector_mean[0], tpc_sector_mean[1], tpc_sector_mean[2]};  // mean sector offset (i.e. TPC offset)
-  double secdev[6] = {0, 0, 0, tpc_sector_dev, tpc_sector_dev, tpc_sector_dev};  // sigma around mean sector offset
-  double surfdev[6] = {0, 0, 0, tpc_surf_dev, tpc_surf_dev, tpc_surf_dev}; // surfaces added sigma, centered on zero
+  double secmean[9] = {0, 0, 0, tpc_sector_mean[region][0], tpc_sector_mean[region][1], tpc_sector_mean[region][2],0,0,0}; //mean sector offset
+  double secdev[9] = {0, 0, 0, tpc_sector_dev, tpc_sector_dev, tpc_sector_dev,0,0,0};  // sigma around mean sector offset
+  double surfdev[9] = {0, 0, 0, tpc_surf_dev, tpc_surf_dev, tpc_surf_dev,0,0,0}; // surfaces added sigma, centered on zero
   
-  for(int i=0; i<6; ++i)
+  for(int i=0; i<9; ++i)
     {  staveMean.at(i) = secmean[i];  }
-  for(int i=0; i<6; ++i)
-    {  staveDev.at(i) = secdev[i]; }
-  for(int i=0; i<6; ++i)
-    {   sensorDev.at(i) = surfdev[i]; }
+  for(int i=0; i<9; ++i)
+    {  staveDev.at(i) = secdev[i] * inflation; }
+  for(int i=0; i<9; ++i)
+    {   sensorDev.at(i) = surfdev[i] * inflation; }
 }
 
-void getMmsInputs( std::array<double, 6>& staveMean, std::array<double, 6>& staveDev, std::array<double, 6>& sensorDev)
+void getMmsInputs( std::array<double, 9>& staveMean, std::array<double, 9>& staveDev, std::array<double, 9>& sensorDev)
 {
   // translations are in mm !!!
-  double tilemean[6] = {0, 0, 0, mms_tile_mean[0], mms_tile_mean[1], mms_tile_mean[2]};  // mean offset
-  double tiledev[6] = {0, 0, 0, mms_tile_dev, mms_tile_dev, mms_tile_dev};  // sigma around mean offset
+  double tilemean[9] = {0, 0, 0, mms_tile_mean[0], mms_tile_mean[1], mms_tile_mean[2],0,0,0};  // mean offset
+  double tiledev[9] = {0, 0, 0, mms_tile_dev, mms_tile_dev, mms_tile_dev,0,0,0};  // sigma around mean offset
   
-  for(int i=0; i<6; ++i)
+  for(int i=0; i<9; ++i)
     {  staveMean.at(i) = tilemean[i];  }
-  for(int i=0; i<6; ++i)
-    {  staveDev.at(i) = tiledev[i];  }
-  for(int i=0; i<6; ++i)
+  for(int i=0; i<9; ++i)
+    {  staveDev.at(i) = tiledev[i] * inflation;  }
+  for(int i=0; i<9; ++i)
     { sensorDev.at(i) = 0.0; }
 }
 
-void getInputs(unsigned int layer, std::array<double, 6>& staveMean, std::array<double, 6>& staveDev, std::array<double, 6>& sensorDev)
+void getInputs(unsigned int layer, int stave, std::array<double, 9>& staveMean, std::array<double, 9>& staveDev, std::array<double, 9>& sensorDev)
 {
 
   if(layer < 3)
     {
-      getMvtxInputs( staveMean, staveDev, sensorDev);
+      getMvtxInputs( layer, stave, staveMean, staveDev, sensorDev);
     }
   else if(layer >2 && layer < 7)
     {
-      getInttInputs( staveMean, staveDev, sensorDev);
+      getInttInputs( layer, staveMean, staveDev, sensorDev);
     }
   else if(layer > 6 && layer < 55)
     {
-      getTpcInputs( staveMean, staveDev, sensorDev);
+      getTpcInputs( layer, staveMean, staveDev, sensorDev);
     }
   else
     {
@@ -168,9 +255,9 @@ void getInputs(unsigned int layer, std::array<double, 6>& staveMean, std::array<
 
 }
 
-std::array<double, 6> getOffset(unsigned int layer, unsigned int stave)
+std::array<double, 9> getOffset(unsigned int layer, unsigned int stave)
 {
-  std::array<double, 6> offset={0,0,0,0,0,0};
+  std::array<double, 9> offset={0,0,0,0,0,0,0,0,0};
 
   // use ideal geometry for parts of the detector
   if(make_zero_corrections_all) return offset;
@@ -179,12 +266,12 @@ std::array<double, 6> getOffset(unsigned int layer, unsigned int stave)
   if(is_in_tpc(layer) && make_zero_corrections_tpc) return offset;
   if(is_in_mms(layer) && make_zero_corrections_mms) return offset;
 
-  std::array<double, 6> staveMean = {0,0,0,0,0,0};
-  std::array<double, 6> staveDev = {0,0,0,0,0,0};
-  std::array<double, 6> sensorDev = {0,0,0,0,0,0};
-  getInputs(layer, staveMean, staveDev, sensorDev);
+  std::array<double, 9> staveMean = {0,0,0,0,0,0,0,0,0};
+  std::array<double, 9> staveDev =     {0,0,0,0,0,0,0,0,0};
+  std::array<double, 9> sensorDev =  {0,0,0,0,0,0,0,0,0};
+  getInputs(layer, stave, staveMean, staveDev, sensorDev);
   //std::cout << " layer " << layer << " stave " << stave << " staveMean[3] " << staveMean[3] << "  staveDev " << staveDev[3] << std::endl;
-  for(int i=0;i<6;++i)
+  for(int i=0;i<9;++i)
     {
       //if(staveMean.at(i) != 0 && stave != stave_now.at(i))
       if(stave != stave_now.at(i))
@@ -216,17 +303,17 @@ std::array<double, 6> getOffset(unsigned int layer, unsigned int stave)
   return offset; 
 }
 
-std::array<double, 6> getOffsetTpc(unsigned int layer, unsigned int physical_sector)
+std::array<double, 9> getOffsetTpc(unsigned int layer, unsigned int physical_sector)
 {
-  std::array<double, 6> offset={0,0,0,0,0,0};
+  std::array<double, 9> offset={0,0,0,0,0,0,0,0,0};
   if(make_zero_corrections_tpc) return offset;
 
-  std::array<double, 6> staveMean = {0,0,0,0,0,0};
-  std::array<double, 6> staveDev = {0,0,0,0,0,0};
-  std::array<double, 6> sensorDev = {0,0,0,0,0,0};
-  getInputs(layer, staveMean, staveDev, sensorDev);
+  std::array<double, 9> staveMean = {0,0,0,0,0,0,0,0,0};
+  std::array<double, 9> staveDev = {0,0,0,0,0,0,0,0,0};
+  std::array<double, 9> sensorDev = {0,0,0,0,0,0,0,0,0};
+  getInputs(layer, physical_sector, staveMean, staveDev, sensorDev);
 
-  for(int i=0;i<6;++i)
+  for(int i=0;i<9;++i)
     {
       if(physical_sector != physical_sector_now.at(i))
 	{
@@ -270,7 +357,7 @@ void makeAlignmentParams(
   // mvtxdat for each layer: rMin, rMid, rMax, NChip/Stave, phi0, nStaves
   double mvtxdat[3][6] = {{24.61, 25.23, 27.93, 9., 0.285, 12.}, {31.98, 33.36, 36.25, 9., 0.199, 16.},{39.93, 41.48, 44.26, 9., 0.166, 20.}};
 
-  std::map<TrkrDefs::hitsetkey, std::array<double, 6>> outmap;
+  std::map<TrkrDefs::hitsetkey, std::array<double, 9>> outmap;
 
   ofstream fw("data.txt", std::ofstream::out); // open file for writing alignment params and hitsetkey
 
@@ -293,8 +380,8 @@ void makeAlignmentParams(
 	  {
 	    TrkrDefs::hitsetkey hitSetKey = MvtxDefs::genHitSetKey(layer,stave,chip,0);
 	    //std::cout << "layer " << layer << " stave " << stave << " chip " << chip << std::endl;
-	    std::array<double, 6> offset = getOffset(layer, stave);
-	    outmap.insert(std::make_pair(hitSetKey, offset));
+	    std::array<double, 9> offset = getOffset(layer, stave);
+	    outmap.insert(make_pair(hitSetKey, offset));
 	  }
       }
     }
@@ -312,7 +399,7 @@ void makeAlignmentParams(
 	for(int chip = 0; chip <= 3; chip++)       // loops over chips 
 	  {
 	    TrkrDefs::hitsetkey hitSetKey = InttDefs::genHitSetKey(layer,chip,stave,0);
-	    std::array<double, 6> offset = getOffset(layer, stave);
+	    std::array<double, 9> offset = getOffset(layer, stave);
 	    outmap.insert(std::make_pair(hitSetKey, offset));
 	  }
       }
@@ -336,15 +423,18 @@ void makeAlignmentParams(
 		  unsigned int sphenix_layer = 7 + 16 * region + layer;
 		  TrkrDefs::hitsetkey hitSetKey = TpcDefs::genHitSetKey(sphenix_layer,sector,side);
 
-		  std::array<double, 6> offset = getOffsetTpc(sphenix_layer, physical_sector);
+		  std::array<double, 9> offset = getOffsetTpc(sphenix_layer, physical_sector);
 		  outmap.insert(std::make_pair(hitSetKey, offset));
-		  /*
-		  std::cout << " tpc layer " << sphenix_layer << " physical_sector " << physical_sector 
+
+		  std::cout << " hitsetkey " << hitSetKey << " tpc layer " << sphenix_layer << " side " << side << " sector " << sector << " region " << region << " physical_sector " << physical_sector 
 			    << " offset[3] " << offset[3] 
 			    << " offset[4] " << offset[4]
 			    << " offset[5] " << offset[5]
+			    << " offset[6] " << offset[6]
+			    << " offset[7] " << offset[7]
+			    << " offset[8] " << offset[8]
 			    << std::endl;
-		  */
+
 		}
 	    }
 	}
@@ -363,7 +453,7 @@ void makeAlignmentParams(
     for(unsigned int tile = 0; tile < 8; tile++)        // loops over tiles with each tile having corresponding segmentation values
       {
 	TrkrDefs::hitsetkey hitSetKey = MicromegasDefs::genHitSetKey(layer, mmDefsSeg, tile);
-	std::array<double, 6> offset = getOffset(layer, tile);
+	std::array<double, 9> offset = getOffset(layer, tile);
 	outmap.insert(std::make_pair(hitSetKey, offset));
       }
   }
@@ -379,6 +469,9 @@ void makeAlignmentParams(
 	 << " " << it->second.at(3)
 	 << " " << it->second.at(4)
 	 << " " << it->second.at(5)
+	 << " " << it->second.at(6)
+	 << " " << it->second.at(7)
+	 << " " << it->second.at(8)
 	 << std::endl;
     }
   

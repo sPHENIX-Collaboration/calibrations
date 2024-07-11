@@ -24,13 +24,14 @@ unsigned int getSensor(TrkrDefs::hitsetkey hitsetkey)
       unsigned int staveid = MvtxDefs::getStaveId(hitsetkey);
       unsigned int chipid = MvtxDefs::getChipId(hitsetkey);
       sensor = staveid*9 + chipid;
-      //      std::cout << " staveid " << staveid << " chipid " << chipid << std::endl;
+      std::cout << " staveid " << staveid << " chipid " << chipid << std::endl;
     }
   else if(trkrid == TrkrDefs::inttId)
     {
       unsigned int ladderzid = InttDefs::getLadderZId(hitsetkey);
       unsigned int ladderphiid = InttDefs::getLadderPhiId(hitsetkey);
-      sensor = ladderzid*4 + ladderphiid;      
+      sensor = ladderphiid*4 + ladderzid;      
+      std::cout << " ladderzid " << ladderzid << " ladderphiid " << ladderphiid << " sensor " << sensor << std::endl;
     }
   else if(trkrid == TrkrDefs::tpcId)
     {
@@ -59,10 +60,17 @@ void plot_alignment_residuals(std::string inputfilename = "data.txt",
   // read in the alignment parameters file and make histograms for each layer
   // There is one entry in the file for every surface in the detector
 
-  //ifstream fin("differenceLocalAlignmentParamsFile.txt");
-  //ifstream fin("localAlignmentParamsFile.txt");
-  //ifstream fin("new_alignment_corrections.txt");
-  ifstream fin(inputfilename);
+  // silicon2 misalignments: iteration 1, silicon only, layer 2 fixed, truth si seeds
+  //==========================================================
+
+  //ifstream fin("/sphenix/user/frawley/march17_2023/macros/detectors/sPHENIX/sumAlignmentParams_run20_iter2.txt");
+  // ifstream fin("/sphenix/user/frawley/march17_2023/macros/detectors/sPHENIX/new_alignment_corrections.txt");
+  //ifstream fin("/sphenix/user/frawley/march17_2023/macros/detectors/sPHENIX/localAlignmentParamsFile.txt");
+  //ifstream fin("/sphenix/user/frawley/march17_2023/macros/detectors/sPHENIX/sumAlignmentParams_run18_iter2.txt");
+  //  ifstream fin("/sphenix/user/frawley/march17_2023/macros/detectors/sPHENIX/sumAlignmentParams_run18_iter6_fixed_noconstraints.txt");
+  ifstream fin("/sphenix/user/frawley/march17_2023/macros/detectors/sPHENIX/localAlignmentParamsFile.txt");
+
+
   if(!fin.is_open()) std::cout << "Unable to open input alignment params file" << std::endl;
   
   TH2D *hpar[57][6];
@@ -70,12 +78,17 @@ void plot_alignment_residuals(std::string inputfilename = "data.txt",
     {
       for(int ipar = 0; ipar < 6; ++ipar)
 	{
-	  double range = 2.5;  // mm
-	  double range_angles = 0.003;  // rad
+	  double range = 0.5;  // mm
+	  //double range = 1.5;  // mm
+	  double range_angles = 0.03;  // rad
+	  if( ilayer > 6 && ilayer < 56 )
+	    {
+	      if(ipar == 5)
+		range = 1.5;
+	      else 
+		range = 1.5;
+	    }
 	  if(ipar < 3) range = range_angles;
-	  //if(ilayer > 6 && (ipar > 2 && ipar < 5)) range = 0.01;
-	  //if(ilayer > 6 && (ipar == 5)) range = 0.1;
-	  //if( (ilayer > 2 && ilayer < 7) && (ipar == 5) ) range = 0.4;
 	  
 	  char name[500];
 	  char title[500];
@@ -85,15 +98,15 @@ void plot_alignment_residuals(std::string inputfilename = "data.txt",
 	  else if (ilayer > 6 && ilayer < 55) sprintf(title,"TPC parameter %i", ipar);
 	  else  sprintf(title,"MMS parameters %i", ipar);
 	  
-	  hpar[ilayer][ipar] = new TH2D(name, title, 600, 0, 200, 200, -range, +range);  // sensor number, parameter range
+	  hpar[ilayer][ipar] = new TH2D(name, title, 600, 0, 200, 2000, -range, +range);  // sensor number, parameter range
 	  
 	  hpar[ilayer][ipar]->GetXaxis()->SetNdivisions(504);
 	  hpar[ilayer][ipar]->GetXaxis()->SetLabelSize(0.05);
 	  hpar[ilayer][ipar]->GetXaxis()->SetTitleSize(0.05);
 	  if(ipar < 3)
-	    hpar[ilayer][ipar]->GetXaxis()->SetTitle("radians");
+	    hpar[ilayer][ipar]->GetXaxis()->SetTitle("sensor");
 	  else
-	    hpar[ilayer][ipar]->GetXaxis()->SetTitle("mm");	    	    
+	    hpar[ilayer][ipar]->GetXaxis()->SetTitle("sensor");	    	    
 	}
     }
   
@@ -103,7 +116,7 @@ void plot_alignment_residuals(std::string inputfilename = "data.txt",
   while( getline(fin, line) )
     {
       stringstream line_in(line);
-      //      std::cout << "line in: " << line_in.str() << std::endl;
+      std::cout << "line in: " << line_in.str() << std::endl;
       line_in >> hitsetkey;
       line_in >> pars[0] >> pars[1] >> pars[2] >> pars[3] >> pars[4] >> pars[5];
       
@@ -111,7 +124,7 @@ void plot_alignment_residuals(std::string inputfilename = "data.txt",
       unsigned int trkrid = TrkrDefs::getTrkrId(hitsetkey);
       unsigned int layer = TrkrDefs::getLayer(hitsetkey);
       unsigned int sensor = getSensor(hitsetkey);
-      //      std::cout << "      layer " << layer << " trkrid " << trkrid << " sensor " << sensor << std::endl;
+      std::cout << "      layer " << layer << " trkrid " << trkrid <<  " sensor " << sensor << std::endl;
       for(int ipar=0;ipar<6;++ipar)
 	{
 	  hpar[layer][ipar]->Fill(sensor, pars[ipar]);
@@ -119,40 +132,59 @@ void plot_alignment_residuals(std::string inputfilename = "data.txt",
     }
   
   // make plots
-  
-  TCanvas *cmvtx = new TCanvas("mvtx","mvtx",100,100,1600,800);
-  cmvtx->Divide(3,2);
-  for(int ipar=0;ipar<6;++ipar)
-    {
-      cmvtx->cd(ipar+1);
-      hpar[0][ipar]->Add(hpar[1][ipar]);
-      hpar[0][ipar]->Add(hpar[2][ipar]);
-      
-      TH1D *hpar_combined = hpar[0][ipar]->ProjectionY();
-      if(ipar < 3) 
-	hpar_combined->GetXaxis()->SetTitle("rad");
-      else
-	hpar_combined->GetXaxis()->SetTitle("mm");
-      
-      hpar_combined->DrawCopy();
-    }
-  
+
+  TH1D *mvtx[3][6];
+  TH1D *intt_combined[6];
+  TH1D *tpc_combined[6];
+
+  TCanvas *cmvtx = new TCanvas("mvtx","mvtx translations",100,100,1600,800);
+  cmvtx->Divide(3,3);
+
+  TCanvas *cmvtx_angles = new TCanvas("mvtx_angles","mvtx angles",100,100,1600,800);
+  cmvtx_angles->Divide(3,3);
+
+  for(int layer=0;layer<3;++layer)
+    for(int ipar=0;ipar<6;++ipar)
+      {
+	mvtx[layer][ipar] = hpar[layer][ipar]->ProjectionY();
+	if(ipar < 3) 
+	  {
+	    mvtx[layer][ipar]->GetXaxis()->SetTitle("rad");
+	  }
+	else
+	{
+	  mvtx[layer][ipar]->GetXaxis()->SetTitle("mm");
+	}
+
+	if(ipar < 3) 
+	  {
+	    cmvtx_angles->cd(1+ ipar + layer*3 );
+	    mvtx[layer][ipar]->DrawCopy();
+	  }
+	else
+	  {
+	    cmvtx->cd(1+ ipar-3 + layer*3 );
+	    mvtx[layer][ipar]->DrawCopy();
+	  }
+      }
+
   TCanvas *cintt = new TCanvas("intt","intt",150,150,1600,800);
   cintt->Divide(3,2);
   for(int ipar=0;ipar<6;++ipar)
     {
       cintt->cd(ipar+1);
-      hpar[3][ipar]->Add(hpar[4][ipar]);
-      hpar[3][ipar]->Add(hpar[5][ipar]);
-      hpar[3][ipar]->Add(hpar[6][ipar]);
+      TH2D *inttcomb = (TH2D*) hpar[3][ipar]->Clone();
+      inttcomb->Add(hpar[4][ipar]);
+      inttcomb->Add(hpar[5][ipar]);
+      inttcomb->Add(hpar[6][ipar]);
       
-      TH1D *hpar_combined = hpar[3][ipar]->ProjectionY();
+      intt_combined[ipar] = inttcomb->ProjectionY();
       if(ipar < 3) 
-	hpar_combined->GetXaxis()->SetTitle("rad");
+	intt_combined[ipar]->GetXaxis()->SetTitle("rad");
       else
-	hpar_combined->GetXaxis()->SetTitle("mm");
+	intt_combined[ipar]->GetXaxis()->SetTitle("mm");
       
-      hpar_combined->DrawCopy();
+      intt_combined[ipar]->DrawCopy();
     }
   
   TCanvas *ctpc = new TCanvas("tpc","tpc",200,200,1600,800);
@@ -165,20 +197,35 @@ void plot_alignment_residuals(std::string inputfilename = "data.txt",
 	  hpar[7][ipar]->Add(hpar[i][ipar]);
 	}
       
-      TH1D *hpar_combined = hpar[7][ipar]->ProjectionY();
+      tpc_combined[ipar] = hpar[7][ipar]->ProjectionY();
       if(ipar < 3) 
-	hpar_combined->GetXaxis()->SetTitle("rad");
+	tpc_combined[ipar]->GetXaxis()->SetTitle("rad");
       else
-	hpar_combined->GetXaxis()->SetTitle("mm");
+	tpc_combined[ipar]->GetXaxis()->SetTitle("mm");
       
-      hpar_combined->DrawCopy();
+      tpc_combined[ipar]->DrawCopy();
     }
   
   
   TFile *file = new TFile(outfilename.c_str(),"RECREATE");
   cmvtx->Write();
+  cmvtx_angles->Write();
   cintt->Write();
   ctpc->Write();
+  for(int layer = 0; layer < 57; ++layer)
+    for(int ipar=0; ipar<6; ++ipar)
+      {
+	hpar[layer][ipar]->Write();
+      }
+
+
+  for(int ipar=0;ipar<6;++ipar)
+    {
+      intt_combined[ipar]->Write();
+      tpc_combined[ipar]->Write();
+
+    }
+
   file->Write();
   file->Close();
 }
