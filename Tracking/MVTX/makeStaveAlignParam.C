@@ -83,13 +83,50 @@ void dump2CDBTree(std::map<std::pair<int, int>, std::tuple<double, double, doubl
 
 std::tuple<float, float, float, float, float, float> Summary(std::map<std::pair<int, int>, std::tuple<double, double, double, double, double, double>> m_StaveShift)
 {
+    // ideal stave position
+    std::map<std::pair<int, int>, std::tuple<double, double, double>> map_IdealStavePos = getIdealStavePosition();
+
+    std::vector<vector<float>> v_shifted_x, v_shifted_y, v_shifted_z, v_ideal_r, v_shifted_r;
+    // initialize the vectors
+    for (int i = 0; i < n_Layers; ++i)
+    {
+        v_shifted_x.push_back(std::vector<float>());
+        v_shifted_y.push_back(std::vector<float>());
+        v_shifted_z.push_back(std::vector<float>());
+        v_ideal_r.push_back(std::vector<float>());
+        v_shifted_r.push_back(std::vector<float>());
+    }
+
     std::vector<float> v_dx, v_dy, v_dz;
     for (auto &layer_stave : m_StaveShift)
     {
         v_dx.push_back(std::get<3>(m_StaveShift[layer_stave.first]));
         v_dy.push_back(std::get<4>(m_StaveShift[layer_stave.first]));
         v_dz.push_back(std::get<5>(m_StaveShift[layer_stave.first]));
+
+        int layer = layer_stave.first.first;
+        int stave = layer_stave.first.second;
+        double dx = std::get<3>(layer_stave.second) / 10.0; // mm to cm
+        double dy = std::get<4>(layer_stave.second) / 10.0; // mm to cm
+        double dz = std::get<5>(layer_stave.second) / 10.0; // mm to cm
+
+        double x = std::get<0>(map_IdealStavePos[std::make_pair(layer, stave)]) / 10.0; // mm to cm
+        double y = std::get<1>(map_IdealStavePos[std::make_pair(layer, stave)]) / 10.0; // mm to cm
+        double z = std::get<2>(map_IdealStavePos[std::make_pair(layer, stave)]) / 10.0; // mm to cm
+
+        double x_new = x + dx;
+        double y_new = y + dy;
+        double z_new = z + dz;
+
+        v_shifted_x[layer].push_back(x_new);
+        v_shifted_y[layer].push_back(y_new);
+        v_shifted_z[layer].push_back(z_new);
+        v_ideal_r[layer].push_back(std::sqrt(x * x + y * y));
+
+        if (verbose)
+            cout << "Shifted stave relative to origin for L" << layer << "_" << stave << " r =" << std::sqrt(x_new * x_new + y_new * y_new) << std::endl;
     }
+
     float avgx = 0, avgy = 0, avgz = 0, stdx = 0, stdy = 0, stdz = 0;
     double sumx = std::accumulate(v_dx.begin(), v_dx.end(), 0.0);
     double sumy = std::accumulate(v_dy.begin(), v_dy.end(), 0.0);
@@ -112,29 +149,65 @@ std::tuple<float, float, float, float, float, float> Summary(std::map<std::pair<
     cout << "Average shift in y: " << avgy << " +/- " << stdy << " mm" << endl;
     cout << "Average shift in z: " << avgz << " +/- " << stdz << " mm" << endl;
 
+    for (int i = 0; i < n_Layers; ++i)
+    {
+        float sumr_ideal = std::accumulate(v_ideal_r[i].begin(), v_ideal_r[i].end(), 0.0);
+        float avgr_ideal = sumr_ideal / v_ideal_r[i].size();
+
+        for (size_t j = 0; j < v_shifted_x[i].size(); ++j)
+        {
+            v_shifted_r[i].push_back(std::sqrt(pow((v_shifted_x[i][j] * 10.) - avgx, 2) + pow((v_shifted_y[i][j] * 10.) - avgy, 2)) / 10.);
+        }
+
+        float sumr = std::accumulate(v_shifted_r[i].begin(), v_shifted_r[i].end(), 0.0);
+        float avgr = sumr / v_shifted_r[i].size();
+
+        cout << "Average radius for layer " << i << ": "
+             << " ideal " << avgr_ideal << " shifted " << avgr << " cm" << endl;
+    }
+
     return std::make_tuple(avgx, avgy, avgz, stdx, stdy, stdz);
 }
 
-void drawHist(TH1F *h, float avg, TString yaxistitle, TString filename)
+void drawHist(TH1F *h, float avg, float stddev, TString yaxistitle, TString filename)
 {
+    TH1F *h_stat = new TH1F("h_stat", "h_stat", n_allstaves, 0, n_allstaves);
+    for (int i = 0; i < n_allstaves; ++i)
+    {
+        h_stat->SetBinContent(i + 1, avg);
+        h_stat->SetBinError(i + 1, stddev);
+    }
+
+    gStyle->SetErrorX(0);
     TCanvas *c1 = new TCanvas("c1", "c1", 1000, 500);
     c1->cd();
-    h->SetFillColor(kBlue - 9);
+    // h->SetFillColor(kBlue - 9);
     h->SetLineColor(kBlue - 2);
-    h->SetLineWidth(1);
+    h->SetLineWidth(2);
+    h->SetMarkerColor(kBlue - 2);
+    h->SetMarkerStyle(20);
+    h->SetMarkerSize(1.5);
     h->GetYaxis()->SetTitle(yaxistitle);
     h->LabelsOption("v");
-    h->Draw("hist");
-    TLine *avg_x = new TLine(0, avg, n_allstaves, avg);
-    avg_x->SetLineColor(kRed);
-    avg_x->SetLineStyle(2);
-    avg_x->SetLineWidth(2);
-    avg_x->Draw();
+    h->Draw("P");
+    h_stat->SetMarkerSize(0);
+    h_stat->SetLineColor(kRed);
+    h_stat->SetFillColorAlpha(kRed - 9, 0.5);
+    h_stat->Draw("same E3");
+    TH1 *h_statcopy = h_stat->DrawCopy("same hist");
+    h_statcopy->SetFillStyle(0);
+    h_statcopy->SetLineWidth(2);
+    h_statcopy->SetLineColor(kRed);
     TText *tavgx = new TText();
     tavgx->SetTextSize(0.03);
     tavgx->SetTextAlign(31);
     tavgx->SetTextColor(kRed);
     tavgx->DrawText(h->GetXaxis()->GetXmax(), avg + 0.02, "Average");
+    TText *tstdx = new TText();
+    tstdx->SetTextSize(0.03);
+    tstdx->SetTextAlign(31);
+    tstdx->SetTextColor(kRed);
+    tstdx->DrawText(h->GetXaxis()->GetXmax(), avg + stddev + 0.02, "1 Std. Dev.");
     c1->SaveAs(filename + ".png");
     c1->SaveAs(filename + ".pdf");
 }
@@ -169,9 +242,9 @@ void drawStaveShiftHist(std::map<std::pair<int, int>, std::tuple<double, double,
 
     std::tuple<float, float, float, float, float, float> summary = Summary(m_StaveShift); // avgx, avgy, avgz, stdx, stdy, stdz
 
-    drawHist(hM_x, std::get<0>(summary), "Per-stave shift in x [mm]", "staveAlignmentParameters_x");
-    drawHist(hM_y, std::get<1>(summary), "Per-stave shift in y [mm]", "staveAlignmentParameters_y");
-    drawHist(hM_z, std::get<2>(summary), "Per-stave shift in z [mm]", "staveAlignmentParameters_z");
+    drawHist(hM_x, std::get<0>(summary), std::get<3>(summary), "Per-stave shift in x [mm]", "staveAlignmentParameters_x");
+    drawHist(hM_y, std::get<1>(summary), std::get<4>(summary), "Per-stave shift in y [mm]", "staveAlignmentParameters_y");
+    drawHist(hM_z, std::get<2>(summary), std::get<5>(summary), "Per-stave shift in z [mm]", "staveAlignmentParameters_z");
 }
 
 void drawStavePosition(std::map<std::pair<int, int>, std::tuple<double, double, double, double, double, double>> m_StaveShift)
@@ -190,13 +263,13 @@ void drawStavePosition(std::map<std::pair<int, int>, std::tuple<double, double, 
     {
         int layer = layer_stave.first.first;
         int stave = layer_stave.first.second;
-        double dx = std::get<3>(layer_stave.second) / 10.0; // cm to mm
-        double dy = std::get<4>(layer_stave.second) / 10.0; // cm to mm
-        double dz = std::get<5>(layer_stave.second) / 10.0; // cm to mm
+        double dx = std::get<3>(layer_stave.second) / 10.0; // mm to cm
+        double dy = std::get<4>(layer_stave.second) / 10.0; // mm to cm
+        double dz = std::get<5>(layer_stave.second) / 10.0; // mm to cm
 
-        double x = std::get<0>(map_IdealStavePos[std::make_pair(layer, stave)]) / 10.0; // cm to mm
-        double y = std::get<1>(map_IdealStavePos[std::make_pair(layer, stave)]) / 10.0; // cm to mm
-        double z = std::get<2>(map_IdealStavePos[std::make_pair(layer, stave)]) / 10.0; // cm to mm
+        double x = std::get<0>(map_IdealStavePos[std::make_pair(layer, stave)]) / 10.0; // mm to cm
+        double y = std::get<1>(map_IdealStavePos[std::make_pair(layer, stave)]) / 10.0; // mm to cm
+        double z = std::get<2>(map_IdealStavePos[std::make_pair(layer, stave)]) / 10.0; // mm to cm
 
         double x_new = x + dx;
         double y_new = y + dy;
