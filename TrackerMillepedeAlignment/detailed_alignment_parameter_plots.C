@@ -69,20 +69,21 @@ static const std::array<double,3> tpc_sector_mean[3] = {
   legvec.push_back( "Input");
   col.push_back(kRed); 
   */
-  /*
+
   finvec.push_back("tmp.root");
+  legvec.push_back( "ideal");
+  col.push_back(kBlue); 
+
+  /*
+  finvec.push_back("/sphenix/tg/tg01/hf/frawley/residuals1/kshort_proc_25.rootseedresiduals.root");
   legvec.push_back( "ideal");
   col.push_back(kBlue); 
   */
 
-  finvec.push_back("/sphenix/tg/tg01/hf/frawley/residuals1/kshort_proc_25.rootseedresiduals.root");
-  legvec.push_back( "ideal");
-  col.push_back(kBlue); 
-
-
   for(int ifile = 0; ifile < finvec.size(); ++ifile)
     {
       TFile *fin = new TFile(finvec[ifile].c_str());      
+	  if (!fin) continue;
       
       for(unsigned int layer = 0; layer <3; ++layer)
 	{
@@ -255,4 +256,9 @@ static const std::array<double,3> tpc_sector_mean[3] = {
 	} 
       
     }  
+
+
+  cmvtx->SaveAs("cmvtx.png");
+  cintt->SaveAs("cintt.png");
+  ctpc->SaveAs("ctpc.png");
 }

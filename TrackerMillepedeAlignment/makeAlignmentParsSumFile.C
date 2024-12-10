@@ -24,13 +24,19 @@ void makeAlignmentParsSumFile()
   
   std::cout << " Add new parameters to existing ones" << std::endl;
   
-  ifstream foriginal("sumAlignmentParams_run20_iter1.txt");
-  if(!foriginal.is_open()) std::cout << "Unable to open original misalignment params file" << std::endl;
+  ifstream foriginal("localAlignmentParamsFile.txt");
+  if(!foriginal.is_open()) {
+    std::cout << "Unable to open original misalignment params file" << std::endl;
+	return;
+  }
   
   ifstream fupdated("new_alignment_corrections.txt");
-  if(!fupdated.is_open()) std::cout << "Unable to open updated params file" << std::endl;
+  if(!fupdated.is_open()) {
+    std::cout << "Unable to open updated params file" << std::endl;
+    return;
+  }
   
-  ofstream fsum("sumAlignmentParams_run20_iter2.txt");
+  ofstream fsum("newLocalAlignmentParamsFile.txt");
   
   TrkrDefs::hitsetkey key_original, key_updated;
   float pars_original[6], pars_updated[6];
