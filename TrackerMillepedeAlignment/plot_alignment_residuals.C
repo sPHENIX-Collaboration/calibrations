@@ -51,8 +51,7 @@ unsigned int getSensor(TrkrDefs::hitsetkey hitsetkey)
 
 }
 
-void plot_alignment_residuals(std::string inputfilename = "data.txt",
-			      std::string outfilename = "tmp.root")
+void plot_alignment_residuals(std::string outfilename = "tmp.root")
 {
   gStyle->SetStatW(0.3);
   gStyle->SetStatH(0.3);
@@ -68,10 +67,13 @@ void plot_alignment_residuals(std::string inputfilename = "data.txt",
   //ifstream fin("/sphenix/user/frawley/march17_2023/macros/detectors/sPHENIX/localAlignmentParamsFile.txt");
   //ifstream fin("/sphenix/user/frawley/march17_2023/macros/detectors/sPHENIX/sumAlignmentParams_run18_iter2.txt");
   //  ifstream fin("/sphenix/user/frawley/march17_2023/macros/detectors/sPHENIX/sumAlignmentParams_run18_iter6_fixed_noconstraints.txt");
-  ifstream fin("/sphenix/user/frawley/march17_2023/macros/detectors/sPHENIX/localAlignmentParamsFile.txt");
+  ifstream fin("localAlignmentParamsFile.txt");
 
 
-  if(!fin.is_open()) std::cout << "Unable to open input alignment params file" << std::endl;
+  if(!fin.is_open()) {
+    std::cout << "Unable to open input alignment params file" << std::endl;
+    return;
+  }
   
   TH2D *hpar[57][6];
   for(int ilayer=0;ilayer<57;++ilayer)
