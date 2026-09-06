@@ -125,7 +125,7 @@ Shared helper header providing histogram cleanup, Gaussian fit-slice extraction,
 
 ## Suggested Workflow
 
-1. Generate (simulated) or collect (data) input ROOT files containing `residualtree` or `truthtree`.
+1. Produce or collect input ROOT files containing `residualtree` or `truthtree`.
 2. Optionally run `TrimROOTTree.C` to build a lighter analysis ntuple.
 3. Run one or more production macros such as `MakeHistograms_singleTrackQuantities.C`, `MakeHistograms_twoTrack_and_vertex_distributions.C`, or `Create_trackpairstree.C` to generate the diagnostic plots.
 4. Use the overlay macros to compare outputs across different configurations.

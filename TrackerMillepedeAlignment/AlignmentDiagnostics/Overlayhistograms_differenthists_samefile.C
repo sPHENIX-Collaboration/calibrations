@@ -9,6 +9,7 @@
 #include "TLatex.h"
 #include "TLegend.h"
 #include "TStyle.h"
+#include "TLine.h"
 
 struct HistInfo
 {
@@ -128,7 +129,7 @@ void Overlayhistograms_differenthists_samefile()
     {
         const std::string& basename = histinfo.name;
         std::vector<TH1*> histograms;
-        std::vector<std::string> labels_found;
+        std::vector<std::size_t> index_found;
 
         for (size_t i = 0; i < charge_suffixes.size(); ++i)
         {
@@ -146,7 +147,8 @@ void Overlayhistograms_differenthists_samefile()
             h->SetDirectory(nullptr);
             h->SetStats(0);
             histograms.push_back(h);
-            labels_found.push_back(legend_labels[i]);
+            index_found.push_back(i);
+            //labels_found.push_back(legend_labels[i]);
         }
 
         if (histograms.empty())
@@ -160,12 +162,12 @@ void Overlayhistograms_differenthists_samefile()
         {
             TH1* h = histograms[i];
 
-            const int color = colors[i % colors.size()];
-            const int style = line_styles[i % line_styles.size()];
+            const int color = colors[index_found[i]];
+            const int style = line_styles[index_found[i]];
 
             h->SetLineColor(color);
             h->SetMarkerColor(color);
-            h->SetMarkerStyle(20 + static_cast<int>(i));
+            h->SetMarkerStyle(20 + static_cast<int>(index_found[i]));
             h->SetLineStyle(style);
             h->SetLineWidth(2);
         }
@@ -215,7 +217,7 @@ void Overlayhistograms_differenthists_samefile()
 
         for (size_t i = 0; i < histograms.size(); ++i)
         {
-            leg->AddEntry(histograms[i], labels_found[i].c_str(), "lep");
+            leg->AddEntry(histograms[i], legend_labels[index_found[i]].c_str(), "lep");
         }
 
         leg->Draw();

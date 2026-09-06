@@ -29,7 +29,7 @@
 void compute_twoTrackDca(const std::vector<float>& pcax_vec, const std::vector<float>& pcay_vec, const std::vector<float>& pcaz_vec, const std::vector<float>& px_vec, const std::vector<float>& py_vec, const std::vector<float>& pz_vec, const std::vector<float>& eta_vec, const std::vector<float>& phi_vec, const std::vector<float>& dcaxy_vec, const std::vector<float>& dcaz_vec, std::vector<float> &two_track_dcaxy_vec, std::vector<float> &two_track_dcaz_vec, std::vector<float> &two_track_ptavg_vec, std::vector<float> &two_track_pavg_vec, std::vector<float> &two_track_etadiff_vec, std::vector<float> &two_track_phidiff_vec, TH2D* h_pt_corr, TH3D *h_etadiff_two_track_dcaxy_pt, TH3D *h_etadiff_two_track_dcaz_pt, TH3D *h_phidiff_two_track_dcaxy_pt, TH3D *h_phidiff_two_track_dcaz_pt, TH3D* h_eta1_eta2_two_track_dcaxy, TH3D* h_eta1_eta2_two_track_dcaz, TH3D* h_phi1_phi2_two_track_dcaxy, TH3D* h_phi1_phi2_two_track_dcaz, TH3D* h_etadiff_phidiff_two_track_dcaxy, TH3D* h_etadiff_phidiff_two_track_dcaz, TH3D* h_etadiff_phidiff_two_track_dcaxy3d, TH3D* h_etadiff_phidiff_two_track_dcaz3d, TH2D* h_dcaxy1_dcaxy2_diffvs_2trackdcaxy,TH2D* h_dcaz1_dcaz2_diffvs_2trackdcaz); 
 
 int vertex_ntracks_cut=3; float fabs_vx_cut=0.0000001; //event level cuts applied to all tracks
-int nmaps_cut=2, intt_cut=1, ntpc_cut=26; float pt_cut=0.2; float pt_cut_etaphitwotrackdca3dhists=0.8; float chisq_ndf_cut = 10; //track level cuts, pt_cut_etaphitwotrackdca3dhists is used to filter tracks used in two track dca histograms except for the h_etadiff_two_track_dcaxy_pt histograms as they already show pt information
+int nmaps_cut=3, intt_cut=2, ntpc_cut=26; float pt_cut=0.2; float pt_cut_etaphitwotrackdca3dhists=0.8; float chisq_ndf_cut = 10; //track level cuts, pt_cut_etaphitwotrackdca3dhists is used to filter tracks used in two track dca histograms except for the h_etadiff_two_track_dcaxy_pt histograms as they already show pt information
 float pdiffpair_cut=0.1; //track pair level cuts
 
 void MakeHistograms_twoTrack_and_vertex_distributions(const bool is_simulation_input=false)
@@ -80,17 +80,19 @@ void MakeHistograms_twoTrack_and_vertex_distributions(const bool is_simulation_i
         //resid_base->Add("output_Pythia_withPID/residuals_G4sPHENIX_Pythia_200kevts_withtruedca_set*.root");
     }
     else{
-        snprintf(outputrootfilename, sizeof(outputrootfilename),"twoTrackDca_map_out_data.root");
+        snprintf(outputrootfilename, sizeof(outputrootfilename),"twoTrackDca_map_out_data_siinfoonlytracks.root");
         snprintf(description, sizeof(description),"sPHENIX (%s)",vertexcuts_info);
         snprintf(plots_outputdir, sizeof(plots_outputdir),"./Plots_current/twoTrackDCA_and_DeltavertexPlots/Data");
         title_xstart=0.4; title_ystart=0.95;
         
         char name[200];
-        for(int i=0;i<999;++i)
+        for(int i=0;i<=999;++i)
         {
             //snprintf(name,sizeof(name), "/sphenix/tg/tg01/hf/gregoryottino/silicon_tpc_matching/cluster_seeds_all_79516-%i.root_resid.root",i);
             //snprintf(name,sizeof(name), "/sphenix/tg/tg01/hf/gregoryottino/silicon_tpc_matching/output_baseAlignment/cluster_seeds_all_79516-%i.root_resid.root",i);
-            snprintf(name,sizeof(name), "/sphenix/tg/tg01/hf/gregoryottino/silicon_tpc_matching/output_baseAlignment/cluster_seeds_si_79516-%i.root_resid.root",i);
+            //snprintf(name,sizeof(name), "/sphenix/tg/tg01/hf/gregoryottino/silicon_tpc_matching/output_baseAlignment/cluster_seeds_si_79516-%i.root_resid.root",i);
+            
+            snprintf(name,sizeof(name), "/sphenix/user/adityadash/TrackingAlignment/sPHENIX_alignment/TrackFitting/output_TrackFitting_siinfoonly_run79516/clusters_seeds_79516-%i.root_resid.root",i);
             //std::cout << "Adding " << name << std::endl;
             resid_base->Add(name);
         }

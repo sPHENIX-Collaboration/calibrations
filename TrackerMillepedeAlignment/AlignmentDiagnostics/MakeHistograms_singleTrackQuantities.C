@@ -1,9 +1,20 @@
 #include "UsefulFunctions.h"
 #include <TChain.h>
+#include <TCanvas.h>
+#include <TDirectory.h>
+#include <TH1D.h>
+#include <TH2D.h>
+#include <TSystem.h>
+
+#include <algorithm>
+#include <cmath>
+#include <iostream>
+#include <limits>
+#include <vector>
 
 int MakeHistograms_singleTrackQuantities(const bool is_simulation_input=false){
     int vertex_ntracks_cut=3; float fabs_vx_cut=0.0000001; //event level cuts applied to all tracks
-    int nmaps_cut=2, intt_cut=2, ntpc_cut=0; float pt_cut=0.2; float ptcutfordca_vsetaphi=0.8; float chisq_ndf_cut = 10; //track level cuts
+    int nmaps_cut=3, intt_cut=2, ntpc_cut=0; float pt_cut=0.2; float ptcutfordca_vsetaphi=0.8; float chisq_ndf_cut = 10e7; //track level cuts
     
 //    TFile *File=new TFile("output_SimpleEvtGenerator/residuals_G4sPHENIX_SimpleEvtGenerator_all.root");
 //    TFile *File=new TFile("residuals_G4sPHENIX_34930evts.root");
@@ -57,18 +68,23 @@ int MakeHistograms_singleTrackQuantities(const bool is_simulation_input=false){
         //        residualtree->Add("./output_Pythia_Simulation/SoftQCD_nonDiffractive/residuals_G4sPHENIX_minbiasPythia_200kevts*.root");
     }
     else{
-        snprintf(outputrootfilename, sizeof(outputrootfilename),"output_PlottingMacro_singleTrackQuantities_data_fulltracks.root");
+        snprintf(outputrootfilename, sizeof(outputrootfilename),"output_PlottingMacro_singleTrackQuantities_data_ACTS_79516.root");
         snprintf(description, sizeof(description),"sPHENIX (%s)",vertexcuts_info);
         snprintf(plots_outputdir, sizeof(plots_outputdir),"Plots_current/sPHENIX_data");
         title_xstart=0.4; title_ystart=0.95;
         
         char name[200];
-        for(int i=0;i<999;++i)
+        for(int i=0;i<=249;++i)
         {
             //snprintf(name,sizeof(name), "/sphenix/tg/tg01/hf/gregoryottino/silicon_tpc_matching/cluster_seeds_all_79516-%i.root_resid.root",i);
             
-            snprintf(name,sizeof(name), "/sphenix/tg/tg01/hf/gregoryottino/silicon_tpc_matching/output_baseAlignment/cluster_seeds_all_79516-%i.root_resid.root",i);
+            //snprintf(name,sizeof(name), "/sphenix/tg/tg01/hf/gregoryottino/silicon_tpc_matching/output_baseAlignment/cluster_seeds_all_79516-%i.root_resid.root",i);
             //snprintf(name,sizeof(name), "/sphenix/tg/tg01/hf/gregoryottino/silicon_tpc_matching/output_baseAlignment/cluster_seeds_si_79516-%i.root_resid.root",i);
+            
+            //snprintf(name,sizeof(name), "/sphenix/user/adityadash/TrackingAlignment/sPHENIX_alignment/TrackFitting/output_TrackFitting_siinfoonly_run79516/clusters_seeds_79516-%i.root_resid.root",i);
+            
+            snprintf(name,sizeof(name), "/sphenix/user/adityadash/TrackingAlignment/sPHENIX_alignment/output_SiAlignment_run3pp_79516_14Dec2025_Sionly_ACTS/collision_79516-%i.root_resid.root",i);
+            
             //std::cout << "Adding " << name << std::endl;
             residualtree->Add(name);
         }
@@ -81,12 +97,19 @@ int MakeHistograms_singleTrackQuantities(const bool is_simulation_input=false){
     int nmaps=0, nmapsstate=0, nintt=0, ntpc=0, vertex_ntracks=0,vertex_crossing=0, has_truth_match=-1, truth_trackid=-1, charge=0;
     float dcaxy_min=-0.02, dcaxy_max=0.02, dcaz_min=-0.02, dcaz_max=0.02;
     float dcaxy_min_formeanwidthcalc=-0.02, dcaxy_max_formeanwidthcalc=0.02, dcaz_min_formeanwidthcalc=-0.02, dcaz_max_formeanwidthcalc=0.02, truth_match_fraction=0.0;
+    // Local track residual plot ranges in cm. Residuals are defined as
+    // fitted track state minus reconstructed cluster position.
+    const float mvtx_residualx_half_range = 0.05;
+    const float mvtx_residualz_half_range = 0.05;
+    const float intt_residualx_half_range = 0.10;
+    const float intt_residualz_half_range = 1.50;
+    const int nbins_track_residual = 200;
     //float pt_min=0.0, pt_max=5.5;
     //float p_min=0.0, p_max=5.5;
     float eta_min=-1.5, eta_max=1.5;
     float phi_min=-3.5, phi_max=3.5;
     //int nbins_pt=150, nbins_p=150,
-    int nbins_eta=150, nbins_phi=150, nbins_dcaxy=400, nbins_dcaz=400, nbins_truedcaxy=400, nbins_truedcaz=400;
+    int nbins_eta=75, nbins_phi=75, nbins_dcaxy=200, nbins_dcaz=200, nbins_truedcaxy=200, nbins_truedcaz=200;
     
     std::vector<double> pt_bins    = {0.0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.75, 1.0, 1.5, 3.0, 5.5};
     std::vector<double> p_bins     = {0.0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.75, 1.0, 1.5, 3.0, 5.5};
@@ -123,14 +146,16 @@ int MakeHistograms_singleTrackQuantities(const bool is_simulation_input=false){
           kPassCuts_NoChiSqCut=8,
           kPasscuts_Charge1=9,
           kPasscuts_Chargem1=10,
-          kNTrackSets = 11
+          kPasscuts_vzgthan0=11,
+          kPasscuts_vzlthan0=12,
+          kNTrackSets = 13
         };
     
     TString set_tag[kNTrackSets] = {
-        "alltracks", "passcuts", Form("nmaps_lessthan_%g",nmaps_cut), Form("nintt_lessthan_%g",intt_cut), Form("ntpc_lessthan_%g",ntpc_cut), Form("pt_lessthan_%g",pt_cut), "No_truth_match", "truth_purity_lessthanp5","passcuts_nochisqcut","passcuts_charge1","passcuts_chargem1"};
+        "alltracks", "passcuts", Form("nmaps_lessthan_%g",nmaps_cut), Form("nintt_lessthan_%g",intt_cut), Form("ntpc_lessthan_%g",ntpc_cut), Form("pt_lessthan_%g",pt_cut), "No_truth_match", "truth_purity_lessthanp5","passcuts_nochisqcut","passcuts_charge1","passcuts_chargem1","passcuts_pzgreaterthan0","passcuts_pzlessthan0"};
     
     TString set_title[kNTrackSets] = {
-        "alltracks", "passcuts", Form("nmaps_lessthan_%g",nmaps_cut), Form("nintt_lessthan_%g",intt_cut), Form("ntpc_lessthan_%g",ntpc_cut), Form("pt_lessthan_%g",pt_cut), "No_truth_match", "truth purity_lessthanp5","passcuts_nochisqcut","passcuts_charge1","passcuts_chargem1"};
+        "alltracks", "passcuts", Form("nmaps_lessthan_%g",nmaps_cut), Form("nintt_lessthan_%g",intt_cut), Form("ntpc_lessthan_%g",ntpc_cut), Form("pt_lessthan_%g",pt_cut), "No_truth_match", "truth purity_lessthanp5","passcuts_nochisqcut","passcuts_charge1","passcuts_chargem1","passcuts_pzgreaterthan0","passcuts_pzlessthan0"};
     
     residualtree->SetBranchAddress("px", &px);
     residualtree->SetBranchAddress("py", &py);
@@ -183,6 +208,34 @@ int MakeHistograms_singleTrackQuantities(const bool is_simulation_input=false){
     {
         std::cout << "[INFO] has_truth_match / truth_match_fraction / truth_trackid branches "
                      "NOT found — kNoTruthMatch and kLowTruthPurity sets will be empty.\n";
+    }
+
+    // Cluster and fitted-state vectors used for layer-by-layer track residuals.
+    std::vector<int>* cluslayer = nullptr;
+    std::vector<float>* cluslx = nullptr;
+    std::vector<float>* cluslz = nullptr;
+    std::vector<float>* statelx = nullptr;
+    std::vector<float>* statelz = nullptr;
+
+    const bool has_track_residual_info =
+        residualtree->GetBranch("cluslayer") != nullptr &&
+        residualtree->GetBranch("cluslx") != nullptr &&
+        residualtree->GetBranch("cluslz") != nullptr &&
+        residualtree->GetBranch("statelx") != nullptr &&
+        residualtree->GetBranch("statelz") != nullptr;
+
+    if (has_track_residual_info)
+    {
+        residualtree->SetBranchAddress("cluslayer", &cluslayer);
+        residualtree->SetBranchAddress("cluslx", &cluslx);
+        residualtree->SetBranchAddress("cluslz", &cluslz);
+        residualtree->SetBranchAddress("statelx", &statelx);
+        residualtree->SetBranchAddress("statelz", &statelz);
+    }
+    else
+    {
+        std::cout << "[INFO] One or more cluster/state vector branches are missing - "
+                     "track-residual plots will be skipped.\n";
     }
     
     TH1D* hEta_allpid[kNTrackSets] = {}; TH1D* hPhi_allpid[kNTrackSets] = {}; TH1D* hPt_allpid[kNTrackSets] = {}; TH1D* hp_allpid[kNTrackSets] = {};
@@ -254,6 +307,82 @@ int MakeHistograms_singleTrackQuantities(const bool is_simulation_input=false){
     TH1D* htruedcaz_Width_vs_preco_allpid[kNTrackSets]   = {};
     TH1D* htruedcaz_Width_vs_etareco_allpid[kNTrackSets] = {};
     TH1D* htruedcaz_Width_vs_phireco_allpid[kNTrackSets] = {};
+
+    constexpr int kNSiliconLayers = 7;
+    TH2D* htrackresidualx_vs_phi[kNSiliconLayers] = {};
+    TH2D* htrackresidualz_vs_phi[kNSiliconLayers] = {};
+    TH1D* htrackresidualx[kNSiliconLayers] = {};
+    TH1D* htrackresidualz[kNSiliconLayers] = {};
+
+    constexpr int kNCombinedINTTLayerGroups = 2;
+    const char* combined_intt_tag[kNCombinedINTTLayerGroups] = {"layers34_combined", "layers56_combined"};
+    const char* combined_intt_title[kNCombinedINTTLayerGroups] = {"INTT Layers 3 and 4 combined", "INTT Layers 5 and 6 combined"};
+    TH2D* htrackresidualx_vs_phi_combined_intt[kNCombinedINTTLayerGroups] = {};
+    TH2D* htrackresidualz_vs_phi_combined_intt[kNCombinedINTTLayerGroups] = {};
+    TH1D* htrackresidualx_combined_intt[kNCombinedINTTLayerGroups] = {};
+    TH1D* htrackresidualz_combined_intt[kNCombinedINTTLayerGroups] = {};
+
+    if (has_track_residual_info)
+    {
+        for (int layer = 0; layer < kNSiliconLayers; ++layer)
+        {
+            const bool is_mvtx = layer < 3;
+            const char* detector = is_mvtx ? "MVTX" : "INTT";
+            const float residualx_half_range = is_mvtx ? mvtx_residualx_half_range : intt_residualx_half_range;
+            const float residualz_half_range = is_mvtx ? mvtx_residualz_half_range : intt_residualz_half_range;
+
+            htrackresidualx_vs_phi[layer] = new TH2D(
+                Form("htrackresidualx_vs_phi_%s_layer%d", detector, layer),
+                Form("Local X track residual vs #phi, %s Layer %d, pass cuts;#phi (track reco);statelx - cluslx (cm)", detector, layer),
+                nbins_phi, phi_min, phi_max,
+                nbins_track_residual, -residualx_half_range, residualx_half_range);
+            htrackresidualx_vs_phi[layer]->SetStats(0);
+
+            htrackresidualz_vs_phi[layer] = new TH2D(
+                Form("htrackresidualz_vs_phi_%s_layer%d", detector, layer),
+                Form("Local Z track residual vs #phi, %s Layer %d, pass cuts;#phi (track reco);statelz - cluslz (cm)", detector, layer),
+                nbins_phi, phi_min, phi_max,
+                nbins_track_residual, -residualz_half_range, residualz_half_range);
+            htrackresidualz_vs_phi[layer]->SetStats(0);
+
+            htrackresidualx[layer] = new TH1D(
+                Form("htrackresidualx_%s_layer%d", detector, layer),
+                Form("Local X track residual, %s Layer %d, pass cuts;statelx - cluslx (cm);Entries", detector, layer),
+                nbins_track_residual, -residualx_half_range, residualx_half_range);
+
+            htrackresidualz[layer] = new TH1D(
+                Form("htrackresidualz_%s_layer%d", detector, layer),
+                Form("Local Z track residual, %s Layer %d, pass cuts;statelz - cluslz (cm);Entries", detector, layer),
+                nbins_track_residual, -residualz_half_range, residualz_half_range);
+        }
+
+        for (int igroup = 0; igroup < kNCombinedINTTLayerGroups; ++igroup)
+        {
+            htrackresidualx_vs_phi_combined_intt[igroup] = new TH2D(
+                Form("htrackresidualx_vs_phi_INTT_%s", combined_intt_tag[igroup]),
+                Form("Local X track residual vs #phi, %s, pass cuts;#phi (track reco);statelx - cluslx (cm)", combined_intt_title[igroup]),
+                nbins_phi, phi_min, phi_max,
+                nbins_track_residual, -intt_residualx_half_range, intt_residualx_half_range);
+            htrackresidualx_vs_phi_combined_intt[igroup]->SetStats(0);
+
+            htrackresidualz_vs_phi_combined_intt[igroup] = new TH2D(
+                Form("htrackresidualz_vs_phi_INTT_%s", combined_intt_tag[igroup]),
+                Form("Local Z track residual vs #phi, %s, pass cuts;#phi (track reco);statelz - cluslz (cm)", combined_intt_title[igroup]),
+                nbins_phi, phi_min, phi_max,
+                nbins_track_residual, -intt_residualz_half_range, intt_residualz_half_range);
+            htrackresidualz_vs_phi_combined_intt[igroup]->SetStats(0);
+
+            htrackresidualx_combined_intt[igroup] = new TH1D(
+                Form("htrackresidualx_INTT_%s", combined_intt_tag[igroup]),
+                Form("Local X track residual, %s, pass cuts;statelx - cluslx (cm);Entries", combined_intt_title[igroup]),
+                nbins_track_residual, -intt_residualx_half_range, intt_residualx_half_range);
+
+            htrackresidualz_combined_intt[igroup] = new TH1D(
+                Form("htrackresidualz_INTT_%s", combined_intt_tag[igroup]),
+                Form("Local Z track residual, %s, pass cuts;statelz - cluslz (cm);Entries", combined_intt_title[igroup]),
+                nbins_track_residual, -intt_residualz_half_range, intt_residualz_half_range);
+        }
+    }
     
     
     for (int iset = 0; iset < kNTrackSets; ++iset)
@@ -451,6 +580,75 @@ int MakeHistograms_singleTrackQuantities(const bool is_simulation_input=false){
           const bool pass_selection_nochisqcut =
             (pass_nmaps && pass_intt && pass_tpc && pass_pt);
 
+          if (has_track_residual_info && pass_selection &&
+              cluslayer && cluslx && cluslz && statelx && statelz)
+          {
+              size_t n_cluster_states = cluslayer->size();
+              n_cluster_states = std::min(n_cluster_states, cluslx->size());
+              n_cluster_states = std::min(n_cluster_states, cluslz->size());
+              n_cluster_states = std::min(n_cluster_states, statelx->size());
+              n_cluster_states = std::min(n_cluster_states, statelz->size());
+
+              static bool warned_about_vector_sizes = false;
+              if (!warned_about_vector_sizes &&
+                  (cluslayer->size() != n_cluster_states ||
+                   cluslx->size() != n_cluster_states ||
+                   cluslz->size() != n_cluster_states ||
+                   statelx->size() != n_cluster_states ||
+                   statelz->size() != n_cluster_states))
+              {
+                  std::cerr << "[WARNING] Cluster/state vector sizes do not match. "
+                               "Only matched vector indices will be used for track residuals.\n";
+                  warned_about_vector_sizes = true;
+              }
+
+              for (size_t iclus = 0; iclus < n_cluster_states; ++iclus)
+              {
+                  const int layer = cluslayer->at(iclus);
+                  if (layer < 0 || layer >= kNSiliconLayers)
+                  {
+                      continue;
+                  }
+
+                  const float cluster_x = cluslx->at(iclus);
+                  const float cluster_z = cluslz->at(iclus);
+                  const float state_x = statelx->at(iclus);
+                  const float state_z = statelz->at(iclus);
+
+                  if (!std::isfinite(cluster_x) || !std::isfinite(cluster_z) ||
+                      !std::isfinite(state_x) || !std::isfinite(state_z))
+                  {
+                      continue;
+                  }
+
+                  const float residual_x = state_x - cluster_x;
+                  const float residual_z = state_z - cluster_z;
+
+                  htrackresidualx_vs_phi[layer]->Fill(phi, residual_x);
+                  htrackresidualz_vs_phi[layer]->Fill(phi, residual_z);
+                  htrackresidualx[layer]->Fill(residual_x);
+                  htrackresidualz[layer]->Fill(residual_z);
+
+                  int combined_intt_group = -1;
+                  if (layer == 3 || layer == 4)
+                  {
+                      combined_intt_group = 0;
+                  }
+                  else if (layer == 5 || layer == 6)
+                  {
+                      combined_intt_group = 1;
+                  }
+
+                  if (combined_intt_group >= 0)
+                  {
+                      htrackresidualx_vs_phi_combined_intt[combined_intt_group]->Fill(phi, residual_x);
+                      htrackresidualz_vs_phi_combined_intt[combined_intt_group]->Fill(phi, residual_z);
+                      htrackresidualx_combined_intt[combined_intt_group]->Fill(residual_x);
+                      htrackresidualz_combined_intt[combined_intt_group]->Fill(residual_z);
+                  }
+              }
+          }
+
           bool fill_set[kNTrackSets] = {};
 
           fill_set[kAllTracks] = true;
@@ -464,6 +662,8 @@ int MakeHistograms_singleTrackQuantities(const bool is_simulation_input=false){
           fill_set[kPassCuts_NoChiSqCut] = pass_selection_nochisqcut;
           fill_set[kPasscuts_Charge1] = pass_selection && (charge==1);
           fill_set[kPasscuts_Chargem1] = pass_selection && (charge==-1);
+          fill_set[kPasscuts_vzgthan0] = pass_selection && (vz>0);
+          fill_set[kPasscuts_vzlthan0] = pass_selection && (vz<0);
         
           //All pid histograms
           for (int iset = 0; iset < kNTrackSets; ++iset)
@@ -791,6 +991,88 @@ int MakeHistograms_singleTrackQuantities(const bool is_simulation_input=false){
             htruedcaz_vs_phireco_allpid[iset]->Write();
             htruedcaz_Mean_vs_phireco_allpid[iset]->Write();
             htruedcaz_Width_vs_phireco_allpid[iset]->Write();
+        }
+    }
+
+    if (has_track_residual_info)
+    {
+        TString residual_plot_dir = Form("%s/track_residuals", plots_outputdir);
+        gSystem->mkdir(residual_plot_dir.Data(), true);
+
+        for (int layer = 0; layer < kNSiliconLayers; ++layer)
+        {
+            const char* detector = layer < 3 ? "MVTX" : "INTT";
+
+            htrackresidualx_vs_phi[layer]->Write();
+            htrackresidualz_vs_phi[layer]->Write();
+            htrackresidualx[layer]->Write();
+            htrackresidualz[layer]->Write();
+
+            TCanvas* residual_canvas = new TCanvas(
+                Form("canvas_track_residuals_%s_layer%d", detector, layer),
+                Form("Track residuals %s Layer %d", detector, layer),
+                1600, 1200);
+            residual_canvas->Divide(2, 2);
+
+            // Top left: local-X residual vs track phi.
+            residual_canvas->cd(1);
+            gPad->SetRightMargin(0.15);
+            htrackresidualx_vs_phi[layer]->Draw("COLZ");
+
+            // Top right: local-Z residual vs track phi.
+            residual_canvas->cd(2);
+            gPad->SetRightMargin(0.15);
+            htrackresidualz_vs_phi[layer]->Draw("COLZ");
+
+            // Bottom left: one-dimensional local-X residual distribution.
+            residual_canvas->cd(3);
+            htrackresidualx[layer]->Draw("HIST");
+
+            // Bottom right: one-dimensional local-Z residual distribution.
+            residual_canvas->cd(4);
+            htrackresidualz[layer]->Draw("HIST");
+
+            residual_canvas->Write();
+            residual_canvas->SaveAs(Form("%s/%s_layer%d_track_residuals.png", residual_plot_dir.Data(), detector, layer));
+            residual_canvas->SaveAs(Form("%s/%s_layer%d_track_residuals.pdf", residual_plot_dir.Data(), detector, layer));
+            delete residual_canvas;
+        }
+
+        for (int igroup = 0; igroup < kNCombinedINTTLayerGroups; ++igroup)
+        {
+            htrackresidualx_vs_phi_combined_intt[igroup]->Write();
+            htrackresidualz_vs_phi_combined_intt[igroup]->Write();
+            htrackresidualx_combined_intt[igroup]->Write();
+            htrackresidualz_combined_intt[igroup]->Write();
+
+            TCanvas* residual_canvas = new TCanvas(
+                Form("canvas_track_residuals_INTT_%s", combined_intt_tag[igroup]),
+                Form("Track residuals %s", combined_intt_title[igroup]),
+                1600, 1200);
+            residual_canvas->Divide(2, 2);
+
+            // Top left: combined local-X residual vs track phi.
+            residual_canvas->cd(1);
+            gPad->SetRightMargin(0.15);
+            htrackresidualx_vs_phi_combined_intt[igroup]->Draw("COLZ");
+
+            // Top right: combined local-Z residual vs track phi.
+            residual_canvas->cd(2);
+            gPad->SetRightMargin(0.15);
+            htrackresidualz_vs_phi_combined_intt[igroup]->Draw("COLZ");
+
+            // Bottom left: combined one-dimensional local-X residual distribution.
+            residual_canvas->cd(3);
+            htrackresidualx_combined_intt[igroup]->Draw("HIST");
+
+            // Bottom right: combined one-dimensional local-Z residual distribution.
+            residual_canvas->cd(4);
+            htrackresidualz_combined_intt[igroup]->Draw("HIST");
+
+            residual_canvas->Write();
+            residual_canvas->SaveAs(Form("%s/INTT_%s_track_residuals.png", residual_plot_dir.Data(), combined_intt_tag[igroup]));
+            residual_canvas->SaveAs(Form("%s/INTT_%s_track_residuals.pdf", residual_plot_dir.Data(), combined_intt_tag[igroup]));
+            delete residual_canvas;
         }
     }
     
