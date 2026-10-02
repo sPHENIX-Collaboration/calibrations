@@ -43,7 +43,7 @@ The script currently reads the PDF set (NNPDF30_lo_as_0118) from Jamie's directo
 /sphenix/user/nagle/ProjectHERWIG/Source/lhapdf
 ```
 
-(Note: this PDF set is not currently available in the sPHENIX CVMFS. The script needs to be modified once the PDF integrated.)
+(Note: this PDF set is not currently available in the sPHENIX CVMFS. The script needs to be modified once the PDF is integrated.)
 
 For independently launched Fun4All jobs, set this path after software setup:
 
