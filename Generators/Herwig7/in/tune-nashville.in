@@ -1,0 +1,14 @@
+# -*- ThePEG-repository -*-
+# Nashville tune, arXiv:2411.16897 (Table III).
+# NOTE ReferenceScale: it is E_0 in pTmin(sqrt s) = pTmin0 * ((b+sqrt s)/E_0)^c.
+# The Herwig default is 7 TeV.  The seven fitted values below are meaningless
+# without this line -- see README section "the three ingredients".
+set /Herwig/UnderlyingEvent/MPIHandler:pTmin0            2.99*GeV
+set /Herwig/UnderlyingEvent/MPIHandler:ReferenceScale     200*GeV
+set /Herwig/UnderlyingEvent/MPIHandler:Power             0.358
+set /Herwig/UnderlyingEvent/MPIHandler:InvRadius          1.53
+set /Herwig/UnderlyingEvent/MPIHandler:DiffractiveRatio  0.299
+set /Herwig/UnderlyingEvent/MPIHandler:Offset             820
+set /Herwig/Hadronization/ColourReconnector:ReconnectionProbability 0.720
+set /Herwig/Partons/RemnantDecayer:ladderMult           0.3966
+set /Herwig/Partons/RemnantDecayer:ladderbFactor             0

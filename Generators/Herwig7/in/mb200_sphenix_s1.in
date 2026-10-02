@@ -1,0 +1,20 @@
+# Generated from cfg/mb200_sphenix.cfg by prepare_HerwigRuncard.sh
+read snippets/PPCollider.in
+read snippets/MB.in
+read snippets/Diffraction.in
+set /Herwig/Generators/EventGenerator:EventHandler:LuminosityFunction:Energy 200*GeV
+read tune-nashville.in
+set /Herwig/Partons/HardLOPDF:PDFName NNPDF30_lo_as_0118
+set /Herwig/Partons/ShowerLOPDF:PDFName NNPDF30_lo_as_0118
+set /Herwig/Partons/MPIPDF:PDFName NNPDF30_lo_as_0118
+set /Herwig/Partons/RemnantPDF:PDFName NNPDF30_lo_as_0118
+set /Herwig/Particles/p+:PDF /Herwig/Partons/HardLOPDF
+set /Herwig/Particles/pbar-:PDF /Herwig/Partons/HardLOPDF
+set /Herwig/Decays/DecayHandler:MaxLifeTime 0.0000001*mm
+set /Herwig/Decays/DecayHandler:LifeTimeOption Average
+set /Herwig/Random:Seed 1
+set /Herwig/Generators/EventGenerator:NumberOfEvents -1
+set /Herwig/Generators/EventGenerator:DebugLevel 0
+set /Herwig/Generators/EventGenerator:PrintEvent 0
+set /Herwig/Generators/EventGenerator:MaxErrors 100000
+saverun mb200_sphenix_s1 /Herwig/Generators/EventGenerator

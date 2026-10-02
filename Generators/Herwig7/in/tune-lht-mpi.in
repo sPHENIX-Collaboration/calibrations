@@ -1,0 +1,18 @@
+# -*- ThePEG-repository -*-
+# MPI / underlying-event part of the Les Houches Tune (LHT), arXiv:2509.02348v1,
+# Table "tab:UE_params" (energy-extrapolated column), E_0 = 7 TeV, CT14LO.
+#
+# PARTIAL: the published LHT runs with Lund-string hadronization and the PYTHIA 8
+# QCD-based colour reconnection through TheP8I (Herwig 7.4, or 7.3 + the authors'
+# patch).  The sPHENIX Herwig 7.3.0 release has no TheP8I, so here Herwig's
+# cluster hadronization and colour reconnection stay at their defaults and the
+# string / CR (m0, junctionCorrection) and shower parameters of the LHT are NOT set.
+set /Herwig/UnderlyingEvent/MPIHandler:EnergyExtrapolation PowerModified
+set /Herwig/UnderlyingEvent/MPIHandler:ReferenceScale    7000*GeV
+set /Herwig/UnderlyingEvent/MPIHandler:Power             0.23
+set /Herwig/UnderlyingEvent/MPIHandler:pTmin0            3.13*GeV
+set /Herwig/UnderlyingEvent/MPIHandler:Offset            530.5*GeV
+set /Herwig/UnderlyingEvent/MPIHandler:InvRadius         1.14
+set /Herwig/UnderlyingEvent/MPIHandler:DiffractiveRatio  0.21
+set /Herwig/Partons/RemnantDecayer:ladderMult            0.57
+set /Herwig/Partons/RemnantDecayer:ladderbFactor         0.97

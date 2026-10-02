@@ -1,0 +1,11 @@
+# -*- ThePEG-repository -*-
+# New Haven tune, arXiv:2411.16897 (Table III) -- STAR 200 GeV data only.
+set /Herwig/UnderlyingEvent/MPIHandler:pTmin0           3.005*GeV
+set /Herwig/UnderlyingEvent/MPIHandler:ReferenceScale     200*GeV
+set /Herwig/UnderlyingEvent/MPIHandler:Power             0.225
+set /Herwig/UnderlyingEvent/MPIHandler:InvRadius          1.11
+set /Herwig/UnderlyingEvent/MPIHandler:DiffractiveRatio  0.299
+set /Herwig/UnderlyingEvent/MPIHandler:Offset             551
+set /Herwig/Hadronization/ColourReconnector:ReconnectionProbability 0.720
+set /Herwig/Partons/RemnantDecayer:ladderMult           0.3966
+set /Herwig/Partons/RemnantDecayer:ladderbFactor             0
