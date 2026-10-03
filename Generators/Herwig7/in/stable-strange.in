@@ -1,0 +1,27 @@
+# -*- ThePEG-repository -*-
+# Make the weakly-decaying strange hadrons stable.
+#
+# READ THIS BEFORE ENABLING: the correct setting depends on WHAT YOU COMPARE TO.
+#
+#   STAR    corrects its measurements to PRIMARY charged hadrons, so K0_S and
+#           Lambda are stable in the generator used for its unfolding.  To
+#           compare with STAR you need this file.
+#   sPHENIX applies no primary-particle selection, so for an sPHENIX comparison
+#           the strange hadrons SHOULD decay -- i.e. Herwig's default is right
+#           and this file should NOT be read.
+#
+# Measured size of the mismatch either way: ~10% on the charged density, flat in
+# pT, with <pT> moving only -1.3% (it is a multiplicity effect, as it must be).
+set /Herwig/Particles/K_S0:Stable      Stable
+set /Herwig/Particles/Lambda0:Stable   Stable
+set /Herwig/Particles/Lambdabar0:Stable Stable
+set /Herwig/Particles/Sigma-:Stable    Stable
+set /Herwig/Particles/Sigmabar+:Stable Stable
+set /Herwig/Particles/Sigma+:Stable    Stable
+set /Herwig/Particles/Sigmabar-:Stable Stable
+set /Herwig/Particles/Xi-:Stable       Stable
+set /Herwig/Particles/Xibar+:Stable    Stable
+set /Herwig/Particles/Xi0:Stable       Stable
+set /Herwig/Particles/Xibar0:Stable    Stable
+set /Herwig/Particles/Omega-:Stable    Stable
+set /Herwig/Particles/Omegabar+:Stable Stable
