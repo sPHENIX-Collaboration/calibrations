@@ -1,0 +1,23 @@
+# JEWEL 2.6.0 p+p 200 GeV: prompt photon + jet (PPYJ)
+# pT-hat > 10 GeV, pT-hat weighted; run with set_medium("vac")
+PROCESS PPYJ
+SQRTS 200.
+PTMIN 10.
+PTMAX -1.
+ETAMAX 2.5
+PDFSET 13100
+MASS 1
+NPROTON 1
+ISOCHANNEL PP
+WEIGHTED T
+WEXPO 5.
+KEEPRECOILS F
+SPLITINTFILE ../../JEWEL_tables/splitint.dat
+PDFFILE ../../JEWEL_tables/pdfs_ct14nlo.dat
+XSECFILE ../../JEWEL_tables/xsecs_ct14nlo.dat
+NF 3
+HADRO T
+MPI F
+SHORTHEPMC T
+WRITESCATCEN F
+WRITEDUMMIES F
