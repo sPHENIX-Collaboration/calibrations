@@ -24,6 +24,8 @@ All cards are p+p at sqrt(s) = 200 GeV.
 ## Usage
 Pass the card to `PHHerwig7::set_config_file` in the Fun4All steering macro, for example `$CALIBRATIONROOT/Generators/Herwig7/in/mb200_sphenix_s1.in`. The tune and other files a card `read`s are found next to the card. Configure the seed, event count, trigger selection, and DST output in the macro.
 
+The cards should not contain `saverun` or `run` command: PHHerwig7 creates the run in memory, and stops at Init if the card contains either command.
+
 
 ### Disclaimer and acknowledgement
 The cards were adapted from files originally developed by Jamie and company. The Fun4All integration was implemented with the assistance of Claude Code (Claude Team plan for scientists).
