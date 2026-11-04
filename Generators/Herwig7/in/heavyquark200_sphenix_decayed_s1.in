@@ -1,0 +1,33 @@
+# -*- ThePEG-repository -*-
+# Identical to heavyquark200_sphenix_s1.in except for the decay setting: no MaxLifeTime cut, so Herwig decays every particle type not flagged Stable in its defaults
+read snippets/PPCollider.in
+
+# HardQCD:hardccbar + hardbbbar = on: gg/qqbar -> c cbar (MEHeavyQuark) and b bbar
+cd /Herwig/MatrixElements/
+insert SubProcess:MatrixElements[0] MEHeavyQuark
+set MEHeavyQuark:QuarkType Charm
+create Herwig::MEPP2QQ MEHeavyQuarkBottom
+set MEHeavyQuarkBottom:QuarkType Bottom
+insert SubProcess:MatrixElements[0] MEHeavyQuarkBottom
+# Generation-level cut on both outgoing quarks: 0.1 GeV, not PYTHIA's pTHatMin = 0, because the bottom matrix element at pT = 0 triggers a Herwig 7.3.0 shower assertion (OneOneOneSplitFn.cc:70, z in (0,1))
+set /Herwig/Cuts/JetKtCut:MinKT 0.1*GeV
+cd /
+set /Herwig/Generators/EventGenerator:EventHandler:LuminosityFunction:Energy 200*GeV
+
+# Herwig default tune (defaults/UnderlyingEvent.in) with CT14 LO, the PDF it was made with
+set /Herwig/Partons/HardLOPDF:PDFName CT14lo
+set /Herwig/Partons/ShowerLOPDF:PDFName CT14lo
+set /Herwig/Partons/MPIPDF:PDFName CT14lo
+set /Herwig/Partons/RemnantPDF:PDFName CT14lo
+set /Herwig/Particles/p+:PDF /Herwig/Partons/HardLOPDF
+set /Herwig/Particles/pbar-:PDF /Herwig/Partons/HardLOPDF
+
+# PhaseSpace:mHatMin = 4 GeV as in PYTHIA.  The Herwig default Cuts:MHatMin is 20 GeV (defaults/Cuts.in), which for a central 2->2 process (mHat ~ 2 pT) removes everything below pT ~ 10 GeV, so it is always set explicitly at 200 GeV
+set /Herwig/Cuts/Cuts:MHatMin 4*GeV
+
+# Random:Seed is replaced at run time by the PHHerwig7 seed (set_seed, or PHRandomSeed())
+set /Herwig/Random:Seed 1
+set /Herwig/Generators/EventGenerator:NumberOfEvents -1
+set /Herwig/Generators/EventGenerator:DebugLevel 0
+set /Herwig/Generators/EventGenerator:PrintEvent 0
+set /Herwig/Generators/EventGenerator:MaxErrors 100000

@@ -1,54 +1,31 @@
-# Herwig7 run card preparation
-(The script and pre-generated cards were adapted from local files originally developed by Jamie and company.)
+# Herwig7 input cards
+(The cards were adapted from local files originally developed by Jamie and company.)
 
-Prepare a Herwig generator configuration for PHHerwig7 in Fun4All:
-
-```text
-.cfg -> prepare_HerwigRuncard.sh -> .in and .run
-```
-
-Event generation runs separately inside Fun4All, which consumes the `.run` file.
+Herwig generator configurations for PHHerwig7 in Fun4All. Each sample is one self-contained `.in` card, the same way the PHPythia8 `.cfg` cards are kept. PHHerwig7 reads the card in-process at Init.
 
 ## Directory structure
-- `cfg/`: Generator configuration files
-- `in/`: Generator input cards (include tunes etc)
-- `run/`: Generator run configuration (consumed by Fun4All)
+- `in/`: sample cards, and the files they `read`:
+  - `tune-lht-mpi.in`: MPI part of the Les Houches Tune, read by `mb200_sphenix_lht_s1.in`
+  - `tune-nashville.in`, `tune-newhaven.in`: STAR-based MPI/underlying-event tunes (arXiv:2411.16897), fitted with NNPDF3.0 LO; not read by any card
+  - `stable-strange.in`: weakly-decaying strange hadrons stable (read its header before using it)
+
+## Sample cards
+All cards are p+p at sqrt(s) = 200 GeV.
+
+| Card | Process | Tune | PDF | Decays | Follows |
+|---|---|---|---|---|---|
+| `mb200_sphenix_s1.in` | minimum bias: non-diffractive + diffractive | Herwig default | CT14lo | particles with c*tau > 1e-7 mm left to Geant4 | `phpythia8_detroit_minBias.cfg` |
+| `mb200_sphenix_lht_s1.in` | minimum bias: non-diffractive + diffractive | Les Houches Tune, MPI part (`tune-lht-mpi.in`) | CT14lo | particles with c*tau > 1e-7 mm left to Geant4 | `mb200_sphenix_s1.in` |
+| `mb200_ue_s1.in` | non-diffractive minimum bias, for underlying-event observables | Herwig default | CT14lo | all by Herwig except the weakly-decaying strange hadrons (`stable-strange.in`) | |
+| `mb200_ue_decayed_s1.in` | non-diffractive minimum bias, for underlying-event observables | Herwig default | CT14lo | all by Herwig | `mb200_ue_s1.in` |
+| `heavyquark200_sphenix_s1.in` | c cbar + b bbar | Herwig default | CT14lo | particles with c*tau > 1e-7 mm left to Geant4 | HF TG D0 card `HeavyFlavor_TG/phpythia8_d02kpi_MDC2.cfg` |
+| `heavyquark200_sphenix_decayed_s1.in` | c cbar + b bbar | Herwig default | CT14lo | all by Herwig | `heavyquark200_sphenix_s1.in` |
 
 ## Usage
-0.  Set up the sPHENIX software environment as you normally do
-1.  Make sure the script is executable, and then run it 
+Pass the card to `PHHerwig7::set_config_file` in the Fun4All steering macro, for example `$CALIBRATIONROOT/Generators/Herwig7/in/mb200_sphenix_s1.in`. The tune and other files a card `read`s are found next to the card. Configure the seed, event count, trigger selection, and DST output in the macro.
 
-    ```bash
-    chmod +x prepare_HerwigRuncard.sh
-    # Usage: ./prepare_HerwigRuncard.sh [cfg/AAAAA.cfg]
-    ./prepare_HerwigRuncard.sh cfg/mb200_sphenix.cfg
+The cards should not contain `saverun` or `run` command: PHHerwig7 creates the run in memory, and stops at Init if the card contains either command.
 
-    # Configuration settings can be overridden on the command line, for example:
-    # ./prepare_HerwigRuncard.sh cfg/mb200_sphenix.cfg seed=7 energy=200
-    ```
-    For the default seed, it produces:
 
-    ```text
-    in/mb200_sphenix_s1.in
-    run/mb200_sphenix_s1.run
-    ```
-
-2. Pass the `.run` path to PHHerwig7 in the Fun4All steering macro. Configure the event count, trigger selection, and DST output in the macro.
-
-## PDF data
-
-The script currently reads the PDF set (NNPDF30_lo_as_0118) from Jamie's directory:
-
-```text
-/sphenix/user/nagle/ProjectHERWIG/Source/lhapdf
-```
-
-(Note: this PDF set is not currently available in the sPHENIX CVMFS. The script needs to be modified once the PDF is integrated.)
-
-For independently launched Fun4All jobs, set this path after software setup:
-
-```bash
-export LHAPDF_DATA_PATH=/sphenix/user/nagle/ProjectHERWIG/Source/lhapdf${LHAPDF_DATA_PATH:+:$LHAPDF_DATA_PATH}
-```
-
-Regenerate `.run` files when changing the configuration.
+### Disclaimer and acknowledgement
+The cards were adapted from files originally developed by Jamie and company. The Fun4All integration was implemented with the assistance of Claude Code (Claude Team plan for scientists).

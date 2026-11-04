@@ -1,0 +1,27 @@
+# -*- ThePEG-repository -*-
+# mb200_sphenix_s1.in with the MPI/underlying-event parameters of the Les Houches Tune (arXiv:2509.02348v1) instead of the Herwig default tune, and CT14 LO as in that paper.
+# PARTIAL tune: cluster hadronization stays at the Herwig default, see tune-lht-mpi.in.
+read snippets/PPCollider.in
+read snippets/MB.in
+read snippets/Diffraction.in
+set /Herwig/Generators/EventGenerator:EventHandler:LuminosityFunction:Energy 200*GeV
+
+# Les Houches Tune (MPI part), CT14 LO
+read tune-lht-mpi.in
+set /Herwig/Partons/HardLOPDF:PDFName CT14lo
+set /Herwig/Partons/ShowerLOPDF:PDFName CT14lo
+set /Herwig/Partons/MPIPDF:PDFName CT14lo
+set /Herwig/Partons/RemnantPDF:PDFName CT14lo
+set /Herwig/Particles/p+:PDF /Herwig/Partons/HardLOPDF
+set /Herwig/Particles/pbar-:PDF /Herwig/Partons/HardLOPDF
+
+# Leave every particle type with mean c*tau above 1e-7 mm undecayed, for Geant4 to decay -- PYTHIA's ParticleDecays:limitTau0 = on, tau0Max = 1e-7.
+set /Herwig/Decays/DecayHandler:MaxLifeTime 0.0000001*mm
+set /Herwig/Decays/DecayHandler:LifeTimeOption Average
+
+# Random:Seed is replaced at run time by the PHHerwig7 seed (set_seed, or PHRandomSeed()).
+set /Herwig/Random:Seed 1
+set /Herwig/Generators/EventGenerator:NumberOfEvents -1
+set /Herwig/Generators/EventGenerator:DebugLevel 0
+set /Herwig/Generators/EventGenerator:PrintEvent 0
+set /Herwig/Generators/EventGenerator:MaxErrors 100000
