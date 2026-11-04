@@ -1,20 +1,29 @@
-# Generated from cfg/mb200_sphenix.cfg by prepare_HerwigRuncard.sh
+# -*- ThePEG-repository -*-
+# Minimum-bias p+p at 200 GeV following the sPHENIX PYTHIA minimum-bias configuration
+# ($CALIBRATIONROOT/Generators/phpythia8_detroit_minBias.cfg):
+#   SoftQCD:inelastic = on        -> non-diffractive (MB.in) + diffractive (Diffraction.in)
+#   ParticleDecays:tau0Max = 1e-7 -> see MaxLifeTime below
 read snippets/PPCollider.in
 read snippets/MB.in
 read snippets/Diffraction.in
 set /Herwig/Generators/EventGenerator:EventHandler:LuminosityFunction:Energy 200*GeV
-read tune-nashville.in
-set /Herwig/Partons/HardLOPDF:PDFName NNPDF30_lo_as_0118
-set /Herwig/Partons/ShowerLOPDF:PDFName NNPDF30_lo_as_0118
-set /Herwig/Partons/MPIPDF:PDFName NNPDF30_lo_as_0118
-set /Herwig/Partons/RemnantPDF:PDFName NNPDF30_lo_as_0118
+
+# Herwig default tune (defaults/UnderlyingEvent.in) with CT14 LO, the PDF it was made with
+set /Herwig/Partons/HardLOPDF:PDFName CT14lo
+set /Herwig/Partons/ShowerLOPDF:PDFName CT14lo
+set /Herwig/Partons/MPIPDF:PDFName CT14lo
+set /Herwig/Partons/RemnantPDF:PDFName CT14lo
 set /Herwig/Particles/p+:PDF /Herwig/Partons/HardLOPDF
 set /Herwig/Particles/pbar-:PDF /Herwig/Partons/HardLOPDF
+
+# Leave every particle type with mean c*tau above 1e-7 mm undecayed, for Geant4 to decay -- PYTHIA's ParticleDecays:limitTau0 = on, tau0Max = 1e-7
 set /Herwig/Decays/DecayHandler:MaxLifeTime 0.0000001*mm
 set /Herwig/Decays/DecayHandler:LifeTimeOption Average
+
+# Random:Seed is replaced at run time by the PHHerwig7 seed (set_seed, or PHRandomSeed())
+# Fun4All sets the event count, so the card leaves NumberOfEvents unlimited
 set /Herwig/Random:Seed 1
 set /Herwig/Generators/EventGenerator:NumberOfEvents -1
 set /Herwig/Generators/EventGenerator:DebugLevel 0
 set /Herwig/Generators/EventGenerator:PrintEvent 0
 set /Herwig/Generators/EventGenerator:MaxErrors 100000
-saverun mb200_sphenix_s1 /Herwig/Generators/EventGenerator

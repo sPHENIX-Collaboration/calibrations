@@ -1,0 +1,22 @@
+# -*- ThePEG-repository -*-
+# Non-diffractive minimum-bias p+p at 200 GeV for underlying-event observables, with the weakly-decaying strange hadrons stable (stable-strange.in): for comparison with data corrected to primary charged hadrons.  No MaxLifeTime cut, so Herwig decays every other unstable particle.
+read snippets/PPCollider.in
+read snippets/MB.in
+set /Herwig/Generators/EventGenerator:EventHandler:LuminosityFunction:Energy 200*GeV
+
+# Herwig default tune (defaults/UnderlyingEvent.in) with CT14 LO, the PDF it was made with
+set /Herwig/Partons/HardLOPDF:PDFName CT14lo
+set /Herwig/Partons/ShowerLOPDF:PDFName CT14lo
+set /Herwig/Partons/MPIPDF:PDFName CT14lo
+set /Herwig/Partons/RemnantPDF:PDFName CT14lo
+set /Herwig/Particles/p+:PDF /Herwig/Partons/HardLOPDF
+set /Herwig/Particles/pbar-:PDF /Herwig/Partons/HardLOPDF
+
+read stable-strange.in
+
+# Random:Seed is replaced at run time by the PHHerwig7 seed (set_seed, or PHRandomSeed()).
+set /Herwig/Random:Seed 1
+set /Herwig/Generators/EventGenerator:NumberOfEvents -1
+set /Herwig/Generators/EventGenerator:DebugLevel 0
+set /Herwig/Generators/EventGenerator:PrintEvent 0
+set /Herwig/Generators/EventGenerator:MaxErrors 100000
