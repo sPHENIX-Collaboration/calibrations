@@ -8,11 +8,11 @@
 # (original combined card: both MEs in one run, sampled by their own cross sections -- the PYTHIA PromptPhoton:all +
 # HardQCD:all construction of the MDC2 photon samples; this card keeps MEQCD2to2 only.)
 #
-# Fun4All_PHHerwig7.C trigger for this card: photon, pT > 5 GeV, |eta| < 1.5, photon_prompt = 1
+# Trigger for this card (PHHerwig7ParticleTrigger): photon, pT > 5 GeV, |eta| < 1.5, prompt only (SetPromptOnly)
 # Used by the analyses for truth photon pT 0-14 GeV (stitch on truth pT, as PYTHIA).
 # Generation cut (this frag card): c = 2.5 GeV = PhotonKtCut = JetKtCut, from the generation-cut scan.
 #
-# Read: Herwig read Herwig_Photon5_frag.in   ->  Herwig_Photon5_frag.run  (input of PHHerwig7::set_run_file)
+# Use: PHHerwig7::set_config_file("$CALIBRATIONROOT/Generators/Herwig7/in/Herwig_Photon5_frag.in"); PHHerwig7 builds the run in memory.
 ##################################################################################################
 read snippets/PPCollider.in
 
@@ -49,9 +49,8 @@ set /Herwig/ACDCSampler:Ntry 100000
 set /Herwig/Decays/DecayHandler:MaxLifeTime 1e-7*mm
 set /Herwig/Decays/DecayHandler:LifeTimeOption Average
 
-# ---- in-process: no HepMC file handler; Fun4All owns the event count; seed from PHRandomSeed()
+# ---- in-process: no HepMC file handler; Fun4All owns the event count; seed set by PHHerwig7 (set_seed or PHRandomSeed())
 set /Herwig/Generators/EventGenerator:NumberOfEvents -1
 set /Herwig/Generators/EventGenerator:DebugLevel 0
 set /Herwig/Generators/EventGenerator:PrintEvent 0
 set /Herwig/Generators/EventGenerator:MaxErrors 100000
-saverun Herwig_Photon5_frag /Herwig/Generators/EventGenerator
