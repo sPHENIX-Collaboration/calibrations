@@ -1,0 +1,57 @@
+# Herwig_Photon10_frag.in -- 2026-10-13: J. Nagle's Herwig_Photon10.in (below) with MEGammaJet removed and the
+# generation cut raised to c = 6 GeV (JetKtCut = PhotonKtCut) from the gencut/ scan: fragmentation photons
+# only (MEQCD2to2 + QED shower). Combined by cross section with Herwig_Photon10_direct.in.
+# -*- ThePEG-repository -*-
+##################################################################################################
+# Herwig_Photon10.in -- sPHENIX G4 request, Herwig 7.3.0 DEFAULT tune, CT14lo, p+p 200 GeV
+# Direct photons (MEGammaJet) + QCD 2->2 (MEQCD2to2: fragmentation photons via the QED shower),
+# (original combined card: both MEs in one run, sampled by their own cross sections -- the PYTHIA PromptPhoton:all +
+# HardQCD:all construction of the MDC2 photon samples; this card keeps MEQCD2to2 only.)
+#
+# Fun4All_PHHerwig7.C trigger for this card: photon, pT > 10 GeV, |eta| < 1.5, photon_prompt = 1
+# Used by the analyses for truth photon pT 14-22 GeV (stitch on truth pT, as PYTHIA).
+# Generation cut (this frag card): c = 6 GeV = PhotonKtCut = JetKtCut, from the generation-cut scan.
+#
+# Read: Herwig read Herwig_Photon10_frag.in   ->  Herwig_Photon10_frag.run  (input of PHHerwig7::set_run_file)
+##################################################################################################
+read snippets/PPCollider.in
+
+cd /Herwig/MatrixElements/
+insert SubProcess:MatrixElements[0] MEQCD2to2
+cd /
+
+set /Herwig/Generators/EventGenerator:EventHandler:LuminosityFunction:Energy 200.0
+
+# Tune: Herwig 7.3.0 default -- NO tune file, NO MPIHandler changes (its energy extrapolation is the model).
+# PDF: CT14lo (Herwig's default) set explicitly in all four slots
+set /Herwig/Partons/HardLOPDF:PDFName   CT14lo
+set /Herwig/Partons/ShowerLOPDF:PDFName CT14lo
+set /Herwig/Partons/MPIPDF:PDFName      CT14lo
+set /Herwig/Partons/RemnantPDF:PDFName  CT14lo
+set /Herwig/Particles/p+:PDF    /Herwig/Partons/HardLOPDF
+set /Herwig/Particles/pbar-:PDF /Herwig/Partons/HardLOPDF
+
+# ---- 200 GeV phase-space cuts: Herwig's defaults are all 20 GeV (LHC values) ----
+set /Herwig/Cuts/JetKtCut:MinKT    6*GeV
+set /Herwig/Cuts/PhotonKtCut:MinKT 6*GeV
+set /Herwig/Cuts/PhotonKtCut:MinEta -3.0
+set /Herwig/Cuts/PhotonKtCut:MaxEta  3.0
+# MHatMin default 20 GeV = central pT > ~10 GeV.  2 GeV never binds here (mHat >= 2c).
+set /Herwig/Cuts/Cuts:MHatMin 2.0*GeV
+
+# ---- sampler: ACDC presampling.  Default Ntry 1000 under-samples the high-pT tail (2026-10-09 study).
+set /Herwig/ACDCSampler:Ntry 100000
+
+# ---- decays: exactly as the PYTHIA MDC2 photon cards (JetStructure_TG/phpythia8_*GeV_JS_MDC2.cfg:
+#      ParticleDecays:limitTau0 on, tau0Max = 1e-7 mm): only c*tau0 < 0.1 nm is decayed in the generator,
+#      so pi0, eta, K, Lambda, Sigma+-, Xi, Omega ... go to Geant4 (checked 2026-10-09: pi0/eta stable,
+#      omega/eta' decayed).  Average = nominal c*tau0, as PYTHIA's limitTau0 (no per-particle sampling).
+set /Herwig/Decays/DecayHandler:MaxLifeTime 1e-7*mm
+set /Herwig/Decays/DecayHandler:LifeTimeOption Average
+
+# ---- in-process: no HepMC file handler; Fun4All owns the event count; seed from PHRandomSeed()
+set /Herwig/Generators/EventGenerator:NumberOfEvents -1
+set /Herwig/Generators/EventGenerator:DebugLevel 0
+set /Herwig/Generators/EventGenerator:PrintEvent 0
+set /Herwig/Generators/EventGenerator:MaxErrors 100000
+saverun Herwig_Photon10_frag /Herwig/Generators/EventGenerator
